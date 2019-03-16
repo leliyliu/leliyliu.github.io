@@ -103,11 +103,16 @@
 <p>一般采用均匀分布求解</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calpai</span><span class="params">()</span>:</span></span><br><span class="line">    n = <span class="number">1000000</span></span><br><span class="line">    r = <span class="number">1.0</span></span><br><span class="line">    a, b = (<span class="number">0.0</span>, <span class="number">0.0</span>)</span><br><span class="line">    x_neg, x_pos = a - r, a + r</span><br><span class="line">    y_neg, y_pos = b - r, b + r</span><br><span class="line"></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n):</span><br><span class="line">        x = random.uniform(x_neg, x_pos)</span><br><span class="line">        y = random.uniform(y_neg, y_pos)</span><br><span class="line">        <span class="keyword">if</span> x*x + y*y &lt;= <span class="number">1.0</span>:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> (count / float(n)) * <span class="number">4</span></span><br></pre></td></tr></table></figure>
 <h4 id="3-蒙特卡洛树搜索"><a href="#3-蒙特卡洛树搜索" class="headerlink" title="(3)蒙特卡洛树搜索"></a>(3)蒙特卡洛树搜索</h4><p>as we know, an important method used in alpha go and alpha zero is Monte Carlo Tree search. So if you want to know more about this method, you can search this <a href="https://blog.csdn.net/qq_16137569/article/details/83543641" target="_blank" rel="noopener">website(Monte Carlo Tree search)</a> and get some knowledge yourself. also, you can get information in almost every game theory book.And try to get the big idea in Monte Carlo Tree search.</p>
-<h3 id="2-马尔科夫链"><a href="#2-马尔科夫链" class="headerlink" title="2. 马尔科夫链"></a>2. 马尔科夫链</h3>
+<h3 id="2-马尔科夫链"><a href="#2-马尔科夫链" class="headerlink" title="2. 马尔科夫链"></a>2. 马尔科夫链</h3><h5 id="2-1-马尔可夫链的定义"><a href="#2-1-马尔可夫链的定义" class="headerlink" title="2.1 马尔可夫链的定义"></a>2.1 马尔可夫链的定义</h5><p>现实世界中有很多这样的现象：某一系统在已知现在情况的条件下，系统未来时刻<br>的情况只与现在有关，而与过去的历史无直接关系。比如，研究一个商店的累计销售额，<br>如果现在时刻的累计销售额已知，则未来某一时刻的累计销售额与现在时刻以前的任一<br>时刻累计销售额无关。上节中的几个例子也均属此类。描述这类随机现象的数学模型称<br>为马氏模型。</p>
+<p>对于马尔科夫链的数学定义，可以直接参照<a href="http://vdisk.weibo.com/s/D8miedWz2uXT" target="_blank" rel="noopener">《数学建模算法与应用》（司守奎）</a>。</p>
+<h5 id="2-2-马尔科夫链的性质"><a href="#2-2-马尔科夫链的性质" class="headerlink" title="2.2 马尔科夫链的性质"></a>2.2 马尔科夫链的性质</h5><p>转移概率矩阵及柯尔莫哥洛夫定理</p>
+<p>对于这个性质，可以查看我给出的<a href="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/learning_code/morkov.py" target="_blank" rel="noopener">代码morkov.py</a>进行了解</p>
+<h5 id="2-3-马尔科夫链的应用"><a href="#2-3-马尔科夫链的应用" class="headerlink" title="2.3 马尔科夫链的应用"></a>2.3 马尔科夫链的应用</h5><p>虽然马尔科夫链的性质极其简单，但是其应用广泛，有着极大的意义。<br>应用马尔可夫链的计算方法进行马尔可夫分析，主要目的是根据某些变量现在的情<br>况及其变动趋向，来预测它在未来某特定区间可能产生的变动，作为提供某种决策的依<br>据。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="cjt9qtvnz000oe0tq37gg9025" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="cjtauqhq4000mtktqnkmrdh7b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -133,7 +138,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/09/ma-model-preparation1/">ma_model_preparation</a>
+      <a class="article-title" href="/2019/03/09/ma-model-preparation1/">ma_model_preparation1</a>
     </h1>
   
 
@@ -172,7 +177,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/09/ma-model-preparation1/" data-id="cjt9qtvnx000me0tq27n9zlpd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/09/ma-model-preparation1/" data-id="cjtauqhrg000vtktq53xzhwqd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -235,7 +240,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" data-id="cjt9qtvn10003e0tq8nzmkc9z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" data-id="cjtauqhog0005tktqu3vxivms" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -305,7 +310,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" data-id="cjt9qtvnd000ae0tqqtwopd6c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" data-id="cjtauqhnh0000tktqrqvpouvc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -360,7 +365,7 @@ git push （在后续过程中，直接git push）即可
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/01/github-use/" data-id="cjt9qtvoh0013e0tqf2wz7kv9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/01/github-use/" data-id="cjtauqhqc000otktqk52ffzv2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-git/">github/git</a></li></ul>
@@ -432,7 +437,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/01/MCM-ICM-preparation-two/" data-id="cjt9qtvmq0000e0tqjm7ew744" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/01/MCM-ICM-preparation-two/" data-id="cjtauqho80003tktq4ggogro6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li></ul>
@@ -494,7 +499,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" data-id="cjt9qtvo3000re0tqpmae2pji" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" data-id="cjtauqhro000ytktqwvqpp95i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -552,7 +557,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" data-id="cjt9qtvnj000ee0tqdnm9efct" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" data-id="cjtauqhq0000ktktqltz2upyg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -642,7 +647,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/26/MCM-ICM-preparation-one/" data-id="cjt9qtvn50005e0tqokaibnah" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/26/MCM-ICM-preparation-one/" data-id="cjtauqhoc0004tktqv0icdvf2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li></ul>
@@ -702,7 +707,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/26/Modern-Anglo-American-philosophy-translation-7/" data-id="cjt9qtvnf000ce0tqkqnsgx1x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/26/Modern-Anglo-American-philosophy-translation-7/" data-id="cjtauqhpc000ftktqnaqgqccs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -768,7 +773,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
           </li>
         
           <li>
-            <a href="/2019/03/09/ma-model-preparation1/">ma_model_preparation</a>
+            <a href="/2019/03/09/ma-model-preparation1/">ma_model_preparation1</a>
           </li>
         
           <li>
