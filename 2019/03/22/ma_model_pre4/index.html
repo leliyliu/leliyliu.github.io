@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>ma_model_preparation1 | 坠落</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="图与网络basic conception无向图 有向图 赋权图 有限图 简单图 完全图 二分图 子图 母图 顶点的度（入度，出度） 一个图称为简单图(simple graph)，如果它既没有环也没有两条边连接同一对顶点。 邻接矩阵表示法  邻接链表表示法   弧表表示法   关联矩阵  星形表示法（前向和反向） 弧表表示法将图以弧表（arc list）的形式存储在计算机中。所谓图的弧表，也就是图的">
+<meta name="keywords" content="math_model_preparation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ma_model_preparation1">
+<meta property="og:url" content="http://yoursite.com/2019/03/22/ma_model_pre4/index.html">
+<meta property="og:site_name" content="坠落">
+<meta property="og:description" content="图与网络basic conception无向图 有向图 赋权图 有限图 简单图 完全图 二分图 子图 母图 顶点的度（入度，出度） 一个图称为简单图(simple graph)，如果它既没有环也没有两条边连接同一对顶点。 邻接矩阵表示法  邻接链表表示法   弧表表示法   关联矩阵  星形表示法（前向和反向） 弧表表示法将图以弧表（arc list）的形式存储在计算机中。所谓图的弧表，也就是图的">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-22T01:12:40.693Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ma_model_preparation1">
+<meta name="twitter:description" content="图与网络basic conception无向图 有向图 赋权图 有限图 简单图 完全图 二分图 子图 母图 顶点的度（入度，出度） 一个图称为简单图(simple graph)，如果它既没有环也没有两条边连接同一对顶点。 邻接矩阵表示法  邻接链表表示法   弧表表示法   关联矩阵  星形表示法（前向和反向） 弧表表示法将图以弧表（arc list）的形式存储在计算机中。所谓图的弧表，也就是图的">
+  
+    <link rel="alternate" href="/atom.xml" title="坠落" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">坠落</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">do what you want to do</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ma_model_pre4" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/22/ma_model_pre4/" class="article-date">
+  <time datetime="2019-03-22T01:12:32.000Z" itemprop="datePublished">2019-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ma_model_preparation1
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="图与网络"><a href="#图与网络" class="headerlink" title="图与网络"></a>图与网络</h2><h3 id="basic-conception"><a href="#basic-conception" class="headerlink" title="basic conception"></a>basic conception</h3><pre><code>无向图 有向图 赋权图 有限图 简单图
+完全图 二分图 子图 母图 顶点的度（入度，出度）
+</code></pre><p>一个图称为<font color="blue">简单图(simple graph)</font>，如果它既没有环也没有两条边连接同一对顶点。</p>
+<pre><code>邻接矩阵表示法  邻接链表表示法   弧表表示法   关联矩阵  星形表示法（前向和反向）
+</code></pre><p><font color="0xffffff">弧表表示法</font>将图以弧表（arc list）的形式存储在计算机中。所谓图的弧表，也就是图的弧集合中的所有有序对。弧表表示法直接列出所有弧的起点和终点，共需2m个存储单元，因此当网络比较稀疏时比较方便。</p>
+<p><font color="0xffffff">也就是说，在关联矩阵中，每行对应于图的一个节点，每列对应于图的一条弧。</font>如果一个节点是一条弧的起点，则关联矩阵中对应的元素为1；如果一个节点是一条弧的终点，则关联矩阵中对应的元素为−1；如果一个节点与一条弧不关联，则关联矩阵中对应的元素为 0。</p>
+<pre><code>道路(walk) 迹(trail) 轨(path) 圈(cycle)
+</code></pre><p>一个连通图的生成树很多,用 $\tau(G)$ 来表示图的生成树的个数，则有如下公式：</p>
+<p>$$ \tau(K_n)=n^{n-2} $$<br>$$\tau(G)=\tau(G-e)+\tau(G\cdot e)$$</p>
+<h3 id="匹配问题"><a href="#匹配问题" class="headerlink" title="匹配问题"></a>匹配问题</h3><h4 id="1-几个定义"><a href="#1-几个定义" class="headerlink" title="1.几个定义"></a>1.几个定义</h4><p> 对集  匹配   完美对集    最大对集  交错轨  可增广轨</p>
+<h4 id="2-定理"><a href="#2-定理" class="headerlink" title="2.定理:"></a>2.定理:</h4><p>(1)M是图G的最大对集当且仅当G中无M可增广轨</p>
+<p>(2)G 为二分图， X与Y是顶点集的划分，G中存在把X中顶点皆许配的对集的充要条件是，∀S ⊂ X ，则|N(S)|≥|S|，其中N(S)是S中顶点的邻集。</p>
+<blockquote>
+<p>推论 若G是k次正则二分图（每个顶点皆K度的图），则G有完美对集</p>
+</blockquote>
+<h4 id="3-人员分派问题"><a href="#3-人员分派问题" class="headerlink" title="3.人员分派问题"></a>3.人员分派问题</h4><p>1.匈牙利算法：利用匈牙利算法可以直接解决人员分派问题，其思路非常简单，故在这里不做介绍。</p>
+<p>2.-&gt;最优分派问题<br>这个问题的数学模型是：在人员分派问题的模型中，图 G 的每边加了权$w(x_i,y_j)&gt;=0$表示$x_i$干$y_j$ 工作的效益，求加权图G 上的权最大的完美对集。</p>
+<p>解决这个问题可以参照<a href="http://vdisk.weibo.com/s/D8miedWz2uXT" target="_blank" rel="noopener">《数学建模算法与应用》（司守奎）</a>（P84）所给出的定义以及Kuhn-Munkres算法，其实质上是在匈牙利算法的进一步改善<br>如果想要对KM算法作深入的理解，可以参考这个<a href="https://blog.csdn.net/liu_y_r/article/details/79219405?utm_source=blogxgwz7" target="_blank" rel="noopener">blog</a></p>
+<p>可行顶标$l$,对于任意弧,满足$e(x \rightarrow y)  都有 l_x+l_y\ge w_e$，后定义相等子图，其包含所有的点，但只包含满足$l_x+l_y=w_e$的所有弧$e(x \rightarrow y)$,这些弧已经是最大的弧，如果有完美匹配，那么可以得到最优分派。KM 算法仅仅只适用于找二分图最佳完美匹配，如果无完美匹配，那么算法很可能陷入死循环（如果不存在的边为 -INF 的话就不会，但正确性就无法保证了），对于这种情况要小心处理。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/22/ma_model_pre4/" data-id="cjtjdf00h000o6gtqvpxmk9z6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/15/ma_model_pre3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ma_model_preparation2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-learning/">English_learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-system/">computer_system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-git/">github/git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 10px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 16.67px;">math_model_preparation</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/22/ma_model_pre4/">ma_model_preparation1</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/15/ma_model_pre3/">ma_model_preparation2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/09/ma-model-preparation1/">ma_model_preparation1</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/06/Modern-Anglo-American-philosophy-translation-11/">Modern Anglo-American philosophy translation_11</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/04/Modern-Anglo-American-philosophy-translation-10/">Modern Anglo-American philosophy translation_10</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Leliyliu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

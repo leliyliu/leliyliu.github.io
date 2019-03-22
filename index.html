@@ -69,6 +69,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ma_model_pre4" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/22/ma_model_pre4/" class="article-date">
+  <time datetime="2019-03-22T01:12:32.000Z" itemprop="datePublished">2019-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/22/ma_model_pre4/">ma_model_preparation1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="图与网络"><a href="#图与网络" class="headerlink" title="图与网络"></a>图与网络</h2><h3 id="basic-conception"><a href="#basic-conception" class="headerlink" title="basic conception"></a>basic conception</h3><pre><code>无向图 有向图 赋权图 有限图 简单图
+完全图 二分图 子图 母图 顶点的度（入度，出度）
+</code></pre><p>一个图称为<font color="blue">简单图(simple graph)</font>，如果它既没有环也没有两条边连接同一对顶点。</p>
+<pre><code>邻接矩阵表示法  邻接链表表示法   弧表表示法   关联矩阵  星形表示法（前向和反向）
+</code></pre><p><font color="0xffffff">弧表表示法</font>将图以弧表（arc list）的形式存储在计算机中。所谓图的弧表，也就是图的弧集合中的所有有序对。弧表表示法直接列出所有弧的起点和终点，共需2m个存储单元，因此当网络比较稀疏时比较方便。</p>
+<p><font color="0xffffff">也就是说，在关联矩阵中，每行对应于图的一个节点，每列对应于图的一条弧。</font>如果一个节点是一条弧的起点，则关联矩阵中对应的元素为1；如果一个节点是一条弧的终点，则关联矩阵中对应的元素为−1；如果一个节点与一条弧不关联，则关联矩阵中对应的元素为 0。</p>
+<pre><code>道路(walk) 迹(trail) 轨(path) 圈(cycle)
+</code></pre><p>一个连通图的生成树很多,用 $\tau(G)$ 来表示图的生成树的个数，则有如下公式：</p>
+<p>$$ \tau(K_n)=n^{n-2} $$<br>$$\tau(G)=\tau(G-e)+\tau(G\cdot e)$$</p>
+<h3 id="匹配问题"><a href="#匹配问题" class="headerlink" title="匹配问题"></a>匹配问题</h3><h4 id="1-几个定义"><a href="#1-几个定义" class="headerlink" title="1.几个定义"></a>1.几个定义</h4><p> 对集  匹配   完美对集    最大对集  交错轨  可增广轨</p>
+<h4 id="2-定理"><a href="#2-定理" class="headerlink" title="2.定理:"></a>2.定理:</h4><p>(1)M是图G的最大对集当且仅当G中无M可增广轨</p>
+<p>(2)G 为二分图， X与Y是顶点集的划分，G中存在把X中顶点皆许配的对集的充要条件是，∀S ⊂ X ，则|N(S)|≥|S|，其中N(S)是S中顶点的邻集。</p>
+<blockquote>
+<p>推论 若G是k次正则二分图（每个顶点皆K度的图），则G有完美对集</p>
+</blockquote>
+<h4 id="3-人员分派问题"><a href="#3-人员分派问题" class="headerlink" title="3.人员分派问题"></a>3.人员分派问题</h4><p>1.匈牙利算法：利用匈牙利算法可以直接解决人员分派问题，其思路非常简单，故在这里不做介绍。</p>
+<p>2.-&gt;最优分派问题<br>这个问题的数学模型是：在人员分派问题的模型中，图 G 的每边加了权$w(x_i,y_j)&gt;=0$表示$x_i$干$y_j$ 工作的效益，求加权图G 上的权最大的完美对集。</p>
+<p>解决这个问题可以参照<a href="http://vdisk.weibo.com/s/D8miedWz2uXT" target="_blank" rel="noopener">《数学建模算法与应用》（司守奎）</a>（P84）所给出的定义以及Kuhn-Munkres算法，其实质上是在匈牙利算法的进一步改善<br>如果想要对KM算法作深入的理解，可以参考这个<a href="https://blog.csdn.net/liu_y_r/article/details/79219405?utm_source=blogxgwz7" target="_blank" rel="noopener">blog</a></p>
+<p>可行顶标$l$,对于任意弧,满足$e(x \rightarrow y)  都有 l_x+l_y\ge w_e$，后定义相等子图，其包含所有的点，但只包含满足$l_x+l_y=w_e$的所有弧$e(x \rightarrow y)$,这些弧已经是最大的弧，如果有完美匹配，那么可以得到最优分派。KM 算法仅仅只适用于找二分图最佳完美匹配，如果无完美匹配，那么算法很可能陷入死循环（如果不存在的边为 -INF 的话就不会，但正确性就无法保证了），对于这种情况要小心处理。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/22/ma_model_pre4/" data-id="cjtjdf00h000o6gtqvpxmk9z6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ma_model_pre3" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/15/ma_model_pre3/" class="article-date">
@@ -112,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="cjtauqhq4000mtktqnkmrdh7b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="cjtjdf01t001l6gtqxag5ltli" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -177,7 +234,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/09/ma-model-preparation1/" data-id="cjtauqhrg000vtktq53xzhwqd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/09/ma-model-preparation1/" data-id="cjtjdf00z00136gtquka6hu9m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -240,7 +297,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" data-id="cjtauqhog0005tktqu3vxivms" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" data-id="cjtjdezzo00056gtqi80mncqb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -310,7 +367,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" data-id="cjtauqhnh0000tktqrqvpouvc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" data-id="cjtjdezzz000d6gtqe208vkyr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -365,7 +422,7 @@ git push （在后续过程中，直接git push）即可
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/01/github-use/" data-id="cjtauqhqc000otktqk52ffzv2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/01/github-use/" data-id="cjtjdf00d000l6gtql588w7z7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-git/">github/git</a></li></ul>
@@ -437,7 +494,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/01/MCM-ICM-preparation-two/" data-id="cjtauqho80003tktq4ggogro6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/01/MCM-ICM-preparation-two/" data-id="cjtjdezzb00016gtq08byhn35" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li></ul>
@@ -499,7 +556,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" data-id="cjtauqhro000ytktqwvqpp95i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" data-id="cjtjdf00a000j6gtqv6qkawko" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -557,7 +614,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" data-id="cjtauqhq0000ktktqltz2upyg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" data-id="cjtjdezzx000b6gtqk9xm5gme" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -647,70 +704,10 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/26/MCM-ICM-preparation-one/" data-id="cjtauqhoc0004tktqv0icdvf2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/26/MCM-ICM-preparation-one/" data-id="cjtjdezzi00036gtq8p5qgdzh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Modern-Anglo-American-philosophy-translation-7" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/26/Modern-Anglo-American-philosophy-translation-7/" class="article-date">
-  <time datetime="2018-11-26T07:03:01.000Z" itemprop="datePublished">2018-11-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Modern-Anglo-American-philosophy-translation-7/">Modern Anglo-American philosophy translation_7</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="b-Ideal-Language-Philosophy-vs-Ordinary-Language-Philosophy"><a href="#b-Ideal-Language-Philosophy-vs-Ordinary-Language-Philosophy" class="headerlink" title="b. Ideal-Language Philosophy vs. Ordinary-Language Philosophy"></a>b. Ideal-Language Philosophy vs. Ordinary-Language Philosophy</h3><blockquote>
-<p>Russellian analysis has just been just identified as logical rather than linguistic analysis, and yet it was said in a previous paragraph that this was analysis in the sense made familiar by Moore. In truth, there were both significant similarities and significant differences between Moorean and Russellian analysis. On the one hand, Russellian analysis was like Moore’s in that it involved the rephrasing of a sentence into another sentence semantically equivalent but grammatically different. On the other hand, Russell’s analyses were not given in ordinary language, as Moore’s were. Instead, they were given in symbolic logic, that is, in a quasi-mathematical, symbolic notation that made the structure of Russell’s analyzed propositions exceedingly clear. For instance, with the definitions of Mx as “x is a mountain” and Gx as “x is golden,” the proposition that the golden mountain does not exist becomes<br><br><center>~[(∃x)(Mx&amp;Gx) &amp;∀y((My &amp;Gy) → y=x)]</center></p>
-</blockquote>
-<p>相对于语言学分析，罗素的分析更多地被认为是逻辑分析，而在前一小节说过的，这种分析方法也和穆尔所做的类似。事实上，罗素和穆尔的分析有明显的类似和不同。在一方面，罗素的分析强调将语句改述为语义上等同，但语法上不同的另一语句，这是与穆尔相似的。在另一方面，罗素的分析没有用日常语言来表述，这不同于穆尔的做法。相反，他们采用了一种符号逻辑，就是一种类数学的，符号标记法，这使得罗素的分析命题的结构十分地清晰。例如，定义Mx是“x 是一座山”且Gx是“x是金的”，命题金山不存在则变为了</p>
-<center>~[(∃x)(Mx&amp;Gx) &amp;∀y((My &amp;Gy) → y=x)]</center>
-
-<blockquote>
-<p>Equivalently, in English, it is not the case that there is some object such that (1) it is a mountain, (2) it is golden, and (3) all objects that are mountains and golden are identical to it. (For more on what this sort of notation looks like and how it works, see the article on Propositional Logic, especially Section 3.)</p>
-</blockquote>
-<p>等同地，在英语中，可以表示为，没有一种客体它既是山，又是金的，并且所有是山并且是金的客体都和它同一。</p>
-<blockquote>
-<p>By 1910, Russell, along with Alfred North Whitehead, had so developed this symbolic notation and the rules governing its use that it constituted a fairly complete system of formal logic. This they published in the three volumes of their monumental Principia Mathematica (Russell and Whitehead 1910-1913).</p>
-</blockquote>
-<p>到1910年，罗素，和Alfred North Whitehead一起，发展了符号标记法和规定它的用法的一些规则，这构建了一个相当完备的形式逻辑系统。这也出版在他们的数学原理三大卷中。</p>
-<blockquote>
-<p>Within the analytic movement, the Principia was received as providing an ideal language, capable of elucidating all sorts of ordinary-language confusions. Consequently, Russellian logical analysis was seen as a new species of the genus linguistic analysis, which had already been established by Moore. Furthermore, many took logical analysis to be superior to Moore’s ordinary-language analysis insofar as its results (its analyses) were more exact and not themselves prone to further misunderstandings or illusions.</p>
-</blockquote>
-<p>在分析哲学运动中，《数学原理》被认为是提供了一种能够解释所有日常语言疑惑的理想语言能力。因此，罗素式的逻辑分析被视作是被穆尔建立的语言分析的一种全新的方法。除此之外，许多人认为，就其更加准确并且并不会使人有迷惑的结果来看，逻辑分析要优于穆尔的日常语言分析。</p>
-<blockquote>
-<p>The distinction between ordinary-language philosophy and ideal-language philosophy formed the basis for a fundamental division within the analytic movement through the early 1960s. The introduction of logical analysis also laid the groundwork for logical atomism, a new metaphysical system developed by Russell and Ludwig Wittgenstein. Before we discuss this directly, however, we must say a word about GottlobFrege.</p>
-</blockquote>
-<p>日常语言哲学和理想语言哲学的区分形成了在1960年代早期分析哲学运动中的根本性的划分。这个关于逻辑分析的引入也为一种新的由罗素和维特根斯坦发展的形而上学系统——逻辑原子主义奠定了基础。在我们直接讨论逻辑原子主义之前，我们必须要先谈一谈弗洛伊德。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/26/Modern-Anglo-American-philosophy-translation-7/" data-id="cjtauqhpc000ftktqnaqgqccs" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
 
     </footer>
   </div>
@@ -747,7 +744,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 10px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 13.33px;">math_model_preparation</a>
+      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 10px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 16.67px;">math_model_preparation</a>
     </div>
   </div>
 
@@ -769,6 +766,10 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       <ul>
         
           <li>
+            <a href="/2019/03/22/ma_model_pre4/">ma_model_preparation1</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/15/ma_model_pre3/">ma_model_preparation2</a>
           </li>
         
@@ -782,10 +783,6 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
         
           <li>
             <a href="/2018/12/04/Modern-Anglo-American-philosophy-translation-10/">Modern Anglo-American philosophy translation_10</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/01/github-use/">github_use</a>
           </li>
         
       </ul>
