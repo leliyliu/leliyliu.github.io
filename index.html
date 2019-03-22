@@ -110,11 +110,18 @@
 <p>2.-&gt;最优分派问题<br>这个问题的数学模型是：在人员分派问题的模型中，图 G 的每边加了权$w(x_i,y_j)&gt;=0$表示$x_i$干$y_j$ 工作的效益，求加权图G 上的权最大的完美对集。</p>
 <p>解决这个问题可以参照<a href="http://vdisk.weibo.com/s/D8miedWz2uXT" target="_blank" rel="noopener">《数学建模算法与应用》（司守奎）</a>（P84）所给出的定义以及Kuhn-Munkres算法，其实质上是在匈牙利算法的进一步改善<br>如果想要对KM算法作深入的理解，可以参考这个<a href="https://blog.csdn.net/liu_y_r/article/details/79219405?utm_source=blogxgwz7" target="_blank" rel="noopener">blog</a></p>
 <p>可行顶标$l$,对于任意弧,满足$e(x \rightarrow y)  都有 l_x+l_y\ge w_e$，后定义相等子图，其包含所有的点，但只包含满足$l_x+l_y=w_e$的所有弧$e(x \rightarrow y)$,这些弧已经是最大的弧，如果有完美匹配，那么可以得到最优分派。KM 算法仅仅只适用于找二分图最佳完美匹配，如果无完美匹配，那么算法很可能陷入死循环（如果不存在的边为 -INF 的话就不会，但正确性就无法保证了），对于这种情况要小心处理。</p>
+<h4 id="4-Euler-图和Hamilton-图"><a href="#4-Euler-图和Hamilton-图" class="headerlink" title="4. Euler 图和Hamilton 图"></a>4. Euler 图和Hamilton 图</h4><p>1.基本概念</p>
+<p>经过G 的每条边的迹叫做G 的Euler 迹；闭的Euler 迹叫做Euler 回路或E<br>回路；含Euler 回路的图叫做Euler 图。</p>
+<p>定理<br>（i）G 是Euler 图的充分必要条件是G 连通且每顶点皆偶次。</p>
+<p>（ ii ） G 是Euler 图的充分必要条件是G 连通且$G=\bigcup_{i=1}^dC_i,C_i$是圈，$E（C_i)\bigcap E(C_j)(i \neq j)$</p>
+<p>（iii）G 中有Euler 迹的充要条件是G 连通且至多有两个奇次点。</p>
+<p>包含G 的每个顶点的轨叫做Hamilton(哈密顿)轨；闭的Hamilton 轨叫做Hamilton 圈或H 圈；含Hamilton 圈的图叫做Hamilton 图。</p>
+<p>Fleury 算法给出了求Euler 回路的算法</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/22/ma_model_pre4/" data-id="cjtjdf00h000o6gtqvpxmk9z6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/22/ma_model_pre4/" data-id="cjtjdzvuf000u90tqi6ainutj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -169,7 +176,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="cjtjdf01t001l6gtqxag5ltli" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="cjtjdzvu2000k90tqa6snjwwl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -234,7 +241,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/09/ma-model-preparation1/" data-id="cjtjdf00z00136gtquka6hu9m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/09/ma-model-preparation1/" data-id="cjtjdzvuh000w90tqh2d689mk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -297,7 +304,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" data-id="cjtjdezzo00056gtqi80mncqb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" data-id="cjtjdzvta000490tqc2a47c6e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -367,7 +374,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" data-id="cjtjdezzz000d6gtqe208vkyr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" data-id="cjtjdzvth000890tq90818t3e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -422,7 +429,7 @@ git push （在后续过程中，直接git push）即可
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/01/github-use/" data-id="cjtjdf00d000l6gtql588w7z7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/01/github-use/" data-id="cjtjdzvtp000d90tqa7j3l2yv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-git/">github/git</a></li></ul>
@@ -494,7 +501,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/01/MCM-ICM-preparation-two/" data-id="cjtjdezzb00016gtq08byhn35" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/01/MCM-ICM-preparation-two/" data-id="cjtjdzvsy000190tq1tqgry4f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li></ul>
@@ -556,7 +563,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" data-id="cjtjdf00a000j6gtqv6qkawko" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" data-id="cjtjdzvu8000p90tq7jtzul0d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -614,7 +621,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" data-id="cjtjdezzx000b6gtqk9xm5gme" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" data-id="cjtjdzvtj000990tqq0131znx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -704,7 +711,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/26/MCM-ICM-preparation-one/" data-id="cjtjdezzi00036gtq8p5qgdzh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/26/MCM-ICM-preparation-one/" data-id="cjtjdzvt3000390tqno5ebs5h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li></ul>
