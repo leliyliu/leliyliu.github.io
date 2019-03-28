@@ -101,49 +101,41 @@
 <p>小样本  非线性  高维模式识别</p>
 </blockquote>
 <h2 id="2-数学定义"><a href="#2-数学定义" class="headerlink" title="2.数学定义"></a>2.数学定义</h2><h3 id="考虑线性分类器"><a href="#考虑线性分类器" class="headerlink" title="考虑线性分类器"></a>考虑线性分类器</h3><blockquote>
-<p>假设线性分类函数 g(x)=wx+b ，当然，其中w,x,b 均为高维向量，那么，不妨假设以g(x)=0为分界面，对于每个$x_i$而言，即有$y_i=sign(g(x_i))$,那么$y_i$要么为1，要么为-1，如此，定义$\sigma_i =\frac{y_i*g(x_i)}{||w||<em>2}$ ,因此，实际上$\sigma = \sum</em>{i=1}^n {\sigma_i}$为所有的距离之和,因而，我们找到一个最好的分类的目标变为$min ||w||$,为了在后续过程中使得我们的计算简单，我们将目标函数变为</p>
+<p>假设线性分类函数 g(x)=wx+b ，当然，其中w,x,b 均为高维向量，那么，不妨假设以g(x)=0为分界面，对于每个$x_i$而言，即有$y_i=sign(g(x_i))$,那么$y_i$要么为1，要么为-1，如此，定义$\sigma_i =\frac{y_i*g(x_i)}{||w||_2}$ ,因此，实际上$\sigma = \sum_{i=1}^n {\sigma_i}$为所有的距离之和,因而，我们找到一个最好的分类的目标变为$min ||w||$,为了在后续过程中使得我们的计算简单，我们将目标函数变为</p>
 </blockquote>
-<p>$$min  \frac{1}{2}||w||^2$$</p>
-<blockquote>
+<script type="math/tex; mode=display">min  \frac{1}{2}||w||^2</script><blockquote>
 <p>但如若着这样，会存在一个问题，即分类的结果都会存在于两个分类器的中间地带，那么这样会导致$||w||=0$实际上不是我们需要的值，故在此基础上，我们还需要加上约束条件$y_i*g(x_i)&gt;=1(i=1,2,\ldots,n)$ 故，最终结果表示为</p>
 </blockquote>
-<p>$$min \quad  \frac{1}{2}||w||^2 $$<br>$$subject\quad to: \quad y_i*g(x_i)-1&gt;=0 \,\,(i=1,2,\ldots,n)$$</p>
-<blockquote>
+<script type="math/tex; mode=display">min \quad  \frac{1}{2}||w||^2</script><script type="math/tex; mode=display">subject\quad to: \quad y_i*g(x_i)-1>=0 \,\,(i=1,2,\ldots,n)</script><blockquote>
 <p>实际上，这里的问题变为了一个凸优化问题，同时也是一个二次规划问题。我们知道，这样一个凸的规划问题，完全可以求得最优解，故我们的问题能够得到实际上的解决。那么需要怎么解决呢？</p>
 </blockquote>
 <h2 id="3-问题解决"><a href="#3-问题解决" class="headerlink" title="3.问题解决"></a>3.问题解决</h2><blockquote>
 <p>实际上，我们求解的目标就是w，因为求得了w之后，可以求得b，则最终可以求到我们想要得到的g(x)这个函数，也就是分界面。而实际上，w与样本有关，那么我们可以定义$w=a_1x_1+a_2x_2+\ldots+a_nx_n$ 其中$a$为拉格朗日乘子，那么再次回顾$g(x)=\vec{w} \cdot \vec{x} +\vec{b}$,再次分析$\vec{w}$ 的表达式，我们可以发现，依然有错误，实际上，w还与y有关，故，我们可以将w这样表示</p>
 </blockquote>
-<p>$$\vec{w}=\sum_{i=1}^n{(a_iy_ix_i)}$$</p>
-<blockquote>
-<p>因此 $g(x) =&lt;w,x&gt; +b= \sum_{i=1}^n{(a_iy_i&lt;x_i,x&gt;)}+b$,因此我们可以看到，我们实际上把w给消掉了，没有了w，实际上也减少了很多约束条件，接下来，我们将开始很重要的一个介绍，核函数</p>
+<script type="math/tex; mode=display">\vec{w}=\sum_{i=1}^n{(a_iy_ix_i)}</script><blockquote>
+<p>因此 $g(x) =<w,x> +b= \sum_{i=1}^n{(a_iy_i<x_i,x>)}+b$,因此我们可以看到，我们实际上把w给消掉了，没有了w，实际上也减少了很多约束条件，接下来，我们将开始很重要的一个介绍，核函数</x_i,x></w,x></p>
 </blockquote>
 <h2 id="4-核函数"><a href="#4-核函数" class="headerlink" title="4.核函数"></a>4.核函数</h2><blockquote>
 <p>一个解决线性不可分问题的基本思路————向高维空间转化，使其变得线性可分（一个二维空间中的问题，当映射到四维空间中的时候，就变得线性可分了），然而于此同时，也出现了很多问题，例如对于一个文本分类问题，将其映射到上万维的空间中，依旧是线性不可分的，然而，对于高维空间的计算，需要耗费大量的计算资源，因此，这就带来了不可计算的问题（这是实际工程中的一个重要的问题）</p>
+<p>因此我们的目标已经明确了，找到一种能够映射到很高维的方法（要是能到无穷维就更好了！），并且能保证其在有限时间中可计算（如果能与没有升维之前有同样的计算阶那就再好不过了，即是线性的）。因此我们幻想，是否能有这样一种函数K(w,x),他接受低维空间的输入值，却能算出高维空间的内积值<w’,x’>。我们不妨假设这个函数为核函数K，那么即有</w’,x’></p>
 </blockquote>
-<blockquote>
-<p>因此我们的目标已经明确了，找到一种能够映射到很高维的方法（要是能到无穷维就更好了！），并且能保证其在有限时间中可计算（如果能与没有升维之前有同样的计算阶那就再好不过了，即是线性的）。因此我们幻想，是否能有这样一种函数K(w,x),他接受低维空间的输入值，却能算出高维空间的内积值&lt;w’,x’&gt;。我们不妨假设这个函数为核函数K，那么即有</p>
-</blockquote>
-<p>$$ g(x)=K(w,x)+b\<br>f(x’)=<w',x'>+b$$</w',x'></p>
-<blockquote>
-<p>这两个函数完全相等。因此，我们的目标变为了对非线性的分类问题，有$g(x)=\sum_{i=1}^n a_iy_i&lt;x_i’,x’&gt;+b$<br>那么核函数(kernel)存在吗？万幸的是，这样的K(w,x)确实存在（发现凡是我们人类能解决的问题，大都是巧得不能再巧，特殊得不能再特殊的问题，总是恰好有些能投机取巧的地方才能解决，由此感到人类的渺小），它被称作核函数（核，kernel），而且还不止一个，事实上，只要是满足了Mercer条件的函数，都可以作为核函数。核函数的基本作用就是接受两个低维空间里的向量，能够计算出经过某个变换后在高维空间里的向量内积值。<br>常用的核函数有哪些呢？这里可以直接参考这一篇<a href="https://blog.csdn.net/batuwuhanpei/article/details/52354822" target="_blank" rel="noopener">blog</a>，常用的核函数有四个，分别为线性核函数,多项式核函数，高斯(RBF)核函数与sigmoid核函数,对于其的比较，我在这里就不区分了，在实践中，多用，就能更好地理解这几个核函数的区别。</p>
+<script type="math/tex; mode=display">g(x)=K(w,x)+b\\
+f(x')=<w',x'>+b</script><blockquote>
+<p>这两个函数完全相等。因此，我们的目标变为了对非线性的分类问题，有$g(x)=\sum_{i=1}^n a_iy_i<x_i',x'>+b$<br>那么核函数(kernel)存在吗？万幸的是，这样的K(w,x)确实存在（发现凡是我们人类能解决的问题，大都是巧得不能再巧，特殊得不能再特殊的问题，总是恰好有些能投机取巧的地方才能解决，由此感到人类的渺小），它被称作核函数（核，kernel），而且还不止一个，事实上，只要是满足了Mercer条件的函数，都可以作为核函数。核函数的基本作用就是接受两个低维空间里的向量，能够计算出经过某个变换后在高维空间里的向量内积值。<br>常用的核函数有哪些呢？这里可以直接参考这一篇<a href="https://blog.csdn.net/batuwuhanpei/article/details/52354822" target="_blank" rel="noopener">blog</a>，常用的核函数有四个，分别为线性核函数,多项式核函数，高斯(RBF)核函数与sigmoid核函数,对于其的比较，我在这里就不区分了，在实践中，多用，就能更好地理解这几个核函数的区别。</x_i',x'></p>
 </blockquote>
 <h2 id="5-其它问题"><a href="#5-其它问题" class="headerlink" title="5.其它问题"></a>5.其它问题</h2><blockquote>
 <p>我们必须再次思考其它的问题，即如果使用核函数向高维空间映射后，问题仍然是线性不可分的，那怎么办？</p>
-</blockquote>
-<blockquote>
 <p>这一问题实际上我们可以理解为噪声问题，在实际过程中，我们所采集到的数据通常都会有噪声，那么，噪声会改变我们本来正确的分类结果，对程序而言，会导致一种情况，即我们无法对这样的数据，甚至映射到高维空间中后，也线性不可分。那么如何抑制此现象的产生呢？这实际上与我们之前提出的思路有极大的关联，即我们之前给出定义为</p>
 </blockquote>
-<p>$$y_i[(wx_i)+b]&gt;=1\quad(i=1,2,\ldots,n)$$</p>
-<blockquote>
+<script type="math/tex; mode=display">y_i[(wx_i)+b]>=1\quad(i=1,2,\ldots,n)</script><blockquote>
 <p>这实际上要求了所有的点，均必须满足这一条件，那么这会导致不可分（纵然在极高维的空间中，或许它也可分，但所分出来的结果必然是过拟合的，而不是我们想要的），所以我们模仿人类的思想，只保证绝大多数分类正确，因此,我们给这个阈值加上一个松弛变量，使得原式变为：</p>
 </blockquote>
-<p>$$y_i[(wx_i)+b]&gt;=1-\zeta_i \quad (i=1,2,\ldots,n)$$</p>
-<blockquote>
+<script type="math/tex; mode=display">y_i[(wx_i)+b]>=1-\zeta_i \quad (i=1,2,\ldots,n)</script><blockquote>
 <p>在此基础上，我们的优化问题的目标有所改变</p>
 </blockquote>
-<p>$$min \quad \frac{1}{2}||w||^2+C\sum_{i=1}^n{\zeta_i}\<br>subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\<br> \zeta_i\geq0<br>$$</p>
-<blockquote>
+<script type="math/tex; mode=display">min \quad \frac{1}{2}||w||^2+C\sum_{i=1}^n{\zeta_i}\\
+subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
+ \zeta_i\geq0</script><blockquote>
 <p>其中，C是一个超参数，建议设一组值来进行尝试。这里在具体对C进行一个讨论，C是一个固定参数，对此可以这样理解，如果C设置得较大，则说明我们很care那些被丢弃掉的点，如果我们不care那些点的话，我们则可以将C设置得小一点，同时，我们也能对不同的点设置不同的C，那么，则代表我们对某些点有特殊的偏好,这被称作数据集偏斜。对于特定的问题，读者应该对C的设置有不同的思考，要把握C的实质内容。</p>
 </blockquote>
 <h2 id="6-将SVM用于多类分类"><a href="#6-将SVM用于多类分类" class="headerlink" title="6. 将SVM用于多类分类"></a>6. 将SVM用于多类分类</h2><blockquote>
@@ -152,31 +144,19 @@
 <p><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/clip_image002_thumb.gif?raw=true" alt="DAG SVM"></p>
 <blockquote>
 <p>这样在分类时,我们就可以先问分类器“1对5”（意思是它能够回答“是第1类还是第5类”），如果它回答5，我们就往左走，再问“2对5”这个分类器，如果它还说是“5”，我们就继续往左走，这样一直问下去，就可以得到分类结果。好处在哪？我们其实只调用了4个分类器（如果类别数是k，则只调用k-1个），分类速度飞快，且没有分类重叠和不可分类现象！缺点在哪？假如最一开始的分类器回答错误（明明是类别1的文章，它说成了5），那么后面的分类器是无论如何也无法纠正它的错误的（因为后面的分类器压根没有出现“1”这个类别标签），其实对下面每一层的分类器都存在这种错误向下累积的现象。</p>
-</blockquote>
-<blockquote>
 <p>关于SMO算法的学习，在这里就不加以重点介绍，需要的可以参考<a href="https://www.cnblogs.com/bentuwuying/p/6444516.html" target="_blank" rel="noopener">SMO</a>这一篇博客</p>
 </blockquote>
 <h2 id="python-代码实现"><a href="#python-代码实现" class="headerlink" title="python 代码实现"></a>python 代码实现</h2><blockquote>
 <p>在python中，scikit-learn是一个广泛使用的用于实现机器学习算法的库（也许后面我也会对这个库的使用方法作一系列的博客介绍），SVM算法可以在这个库中找到并用于实现。<br>这里的python实现借用了<a href="https://blog.csdn.net/u010665216/article/details/78382984" target="_blank" rel="noopener">blog</a>的实现方式，需要源码的也可以从中进行下载</p>
-</blockquote>
-<blockquote>
 <p>sklearn中的SVC函数是基于libsvm实现的，所以在参数设置上有很多相似的地方。（PS: libsvm中的二次规划问题的解决算法是SMO）。</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Import Library</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="comment">#Assumed you have, X (predictor) and Y (target) for training data set and x_test(predictor) of test_dataset</span></span><br><span class="line"><span class="comment"># Create SVM classification object </span></span><br><span class="line">model = svm.svc(kernel=<span class="string">'linear'</span>, c=<span class="number">1</span>, gamma=<span class="number">1</span>) </span><br><span class="line"><span class="comment"># there is various option associated with it, like changing kernel, gamma and C value. Will discuss more # about it in next section.Train the model using the training sets and check score</span></span><br><span class="line">model.fit(X, y)</span><br><span class="line">model.score(X, y)</span><br><span class="line"><span class="comment">#Predict Output</span></span><br><span class="line">predicted= model.predict(x_test)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sklearn.svm.SVC(C=<span class="number">1.0</span>, kernel=<span class="string">'rbf'</span>, degree=<span class="number">3</span>, gamma=<span class="number">0.0</span>, coef0=<span class="number">0.0</span>, shrinking=<span class="keyword">True</span>, probability=<span class="keyword">False</span>,tol=<span class="number">0.001</span>, cache_size=<span class="number">200</span>, class_weight=<span class="keyword">None</span>, verbose=<span class="keyword">False</span>, max_iter=<span class="number">-1</span>, random_state=<span class="keyword">None</span>)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>这里展示了sklearn.svm.SVC的主要的参数，其中C为我们设置的超参数，而kernel有多种选择，这里为’rbf’,即高斯核函数。除此之外，还可以选择’linear’:线性核函数 ‘poly’ 多项式核函数 ‘sigmoid’ sigmoid核函数 ‘precomputed’:核矩阵（precomputed表示自己提前计算好核函数矩阵，这时候算法内部就不再用核函数去计算核矩阵，而是直接用你给的核矩阵。）</p>
-</blockquote>
-<blockquote>
 <p>degree: int型参数 默认为3这个参数只对多项式核函数有用，是指多项式核函数的阶数n如果给的核函数参数是其他核函数，则会自动忽略该参数。</p>
-</blockquote>
-<blockquote>
 <p>gamma: float参数 默认为auto核函数系数，只对‘rbf’,‘poly’,‘sigmod’有效。如果gamma为auto，代表其值为样本特征数的倒数，即1/n_features.</p>
-</blockquote>
-<blockquote>
 <p>coef0: float参数 默认为0.0。核函数中的独立项，只有对‘poly’和‘sigmod’核函数有用，是指其中的参数c</p>
-</blockquote>
-<blockquote>
 <p>probability： bool参数 默认为False。是否启用概率估计。 这必须在调用fit()之前启用，并且会fit()方法速度变慢。</p>
 </blockquote>
 <p>还有其它的参数，都可以参照<a href="https://blog.csdn.net/github_39261590/article/details/75009069" target="_blank" rel="noopener">svm参数说明</a>进行学习，这里就不再具体说明。</p>
@@ -184,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/28/ma_model_pre5/" data-id="cjtsohe83000u8gtqw0u8j3ed" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/28/ma_model_pre5/" data-id="cjtsoxn5d00135stqbn2tpxao" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>

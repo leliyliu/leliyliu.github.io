@@ -7,20 +7,20 @@
   
   <title>ma_model_preparation2 | 坠落</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 蒙特卡洛方法（1）基本思路：蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。 （2）一种应用：利用蒙特卡洛方法求积分：假设我们需要求这样一个图的积分那么实际上，我们所需要的过程可以表示如下 从这两个过程中，我们可以看到，实际上对于积分的求解可以简化为这样一个过程：假设要计算的积分如下： $$ I=\int_{a}^{b}g(x)\text{d}x $">
+  <meta name="description" content="1. 蒙特卡洛方法（1）基本思路：蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。 （2）一种应用：利用蒙特卡洛方法求积分：假设我们需要求这样一个图的积分那么实际上，我们所需要的过程可以表示如下 从这两个过程中，我们可以看到，实际上对于积分的求解可以简化为这样一个过程：假设要计算的积分如下： I=\int_{a}^{b}g(x)\text{d}x那么如果选">
 <meta name="keywords" content="math_model_preparation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ma_model_preparation2">
 <meta property="og:url" content="http://yoursite.com/2019/03/15/ma_model_pre3/index.html">
 <meta property="og:site_name" content="坠落">
-<meta property="og:description" content="1. 蒙特卡洛方法（1）基本思路：蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。 （2）一种应用：利用蒙特卡洛方法求积分：假设我们需要求这样一个图的积分那么实际上，我们所需要的过程可以表示如下 从这两个过程中，我们可以看到，实际上对于积分的求解可以简化为这样一个过程：假设要计算的积分如下： $$ I=\int_{a}^{b}g(x)\text{d}x $">
+<meta property="og:description" content="1. 蒙特卡洛方法（1）基本思路：蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。 （2）一种应用：利用蒙特卡洛方法求积分：假设我们需要求这样一个图的积分那么实际上，我们所需要的过程可以表示如下 从这两个过程中，我们可以看到，实际上对于积分的求解可以简化为这样一个过程：假设要计算的积分如下： I=\int_{a}^{b}g(x)\text{d}x那么如果选">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%861.png?raw=true">
 <meta property="og:image" content="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%862.png?raw=true">
 <meta property="og:updated_time" content="2019-03-21T11:33:53.396Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ma_model_preparation2">
-<meta name="twitter:description" content="1. 蒙特卡洛方法（1）基本思路：蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。 （2）一种应用：利用蒙特卡洛方法求积分：假设我们需要求这样一个图的积分那么实际上，我们所需要的过程可以表示如下 从这两个过程中，我们可以看到，实际上对于积分的求解可以简化为这样一个过程：假设要计算的积分如下： $$ I=\int_{a}^{b}g(x)\text{d}x $">
+<meta name="twitter:description" content="1. 蒙特卡洛方法（1）基本思路：蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。 （2）一种应用：利用蒙特卡洛方法求积分：假设我们需要求这样一个图的积分那么实际上，我们所需要的过程可以表示如下 从这两个过程中，我们可以看到，实际上对于积分的求解可以简化为这样一个过程：假设要计算的积分如下： I=\int_{a}^{b}g(x)\text{d}x那么如果选">
 <meta name="twitter:image" content="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%861.png?raw=true">
   
     <link rel="alternate" href="/atom.xml" title="坠落" type="application/atom+xml">
@@ -97,13 +97,10 @@
         <h3 id="1-蒙特卡洛方法"><a href="#1-蒙特卡洛方法" class="headerlink" title="1. 蒙特卡洛方法"></a>1. 蒙特卡洛方法</h3><h4 id="（1）基本思路："><a href="#（1）基本思路：" class="headerlink" title="（1）基本思路："></a>（1）基本思路：</h4><p>蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。</p>
 <h4 id="（2）一种应用：利用蒙特卡洛方法求积分："><a href="#（2）一种应用：利用蒙特卡洛方法求积分：" class="headerlink" title="（2）一种应用：利用蒙特卡洛方法求积分："></a>（2）一种应用：利用蒙特卡洛方法求积分：</h4><p>假设我们需要求这样一个图的积分<br><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%861.png?raw=true" alt="求积分图1"><br>那么实际上，我们所需要的过程可以表示如下<br><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%862.png?raw=true" alt="求积分过程"></p>
 <p>从这两个过程中，我们可以看到，实际上对于积分的求解可以简化为这样一个过程：<br><br>假设要计算的积分如下：</p>
-<p>$$ I=\int_{a}^{b}g(x)\text{d}x $$</p>
-<p>那么如果选择一个概率密度函数为$f_X(x)$的方式进行抽样,并且满足$\int_{a}^{b}f_X(x)\text{d}x=1$,那么令$g^*(x)=\frac{g(x)}{f_X(x)}$,原有的积分可以写成如下形式：</p>
-<p>$$I=\int_{a}^{b}g^*(x)f_X(x)\text{d}x$$</p>
-<p>故，我们求积分的步骤为：<br><br><br>1.产生服从分布律$F_X$的随机变量$X_i(i=1,2,…,N)$</p>
+<script type="math/tex; mode=display">I=\int_{a}^{b}g(x)\text{d}x</script><p>那么如果选择一个概率密度函数为$f_X(x)$的方式进行抽样,并且满足$\int_{a}^{b}f_X(x)\text{d}x=1$,那么令$g^*(x)=\frac{g(x)}{f_X(x)}$,原有的积分可以写成如下形式：</p>
+<script type="math/tex; mode=display">I=\int_{a}^{b}g^*(x)f_X(x)\text{d}x</script><p>故，我们求积分的步骤为：<br><br><br>1.产生服从分布律$F_X$的随机变量$X_i(i=1,2,…,N)$</p>
 <p>2.计算均值</p>
-<p>$$\overline{I}=\frac{1}{N}\sum_{i=1}^ng^*(X_i)$$</p>
-<p>一般采用均匀分布求解</p>
+<script type="math/tex; mode=display">\overline{I}=\frac{1}{N}\sum_{i=1}^ng^*(X_i)</script><p>一般采用均匀分布求解</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calpai</span><span class="params">()</span>:</span></span><br><span class="line">    n = <span class="number">1000000</span></span><br><span class="line">    r = <span class="number">1.0</span></span><br><span class="line">    a, b = (<span class="number">0.0</span>, <span class="number">0.0</span>)</span><br><span class="line">    x_neg, x_pos = a - r, a + r</span><br><span class="line">    y_neg, y_pos = b - r, b + r</span><br><span class="line"></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n):</span><br><span class="line">        x = random.uniform(x_neg, x_pos)</span><br><span class="line">        y = random.uniform(y_neg, y_pos)</span><br><span class="line">        <span class="keyword">if</span> x*x + y*y &lt;= <span class="number">1.0</span>:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> (count / float(n)) * <span class="number">4</span></span><br></pre></td></tr></table></figure>
 <h4 id="3-蒙特卡洛树搜索"><a href="#3-蒙特卡洛树搜索" class="headerlink" title="(3)蒙特卡洛树搜索"></a>(3)蒙特卡洛树搜索</h4><p>as we know, an important method used in alpha go and alpha zero is Monte Carlo Tree search. So if you want to know more about this method, you can search this <a href="https://blog.csdn.net/qq_16137569/article/details/83543641" target="_blank" rel="noopener">website(Monte Carlo Tree search)</a> and get some knowledge yourself. also, you can get information in almost every game theory book.And try to get the big idea in Monte Carlo Tree search.</p>
 <h3 id="2-马尔科夫链"><a href="#2-马尔科夫链" class="headerlink" title="2. 马尔科夫链"></a>2. 马尔科夫链</h3><h5 id="2-1-马尔可夫链的定义"><a href="#2-1-马尔可夫链的定义" class="headerlink" title="2.1 马尔可夫链的定义"></a>2.1 马尔可夫链的定义</h5><p>现实世界中有很多这样的现象：某一系统在已知现在情况的条件下，系统未来时刻<br>的情况只与现在有关，而与过去的历史无直接关系。比如，研究一个商店的累计销售额，<br>如果现在时刻的累计销售额已知，则未来某一时刻的累计销售额与现在时刻以前的任一<br>时刻累计销售额无关。上节中的几个例子也均属此类。描述这类随机现象的数学模型称<br>为马氏模型。</p>
@@ -115,7 +112,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="cjtsohe9a001d8gtqntfj99do" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="cjtsoxn54000v5stq8xs3jlul" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>

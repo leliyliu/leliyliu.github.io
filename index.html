@@ -99,49 +99,41 @@
 <p>小样本  非线性  高维模式识别</p>
 </blockquote>
 <h2 id="2-数学定义"><a href="#2-数学定义" class="headerlink" title="2.数学定义"></a>2.数学定义</h2><h3 id="考虑线性分类器"><a href="#考虑线性分类器" class="headerlink" title="考虑线性分类器"></a>考虑线性分类器</h3><blockquote>
-<p>假设线性分类函数 g(x)=wx+b ，当然，其中w,x,b 均为高维向量，那么，不妨假设以g(x)=0为分界面，对于每个$x_i$而言，即有$y_i=sign(g(x_i))$,那么$y_i$要么为1，要么为-1，如此，定义$\sigma_i =\frac{y_i*g(x_i)}{||w||<em>2}$ ,因此，实际上$\sigma = \sum</em>{i=1}^n {\sigma_i}$为所有的距离之和,因而，我们找到一个最好的分类的目标变为$min ||w||$,为了在后续过程中使得我们的计算简单，我们将目标函数变为</p>
+<p>假设线性分类函数 g(x)=wx+b ，当然，其中w,x,b 均为高维向量，那么，不妨假设以g(x)=0为分界面，对于每个$x_i$而言，即有$y_i=sign(g(x_i))$,那么$y_i$要么为1，要么为-1，如此，定义$\sigma_i =\frac{y_i*g(x_i)}{||w||_2}$ ,因此，实际上$\sigma = \sum_{i=1}^n {\sigma_i}$为所有的距离之和,因而，我们找到一个最好的分类的目标变为$min ||w||$,为了在后续过程中使得我们的计算简单，我们将目标函数变为</p>
 </blockquote>
-<p>$$min  \frac{1}{2}||w||^2$$</p>
-<blockquote>
+<script type="math/tex; mode=display">min  \frac{1}{2}||w||^2</script><blockquote>
 <p>但如若着这样，会存在一个问题，即分类的结果都会存在于两个分类器的中间地带，那么这样会导致$||w||=0$实际上不是我们需要的值，故在此基础上，我们还需要加上约束条件$y_i*g(x_i)&gt;=1(i=1,2,\ldots,n)$ 故，最终结果表示为</p>
 </blockquote>
-<p>$$min \quad  \frac{1}{2}||w||^2 $$<br>$$subject\quad to: \quad y_i*g(x_i)-1&gt;=0 \,\,(i=1,2,\ldots,n)$$</p>
-<blockquote>
+<script type="math/tex; mode=display">min \quad  \frac{1}{2}||w||^2</script><script type="math/tex; mode=display">subject\quad to: \quad y_i*g(x_i)-1>=0 \,\,(i=1,2,\ldots,n)</script><blockquote>
 <p>实际上，这里的问题变为了一个凸优化问题，同时也是一个二次规划问题。我们知道，这样一个凸的规划问题，完全可以求得最优解，故我们的问题能够得到实际上的解决。那么需要怎么解决呢？</p>
 </blockquote>
 <h2 id="3-问题解决"><a href="#3-问题解决" class="headerlink" title="3.问题解决"></a>3.问题解决</h2><blockquote>
 <p>实际上，我们求解的目标就是w，因为求得了w之后，可以求得b，则最终可以求到我们想要得到的g(x)这个函数，也就是分界面。而实际上，w与样本有关，那么我们可以定义$w=a_1x_1+a_2x_2+\ldots+a_nx_n$ 其中$a$为拉格朗日乘子，那么再次回顾$g(x)=\vec{w} \cdot \vec{x} +\vec{b}$,再次分析$\vec{w}$ 的表达式，我们可以发现，依然有错误，实际上，w还与y有关，故，我们可以将w这样表示</p>
 </blockquote>
-<p>$$\vec{w}=\sum_{i=1}^n{(a_iy_ix_i)}$$</p>
-<blockquote>
-<p>因此 $g(x) =&lt;w,x&gt; +b= \sum_{i=1}^n{(a_iy_i&lt;x_i,x&gt;)}+b$,因此我们可以看到，我们实际上把w给消掉了，没有了w，实际上也减少了很多约束条件，接下来，我们将开始很重要的一个介绍，核函数</p>
+<script type="math/tex; mode=display">\vec{w}=\sum_{i=1}^n{(a_iy_ix_i)}</script><blockquote>
+<p>因此 $g(x) =<w,x> +b= \sum_{i=1}^n{(a_iy_i<x_i,x>)}+b$,因此我们可以看到，我们实际上把w给消掉了，没有了w，实际上也减少了很多约束条件，接下来，我们将开始很重要的一个介绍，核函数</x_i,x></w,x></p>
 </blockquote>
 <h2 id="4-核函数"><a href="#4-核函数" class="headerlink" title="4.核函数"></a>4.核函数</h2><blockquote>
 <p>一个解决线性不可分问题的基本思路————向高维空间转化，使其变得线性可分（一个二维空间中的问题，当映射到四维空间中的时候，就变得线性可分了），然而于此同时，也出现了很多问题，例如对于一个文本分类问题，将其映射到上万维的空间中，依旧是线性不可分的，然而，对于高维空间的计算，需要耗费大量的计算资源，因此，这就带来了不可计算的问题（这是实际工程中的一个重要的问题）</p>
+<p>因此我们的目标已经明确了，找到一种能够映射到很高维的方法（要是能到无穷维就更好了！），并且能保证其在有限时间中可计算（如果能与没有升维之前有同样的计算阶那就再好不过了，即是线性的）。因此我们幻想，是否能有这样一种函数K(w,x),他接受低维空间的输入值，却能算出高维空间的内积值<w’,x’>。我们不妨假设这个函数为核函数K，那么即有</w’,x’></p>
 </blockquote>
-<blockquote>
-<p>因此我们的目标已经明确了，找到一种能够映射到很高维的方法（要是能到无穷维就更好了！），并且能保证其在有限时间中可计算（如果能与没有升维之前有同样的计算阶那就再好不过了，即是线性的）。因此我们幻想，是否能有这样一种函数K(w,x),他接受低维空间的输入值，却能算出高维空间的内积值&lt;w’,x’&gt;。我们不妨假设这个函数为核函数K，那么即有</p>
-</blockquote>
-<p>$$ g(x)=K(w,x)+b\<br>f(x’)=<w',x'>+b$$</w',x'></p>
-<blockquote>
-<p>这两个函数完全相等。因此，我们的目标变为了对非线性的分类问题，有$g(x)=\sum_{i=1}^n a_iy_i&lt;x_i’,x’&gt;+b$<br>那么核函数(kernel)存在吗？万幸的是，这样的K(w,x)确实存在（发现凡是我们人类能解决的问题，大都是巧得不能再巧，特殊得不能再特殊的问题，总是恰好有些能投机取巧的地方才能解决，由此感到人类的渺小），它被称作核函数（核，kernel），而且还不止一个，事实上，只要是满足了Mercer条件的函数，都可以作为核函数。核函数的基本作用就是接受两个低维空间里的向量，能够计算出经过某个变换后在高维空间里的向量内积值。<br>常用的核函数有哪些呢？这里可以直接参考这一篇<a href="https://blog.csdn.net/batuwuhanpei/article/details/52354822" target="_blank" rel="noopener">blog</a>，常用的核函数有四个，分别为线性核函数,多项式核函数，高斯(RBF)核函数与sigmoid核函数,对于其的比较，我在这里就不区分了，在实践中，多用，就能更好地理解这几个核函数的区别。</p>
+<script type="math/tex; mode=display">g(x)=K(w,x)+b\\
+f(x')=<w',x'>+b</script><blockquote>
+<p>这两个函数完全相等。因此，我们的目标变为了对非线性的分类问题，有$g(x)=\sum_{i=1}^n a_iy_i<x_i',x'>+b$<br>那么核函数(kernel)存在吗？万幸的是，这样的K(w,x)确实存在（发现凡是我们人类能解决的问题，大都是巧得不能再巧，特殊得不能再特殊的问题，总是恰好有些能投机取巧的地方才能解决，由此感到人类的渺小），它被称作核函数（核，kernel），而且还不止一个，事实上，只要是满足了Mercer条件的函数，都可以作为核函数。核函数的基本作用就是接受两个低维空间里的向量，能够计算出经过某个变换后在高维空间里的向量内积值。<br>常用的核函数有哪些呢？这里可以直接参考这一篇<a href="https://blog.csdn.net/batuwuhanpei/article/details/52354822" target="_blank" rel="noopener">blog</a>，常用的核函数有四个，分别为线性核函数,多项式核函数，高斯(RBF)核函数与sigmoid核函数,对于其的比较，我在这里就不区分了，在实践中，多用，就能更好地理解这几个核函数的区别。</x_i',x'></p>
 </blockquote>
 <h2 id="5-其它问题"><a href="#5-其它问题" class="headerlink" title="5.其它问题"></a>5.其它问题</h2><blockquote>
 <p>我们必须再次思考其它的问题，即如果使用核函数向高维空间映射后，问题仍然是线性不可分的，那怎么办？</p>
-</blockquote>
-<blockquote>
 <p>这一问题实际上我们可以理解为噪声问题，在实际过程中，我们所采集到的数据通常都会有噪声，那么，噪声会改变我们本来正确的分类结果，对程序而言，会导致一种情况，即我们无法对这样的数据，甚至映射到高维空间中后，也线性不可分。那么如何抑制此现象的产生呢？这实际上与我们之前提出的思路有极大的关联，即我们之前给出定义为</p>
 </blockquote>
-<p>$$y_i[(wx_i)+b]&gt;=1\quad(i=1,2,\ldots,n)$$</p>
-<blockquote>
+<script type="math/tex; mode=display">y_i[(wx_i)+b]>=1\quad(i=1,2,\ldots,n)</script><blockquote>
 <p>这实际上要求了所有的点，均必须满足这一条件，那么这会导致不可分（纵然在极高维的空间中，或许它也可分，但所分出来的结果必然是过拟合的，而不是我们想要的），所以我们模仿人类的思想，只保证绝大多数分类正确，因此,我们给这个阈值加上一个松弛变量，使得原式变为：</p>
 </blockquote>
-<p>$$y_i[(wx_i)+b]&gt;=1-\zeta_i \quad (i=1,2,\ldots,n)$$</p>
-<blockquote>
+<script type="math/tex; mode=display">y_i[(wx_i)+b]>=1-\zeta_i \quad (i=1,2,\ldots,n)</script><blockquote>
 <p>在此基础上，我们的优化问题的目标有所改变</p>
 </blockquote>
-<p>$$min \quad \frac{1}{2}||w||^2+C\sum_{i=1}^n{\zeta_i}\<br>subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\<br> \zeta_i\geq0<br>$$</p>
-<blockquote>
+<script type="math/tex; mode=display">min \quad \frac{1}{2}||w||^2+C\sum_{i=1}^n{\zeta_i}\\
+subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
+ \zeta_i\geq0</script><blockquote>
 <p>其中，C是一个超参数，建议设一组值来进行尝试。这里在具体对C进行一个讨论，C是一个固定参数，对此可以这样理解，如果C设置得较大，则说明我们很care那些被丢弃掉的点，如果我们不care那些点的话，我们则可以将C设置得小一点，同时，我们也能对不同的点设置不同的C，那么，则代表我们对某些点有特殊的偏好,这被称作数据集偏斜。对于特定的问题，读者应该对C的设置有不同的思考，要把握C的实质内容。</p>
 </blockquote>
 <h2 id="6-将SVM用于多类分类"><a href="#6-将SVM用于多类分类" class="headerlink" title="6. 将SVM用于多类分类"></a>6. 将SVM用于多类分类</h2><blockquote>
@@ -150,31 +142,19 @@
 <p><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/clip_image002_thumb.gif?raw=true" alt="DAG SVM"></p>
 <blockquote>
 <p>这样在分类时,我们就可以先问分类器“1对5”（意思是它能够回答“是第1类还是第5类”），如果它回答5，我们就往左走，再问“2对5”这个分类器，如果它还说是“5”，我们就继续往左走，这样一直问下去，就可以得到分类结果。好处在哪？我们其实只调用了4个分类器（如果类别数是k，则只调用k-1个），分类速度飞快，且没有分类重叠和不可分类现象！缺点在哪？假如最一开始的分类器回答错误（明明是类别1的文章，它说成了5），那么后面的分类器是无论如何也无法纠正它的错误的（因为后面的分类器压根没有出现“1”这个类别标签），其实对下面每一层的分类器都存在这种错误向下累积的现象。</p>
-</blockquote>
-<blockquote>
 <p>关于SMO算法的学习，在这里就不加以重点介绍，需要的可以参考<a href="https://www.cnblogs.com/bentuwuying/p/6444516.html" target="_blank" rel="noopener">SMO</a>这一篇博客</p>
 </blockquote>
 <h2 id="python-代码实现"><a href="#python-代码实现" class="headerlink" title="python 代码实现"></a>python 代码实现</h2><blockquote>
 <p>在python中，scikit-learn是一个广泛使用的用于实现机器学习算法的库（也许后面我也会对这个库的使用方法作一系列的博客介绍），SVM算法可以在这个库中找到并用于实现。<br>这里的python实现借用了<a href="https://blog.csdn.net/u010665216/article/details/78382984" target="_blank" rel="noopener">blog</a>的实现方式，需要源码的也可以从中进行下载</p>
-</blockquote>
-<blockquote>
 <p>sklearn中的SVC函数是基于libsvm实现的，所以在参数设置上有很多相似的地方。（PS: libsvm中的二次规划问题的解决算法是SMO）。</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Import Library</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="comment">#Assumed you have, X (predictor) and Y (target) for training data set and x_test(predictor) of test_dataset</span></span><br><span class="line"><span class="comment"># Create SVM classification object </span></span><br><span class="line">model = svm.svc(kernel=<span class="string">'linear'</span>, c=<span class="number">1</span>, gamma=<span class="number">1</span>) </span><br><span class="line"><span class="comment"># there is various option associated with it, like changing kernel, gamma and C value. Will discuss more # about it in next section.Train the model using the training sets and check score</span></span><br><span class="line">model.fit(X, y)</span><br><span class="line">model.score(X, y)</span><br><span class="line"><span class="comment">#Predict Output</span></span><br><span class="line">predicted= model.predict(x_test)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sklearn.svm.SVC(C=<span class="number">1.0</span>, kernel=<span class="string">'rbf'</span>, degree=<span class="number">3</span>, gamma=<span class="number">0.0</span>, coef0=<span class="number">0.0</span>, shrinking=<span class="keyword">True</span>, probability=<span class="keyword">False</span>,tol=<span class="number">0.001</span>, cache_size=<span class="number">200</span>, class_weight=<span class="keyword">None</span>, verbose=<span class="keyword">False</span>, max_iter=<span class="number">-1</span>, random_state=<span class="keyword">None</span>)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>这里展示了sklearn.svm.SVC的主要的参数，其中C为我们设置的超参数，而kernel有多种选择，这里为’rbf’,即高斯核函数。除此之外，还可以选择’linear’:线性核函数 ‘poly’ 多项式核函数 ‘sigmoid’ sigmoid核函数 ‘precomputed’:核矩阵（precomputed表示自己提前计算好核函数矩阵，这时候算法内部就不再用核函数去计算核矩阵，而是直接用你给的核矩阵。）</p>
-</blockquote>
-<blockquote>
 <p>degree: int型参数 默认为3这个参数只对多项式核函数有用，是指多项式核函数的阶数n如果给的核函数参数是其他核函数，则会自动忽略该参数。</p>
-</blockquote>
-<blockquote>
 <p>gamma: float参数 默认为auto核函数系数，只对‘rbf’,‘poly’,‘sigmod’有效。如果gamma为auto，代表其值为样本特征数的倒数，即1/n_features.</p>
-</blockquote>
-<blockquote>
 <p>coef0: float参数 默认为0.0。核函数中的独立项，只有对‘poly’和‘sigmod’核函数有用，是指其中的参数c</p>
-</blockquote>
-<blockquote>
 <p>probability： bool参数 默认为False。是否启用概率估计。 这必须在调用fit()之前启用，并且会fit()方法速度变慢。</p>
 </blockquote>
 <p>还有其它的参数，都可以参照<a href="https://blog.csdn.net/github_39261590/article/details/75009069" target="_blank" rel="noopener">svm参数说明</a>进行学习，这里就不再具体说明。</p>
@@ -182,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/28/ma_model_pre5/" data-id="cjtsohe83000u8gtqw0u8j3ed" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/28/ma_model_pre5/" data-id="cjtsoxn5d00135stqbn2tpxao" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -224,8 +204,7 @@
 <p><font color="0xffffff">也就是说，在关联矩阵中，每行对应于图的一个节点，每列对应于图的一条弧。</font>如果一个节点是一条弧的起点，则关联矩阵中对应的元素为1；如果一个节点是一条弧的终点，则关联矩阵中对应的元素为−1；如果一个节点与一条弧不关联，则关联矩阵中对应的元素为 0。</p>
 <pre><code>道路(walk) 迹(trail) 轨(path) 圈(cycle)
 </code></pre><p>一个连通图的生成树很多,用 $\tau(G)$ 来表示图的生成树的个数，则有如下公式：</p>
-<p>$$ \tau(K_n)=n^{n-2} $$<br>$$\tau(G)=\tau(G-e)+\tau(G\cdot e)$$</p>
-<h3 id="匹配问题"><a href="#匹配问题" class="headerlink" title="匹配问题"></a>匹配问题</h3><h4 id="1-几个定义"><a href="#1-几个定义" class="headerlink" title="1.几个定义"></a>1.几个定义</h4><p> 对集  匹配   完美对集    最大对集  交错轨  可增广轨</p>
+<script type="math/tex; mode=display">\tau(K_n)=n^{n-2}</script><script type="math/tex; mode=display">\tau(G)=\tau(G-e)+\tau(G\cdot e)</script><h3 id="匹配问题"><a href="#匹配问题" class="headerlink" title="匹配问题"></a>匹配问题</h3><h4 id="1-几个定义"><a href="#1-几个定义" class="headerlink" title="1.几个定义"></a>1.几个定义</h4><p> 对集  匹配   完美对集    最大对集  交错轨  可增广轨</p>
 <h4 id="2-定理"><a href="#2-定理" class="headerlink" title="2.定理:"></a>2.定理:</h4><p>(1)M是图G的最大对集当且仅当G中无M可增广轨</p>
 <p>(2)G 为二分图， X与Y是顶点集的划分，G中存在把X中顶点皆许配的对集的充要条件是，∀S ⊂ X ，则|N(S)|≥|S|，其中N(S)是S中顶点的邻集。</p>
 <blockquote>
@@ -246,7 +225,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/22/ma_model_pre4/" data-id="cjtsohe8g00108gtqz99pcag5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/22/ma_model_pre4/" data-id="cjtsoxn59000z5stq0a64ubmn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -283,13 +262,10 @@
         <h3 id="1-蒙特卡洛方法"><a href="#1-蒙特卡洛方法" class="headerlink" title="1. 蒙特卡洛方法"></a>1. 蒙特卡洛方法</h3><h4 id="（1）基本思路："><a href="#（1）基本思路：" class="headerlink" title="（1）基本思路："></a>（1）基本思路：</h4><p>蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。</p>
 <h4 id="（2）一种应用：利用蒙特卡洛方法求积分："><a href="#（2）一种应用：利用蒙特卡洛方法求积分：" class="headerlink" title="（2）一种应用：利用蒙特卡洛方法求积分："></a>（2）一种应用：利用蒙特卡洛方法求积分：</h4><p>假设我们需要求这样一个图的积分<br><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%861.png?raw=true" alt="求积分图1"><br>那么实际上，我们所需要的过程可以表示如下<br><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%862.png?raw=true" alt="求积分过程"></p>
 <p>从这两个过程中，我们可以看到，实际上对于积分的求解可以简化为这样一个过程：<br><br>假设要计算的积分如下：</p>
-<p>$$ I=\int_{a}^{b}g(x)\text{d}x $$</p>
-<p>那么如果选择一个概率密度函数为$f_X(x)$的方式进行抽样,并且满足$\int_{a}^{b}f_X(x)\text{d}x=1$,那么令$g^*(x)=\frac{g(x)}{f_X(x)}$,原有的积分可以写成如下形式：</p>
-<p>$$I=\int_{a}^{b}g^*(x)f_X(x)\text{d}x$$</p>
-<p>故，我们求积分的步骤为：<br><br><br>1.产生服从分布律$F_X$的随机变量$X_i(i=1,2,…,N)$</p>
+<script type="math/tex; mode=display">I=\int_{a}^{b}g(x)\text{d}x</script><p>那么如果选择一个概率密度函数为$f_X(x)$的方式进行抽样,并且满足$\int_{a}^{b}f_X(x)\text{d}x=1$,那么令$g^*(x)=\frac{g(x)}{f_X(x)}$,原有的积分可以写成如下形式：</p>
+<script type="math/tex; mode=display">I=\int_{a}^{b}g^*(x)f_X(x)\text{d}x</script><p>故，我们求积分的步骤为：<br><br><br>1.产生服从分布律$F_X$的随机变量$X_i(i=1,2,…,N)$</p>
 <p>2.计算均值</p>
-<p>$$\overline{I}=\frac{1}{N}\sum_{i=1}^ng^*(X_i)$$</p>
-<p>一般采用均匀分布求解</p>
+<script type="math/tex; mode=display">\overline{I}=\frac{1}{N}\sum_{i=1}^ng^*(X_i)</script><p>一般采用均匀分布求解</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calpai</span><span class="params">()</span>:</span></span><br><span class="line">    n = <span class="number">1000000</span></span><br><span class="line">    r = <span class="number">1.0</span></span><br><span class="line">    a, b = (<span class="number">0.0</span>, <span class="number">0.0</span>)</span><br><span class="line">    x_neg, x_pos = a - r, a + r</span><br><span class="line">    y_neg, y_pos = b - r, b + r</span><br><span class="line"></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n):</span><br><span class="line">        x = random.uniform(x_neg, x_pos)</span><br><span class="line">        y = random.uniform(y_neg, y_pos)</span><br><span class="line">        <span class="keyword">if</span> x*x + y*y &lt;= <span class="number">1.0</span>:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> (count / float(n)) * <span class="number">4</span></span><br></pre></td></tr></table></figure>
 <h4 id="3-蒙特卡洛树搜索"><a href="#3-蒙特卡洛树搜索" class="headerlink" title="(3)蒙特卡洛树搜索"></a>(3)蒙特卡洛树搜索</h4><p>as we know, an important method used in alpha go and alpha zero is Monte Carlo Tree search. So if you want to know more about this method, you can search this <a href="https://blog.csdn.net/qq_16137569/article/details/83543641" target="_blank" rel="noopener">website(Monte Carlo Tree search)</a> and get some knowledge yourself. also, you can get information in almost every game theory book.And try to get the big idea in Monte Carlo Tree search.</p>
 <h3 id="2-马尔科夫链"><a href="#2-马尔科夫链" class="headerlink" title="2. 马尔科夫链"></a>2. 马尔科夫链</h3><h5 id="2-1-马尔可夫链的定义"><a href="#2-1-马尔可夫链的定义" class="headerlink" title="2.1 马尔可夫链的定义"></a>2.1 马尔可夫链的定义</h5><p>现实世界中有很多这样的现象：某一系统在已知现在情况的条件下，系统未来时刻<br>的情况只与现在有关，而与过去的历史无直接关系。比如，研究一个商店的累计销售额，<br>如果现在时刻的累计销售额已知，则未来某一时刻的累计销售额与现在时刻以前的任一<br>时刻累计销售额无关。上节中的几个例子也均属此类。描述这类随机现象的数学模型称<br>为马氏模型。</p>
@@ -301,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="cjtsohe9a001d8gtqntfj99do" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="cjtsoxn54000v5stq8xs3jlul" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -336,7 +312,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="math-modeling-competition-for-2019-preparation"><a href="#math-modeling-competition-for-2019-preparation" class="headerlink" title="math_modeling competition for 2019 preparation"></a>math_modeling competition for 2019 preparation</h1><hr>
-<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract:"></a>abstract:</h2><pre><code>I&apos;d like to record my preparation for this competition, including some tricks on coding, and comperhension on some important math models and algorithms. Also, I&apos;d like to share some interesting tools we can use, such as Gephi, Citespace, and so on.
+<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract:"></a>abstract:</h2><pre><code>I&#39;d like to record my preparation for this competition, including some tricks on coding, and comperhension on some important math models and algorithms. Also, I&#39;d like to share some interesting tools we can use, such as Gephi, Citespace, and so on.
 Meanwhile, I may record some basic knowledge on machine learning and data mining, even includes tensorflow and pytorch framework. So this series will be a hodgepodge of quite many things and knowledge. I hope I can truly learn something by doing so, and also help you work better.
 </code></pre><h2 id="part-one"><a href="#part-one" class="headerlink" title="part one"></a>part one</h2><h3 id="EA-Evolutionary-Algorithms"><a href="#EA-Evolutionary-Algorithms" class="headerlink" title="EA (Evolutionary Algorithms)"></a>EA (Evolutionary Algorithms)</h3><h4 id="1-introduce"><a href="#1-introduce" class="headerlink" title="1. introduce"></a>1. introduce</h4><p>there are so many algorithms use the idea of evolution, and in the competition of math modeling, it’s so important that almost every time, we can slove a problem using it. </p>
 <p>these algorithms include genetic algorithm, ant colony algorithm, Annealing Algorithm, neural network, tabu search and so on. I’d like to put focus on genetic algorithm this time, but I’ll also give some abstract on other algorithms. Also, codes will be shared on this <a href="https://github.com/leliyliu/ICM-MCM-preparation" target="_blank" rel="noopener">website</a> </p>
@@ -366,7 +342,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/09/ma-model-preparation1/" data-id="cjtsohe8r00148gtqfgjzktow" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/09/ma-model-preparation1/" data-id="cjtsoxn58000y5stqbsxu40b9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -429,7 +405,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" data-id="cjtsohe6500048gtqj7y64v4w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" data-id="cjtsoxn3u000a5stq9n677wuc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -499,7 +475,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" data-id="cjtsohe7b000h8gtqigepalz6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" data-id="cjtsoxn3t00095stq2xcpaqsu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -537,7 +513,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
 <h3 id="导入库"><a href="#导入库" class="headerlink" title="导入库"></a>导入库</h3><pre><code>git clone + 地址  将github中的文件目录及库拷贝
 </code></pre><h3 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h3><pre><code>git init 用于生成本地的git 管理
 git add . 添加文件到git的本地中 如果想添加某个特定的文件，只需把.换成这个特定的文件名即可
-输入git commit -m &apos;first commit&apos;，表示你对这次提交的注释，双引号里面的内容可以根据个人的需要修改。 
+输入git commit -m &#39;first commit&#39;，表示你对这次提交的注释，双引号里面的内容可以根据个人的需要修改。 
 git remote add origin https://自己的仓库url地址
 移除origin ———————— git remote rm origin 
 git push -u origin master 上传到github 中
@@ -554,7 +530,7 @@ git push （在后续过程中，直接git push）即可
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/01/github-use/" data-id="cjtsohe7y000q8gtq9g9vp9yx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/01/github-use/" data-id="cjtsoxn51000t5stqupod0mxm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-git/">github/git</a></li></ul>
@@ -601,14 +577,14 @@ git push （在后续过程中，直接git push）即可
 #bool indexing  利用df.A&gt;num 来进行选择某些值
 </code></pre><p>3.设置值</p>
 <pre><code>利用iloc，loc，以及bool indexing来进行修改
-直接添加一行或者一列，那么就可以直接用df[&apos;E&apos;]=...来进行添加
+直接添加一行或者一列，那么就可以直接用df[&#39;E&#39;]=...来进行添加
 </code></pre><p>4.处理丢失数据</p>
 <pre><code>df.dropna()   df.fillna()  df.isnull()   np.any(df.isnull==True)/df.isnull().any()
 这四种方式对于丢失的数据进行处理，1.丢掉 2，填充 3、4.判断是否有丢失
 </code></pre><p>5.储存数据<br>    read_csv/to_csv</p>
 <p>6.合并数据</p>
 <pre><code>利用concat([df1,df2,df3],axis=0,ignore_index=True)#aixs=0竖向合并
-利用join参数  join=&apos;outer&apos;/&apos;inner&apos; 这两个如果是outer，则都显示,inner则只是显示都共有的index与columns
+利用join参数  join=&#39;outer&#39;/&#39;inner&#39; 这两个如果是outer，则都显示,inner则只是显示都共有的index与columns
 利用参数join_axes，按照某一个具体的来进行考虑
 append()的方法,将具体某些加到原pandas中。
 
@@ -626,7 +602,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/01/MCM-ICM-preparation-two/" data-id="cjtsohe6300038gtq0pno20h7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/01/MCM-ICM-preparation-two/" data-id="cjtsoxn3g00035stqremxrsmi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li></ul>
@@ -665,7 +641,7 @@ merge
 </blockquote>
 <p>维特根斯坦来到剑桥向罗素学习数学逻辑，但他很快变为了他老师在研究中的同伴。他们在一起设计了一种被称作是“逻辑原子主义”的形而上学系统。正如在第二节开头所讨论的，作为一个完整的系统，逻辑原子论似乎是维特根斯坦所思考出来的。然而，这不应该被认作是罗素在这个系统中所做出的卓越的贡献，他基于一个在数学原理中类似的理想语言是与现实相联系的关键的猜想，而形成了一种形而上学的体系。</p>
 <blockquote>
-<p>According to logical atomism, propositions are built out of elements corresponding to the basic constituents of the world, just as sentences are built out of words. The combination of words in a meaningful sentence mirrors the combination of constituents in the corresponding proposition and also in the corresponding possible or actual state of affairs. That is, the structure of every possible or actual state of affairs is isomorphic with both the structure of the proposition that refers to it and the structure of the sentence that expresses that proposition–so long as the sentence is properly formulated in the notation of symbolic logic. The simplest sort of combination is called an atomic fact because this fact has no sub-facts as part of its structure. An atomic fact for some logical atomists might be something like an individual having a property—a certain leaf’s being green, for instance. Linguistically, this fact is represented by an atomic proposition: for example, “this leaf is green,” or, in logical symbolism “F(a).” Both the fact F(a) and the proposition “F(a)” are called “atomic” not because they themselves are atomic [that is, without structure], but because all their constituents are. Atomic facts are the basic constituents of the world, and atomic propositions are the basic constituents of language.</p>
+<p>According to logical atomism, propositions are built out of elements corresponding to the basic constituents of the world, just as sentences are built out of words. The combination of words in a meaningful sentence mirrors the combination of constituents in the corresponding proposition and also in the corresponding possible or actual state of affairs. That is, the structure of every possible or actual state of affairs is isomorphic with both the structure of the proposition that refers to it and the structure of the sentence that expresses that proposition—so long as the sentence is properly formulated in the notation of symbolic logic. The simplest sort of combination is called an atomic fact because this fact has no sub-facts as part of its structure. An atomic fact for some logical atomists might be something like an individual having a property—a certain leaf’s being green, for instance. Linguistically, this fact is represented by an atomic proposition: for example, “this leaf is green,” or, in logical symbolism “F(a).” Both the fact F(a) and the proposition “F(a)” are called “atomic” not because they themselves are atomic [that is, without structure], but because all their constituents are. Atomic facts are the basic constituents of the world, and atomic propositions are the basic constituents of language.</p>
 </blockquote>
 <p>根据逻辑原子主义，命题是由那些与世界的基本组成部分相联系的元素所构成的，就像语言是由单词构成的一样。在一句有意义的话中，单词的组合反映了命题相应的组成部分，同时也是事态的可能或实在的组成部分。即是说，每个事态的可能或实在的结构是与指向其的命题或者表达这个命题的语句同构的——正如语句被恰当地被转化为符号逻辑那样。最简单的组合被称为原子事实因为这类事实没有子事实来作为它的构成部分。一个原子事实对一些逻辑原子主义者来说就是一些只具有一种性质的单独个体——例如，一片特定的叶子是绿色的。从语言学角度看，这个事实是一个原子论点：例如“这片叶子是绿色的”，或者用符号逻辑“F(a)”来表示。不论是事实F(a)还是命题“F(a)”都被叫做“原子的”不仅仅是因为他们是原子的（即没有结构的），也是因为它的组成部分也是原子的。原子事实是这个世界最基本的组成部分，同时，原子命题是语言最基本的组成部分。</p>
 <blockquote>
@@ -688,7 +664,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" data-id="cjtsohe7u000n8gtqvu1yfwvb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" data-id="cjtsoxn4t000n5stq2htbls85" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -746,7 +722,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" data-id="cjtsohe7g000j8gtqmbuwo126" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" data-id="cjtsoxn4z000r5stq5o22tub5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>

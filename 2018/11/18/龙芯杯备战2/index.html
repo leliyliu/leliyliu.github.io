@@ -130,6 +130,7 @@ sudo apt -get update
 </code></pre><p>再次执行，通过,利用 echo $?查看结果也显示正确，终于完成。</p>
 <h4 id="用GDB（GNU-Debuger）调试器可以查看寄存器的内容："><a href="#用GDB（GNU-Debuger）调试器可以查看寄存器的内容：" class="headerlink" title="用GDB（GNU Debuger）调试器可以查看寄存器的内容："></a>用GDB（GNU Debuger）调试器可以查看寄存器的内容：</h4><pre><code>$ gdb add
 </code></pre><h4 id="常用gdb-命令"><a href="#常用gdb-命令" class="headerlink" title="常用gdb 命令"></a>常用gdb 命令</h4><hr>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -200,12 +201,14 @@ sudo apt -get update
 </tr>
 </tbody>
 </table>
+</div>
 <hr>
 <h4 id="数据移动指令"><a href="#数据移动指令" class="headerlink" title="数据移动指令"></a>数据移动指令</h4><pre><code>move $12 $13
 </code></pre><p>指令集中利用add也可以达到此功能</p>
 <pre><code>add $12 $13 ,0
 </code></pre><p>hi,lo 寄存器<br><figure class="highlight mips"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mfhi </span>$<span class="built_in">t0</span>   <span class="comment"># move from hi to $t0</span></span><br><span class="line"><span class="keyword">mflo </span>$<span class="built_in">t1</span>   <span class="comment"># move from lo to $t1</span></span><br><span class="line"><span class="keyword">mthi </span>$<span class="built_in">t0</span>    <span class="comment"># move $t0 to hi</span></span><br><span class="line"><span class="keyword">mtlo </span>$<span class="built_in">t1</span>    <span class="comment"># move $t1 to lo</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><table>
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>类型</th>
@@ -246,6 +249,7 @@ sudo apt -get update
 </tr>
 </tbody>
 </table>
+</div>
 <h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><figure class="highlight mips"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">addi </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>          <span class="comment">#i -&gt; immediate</span></span><br><span class="line"><span class="keyword">addu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">addiu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>         <span class="comment">#u-&gt; unsigned </span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">subi </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>          <span class="comment">#i -&gt; immediate</span></span><br><span class="line"><span class="keyword">subu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">subiu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>         <span class="comment">#u-&gt; unsigned </span></span><br><span class="line"><span class="comment">#dsub,dsubu  #(for 64 bits(doubleword))</span></span><br></pre></td></tr></table></figure>
 <p>同理：对于乘除法&emsp;&emsp;有:  </p>
 <pre><code>mul , mult , dmult , dmultu
@@ -257,7 +261,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/18/龙芯杯备战2/" data-id="cjtsohe8v00178gtqzpicnp3n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/18/龙芯杯备战2/" data-id="cjtsoxn5p001d5stq9n9bykrg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>

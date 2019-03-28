@@ -104,14 +104,14 @@
 #bool indexing  利用df.A&gt;num 来进行选择某些值
 </code></pre><p>3.设置值</p>
 <pre><code>利用iloc，loc，以及bool indexing来进行修改
-直接添加一行或者一列，那么就可以直接用df[&apos;E&apos;]=...来进行添加
+直接添加一行或者一列，那么就可以直接用df[&#39;E&#39;]=...来进行添加
 </code></pre><p>4.处理丢失数据</p>
 <pre><code>df.dropna()   df.fillna()  df.isnull()   np.any(df.isnull==True)/df.isnull().any()
 这四种方式对于丢失的数据进行处理，1.丢掉 2，填充 3、4.判断是否有丢失
 </code></pre><p>5.储存数据<br>    read_csv/to_csv</p>
 <p>6.合并数据</p>
 <pre><code>利用concat([df1,df2,df3],axis=0,ignore_index=True)#aixs=0竖向合并
-利用join参数  join=&apos;outer&apos;/&apos;inner&apos; 这两个如果是outer，则都显示,inner则只是显示都共有的index与columns
+利用join参数  join=&#39;outer&#39;/&#39;inner&#39; 这两个如果是outer，则都显示,inner则只是显示都共有的index与columns
 利用参数join_axes，按照某一个具体的来进行考虑
 append()的方法,将具体某些加到原pandas中。
 
@@ -129,7 +129,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/01/MCM-ICM-preparation-two/" data-id="cjtsohe6300038gtq0pno20h7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/01/MCM-ICM-preparation-two/" data-id="cjtsoxn3g00035stqremxrsmi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li></ul>

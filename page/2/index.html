@@ -116,7 +116,7 @@ plt.xlim([])#调整一个或者两个数值
 plt.ylim([])#调整一个或者两个数值
 </code></pre><p>4.调整坐标轴的刻度&amp;生成日期序列</p>
 <pre><code>ax.localtor_params(nbins=20)
-ax.localtor_params(&apos;x&apos;,nbins=20)
+ax.localtor_params(&#39;x&#39;,nbins=20)
 </code></pre><p>5.如何在一个图中添加一条新的坐标轴（双坐标轴）</p>
 <pre><code>利用plt.twinx来实现双坐标轴的画法
 同理，有twins也有twiny
@@ -134,9 +134,9 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
 </code></pre><p>9.图形的美化</p>
 <pre><code>主要是对于函数plt.style.use()进行运行就差不多了，注意查看plt.style.available中的内容,参见homework12
 </code></pre><p>10.绘制极坐标图形</p>
-<pre><code>ax=plt.subplot(111,projection=&apos;polar&apos;)#以极坐标的形式来画图
-主要有这样一个参数，可以使得其表示为极坐标，同时，注意极坐标的x,y指的是什么
-代码参加homework13
+<pre><code>    ax=plt.subplot(111,projection=&#39;polar&#39;)#以极坐标的形式来画图
+    主要有这样一个参数，可以使得其表示为极坐标，同时，注意极坐标的x,y指的是什么
+    代码参加homework13
 </code></pre><h4 id="实战检验"><a href="#实战检验" class="headerlink" title="实战检验"></a>实战检验</h4><p>1.函数积分图</p>
 <pre><code>具体代码直接参见homework14，这里主要强调几点，就是要利用好python中几种常用数据类型的转化，学会处理好其过程。
 </code></pre><p>2.实现图形的展示</p>
@@ -147,7 +147,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/26/MCM-ICM-preparation-one/" data-id="cjtsohe5z00018gtq2v1k6z9t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/26/MCM-ICM-preparation-one/" data-id="cjtsoxn3b00015stqi2uf04ty" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li></ul>
@@ -182,10 +182,10 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="b-Ideal-Language-Philosophy-vs-Ordinary-Language-Philosophy"><a href="#b-Ideal-Language-Philosophy-vs-Ordinary-Language-Philosophy" class="headerlink" title="b. Ideal-Language Philosophy vs. Ordinary-Language Philosophy"></a>b. Ideal-Language Philosophy vs. Ordinary-Language Philosophy</h3><blockquote>
-<p>Russellian analysis has just been just identified as logical rather than linguistic analysis, and yet it was said in a previous paragraph that this was analysis in the sense made familiar by Moore. In truth, there were both significant similarities and significant differences between Moorean and Russellian analysis. On the one hand, Russellian analysis was like Moore’s in that it involved the rephrasing of a sentence into another sentence semantically equivalent but grammatically different. On the other hand, Russell’s analyses were not given in ordinary language, as Moore’s were. Instead, they were given in symbolic logic, that is, in a quasi-mathematical, symbolic notation that made the structure of Russell’s analyzed propositions exceedingly clear. For instance, with the definitions of Mx as “x is a mountain” and Gx as “x is golden,” the proposition that the golden mountain does not exist becomes<br><br><center>~[(∃x)(Mx&amp;Gx) &amp;∀y((My &amp;Gy) → y=x)]</center></p>
+<p>Russellian analysis has just been just identified as logical rather than linguistic analysis, and yet it was said in a previous paragraph that this was analysis in the sense made familiar by Moore. In truth, there were both significant similarities and significant differences between Moorean and Russellian analysis. On the one hand, Russellian analysis was like Moore’s in that it involved the rephrasing of a sentence into another sentence semantically equivalent but grammatically different. On the other hand, Russell’s analyses were not given in ordinary language, as Moore’s were. Instead, they were given in symbolic logic, that is, in a quasi-mathematical, symbolic notation that made the structure of Russell’s analyzed propositions exceedingly clear. For instance, with the definitions of Mx as “x is a mountain” and Gx as “x is golden,” the proposition that the golden mountain does not exist becomes<br><br><center>~[(∃x)(Mx&Gx) &∀y((My &Gy) → y=x)]</center></p>
 </blockquote>
 <p>相对于语言学分析，罗素的分析更多地被认为是逻辑分析，而在前一小节说过的，这种分析方法也和穆尔所做的类似。事实上，罗素和穆尔的分析有明显的类似和不同。在一方面，罗素的分析强调将语句改述为语义上等同，但语法上不同的另一语句，这是与穆尔相似的。在另一方面，罗素的分析没有用日常语言来表述，这不同于穆尔的做法。相反，他们采用了一种符号逻辑，就是一种类数学的，符号标记法，这使得罗素的分析命题的结构十分地清晰。例如，定义Mx是“x 是一座山”且Gx是“x是金的”，命题金山不存在则变为了</p>
-<center>~[(∃x)(Mx&amp;Gx) &amp;∀y((My &amp;Gy) → y=x)]</center>
+<center>~[(∃x)(Mx&Gx) &∀y((My &Gy) → y=x)]</center>
 
 <blockquote>
 <p>Equivalently, in English, it is not the case that there is some object such that (1) it is a mountain, (2) it is golden, and (3) all objects that are mountains and golden are identical to it. (For more on what this sort of notation looks like and how it works, see the article on Propositional Logic, especially Section 3.)</p>
@@ -207,7 +207,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/26/Modern-Anglo-American-philosophy-translation-7/" data-id="cjtsohe73000f8gtq3g9umirw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/26/Modern-Anglo-American-philosophy-translation-7/" data-id="cjtsoxn4w000p5stqubtoitpb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -271,7 +271,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/25/龙芯杯备战3/" data-id="cjtsohe9r001f8gtqb4na4lzm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/25/龙芯杯备战3/" data-id="cjtsoxn5s001g5stq4pa6j8lw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
@@ -333,7 +333,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/Modern-Anglo-American-philosophy-translation-6/" data-id="cjtsohe7w000o8gtqr4cbqhg7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/Modern-Anglo-American-philosophy-translation-6/" data-id="cjtsoxn4o000m5stqdyi4urfu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -385,18 +385,14 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
 <p>&emsp;它的目标是提出一个理性的——即在理性层面相互融贯——并且在不同层次都具有，但最终作为一个整体的世界。当然，传统哲学的研究也有其它的方面，但是这个目标是它的核心。但是在穆尔的工作中，起初哲学似乎被重铸成应用在孤立论题上的语言学分析的实践。因此，分析哲学的哲学地位的提高，被认为是一个起源于穆尔的“语言学转向”的相当具有连续性的一个新的哲学学派的成长，最终不仅被认为是一个新兴哲学学派的诞生，而是哲学史层面一个“哲学的革命”。</p>
 <h3 id="2-Russell-and-the-Early-Wittgenstein-Ideal-Language-and-Logical-Atomism"><a href="#2-Russell-and-the-Early-Wittgenstein-Ideal-Language-and-Logical-Atomism" class="headerlink" title="2. Russell and the Early Wittgenstein: Ideal Language and Logical Atomism"></a>2. Russell and the Early Wittgenstein: Ideal Language and Logical Atomism</h3><blockquote>
 <p>The second phase of analytic philosophy is charaterized by the turn to ideal language analysis and, along with it, logical atomism—a metaphysical system developed by Bertrand Russell and Ludwig Wittgenstein. Russell laid the essential groundwork for both in his pioneering work in formal logic, which is covered in Sections 2a and 2b. Though this work was done during the first phase of analytic philosophy (1900-1910), it colaesced into a system only toward the end of that period, as Russell and Whitehead completed their work on the monumental Principia Mathematica (Russell and Whitehead 1910-13), and as Russell began to work closely with Ludwig Wittgenstein.<br>&emsp;分析哲学的第二个阶段的标志性事件是理想语言分析的转向和逻辑原子主义——一个由罗素和维特根斯坦提出并发展的形而上学体系。罗素在我们将在2a,2b节涉及到的他的关于形式逻辑的工作中打下了必要的基础。尽管这部分工作是在分析哲学发展的第一阶段完成的，但是知道第一阶段的最后阶段——罗素和怀特海德完成了那部具有里程碑意义的作品数学原理之后，它才融合成一个体系，而在此之后，罗素开始和维特根斯坦一起合作。</p>
-</blockquote>
-<blockquote>
 <p>Wittgenstein seems to have been the sine qua non of the system. Russell was the first to use the term “logical atomism,” in a 1911 lecture to the French Philosophical Society. He was also the first to publicly provide a full-length, systematic treatment of it, in his 1918 lectures on “The Philosophy of Logical Atomism” (Russell 1918-19). However, despite the centrality of Russell’s logical work for the system, in the opening paragraph of these lectures Russell acknowedges that they “are very largely concerned with explaining certain ideas which I learnt from my friend and former pupil Ludwig Wittgenstein” (Russell 1918, 35). Wittgenstein’s own views are recorded in his TractatusLogico-Philosophicus. First published in 1921, the Tractatus proved to be the most influential piece written on logical atomism. Because of its influence, we shall pay special attention to the Tractatus when it comes to presenting logical atomism as a complete system in Section 2d.<br>&emsp;维特根斯坦是这个体系建立的不可或缺的一个人物。罗素第一次使用“逻辑原子论”这一说法是在法国哲学大会的演讲中。他也是第一个公开地，长篇地，系统地表述这个体系的人——在他1918年的“逻辑原子主义哲学”的演讲中。然而，尽管罗素的逻辑工作处在这个体系的中心地位，在这次演讲的开头，罗素也承认道“这个体系大部分的确定的知识都是来自于我的朋友和以前的学生，维特根斯坦”。维特根斯坦自己的观点被记录在他的逻辑哲学论中。第一版出版于1921年的逻辑哲学论被证明是关于逻辑原子主义的最有影响力的文章。因为它的影响力，我们将特别关注逻辑哲学论在2d节我们展现逻辑原子论的时候。</p>
-</blockquote>
-<blockquote>
 <p>Though Russell and Wittgenstein differed over some of the details of logical atomism, these disagreements can be ignored for present purposes. What mattered for the development of analytic philosophy on the whole was the emergence in the second decade of the twentieth century of a new view of reality tailored to fit recent developments in formal logic and the philosophical methodology connected to it, as discussed in Section 2b. This was the common core of the Russellian and Wittegensteinian versions of logical atomism; thus, blurring the lines between Russell and Wittgenstein actually enables us to maintain better focus on the emerging analytic tradition. It will also make convenient a brief word on Frege, to see why some have wanted to include him as a founder of analytic philosophy (Section 2c).<br>&emsp;尽管罗素和维特根斯坦在逻辑哲学论的一些细枝末节上有不同的意见，但是在展示他们的主张上，这些矛盾可以被忽略。总体上而言，分析哲学整体上最大的进步是在二十世纪第二个十年中所诞生的一种对于真实的新的符合形式逻辑和与之相关的哲学方法的发展的观点，这个将在2b节中被讨论。这是罗素主义者和维特根斯坦主义者逻辑原子论版本中共同的核心，因此，模糊罗素和维特根斯坦观点上的界限使我们能更好地专注于分析传统的出现。这里我们也将用一点简短的文字来讨论弗洛伊德，来看为什么一些人想要将他作为分析哲学的创始人之一。</p>
 </blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/21/Modern-Anglo-American-philosophy-translation-5/" data-id="cjtsohe81000s8gtqyhpi6kwb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/21/Modern-Anglo-American-philosophy-translation-5/" data-id="cjtsoxn3x000c5stquchnxpnq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -458,7 +454,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/19/Modern-Anglo-American-philosophy-translation-4/" data-id="cjtsohe6u000c8gtq0zin1txv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/19/Modern-Anglo-American-philosophy-translation-4/" data-id="cjtsoxn41000e5stqf5xvglfu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -531,6 +527,7 @@ sudo apt -get update
 </code></pre><p>再次执行，通过,利用 echo $?查看结果也显示正确，终于完成。</p>
 <h4 id="用GDB（GNU-Debuger）调试器可以查看寄存器的内容："><a href="#用GDB（GNU-Debuger）调试器可以查看寄存器的内容：" class="headerlink" title="用GDB（GNU Debuger）调试器可以查看寄存器的内容："></a>用GDB（GNU Debuger）调试器可以查看寄存器的内容：</h4><pre><code>$ gdb add
 </code></pre><h4 id="常用gdb-命令"><a href="#常用gdb-命令" class="headerlink" title="常用gdb 命令"></a>常用gdb 命令</h4><hr>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -601,12 +598,14 @@ sudo apt -get update
 </tr>
 </tbody>
 </table>
+</div>
 <hr>
 <h4 id="数据移动指令"><a href="#数据移动指令" class="headerlink" title="数据移动指令"></a>数据移动指令</h4><pre><code>move $12 $13
 </code></pre><p>指令集中利用add也可以达到此功能</p>
 <pre><code>add $12 $13 ,0
 </code></pre><p>hi,lo 寄存器<br><figure class="highlight mips"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mfhi </span>$<span class="built_in">t0</span>   <span class="comment"># move from hi to $t0</span></span><br><span class="line"><span class="keyword">mflo </span>$<span class="built_in">t1</span>   <span class="comment"># move from lo to $t1</span></span><br><span class="line"><span class="keyword">mthi </span>$<span class="built_in">t0</span>    <span class="comment"># move $t0 to hi</span></span><br><span class="line"><span class="keyword">mtlo </span>$<span class="built_in">t1</span>    <span class="comment"># move $t1 to lo</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><table>
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>类型</th>
@@ -647,6 +646,7 @@ sudo apt -get update
 </tr>
 </tbody>
 </table>
+</div>
 <h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><figure class="highlight mips"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">addi </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>          <span class="comment">#i -&gt; immediate</span></span><br><span class="line"><span class="keyword">addu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">addiu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>         <span class="comment">#u-&gt; unsigned </span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">subi </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>          <span class="comment">#i -&gt; immediate</span></span><br><span class="line"><span class="keyword">subu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">subiu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>         <span class="comment">#u-&gt; unsigned </span></span><br><span class="line"><span class="comment">#dsub,dsubu  #(for 64 bits(doubleword))</span></span><br></pre></td></tr></table></figure>
 <p>同理：对于乘除法&emsp;&emsp;有:  </p>
 <pre><code>mul , mult , dmult , dmultu
@@ -658,7 +658,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/18/龙芯杯备战2/" data-id="cjtsohe8v00178gtqzpicnp3n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/18/龙芯杯备战2/" data-id="cjtsoxn5p001d5stq9n9bykrg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
@@ -748,7 +748,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/18/Modern-Anglo-American-philosophy-translation-3/" data-id="cjtsohe6y000d8gtqz0a526j1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/18/Modern-Anglo-American-philosophy-translation-3/" data-id="cjtsoxn3z000d5stqwitcwdbh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -800,8 +800,6 @@ div , divu , ddiv , ddivu
 <p><br>&emsp;这个发生于罗素个人发展历史中的重要事件也成为了整个二十世纪哲学史上的关键时刻。由于它是一个具有革命性的节点——反对英国唯心主义（最有影响力的哲学学派在英国大学中）——然后诞生出了分析哲学并且指出了一条代替唯心主义和传统哲学的新的道路。</p>
 <blockquote>
 <p>To understand Russell’s elation at the rebellion, one needs to know something about him and also something about British Idealism. Let’s begin with the latter.<br><br>&emsp;为了理解罗素为何对于这次解放如此兴奋，我们需要了解罗素本人以及一些关于英国唯心主义的知识。所以让我们从下面开始吧。</p>
-</blockquote>
-<blockquote>
 <p>At the end of the 19th century, F.H. Bradley, Bernard Bosanquet, and J.M.E. McTaggart were the leading British Idealists. They claimed that the world, although it naively appears to us to be a collection of discrete objects (this bird, that table, the earth and the sun, and so forth), is really a single indivisible whole whose nature is mental, or spiritual, or Ideal rather than material. </p>
 </blockquote>
 <p><br>&emsp;在十九世纪的末端， F.H. Bradley, Bernard Bosanquet, and J.M.E. McTaggart是英国唯心主义的主要领导人物。他们声称这个世界，尽管从表面上呈现给我们的是一种离散的物体的集合，实际上是一个本质为精神，或者心灵而不是物质上的整体。</p>
@@ -821,7 +819,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/17/Modern-Anglo-American-philosophy-translation-2/" data-id="cjtsohe89000w8gtq7x60lbpx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/17/Modern-Anglo-American-philosophy-translation-2/" data-id="cjtsoxn5k00185stq2rykbuaj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -898,7 +896,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/15/Modern-Anglo-American-philosophy-translation-1/" data-id="cjtsohe8c000x8gtqpjj4swd5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/15/Modern-Anglo-American-philosophy-translation-1/" data-id="cjtsoxn5c00125stqohnlgvfc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
