@@ -5,19 +5,19 @@
   
 
   
-  <title>longxin_6 | 坠落</title>
+  <title>龙芯杯备战4 | 坠落</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="龙芯杯备战4国科大试验系统迁移  LAB3-1代码对比1.接口123456789101112131415161718192021222324252627282930313233343536373839404142434445464748//机组cpumodule pipeline_cpu(      input clk,               input resetn,">
 <meta name="keywords" content="computer_system">
 <meta property="og:type" content="article">
-<meta property="og:title" content="longxin_6">
+<meta property="og:title" content="龙芯杯备战4">
 <meta property="og:url" content="http://yoursite.com/2019/04/23/龙芯杯6/index.html">
 <meta property="og:site_name" content="坠落">
 <meta property="og:description" content="龙芯杯备战4国科大试验系统迁移  LAB3-1代码对比1.接口123456789101112131415161718192021222324252627282930313233343536373839404142434445464748//机组cpumodule pipeline_cpu(      input clk,               input resetn,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-23T11:33:44.493Z">
+<meta property="og:updated_time" content="2019-04-23T11:40:30.058Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="longxin_6">
+<meta name="twitter:title" content="龙芯杯备战4">
 <meta name="twitter:description" content="龙芯杯备战4国科大试验系统迁移  LAB3-1代码对比1.接口123456789101112131415161718192021222324252627282930313233343536373839404142434445464748//机组cpumodule pipeline_cpu(      input clk,               input resetn,">
   
     <link rel="alternate" href="/atom.xml" title="坠落" type="application/atom+xml">
@@ -83,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      longxin_6
+      龙芯杯备战4
     </h1>
   
 
@@ -97,6 +97,8 @@
 <p>对于整个迁移的其它过程，都主要是按照接口来做，没有什么特别的地方需要说明。</p>
 <p>另外需要说明的一点是，在机组实现的流水线cpu中，是在整个cpu的总线中进行调用inst_sram和data_sram，而在国科大的lab中，由更高一层的soc_lite_top.v进行调用和控制，而my_cpu中只需要调用fetch,decode,exe,mem,wb以及regfile进行执行即可。</p>
 </blockquote>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//*************************************************************************</span></span><br><span class="line"><span class="comment">//   &gt; File Name   : soc_top.v</span></span><br><span class="line"><span class="comment">//   &gt; Description : SoC, included cpu, 2 x 3 bridge,</span></span><br><span class="line"><span class="comment">//                   inst ram, confreg, data ram</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="comment">//           -------------------------</span></span><br><span class="line"><span class="comment">//           |           cpu         |</span></span><br><span class="line"><span class="comment">//           -------------------------</span></span><br><span class="line"><span class="comment">//         inst|                  | data</span></span><br><span class="line"><span class="comment">//             |                  | </span></span><br><span class="line"><span class="comment">//             |        ---------------------</span></span><br><span class="line"><span class="comment">//             |        |    1 x 2 bridge   |</span></span><br><span class="line"><span class="comment">//             |        ---------------------</span></span><br><span class="line"><span class="comment">//             |             |            |           </span></span><br><span class="line"><span class="comment">//             |             |            |           </span></span><br><span class="line"><span class="comment">//      -------------   -----------   -----------</span></span><br><span class="line"><span class="comment">//      | inst ram  |   | data ram|   | confreg |</span></span><br><span class="line"><span class="comment">//      -------------   -----------   -----------</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//   &gt; Author      : LOONGSON</span></span><br><span class="line"><span class="comment">//   &gt; Date        : 2017-08-04</span></span><br><span class="line"><span class="comment">//*************************************************************************</span></span><br></pre></td></tr></table></figure>
+<p>其主要框架如图所示，需要更具体地进行了解</p>
 <h4 id="IP核锁定解决方案"><a href="#IP核锁定解决方案" class="headerlink" title="IP核锁定解决方案"></a>IP核锁定解决方案</h4><blockquote>
 <p>由于从旧的vivado版本迁移到新的版本中，会遇到IP核锁定的问题，所以我跑simulation的时候，发现跑不过，我开始以为是coe文件的问题，后来重新导入coe文件后，发现还是报错，于是我发现，是IP核锁定了。</p>
 <p>首先查看网上的解决方案，在工具栏找到report-&gt;Report IP Status,然后发现没办法upgrade selected,这个时候点击右键，可以发现有UPGRADE IP的选项，果断选择，然后好像就OK了。容我跑一跑simulation(时间有点长，现在很慌~~)什么信息也不报一个</p>
@@ -106,7 +108,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/23/龙芯杯6/" data-id="cjutpp51z0016rstqsa5c218x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/23/龙芯杯6/" data-id="cjv0tox4x001sjctqo6wdja4v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
@@ -116,6 +118,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/04/28/reading1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          BTS-DSN
+        
+      </div>
+    </a>
   
   
     <a href="/2019/03/28/ma_model_pre5/" id="article-nav-older" class="article-nav-link-wrap">
@@ -139,7 +150,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-learning/">English_learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-system/">computer_system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-git/">github/git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-learning/">English_learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-system/">computer_system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-git/">github/git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paperReading/">paperReading</a></li></ul>
     </div>
   </div>
 
@@ -149,7 +160,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 10px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 16.67px;">math_model_preparation</a>
+      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 10px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 16.67px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 10px;">paperReading</a>
     </div>
   </div>
 
@@ -171,7 +182,11 @@
       <ul>
         
           <li>
-            <a href="/2019/04/23/龙芯杯6/">longxin_6</a>
+            <a href="/2019/04/28/reading1/">BTS-DSN</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/23/龙芯杯6/">龙芯杯备战4</a>
           </li>
         
           <li>
@@ -184,10 +199,6 @@
         
           <li>
             <a href="/2019/03/15/ma_model_pre3/">ma_model_preparation2</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/09/ma-model-preparation1/">ma_model_preparation1</a>
           </li>
         
       </ul>

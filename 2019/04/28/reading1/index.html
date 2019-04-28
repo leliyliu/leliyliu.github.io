@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>BTS-DSN | 坠落</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Paper ReadingBTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation  references: you can read this papar via BTS-DSN or star/fork this github project  Abstract">
+<meta name="keywords" content="paperReading">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BTS-DSN">
+<meta property="og:url" content="http://yoursite.com/2019/04/28/reading1/index.html">
+<meta property="og:site_name" content="坠落">
+<meta property="og:description" content="Paper ReadingBTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation  references: you can read this papar via BTS-DSN or star/fork this github project  Abstract">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-28T10:59:32.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BTS-DSN">
+<meta name="twitter:description" content="Paper ReadingBTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation  references: you can read this papar via BTS-DSN or star/fork this github project  Abstract">
+  
+    <link rel="alternate" href="/atom.xml" title="坠落" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">坠落</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">do what you want to do</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-reading1" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/28/reading1/" class="article-date">
+  <time datetime="2019-04-28T10:59:18.000Z" itemprop="datePublished">2019-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      BTS-DSN
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Paper-Reading"><a href="#Paper-Reading" class="headerlink" title="Paper Reading"></a>Paper Reading</h1><h2 id="BTS-DSN-Deeply-supervised-neural-network-with-short-connections-forretinal-vessel-segmentation"><a href="#BTS-DSN-Deeply-supervised-neural-network-with-short-connections-forretinal-vessel-segmentation" class="headerlink" title="BTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation"></a>BTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation</h2><hr>
+<blockquote>
+<p><code>references</code>: you can read this papar via <a href="https://linkinghub.elsevier.com/retrieve/pii/S138650561831195X" target="_blank" rel="noopener">BTS-DSN</a> or star/fork this github <a href="https://github.com/guomugong/BTS-DSN" target="_blank" rel="noopener">project</a></p>
+</blockquote>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ol>
+<li>An important method was proposed by this group called short-connection, that improve quite a lot the result of this model’s ability. They use sensitivity,specificity, AUC and F1-score to test their model. If you aren’t familiar with these indicators, you can read these two blogs to learn more<a href="https://tracholar.github.io/machine-learning/2018/01/26/auc.html" target="_blank" rel="noopener">AUC</a>  &amp;<a href="https://blog.csdn.net/u013385925/article/details/80385873" target="_blank" rel="noopener">AUC-2</a>. </li>
+</ol>
+<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h3><ol>
+<li>why we hope to achieve early dignosis.</li>
+<li>some researchs done by other scholar group<blockquote>
+<p>(1) Unsupervised methods: some methods have been proposed by scholoars, mainly about detect the profile and contour of vessel. These methods are mostly based on geometric computation model. defects: <code>However, the unsupervised methods are sensitive to the
+manually designed features and rules.</code>(poor in generalization)</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>(2)supervised methods:when we use supervised method, we usually view this problem as a pixel-wise binary classification. deep learning methods are popular in this area. Other ways to solve this problem about semantic segmentation results. <code>defects:different methods have different disadvantages such as time-consuming and so on</code></p>
+</blockquote>
+<ol>
+<li>the contributions of this paper<blockquote>
+<p>(1)”We propose a deeply-supervised fully convolutional neural network with bottom-top and top-bottom short connections (BTS-DSN) for vessel segmentation. “</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>(2)”We used VGGNet and ResNet-101 as backbone and conducted extensive experiments on DRIVE, STARE and CHASE_DB1”</p>
+<p>“We employed cross-training experiments to show the generalization of BTS-DSN.”</p>
+</blockquote>
+<p>attributes : more about VGGNet and ResNet can be found in their papers.{<a href="https://github.com/machrisaa/tensorflow-vgg" target="_blank" rel="noopener">vgg(including vgg-16&amp;vgg-19)</a>&amp;<a href="https://arxiv.org/abs/1512.03385" target="_blank" rel="noopener">ResNet_paper</a>&amp;<a href="https://github.com/tensorflow/models/blob/master/research/slim/nets/resnet_v2.py" target="_blank" rel="noopener">ResNet_github</a>}.If you want to understand these model better, baidu or google it may help you.</p>
+<h3 id="2-BTS-DSN"><a href="#2-BTS-DSN" class="headerlink" title="2.BTS-DSN"></a>2.BTS-DSN</h3><ol>
+<li><p>from HED to DSN, and then to BS-DSN and BST-DSN. this method was proposed to alleviate the gradient vanish problem in deep network. It’s a deep supervision</p>
+</li>
+<li><p>bottom-top short connnections: pass low level fine semantic information to high levels to alleviate the blurring situation.</p>
+</li>
+<li><p>top-bottom short connection: Bottom-top short connections aim to refine high-level segmentation results.</p>
+</li>
+<li><p>inference: do feature confusion</p>
+</li>
+</ol>
+<h3 id="3-Implementation-details"><a href="#3-Implementation-details" class="headerlink" title="3. Implementation details"></a>3. Implementation details</h3><ol>
+<li><p>data augmentation: using quite a lot various transformations to augment the training set, including rotation, flipping and scaling. </p>
+</li>
+<li><p>model implementation : using the network framework Caffe, short connections of the BTS-DSN. </p>
+</li>
+<li><p>Parameter settings</p>
+</li>
+</ol>
+<p><code>When the backbone is VGGNet, we fine-tuned our network with a
+learning rate of 1e-8, a weight decay of 0.0005, and a momentum of
+0.9. We use a fixed learning rate.</code></p>
+<p>in two different backbone(VGGNet &amp; ResNet-101),they use different type of parameters . </p>
+<p>and for patch-level S-DSN, they split a raw retinal image into 9 patches, each of which was 1/4 the size of the raw image, meanwhile, patches were up-sampled $2 \times$ </p>
+<p>4.running environment:……</p>
+<h4 id="Evaluation-criteria"><a href="#Evaluation-criteria" class="headerlink" title="Evaluation criteria"></a>Evaluation criteria</h4><p><code>In vessel segmentation, each pixel belongs to a vessel or non-vessel
+pixel.</code>(be seen as a binary classfication problem).they iemployed six evaluation criteria, including AUC,SE,SP,ACC,F1-score and MCC.</p>
+<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><p>the result are shown in the fig in this paper, so you can just look through and get them.</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>这篇文章成功实现了目前基本上是最高水平的眼底血管分类成果，其使用VGGNet或者ResNet-101作为支柱(backbone)来实现整个CNN卷积的过程，同时，为了缓解语义分割中语义分割之间的差距，使用top-bottom 和 bottom-top short connection来实现整个过程，最终实现了BTS-DSN网络，达到了好的效果。同时，这个网络也使用了特征融合的方法，可以加以了解。对于更多的细节，还需要继续了解。</p>
+<h3 id="发散"><a href="#发散" class="headerlink" title="发散"></a>发散</h3><h4 id="（采样方法）上采样与下采样"><a href="#（采样方法）上采样与下采样" class="headerlink" title="（采样方法）上采样与下采样"></a>（采样方法）上采样与下采样</h4><h4 id="短连接与ResNet连接方式的不同"><a href="#短连接与ResNet连接方式的不同" class="headerlink" title="短连接与ResNet连接方式的不同"></a>短连接与ResNet连接方式的不同</h4><h4 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/28/reading1/" data-id="cjv0tox3u000tjctqbdaq598x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paperReading/">paperReading</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/23/龙芯杯6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">龙芯杯备战4</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-learning/">English_learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-system/">computer_system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-git/">github/git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paperReading/">paperReading</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 10px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 16.67px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 10px;">paperReading</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/28/reading1/">BTS-DSN</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/23/龙芯杯6/">龙芯杯备战4</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/ma_model_pre5/">ma_model_preparation5</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/22/ma_model_pre4/">ma_model_preparation1</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/15/ma_model_pre3/">ma_model_preparation2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Leliyliu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
