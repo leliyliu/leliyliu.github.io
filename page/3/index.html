@@ -69,6 +69,210 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-龙芯杯备战2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/18/龙芯杯备战2/" class="article-date">
+  <time datetime="2018-11-18T15:14:03.000Z" itemprop="datePublished">2018-11-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/18/龙芯杯备战2/">龙芯杯备战2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本周主要学习了MIPS的指令，和上周所规划的任务相差甚远，但是也学习到了一些东西，还要继续向前。</p>
+<h1 id="MIPS-learning"><a href="#MIPS-learning" class="headerlink" title="MIPS_learning"></a>MIPS_learning</h1><hr>
+<h2 id="直接上代码"><a href="#直接上代码" class="headerlink" title="直接上代码"></a>直接上代码</h2><figure class="highlight mips"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">.text</span>  <span class="comment">#指示的是代码段</span></span><br><span class="line">    <span class="meta">.global</span> main  <span class="comment"># 定义全局的变量</span></span><br><span class="line">    .ent main  <span class="comment">#refer to entry</span></span><br><span class="line"><span class="symbol">main:</span>   <span class="keyword">nop </span>  <span class="comment">#什么也不做，空耗一个周期</span></span><br><span class="line">        li $<span class="built_in">v0</span>,<span class="number">8</span>   <span class="comment">#li load immediate 装入立即数</span></span><br><span class="line">        <span class="keyword">jr </span>$<span class="built_in">ra</span>   <span class="comment">#jr jump register 跳转到寄存器保存的地址中</span></span><br><span class="line">        <span class="comment"># ra -&gt; return address </span></span><br><span class="line">        <span class="meta">.end</span> main</span><br></pre></td></tr></table></figure>
+<h2 id="linux-的一些操作指令"><a href="#linux-的一些操作指令" class="headerlink" title="linux 的一些操作指令"></a>linux 的一些操作指令</h2><p><br>1. mkdir (make directory) # 创建目录<br><br>2. cd （change directory） #更改目录（即进入目录）<br><br>3. vi first.s (打开一个为first.v 的文件)<br><br>4. ls (list) #列出当前目录的子目录<br><br>5. gcc -g -o first first.s  //由于gcc 无法直接编译mips文档，故改用mips-linux-gnu-gcc 来替代gcc<br><br>6. ./first(执行当前目录下的first文件) .(表示当前目录)  ..(父目录)<br><br>7. echo $? （返回结果）</p>
+<h3 id="关于MIPS编译环境的搭建："><a href="#关于MIPS编译环境的搭建：" class="headerlink" title="关于MIPS编译环境的搭建："></a>关于MIPS编译环境的搭建：</h3><p><br>1、在 /etc/apt/sources.list 文件末尾添加下面的更新源：</p>
+<pre><code>deb http://ftp.de.debian.org/debian squeeze main 
+deb http://www.emdebian.org/debian/ squeeze main
+</code></pre><p>2、执行命令安装： </p>
+<pre><code>sudo apt-get update 
+sudo apt-get install emdebian-archive-keyring 
+sudo apt-get install linux-libc-dev-mips-cross 
+sudo apt-get install libc6-mips-cross libc6-dev-mips-cross 
+sudo apt-get install gcc-mips-linux-gnu
+</code></pre><p>安装完毕，就可以通过mips-linux-gnu-gcc等命令编译在mips平台的可执行程序。</p>
+<p>3、验证方法：</p>
+<pre><code>运行命令
+
+    mips-linux-gnu-gcc  -dumpmachine
+
+如果得到如下结果，则证明已经安装成功
+
+    mips-linux-gnu
+</code></pre><p>进行编译时，使用指令mips-linux-gnu-gcc -g -o xxx xxx.s即可。<br><br>但是此时执行代码后无法对得到的可执行文件进行执行，百度很长一段时间后终于发现是因为我用的是ubuntu的64位机器，所以无法运行32位的程序，因此需要可以匹配的32位库。具体方法如下：</p>
+<p>1.确定有一个64位架构的内核：</p>
+<pre><code>dpkg --print-architecture
+</code></pre><p>此时，会提示：amd64，表明确实是一个64位架构内核<br><br>2.确认打开多架构支持功能:</p>
+<pre><code>dpkg --print-foreign-architectures
+</code></pre><p>若此时输出为：i386 则说明打开了此功能，否则</p>
+<pre><code>sudo dpkg --add-architecture i386 
+sudo apt -get update
+</code></pre><p>来打开此功能<br><br><br>3、检查拥有的库文件是否需要更新版本:</p>
+<pre><code>sudo apt-get dist-upgrade
+</code></pre><p><br>4.执行下面指令：</p>
+<pre><code>sudo apt install lib32ncursesw5 lib32ncursesw5-dev
+</code></pre><p>执行之后应该来说就没有问题，但是结果我的电脑还是没有办法成功进行动态链接，陷入绝望<br><br>最后，在查了很长时间后，尝试安装了其它的编译环境，都还是不行。究其原因，是因为经过编译后的.out文件无法形成动态链接，链接中出现了很多问题，而又没有解决办法<br><br>故，用最后一个方法，即不设置动态链接，全部改用静态，将原编译指令改为：</p>
+<pre><code>mips-linux-gnu-gcc -static -o xxx xxx.s 
+</code></pre><p>再次执行，通过,利用 echo $?查看结果也显示正确，终于完成。</p>
+<h4 id="用GDB（GNU-Debuger）调试器可以查看寄存器的内容："><a href="#用GDB（GNU-Debuger）调试器可以查看寄存器的内容：" class="headerlink" title="用GDB（GNU Debuger）调试器可以查看寄存器的内容："></a>用GDB（GNU Debuger）调试器可以查看寄存器的内容：</h4><pre><code>$ gdb add
+</code></pre><h4 id="常用gdb-命令"><a href="#常用gdb-命令" class="headerlink" title="常用gdb 命令"></a>常用gdb 命令</h4><hr>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:center">作用</th>
+<th style="text-align:right">简化记号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td style="text-align:center">启动程序</td>
+<td style="text-align:right">————</td>
+</tr>
+<tr>
+<td>stepi</td>
+<td style="text-align:center">单步执行</td>
+<td style="text-align:right">————</td>
+</tr>
+<tr>
+<td>continue</td>
+<td style="text-align:center">继续执行</td>
+<td style="text-align:right">c</td>
+</tr>
+<tr>
+<td>quit</td>
+<td style="text-align:center">退出</td>
+<td style="text-align:right">q</td>
+</tr>
+<tr>
+<td>info all-registers</td>
+<td style="text-align:center">查看所有寄存器</td>
+<td style="text-align:right">i all</td>
+</tr>
+<tr>
+<td>info registers</td>
+<td style="text-align:center">查看通用寄存器</td>
+<td style="text-align:right">i r</td>
+</tr>
+<tr>
+<td>info registers t0 t1</td>
+<td style="text-align:center">查看指定寄存器</td>
+<td style="text-align:right">i r t0 t1</td>
+</tr>
+<tr>
+<td>info float</td>
+<td style="text-align:center">查看浮点寄存器</td>
+<td style="text-align:right">i float</td>
+</tr>
+<tr>
+<td>list</td>
+<td style="text-align:center">显示源码</td>
+<td style="text-align:right">l</td>
+</tr>
+<tr>
+<td>disassemble</td>
+<td style="text-align:center">反汇编</td>
+<td style="text-align:right">disas</td>
+</tr>
+<tr>
+<td>step</td>
+<td style="text-align:center">执行一条源码</td>
+<td style="text-align:right">s </td>
+</tr>
+<tr>
+<td>stepi</td>
+<td style="text-align:center">执行一条指令</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h4 id="数据移动指令"><a href="#数据移动指令" class="headerlink" title="数据移动指令"></a>数据移动指令</h4><pre><code>move $12 $13
+</code></pre><p>指令集中利用add也可以达到此功能</p>
+<pre><code>add $12 $13 ,0
+</code></pre><p>hi,lo 寄存器<br><figure class="highlight mips"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mfhi </span>$<span class="built_in">t0</span>   <span class="comment"># move from hi to $t0</span></span><br><span class="line"><span class="keyword">mflo </span>$<span class="built_in">t1</span>   <span class="comment"># move from lo to $t1</span></span><br><span class="line"><span class="keyword">mthi </span>$<span class="built_in">t0</span>    <span class="comment"># move $t0 to hi</span></span><br><span class="line"><span class="keyword">mtlo </span>$<span class="built_in">t1</span>    <span class="comment"># move $t1 to lo</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th style="text-align:right">位数</th>
+<th style="text-align:center">字节数</th>
+<th>记号</th>
+<th style="text-align:center">指令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td style="text-align:right">8</td>
+<td style="text-align:center">1</td>
+<td>b</td>
+<td style="text-align:center">lb # load byte</td>
+</tr>
+<tr>
+<td>halfworld</td>
+<td style="text-align:right">16</td>
+<td style="text-align:center">2</td>
+<td>h</td>
+<td style="text-align:center">lh # load halfbyte</td>
+</tr>
+<tr>
+<td>word</td>
+<td style="text-align:right">32</td>
+<td style="text-align:center">4</td>
+<td>w</td>
+<td style="text-align:center">lw # load word</td>
+</tr>
+<tr>
+<td>doubleworld</td>
+<td style="text-align:right">64</td>
+<td style="text-align:center">8</td>
+<td>d</td>
+<td style="text-align:center">ld # load doubleword</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><figure class="highlight mips"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">addi </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>          <span class="comment">#i -&gt; immediate</span></span><br><span class="line"><span class="keyword">addu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">addiu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>         <span class="comment">#u-&gt; unsigned </span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">subi </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>          <span class="comment">#i -&gt; immediate</span></span><br><span class="line"><span class="keyword">subu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">subiu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>         <span class="comment">#u-&gt; unsigned </span></span><br><span class="line"><span class="comment">#dsub,dsubu  #(for 64 bits(doubleword))</span></span><br></pre></td></tr></table></figure>
+<p>同理：对于乘除法&emsp;&emsp;有:  </p>
+<pre><code>mul , mult , dmult , dmultu
+div , divu , ddiv , ddivu    
+</code></pre><p>用gdb 调试 core dump 文件： </p>
+<pre><code>$coredumpclt gdb
+</code></pre><h3 id="下周的规划："><a href="#下周的规划：" class="headerlink" title="下周的规划："></a>下周的规划：</h3><pre><code>下周的主要学习方向是verilog和计算机组成原理中有关流水线的知识，同时，还是要继续复现vivado 的一些实验结果，争取能尽快赶上进度，同时，也要学习MIPS的指令。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/18/龙芯杯备战2/" data-id="cjv9as50n001jkstqmvj3vanp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Modern-Anglo-American-philosophy-translation-3" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/18/Modern-Anglo-American-philosophy-translation-3/" class="article-date">
@@ -147,7 +351,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/18/Modern-Anglo-American-philosophy-translation-3/" data-id="cjv0udyzl000458tqu59qw3mg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/18/Modern-Anglo-American-philosophy-translation-3/" data-id="cjv9as4z20005kstqckydhkb1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -218,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/17/Modern-Anglo-American-philosophy-translation-2/" data-id="cjv0udz1d001b58tqz22jpqdo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/17/Modern-Anglo-American-philosophy-translation-2/" data-id="cjv9as50g001ckstqpm2szl1h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -295,7 +499,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/15/Modern-Anglo-American-philosophy-translation-1/" data-id="cjv0udz1b001a58tqwfmnc5y0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/15/Modern-Anglo-American-philosophy-translation-1/" data-id="cjv9as50i001ekstqg2cezrm6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -371,7 +575,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/12/philosophy-of-science1/" data-id="cjv0udz1k001j58tq39jysbdr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/12/philosophy-of-science1/" data-id="cjv9as50e001akstqrpt6gjc2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li></ul>
@@ -420,7 +624,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/11/A-Winkle-in-Time/" data-id="cjv0udyzf000158tqjxd45zu1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/11/A-Winkle-in-Time/" data-id="cjv9as4yk0000kstqo9o1c2k2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English-learning/">English_learning</a></li></ul>
@@ -474,7 +678,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/09/龙芯杯备战1/" data-id="cjv0udz1m001l58tqci2vd8qr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/09/龙芯杯备战1/" data-id="cjv9as50q001mkstqb5zky7uw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
@@ -521,7 +725,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/27/hello-world/" data-id="cjv0udz14001258tqz8q0fbfl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/27/hello-world/" data-id="cjv9as4zr000okstqrrh00fpz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -549,7 +753,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-learning/">English_learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-system/">computer_system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-git/">github/git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paperReading/">paperReading</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-learning/">English_learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-system/">computer_system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-git/">github/git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paperReading/">paperReading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/use-of-Colab-deep-learning/">use of Colab(deep learning)</a></li></ul>
     </div>
   </div>
 
@@ -559,7 +763,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 10px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 16.67px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 13.33px;">paperReading</a>
+      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 10px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 16.67px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 13.33px;">paperReading</a> <a href="/tags/use-of-Colab-deep-learning/" style="font-size: 10px;">use of Colab(deep learning)</a>
     </div>
   </div>
 
@@ -568,7 +772,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
     </div>
   </div>
 
@@ -581,11 +785,15 @@
       <ul>
         
           <li>
-            <a href="/2019/04/28/recording2/">AlexNet</a>
+            <a href="/2019/05/04/colab/">colab</a>
           </li>
         
           <li>
             <a href="/2019/04/28/reading1/">BTS-DSN</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/28/recording2/">AlexNet</a>
           </li>
         
           <li>
@@ -594,10 +802,6 @@
         
           <li>
             <a href="/2019/03/28/ma_model_pre5/">ma_model_preparation5</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/22/ma_model_pre4/">ma_model_preparation1</a>
           </li>
         
       </ul>

@@ -69,10 +69,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-recording2" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-colab" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/04/28/recording2/" class="article-date">
-  <time datetime="2019-04-28T10:59:18.000Z" itemprop="datePublished">2019-04-28</time>
+    <a href="/2019/05/04/colab/" class="article-date">
+  <time datetime="2019-05-04T09:10:58.000Z" itemprop="datePublished">2019-05-04</time>
 </a>
     
   </div>
@@ -83,7 +83,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/28/recording2/">AlexNet</a>
+      <a class="article-title" href="/2019/05/04/colab/">colab</a>
     </h1>
   
 
@@ -91,78 +91,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Paper-Reading"><a href="#Paper-Reading" class="headerlink" title="Paper Reading"></a>Paper Reading</h1><h2 id="ImageNet-Classification-with-Deep-Convolutional-Neural-Networks"><a href="#ImageNet-Classification-with-Deep-Convolutional-Neural-Networks" class="headerlink" title="ImageNet Classification with Deep Convolutional Neural Networks"></a>ImageNet Classification with Deep Convolutional Neural Networks</h2><hr>
-<blockquote>
-<p><code>references</code>: you can read this papar via <a href="https://linkinghub.elsevier.com/retrieve/pii/S138650561831195X" target="_blank" rel="noopener">BTS-DSN</a> or star/fork this github <a href="https://github.com/guomugong/BTS-DSN" target="_blank" rel="noopener">project</a></p>
-</blockquote>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>To achieve a great result, using ImageNet LSVRC-2010 contest dataset, this network model ,including dropout and some other operations, is quite fancy.</p>
-<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><ol>
-<li><p>machine learning methods have achieved great result on small image dataset, but still been poor in big dataset.</p>
-</li>
-<li><p><code>To learn about thousands of objects from millions of images, we need a model with a large learning
-capacity.</code></p>
-</li>
-</ol>
-<h3 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h3><p><code>ImageNet is a dataset of over 15 million labeled high-resolution images belonging to roughly 22,000
-categories.</code><br>to show which dataset this paper trained to test its result.</p>
-<h3 id="3-The-Architecture"><a href="#3-The-Architecture" class="headerlink" title="3.The Architecture!!!"></a>3.The Architecture!!!</h3><h4 id="1-ReLU-Nonlinearity"><a href="#1-ReLU-Nonlinearity" class="headerlink" title="1.ReLU Nonlinearity"></a>1.ReLU Nonlinearity</h4><p>why we use ReLU instead of sigmoid or tanh function?<br><code>In terms of training time
-with gradient descent, these saturating nonlinearities
-are much slower than the non-saturating nonlinearity
-f(x) = max(0, x).</code></p>
-<blockquote>
-<p>ps : 当我们使用ReLU函数而不是sigmoid或者tanh函数进行激活时，主要原因在于其更快的速度。当然，我们可以使用Leaky ReLU甚至Randomized Leaky ReLU来防止其它一些问题。还有一些其它的变体，包括PReLU和RReLU。</p>
-</blockquote>
-<h4 id="2-Training-on-Multiple-GPUs"><a href="#2-Training-on-Multiple-GPUs" class="headerlink" title="2.Training on Multiple GPUs"></a>2.Training on Multiple GPUs</h4><p><code>Current GPUs
-are particularly well-suited to cross-GPU parallelization, as they are able to read from and write to
-one another’s memory directly, without going through host machine memory.</code>using a method to parallel the training process.Notice the parallelization scheme that is employed in this paper, which are quite inspirsed. </p>
-<blockquote>
-<p>ps : 在利用多个GPU进行并行处理的时候，需要注意之间的信息传递与交互。如何提高数据之间传输的效率，是能够提高计算速度的关键。</p>
-</blockquote>
-<h4 id="3-Local-Response-Normalization"><a href="#3-Local-Response-Normalization" class="headerlink" title="3.Local Response Normalization"></a>3.Local Response Normalization</h4><p>using local normalization to aid generation.</p>
-<script type="math/tex; mode=display">b_{x,y}^i=a_{x,y}^i/(k+\alpha \sum_{j=max(0,i-n/2)}^{min(N-1,i+n/2)}(a_{x,y}^i)^2)^\beta</script><blockquote>
-<p>ps : 这一小节主要讲解了这个normalization的方式，这个公式的结果展示出来的效果在于，提高泛化能力（即b能更好地代表一个连续性的结果）简单分析三个超参数,k为一个偏移量，使得本身有一个偏移；n在于考虑其连续的范围，考虑泛化能力，在于一个权衡，$<br>\beta$在于调整参数的大小，使得与模型契合。</p>
-</blockquote>
-<h4 id="4-Overlapping-Pooling"><a href="#4-Overlapping-Pooling" class="headerlink" title="4. Overlapping Pooling"></a>4. Overlapping Pooling</h4><p>using overlapping can make our pooling result more precise than non-overlapping.<code>We generally observe during training that models with overlapping
-pooling find it slightly more difficult to overfit</code> </p>
-<blockquote>
-<p>ps : 我们应该注意一个overlapping 与 non-overlapping之间的平衡，建议是首先不用overlapping，如果得到的结果处于欠拟合状态，则修改而使用overlapping pooling</p>
-</blockquote>
-<h4 id="5-Overall-Architecture"><a href="#5-Overall-Architecture" class="headerlink" title="5. Overall Architecture"></a>5. Overall Architecture</h4><p>the overall architecture will be shown in figure 1 below.</p>
-<blockquote>
-<p>ps : 主要理解这个结构一些中间的部分，需要掌握对其的理解并且与前面的相贯通。</p>
-</blockquote>
-<h3 id="Reducing-Overfitting"><a href="#Reducing-Overfitting" class="headerlink" title="Reducing Overfitting"></a>Reducing Overfitting</h3><p>too many parameters in this model(60 million) are not insufficient to learn.</p>
-<h4 id="1-Data-Augmentation"><a href="#1-Data-Augmentation" class="headerlink" title="1.Data Augmentation"></a>1.Data Augmentation</h4><ol>
-<li><code>The first form of data augmentation consists of generating image translations and horizontal reflections.</code></li>
-<li><code>The second form of data augmentation consists of altering the intensities of the RGB channels in
-training images.</code>using PCA on the set.</li>
-</ol>
-<script type="math/tex; mode=display">[p1,p2,p3][\alpha_1 \lambda_1,\alpha_2 \lambda_2,\alpha_3 \lambda_3]^T</script><blockquote>
-<p>ps: 由于原来的网络模型过深，所以需要避免过拟合，第一种方法就是增加数据量，可以通过对图像的一些处理来进行，包括进行图像的裁剪和对颜色进行处理。</p>
-</blockquote>
-<h4 id="2-Dropout"><a href="#2-Dropout" class="headerlink" title="2.Dropout"></a>2.Dropout</h4><p>dropout 是一个重要的内容，我在附加的部分主要说明，这里就直接跳过。这里也只是运用了这种方法，没有做什么修改。</p>
-<h3 id="5-Details-of-learning"><a href="#5-Details-of-learning" class="headerlink" title="5.Details of learning"></a>5.Details of learning</h3><p><code>We trained our models using stochastic gradient descent
-with a batch size of 128 examples, momentum of 0.9, and
-weight decay of 0.0005.</code></p>
-<p><code>the update relu for weight w was</code>:</p>
-<script type="math/tex; mode=display">v_{i+1} := 0.9v_i-0.0005 \epsilon w_i - \epsilon <\frac{\partial L}{\partial w}|_{w_i}>_{D_i}</script><script type="math/tex; mode=display">w_{i+1} := w_i+v_{i+1}</script><h3 id="6-Results"><a href="#6-Results" class="headerlink" title="6.Results"></a>6.Results</h3><p>this part is not so necessary, you should look through the paper to learn the result.</p>
-<h3 id="7-Discussion"><a href="#7-Discussion" class="headerlink" title="7.Discussion"></a>7.Discussion</h3><p><code>the depth really is important for achieving our results</code>.you can see that, from the discussion in this paper, deep network on image classfication have been aroused. </p>
-<h3 id="my-conclusion"><a href="#my-conclusion" class="headerlink" title="my conclusion"></a>my conclusion</h3><p>这篇文章主要提出了AlexNet这种结构，其主要有几个主要的因素构成：</p>
-<ol>
-<li>使用两个GPU交互训练的网络</li>
-<li>使用dropout方法进行正则化的方法</li>
-<li>使用深层的深度网络进行学习（这是使用深度神经网络的一个重要的开端，它有后来的工作很大的启发作用）</li>
-<li>使用data augmentation来进行数据的预处理，防止过拟合</li>
-<li>使用了normalization方法来处理原来的数据，同时采用ReLU激活函数，使得整个计算过程更加快捷，且没有降低最终的效果。</li>
-</ol>
-<h3 id="发散"><a href="#发散" class="headerlink" title="发散"></a>发散</h3><h4 id="1-dropout"><a href="#1-dropout" class="headerlink" title="1. dropout"></a>1. dropout</h4><h4 id="2-深层的神经网络的问题及其解决"><a href="#2-深层的神经网络的问题及其解决" class="headerlink" title="2.深层的神经网络的问题及其解决"></a>2.深层的神经网络的问题及其解决</h4>
+        <h1 id="Colab的使用"><a href="#Colab的使用" class="headerlink" title="Colab的使用"></a>Colab的使用</h1><hr>
+<h2 id="Colab介绍"><a href="#Colab介绍" class="headerlink" title="Colab介绍"></a>Colab介绍</h2><p>好东西！！ 贫穷的人民，想拥有GPU或者TPU的难得的方式<br>对于一些基础的东西，都不加以介绍了，如果有兴趣，可以自己去查一下，或者ucadity的tensorflow教程里面就要用到这个东西，直接视频观看即可。<br>这里直接记录配置方式</p>
+<h2 id=""><a href="#" class="headerlink" title=" "></a> </h2><p>首先选择修改，改为GPU或者TPU</p>
+<p>然后添加如下代码后执行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">!apt-get install -y -qq software-properties-common python-software-properties module-init-tools</span><br><span class="line">!add-apt-repository -y ppa:alessandro-strada/ppa <span class="number">2</span>&gt;&amp;<span class="number">1</span> &gt; /dev/null</span><br><span class="line">!apt-get update -qq <span class="number">2</span>&gt;&amp;<span class="number">1</span> &gt; /dev/null</span><br><span class="line">!apt-get -y install -qq google-drive-ocamlfuse fuse</span><br><span class="line"><span class="keyword">from</span> google.colab <span class="keyword">import</span> auth</span><br><span class="line">auth.authenticate_user()</span><br><span class="line"><span class="keyword">from</span> oauth2client.client <span class="keyword">import</span> GoogleCredentials</span><br><span class="line">creds = GoogleCredentials.get_application_default()</span><br><span class="line"><span class="keyword">import</span> getpass</span><br><span class="line">!google-drive-ocamlfuse -headless -id=&#123;creds.client_id&#125; -secret=&#123;creds.client_secret&#125; &lt; /dev/null <span class="number">2</span>&gt;&amp;<span class="number">1</span> | grep URL</span><br><span class="line">vcode = getpass.getpass()</span><br><span class="line">!echo &#123;vcode&#125; | google-drive-ocamlfuse -headless -id=&#123;creds.client_id&#125; -secret=&#123;creds.client_secret&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后挂载<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!mkdir -p drive</span><br><span class="line">!google-drive-ocamlfuse drive</span><br></pre></td></tr></table></figure></p>
+<p>如果需要安装包的时候，比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install http://download.pytorch.org/whl/cu80/torch<span class="number">-0.3</span><span class="number">.1</span>-cp36-cp36m-linux_x86_64.whl torchvision</span><br></pre></td></tr></table></figure></p>
+<p>这样安装就ok了</p>
+<p>当然在执行之前还需要更改目录：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.chdir(<span class="string">'drive/.../...'</span>)<span class="comment">#进入你希望进入的目录</span></span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/28/recording2/" data-id="cjv0udz17001558tqkqeq7fob" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/04/colab/" data-id="cjv9as4zl000jkstq4vbiyzks" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paperReading/">paperReading</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/use-of-Colab-deep-learning/">use of Colab(deep learning)</a></li></ul>
 
     </footer>
   </div>
@@ -254,7 +198,109 @@ pixel.</code>(be seen as a binary classfication problem).they iemployed six eval
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/28/reading1/" data-id="cjv0udz19001758tqfpbhcwwy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/28/reading1/" data-id="cjv9as50a0015kstqb3zwxrnc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paperReading/">paperReading</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-recording2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/28/recording2/" class="article-date">
+  <time datetime="2019-04-28T10:59:18.000Z" itemprop="datePublished">2019-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/28/recording2/">AlexNet</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Paper-Reading"><a href="#Paper-Reading" class="headerlink" title="Paper Reading"></a>Paper Reading</h1><h2 id="ImageNet-Classification-with-Deep-Convolutional-Neural-Networks"><a href="#ImageNet-Classification-with-Deep-Convolutional-Neural-Networks" class="headerlink" title="ImageNet Classification with Deep Convolutional Neural Networks"></a>ImageNet Classification with Deep Convolutional Neural Networks</h2><hr>
+<blockquote>
+<p><code>references</code>: you can read this papar via <a href="https://linkinghub.elsevier.com/retrieve/pii/S138650561831195X" target="_blank" rel="noopener">BTS-DSN</a> or star/fork this github <a href="https://github.com/guomugong/BTS-DSN" target="_blank" rel="noopener">project</a></p>
+</blockquote>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>To achieve a great result, using ImageNet LSVRC-2010 contest dataset, this network model ,including dropout and some other operations, is quite fancy.</p>
+<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><ol>
+<li><p>machine learning methods have achieved great result on small image dataset, but still been poor in big dataset.</p>
+</li>
+<li><p><code>To learn about thousands of objects from millions of images, we need a model with a large learning
+capacity.</code></p>
+</li>
+</ol>
+<h3 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h3><p><code>ImageNet is a dataset of over 15 million labeled high-resolution images belonging to roughly 22,000
+categories.</code><br>to show which dataset this paper trained to test its result.</p>
+<h3 id="3-The-Architecture"><a href="#3-The-Architecture" class="headerlink" title="3.The Architecture!!!"></a>3.The Architecture!!!</h3><h4 id="1-ReLU-Nonlinearity"><a href="#1-ReLU-Nonlinearity" class="headerlink" title="1.ReLU Nonlinearity"></a>1.ReLU Nonlinearity</h4><p>why we use ReLU instead of sigmoid or tanh function?<br><code>In terms of training time
+with gradient descent, these saturating nonlinearities
+are much slower than the non-saturating nonlinearity
+f(x) = max(0, x).</code></p>
+<blockquote>
+<p>ps : 当我们使用ReLU函数而不是sigmoid或者tanh函数进行激活时，主要原因在于其更快的速度。当然，我们可以使用Leaky ReLU甚至Randomized Leaky ReLU来防止其它一些问题。还有一些其它的变体，包括PReLU和RReLU。</p>
+</blockquote>
+<h4 id="2-Training-on-Multiple-GPUs"><a href="#2-Training-on-Multiple-GPUs" class="headerlink" title="2.Training on Multiple GPUs"></a>2.Training on Multiple GPUs</h4><p><code>Current GPUs
+are particularly well-suited to cross-GPU parallelization, as they are able to read from and write to
+one another’s memory directly, without going through host machine memory.</code>using a method to parallel the training process.Notice the parallelization scheme that is employed in this paper, which are quite inspirsed. </p>
+<blockquote>
+<p>ps : 在利用多个GPU进行并行处理的时候，需要注意之间的信息传递与交互。如何提高数据之间传输的效率，是能够提高计算速度的关键。</p>
+</blockquote>
+<h4 id="3-Local-Response-Normalization"><a href="#3-Local-Response-Normalization" class="headerlink" title="3.Local Response Normalization"></a>3.Local Response Normalization</h4><p>using local normalization to aid generation.</p>
+<script type="math/tex; mode=display">b_{x,y}^i=a_{x,y}^i/(k+\alpha \sum_{j=max(0,i-n/2)}^{min(N-1,i+n/2)}(a_{x,y}^i)^2)^\beta</script><blockquote>
+<p>ps : 这一小节主要讲解了这个normalization的方式，这个公式的结果展示出来的效果在于，提高泛化能力（即b能更好地代表一个连续性的结果）简单分析三个超参数,k为一个偏移量，使得本身有一个偏移；n在于考虑其连续的范围，考虑泛化能力，在于一个权衡，$<br>\beta$在于调整参数的大小，使得与模型契合。</p>
+</blockquote>
+<h4 id="4-Overlapping-Pooling"><a href="#4-Overlapping-Pooling" class="headerlink" title="4. Overlapping Pooling"></a>4. Overlapping Pooling</h4><p>using overlapping can make our pooling result more precise than non-overlapping.<code>We generally observe during training that models with overlapping
+pooling find it slightly more difficult to overfit</code> </p>
+<blockquote>
+<p>ps : 我们应该注意一个overlapping 与 non-overlapping之间的平衡，建议是首先不用overlapping，如果得到的结果处于欠拟合状态，则修改而使用overlapping pooling</p>
+</blockquote>
+<h4 id="5-Overall-Architecture"><a href="#5-Overall-Architecture" class="headerlink" title="5. Overall Architecture"></a>5. Overall Architecture</h4><p>the overall architecture will be shown in figure 1 below.</p>
+<blockquote>
+<p>ps : 主要理解这个结构一些中间的部分，需要掌握对其的理解并且与前面的相贯通。</p>
+</blockquote>
+<h3 id="Reducing-Overfitting"><a href="#Reducing-Overfitting" class="headerlink" title="Reducing Overfitting"></a>Reducing Overfitting</h3><p>too many parameters in this model(60 million) are not insufficient to learn.</p>
+<h4 id="1-Data-Augmentation"><a href="#1-Data-Augmentation" class="headerlink" title="1.Data Augmentation"></a>1.Data Augmentation</h4><ol>
+<li><code>The first form of data augmentation consists of generating image translations and horizontal reflections.</code></li>
+<li><code>The second form of data augmentation consists of altering the intensities of the RGB channels in
+training images.</code>using PCA on the set.</li>
+</ol>
+<script type="math/tex; mode=display">[p1,p2,p3][\alpha_1 \lambda_1,\alpha_2 \lambda_2,\alpha_3 \lambda_3]^T</script><blockquote>
+<p>ps: 由于原来的网络模型过深，所以需要避免过拟合，第一种方法就是增加数据量，可以通过对图像的一些处理来进行，包括进行图像的裁剪和对颜色进行处理。</p>
+</blockquote>
+<h4 id="2-Dropout"><a href="#2-Dropout" class="headerlink" title="2.Dropout"></a>2.Dropout</h4><p>dropout 是一个重要的内容，我在附加的部分主要说明，这里就直接跳过。这里也只是运用了这种方法，没有做什么修改。</p>
+<h3 id="5-Details-of-learning"><a href="#5-Details-of-learning" class="headerlink" title="5.Details of learning"></a>5.Details of learning</h3><p><code>We trained our models using stochastic gradient descent
+with a batch size of 128 examples, momentum of 0.9, and
+weight decay of 0.0005.</code></p>
+<p><code>the update relu for weight w was</code>:</p>
+<script type="math/tex; mode=display">v_{i+1} := 0.9v_i-0.0005 \epsilon w_i - \epsilon <\frac{\partial L}{\partial w}|_{w_i}>_{D_i}</script><script type="math/tex; mode=display">w_{i+1} := w_i+v_{i+1}</script><h3 id="6-Results"><a href="#6-Results" class="headerlink" title="6.Results"></a>6.Results</h3><p>this part is not so necessary, you should look through the paper to learn the result.</p>
+<h3 id="7-Discussion"><a href="#7-Discussion" class="headerlink" title="7.Discussion"></a>7.Discussion</h3><p><code>the depth really is important for achieving our results</code>.you can see that, from the discussion in this paper, deep network on image classfication have been aroused. </p>
+<h3 id="my-conclusion"><a href="#my-conclusion" class="headerlink" title="my conclusion"></a>my conclusion</h3><p>这篇文章主要提出了AlexNet这种结构，其主要有几个主要的因素构成：</p>
+<ol>
+<li>使用两个GPU交互训练的网络</li>
+<li>使用dropout方法进行正则化的方法</li>
+<li>使用深层的深度网络进行学习（这是使用深度神经网络的一个重要的开端，它有后来的工作很大的启发作用）</li>
+<li>使用data augmentation来进行数据的预处理，防止过拟合</li>
+<li>使用了normalization方法来处理原来的数据，同时采用ReLU激活函数，使得整个计算过程更加快捷，且没有降低最终的效果。</li>
+</ol>
+<h3 id="发散"><a href="#发散" class="headerlink" title="发散"></a>发散</h3><h4 id="1-dropout"><a href="#1-dropout" class="headerlink" title="1. dropout"></a>1. dropout</h4><h4 id="2-深层的神经网络的问题及其解决"><a href="#2-深层的神经网络的问题及其解决" class="headerlink" title="2.深层的神经网络的问题及其解决"></a>2.深层的神经网络的问题及其解决</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/28/recording2/" data-id="cjv9as50d0018kstqmcym124v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paperReading/">paperReading</a></li></ul>
@@ -305,7 +351,7 @@ pixel.</code>(be seen as a binary classfication problem).they iemployed six eval
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/23/龙芯杯6/" data-id="cjv0udz1f001e58tqlwfr2vi7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/23/龙芯杯6/" data-id="cjv9as515001xkstqq42ab1t1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
@@ -410,7 +456,7 @@ subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/28/ma_model_pre5/" data-id="cjv0udz12001158tqtk13ct6k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/28/ma_model_pre5/" data-id="cjv9as5050010kstqysrsk7j8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -473,7 +519,7 @@ subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/22/ma_model_pre4/" data-id="cjv0udz11001058tqhwx87kp0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/22/ma_model_pre4/" data-id="cjv9as4zz000wkstqbln8fq3l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -525,7 +571,7 @@ subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="cjv0udz0z000x58tqduuypyhi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="cjv9as5080013kstqdm2h9twm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -590,7 +636,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/09/ma-model-preparation1/" data-id="cjv0udz0x000v58tq5i0xy9qx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/09/ma-model-preparation1/" data-id="cjv9as502000ykstqsexbm8fo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -653,7 +699,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" data-id="cjv0udyzp000858tqnbtzc7s0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" data-id="cjv9as4yp0001kstqd1obzk5x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -723,65 +769,10 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" data-id="cjv0udyzm000558tqnaflnimg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" data-id="cjv9as4z50008kstqwhyi8j8l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-github-use" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/01/github-use/" class="article-date">
-  <time datetime="2018-12-01T07:50:10.000Z" itemprop="datePublished">2018-12-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/github-use/">github_use</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="github-使用，创建代码库并使用"><a href="#github-使用，创建代码库并使用" class="headerlink" title="github 使用，创建代码库并使用"></a>github 使用，创建代码库并使用</h2><hr>
-<h3 id="导入库"><a href="#导入库" class="headerlink" title="导入库"></a>导入库</h3><pre><code>git clone + 地址  将github中的文件目录及库拷贝
-</code></pre><h3 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h3><pre><code>git init 用于生成本地的git 管理
-git add . 添加文件到git的本地中 如果想添加某个特定的文件，只需把.换成这个特定的文件名即可
-输入git commit -m &#39;first commit&#39;，表示你对这次提交的注释，双引号里面的内容可以根据个人的需要修改。 
-git remote add origin https://自己的仓库url地址
-移除origin ———————— git remote rm origin 
-git push -u origin master 上传到github 中
-(当使用上面push时遇到错误时，1.git pull origin master
-2.git pull --rebase origin master)
-语句1.代表先进行pull，即下拉之后再进行上传
-语句2.代表当本地与最新的库不同时，先进行保留，再上传。
-</code></pre><h3 id="后续改动及理解"><a href="#后续改动及理解" class="headerlink" title="后续改动及理解"></a>后续改动及理解</h3><pre><code>git pull ,拉取当前分支最新代码
-利用git status 查看git 仓库状态
-git add * 更新全部 或者用git add -all
-git push （在后续过程中，直接git push）即可
-</code></pre><h4 id="附"><a href="#附" class="headerlink" title="附"></a>附</h4><p><a href="https://blog.csdn.net/u012661010/article/details/73433872/" target="_blank" rel="noopener">可参考博客</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/01/github-use/" data-id="cjv0udz0q000p58tq2qkjtqys" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-git/">github/git</a></li></ul>
 
     </footer>
   </div>
@@ -808,7 +799,7 @@ git push （在后续过程中，直接git push）即可
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-learning/">English_learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-system/">computer_system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-git/">github/git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paperReading/">paperReading</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-learning/">English_learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-system/">computer_system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-git/">github/git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paperReading/">paperReading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/use-of-Colab-deep-learning/">use of Colab(deep learning)</a></li></ul>
     </div>
   </div>
 
@@ -818,7 +809,7 @@ git push （在后续过程中，直接git push）即可
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 10px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 16.67px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 13.33px;">paperReading</a>
+      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 10px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 16.67px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 13.33px;">paperReading</a> <a href="/tags/use-of-Colab-deep-learning/" style="font-size: 10px;">use of Colab(deep learning)</a>
     </div>
   </div>
 
@@ -827,7 +818,7 @@ git push （在后续过程中，直接git push）即可
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
     </div>
   </div>
 
@@ -840,11 +831,15 @@ git push （在后续过程中，直接git push）即可
       <ul>
         
           <li>
-            <a href="/2019/04/28/recording2/">AlexNet</a>
+            <a href="/2019/05/04/colab/">colab</a>
           </li>
         
           <li>
             <a href="/2019/04/28/reading1/">BTS-DSN</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/28/recording2/">AlexNet</a>
           </li>
         
           <li>
@@ -853,10 +848,6 @@ git push （在后续过程中，直接git push）即可
         
           <li>
             <a href="/2019/03/28/ma_model_pre5/">ma_model_preparation5</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/22/ma_model_pre4/">ma_model_preparation1</a>
           </li>
         
       </ul>
