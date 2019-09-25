@@ -69,6 +69,256 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ma_model_pre3" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/15/ma_model_pre3/" class="article-date">
+  <time datetime="2019-03-15T02:05:27.000Z" itemprop="datePublished">2019-03-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/15/ma_model_pre3/">ma_model_preparation2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-蒙特卡洛方法"><a href="#1-蒙特卡洛方法" class="headerlink" title="1. 蒙特卡洛方法"></a>1. 蒙特卡洛方法</h3><h4 id="（1）基本思路："><a href="#（1）基本思路：" class="headerlink" title="（1）基本思路："></a>（1）基本思路：</h4><p>蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。</p>
+<h4 id="（2）一种应用：利用蒙特卡洛方法求积分："><a href="#（2）一种应用：利用蒙特卡洛方法求积分：" class="headerlink" title="（2）一种应用：利用蒙特卡洛方法求积分："></a>（2）一种应用：利用蒙特卡洛方法求积分：</h4><p>假设我们需要求这样一个图的积分<br><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%861.png?raw=true" alt="求积分图1"><br>那么实际上，我们所需要的过程可以表示如下<br><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%862.png?raw=true" alt="求积分过程"></p>
+<p>从这两个过程中，我们可以看到，实际上对于积分的求解可以简化为这样一个过程：<br><br>假设要计算的积分如下：</p>
+<script type="math/tex; mode=display">I=\int_{a}^{b}g(x)\text{d}x</script><p>那么如果选择一个概率密度函数为$f_X(x)$的方式进行抽样,并且满足$\int_{a}^{b}f_X(x)\text{d}x=1$,那么令$g^*(x)=\frac{g(x)}{f_X(x)}$,原有的积分可以写成如下形式：</p>
+<script type="math/tex; mode=display">I=\int_{a}^{b}g^*(x)f_X(x)\text{d}x</script><p>故，我们求积分的步骤为：<br><br><br>1.产生服从分布律$F_X$的随机变量$X_i(i=1,2,…,N)$</p>
+<p>2.计算均值</p>
+<script type="math/tex; mode=display">\overline{I}=\frac{1}{N}\sum_{i=1}^ng^*(X_i)</script><p>一般采用均匀分布求解</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calpai</span><span class="params">()</span>:</span></span><br><span class="line">    n = <span class="number">1000000</span></span><br><span class="line">    r = <span class="number">1.0</span></span><br><span class="line">    a, b = (<span class="number">0.0</span>, <span class="number">0.0</span>)</span><br><span class="line">    x_neg, x_pos = a - r, a + r</span><br><span class="line">    y_neg, y_pos = b - r, b + r</span><br><span class="line"></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n):</span><br><span class="line">        x = random.uniform(x_neg, x_pos)</span><br><span class="line">        y = random.uniform(y_neg, y_pos)</span><br><span class="line">        <span class="keyword">if</span> x*x + y*y &lt;= <span class="number">1.0</span>:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> (count / float(n)) * <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-蒙特卡洛树搜索"><a href="#3-蒙特卡洛树搜索" class="headerlink" title="(3)蒙特卡洛树搜索"></a>(3)蒙特卡洛树搜索</h4><p>as we know, an important method used in alpha go and alpha zero is Monte Carlo Tree search. So if you want to know more about this method, you can search this <a href="https://blog.csdn.net/qq_16137569/article/details/83543641" target="_blank" rel="noopener">website(Monte Carlo Tree search)</a> and get some knowledge yourself. also, you can get information in almost every game theory book.And try to get the big idea in Monte Carlo Tree search.</p>
+<h3 id="2-马尔科夫链"><a href="#2-马尔科夫链" class="headerlink" title="2. 马尔科夫链"></a>2. 马尔科夫链</h3><h5 id="2-1-马尔可夫链的定义"><a href="#2-1-马尔可夫链的定义" class="headerlink" title="2.1 马尔可夫链的定义"></a>2.1 马尔可夫链的定义</h5><p>现实世界中有很多这样的现象：某一系统在已知现在情况的条件下，系统未来时刻<br>的情况只与现在有关，而与过去的历史无直接关系。比如，研究一个商店的累计销售额，<br>如果现在时刻的累计销售额已知，则未来某一时刻的累计销售额与现在时刻以前的任一<br>时刻累计销售额无关。上节中的几个例子也均属此类。描述这类随机现象的数学模型称<br>为马氏模型。</p>
+<p>对于马尔科夫链的数学定义，可以直接参照<a href="http://vdisk.weibo.com/s/D8miedWz2uXT" target="_blank" rel="noopener">《数学建模算法与应用》（司守奎）</a>。</p>
+<h5 id="2-2-马尔科夫链的性质"><a href="#2-2-马尔科夫链的性质" class="headerlink" title="2.2 马尔科夫链的性质"></a>2.2 马尔科夫链的性质</h5><p>转移概率矩阵及柯尔莫哥洛夫定理</p>
+<p>对于这个性质，可以查看我给出的<a href="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/learning_code/morkov.py" target="_blank" rel="noopener">代码morkov.py</a>进行了解</p>
+<h5 id="2-3-马尔科夫链的应用"><a href="#2-3-马尔科夫链的应用" class="headerlink" title="2.3 马尔科夫链的应用"></a>2.3 马尔科夫链的应用</h5><p>虽然马尔科夫链的性质极其简单，但是其应用广泛，有着极大的意义。<br>应用马尔可夫链的计算方法进行马尔可夫分析，主要目的是根据某些变量现在的情<br>况及其变动趋向，来预测它在未来某特定区间可能产生的变动，作为提供某种决策的依<br>据。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="ck0z6d1pa000zp8tqszud8yfd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ma-model-preparation1" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/09/ma-model-preparation1/" class="article-date">
+  <time datetime="2019-03-09T02:05:27.000Z" itemprop="datePublished">2019-03-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/09/ma-model-preparation1/">ma_model_preparation1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="math-modeling-competition-for-2019-preparation"><a href="#math-modeling-competition-for-2019-preparation" class="headerlink" title="math_modeling competition for 2019 preparation"></a>math_modeling competition for 2019 preparation</h1><hr>
+<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract:"></a>abstract:</h2><pre><code>I&#39;d like to record my preparation for this competition, including some tricks on coding, and comperhension on some important math models and algorithms. Also, I&#39;d like to share some interesting tools we can use, such as Gephi, Citespace, and so on.
+Meanwhile, I may record some basic knowledge on machine learning and data mining, even includes tensorflow and pytorch framework. So this series will be a hodgepodge of quite many things and knowledge. I hope I can truly learn something by doing so, and also help you work better.
+</code></pre><h2 id="part-one"><a href="#part-one" class="headerlink" title="part one"></a>part one</h2><h3 id="EA-Evolutionary-Algorithms"><a href="#EA-Evolutionary-Algorithms" class="headerlink" title="EA (Evolutionary Algorithms)"></a>EA (Evolutionary Algorithms)</h3><h4 id="1-introduce"><a href="#1-introduce" class="headerlink" title="1. introduce"></a>1. introduce</h4><p>there are so many algorithms use the idea of evolution, and in the competition of math modeling, it’s so important that almost every time, we can slove a problem using it. </p>
+<p>these algorithms include genetic algorithm, ant colony algorithm, Annealing Algorithm, neural network, tabu search and so on. I’d like to put focus on genetic algorithm this time, but I’ll also give some abstract on other algorithms. Also, codes will be shared on this <a href="https://github.com/leliyliu/ICM-MCM-preparation" target="_blank" rel="noopener">website</a> </p>
+<h4 id="2-genetic-algorithm"><a href="#2-genetic-algorithm" class="headerlink" title="2. genetic algorithm"></a>2. genetic algorithm</h4><h5 id="1-流程图-flow-chart"><a href="#1-流程图-flow-chart" class="headerlink" title="1. 流程图(flow chart)"></a>1. 流程图(flow chart)</h5><p><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/gen1.jpg?raw=true" alt="流程图"></p>
+<h5 id="2-problem-needs-sloving"><a href="#2-problem-needs-sloving" class="headerlink" title="2.problem needs sloving"></a>2.problem needs sloving</h5><pre><code>maxf(x1,x2) = 21.5+x1*sin(4*pi*x1)+x2*sin(20*pi*x2)
+
+                     s.t. -3.0&lt;=x1&lt;=12.1
+
+                            4.1&lt;=x2&lt;=5.8
+</code></pre><p>so we’d like to slove this problem using genetic algorithm, to better understand the process of this great algorithm.</p>
+<h5 id="3-the-big-ideas"><a href="#3-the-big-ideas" class="headerlink" title="3.the big ideas"></a>3.the big ideas</h5><p>basic ideas:</p>
+<ol>
+<li>适应度函数(to compute the performance)<br> <br>适应度函数能够有效帮助后续的选择过程，进行有条件的保留与选择，帮助进行有效的迭代</li>
+<li>交叉(crossover)<br> <br>针对不同的问题有不同的交叉方式，在交叉过程中需要注意保持原有数据的真实性，不能出现超越规则之外的数据。通常，我们设置crossover rate=0.8，能够有效地帮助进行迭代，较快且较好地收敛</li>
+<li>变异(mutation)<br> <br>我们一般设置mutation rete=1/L(L: len of vector)，变异能减少收敛到局部最优的可能性，使得整个算法有更好的优化性，能够得到较好的结果</li>
+<li>选择(selection)<br> <br>选择是遗传算法中一个非常重要的步骤，通常，选择的方式有多种(including roulette wheel selection, rank selection, tournament selection and Elitism + Offspring selection )，根据不同的问题，采用不同的选择方式，能够得到较好的结果。在这个问题中，我们采用轮盘赌算法来进行选择（关于轮盘赌算法的讲解，你可以查看<a href="https://blog.csdn.net/pymqq/article/details/51375522" target="_blank" rel="noopener">轮盘赌算法</a>)<h5 id="4-the-code-on-this-problem"><a href="#4-the-code-on-this-problem" class="headerlink" title="4. the code on this problem"></a>4. the code on this problem</h5>you can find the code on my github repository <a href="https://github.com/leliyliu/ICM-MCM-preparation" target="_blank" rel="noopener">MCM/ICM preparation</a>, I save the python code on the floder learning_code.<br>Because of the code is a little complicated, so maybe I’ll write down another blog or ipython to denote some details about this process. </li>
+</ol>
+<h4 id="other-basic-algorithms"><a href="#other-basic-algorithms" class="headerlink" title="other basic algorithms"></a>other basic algorithms</h4><h5 id="1-粒子群算法（蚁群算法）"><a href="#1-粒子群算法（蚁群算法）" class="headerlink" title="1. 粒子群算法（蚁群算法）"></a>1. 粒子群算法（蚁群算法）</h5><p>在使用蚁群算法求解现实问题时，先生成具有一定数量蚂蚁的蚁群，让每一只蚂<br>蚁建立一个解或解的一部分，每只人工蚁从问题的初始状态出发，根据“激素”浓度来<br>选择下一个要转移到的状态，直到建立起一个解，每只蚂蚁根据所找到的解的好坏程度<br>在所经过的状态上释放与解的质量成正比例的“激素”。之后，每只蚂蚁又开始新的求<br>解过程，直到寻找到满意解。为避免停滞现象，引入了激素更新机制。</p>
+<h5 id="2-遗传退火算法"><a href="#2-遗传退火算法" class="headerlink" title="2. 遗传退火算法"></a>2. 遗传退火算法</h5><p>模拟退火算法得益于材料的统计力学的研究成果。统计力学表明材料中粒子的不<br>同结构对应于粒子的不同能量水平。在高温条件下，粒子的能量较高，可以自由运动和<br>重新排列。在低温条件下，粒子能量较低。如果从高温开始，非常缓慢地降温（这个过<br>程被称为退火），粒子就可以在每个温度下达到热平衡。当系统完全被冷却时，最终形<br>成处于低能状态的晶体。</p>
+<p>在模拟退火算法中应注意以下问题：<br>（1）理论上，降温过程要足够缓慢，要使得在每一温度下达到热平衡。但在计算<br>机实现中，如果降温速度过缓，所得到的解的性能会较为令人满意，但是算法会太慢，<br>相对于简单的搜索算法不具有明显优势。如果降温速度过快，很可能最终得不到全局最<br>优解。因此使用时要综合考虑解的性能和算法速度，在两者之间采取一种折衷。<br>（2）要确定在每一温度下状态转换的结束准则。实际操作可以考虑当连续m 次的<br>转换过程没有使状态发生变化时结束该温度下的状态转换。最终温度的确定可以提前定<br>为一个较小的值e T ，或连续几个温度下转换过程没有使状态发生变化算法就结束。<br>（3）选择初始温度和确定某个可行解的邻域的方法也要恰当。</p>
+<h5 id="3-禁忌搜索"><a href="#3-禁忌搜索" class="headerlink" title="3. 禁忌搜索"></a>3. 禁忌搜索</h5><p>禁忌搜索算法是组合优化算法的一种，是局部搜索算法的扩展。禁忌搜索算法是人<br>工智能在组合优化算法中的一个成功应用。禁忌搜索算法的特点是采用了禁忌技术。所<br>谓禁忌就是禁止重复前面的工作。禁忌搜索算法用一个禁忌表记录下已经到达过的局部<br>最优点，在下一次搜索中，利用禁忌表中的信息不再或有选择地搜索这些点。<br>禁忌搜索算法实现的技术问题是算法的关键。禁忌搜索算法涉及侯选集合、禁忌<br>对象、评价函数、特赦规则、记忆频率信息等概念。</p>
+<h5 id="4-神经网络"><a href="#4-神经网络" class="headerlink" title="4. 神经网络"></a>4. 神经网络</h5><p>由于神经网络有极大的用途，一般会用其来进行深度学习，所以如果有时间的话，我会更新关于深度学习的部分博客用以记录和交流，故神经网络在这里不再提及。<br><br>当然，对于神经网络的搭建，现在已经有许多开源的框架，我在后续的博客中将使用pytorch框架，并尝试使用fastai 来实现相关的一些项目。</p>
+<h5 id="5-all-in-all"><a href="#5-all-in-all" class="headerlink" title="5. all in all"></a>5. all in all</h5><p>我们已经看到了一个简单的遗传算法，就要使用上百行的python代码来实现，那么显然，既然在matlab 中有实现相关进化算法的框架，在python中同样也有，推荐的一个是geatpy。<br>你可以使用  </p>
+<pre><code>pip install geatpy
+</code></pre><p>来安装它。同时，你也可以通过这个网站<a href="https://github.com/geatpy-dev/geatpy" target="_blank" rel="noopener">geatpy</a>来学习具体的框架，希望它能帮助你更好地掌握进化算法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/09/ma-model-preparation1/" data-id="ck0z6d1p6000vp8tqtacr5xnl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Modern-Anglo-American-philosophy-translation-11" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" class="article-date">
+  <time datetime="2018-12-06T13:52:57.000Z" itemprop="datePublished">2018-12-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/06/Modern-Anglo-American-philosophy-translation-11/">Modern Anglo-American philosophy translation_11</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Though meaningless, the propositions of logic and mathematics are not nonsense. They at least have the virtue of showing the essential structure of all possible facts. On the other hand, there are concatenations of words, purported propositions, that neither show nor say anything and thus are not connected to reality in any way. Such propositions are not merely senseless, they are nonsense. Among nonsense propositions are included the bulk of traditional philosophical statements articulating traditional philosophical problems and solutions, especially in metaphysics and ethics. This is the consequence of Wittgenstein’s presumption that meaningfulness is somehow linked to the realm of phenomena studied by the natural sciences (cf. 4.11 ff). Thus, as he claims in 6.53:</p>
+</blockquote>
+<p>尽管是缺少意义的，但是这个关于数学和逻辑的论题不是完全没有意义的。他们至少展示了所有可能的事情的必要的结构。另一方面，语词，命题的组合，并没有展示或者言说任何有关事实的东西。这些论题不仅仅是缺少意义的，而是毫无意义的。在这些毫无意义的论题中，包括了大部分表达传统哲学问题和解决方法的传统哲学陈述，特别是关于形而上学和伦理学的表述。基于维特根斯的推测，有意义的命题是和自然科学领域方面的现象相联系的。</p>
+<blockquote>
+<p>The correct method in philosophy would really be the following: to say nothing except what can be said, that is propositions of natural science—that is something that has nothing to do with philosophy—and then, whenever someone else wanted to say something metaphysical, to demonstrate to him that he had failed to give a meaning to certain signs in his propositions.</p>
+</blockquote>
+<p>哲学研究的正确方法如下：只说那些可以言说的部分，也就是关于自然科学的命题——而那正是哲学没有探讨的——然后，当某个人想要谈论任何关于形而上学的命题的时候，向他表明他无法给他命题中的某些符号特定的意义。</p>
+<blockquote>
+<p>In the eyes of its author (as he avers in its Introduction), the real accomplishment of the Tractatus was to have solved, or rather dissolved, all the traditional problems of philosophy by showing that they were meaningless conundrums generated by a failure to understand the limits of meaningful discourse.</p>
+</blockquote>
+<p>在逻辑哲学论作者的眼中（正如他在前言中所断言的那样），逻辑哲学论真正的成就就是解决了，或者更确切地说，通过展示这些所提出了缺乏意义的难题是由于错误地理解了有意义的论述的界限而消解了传统哲学的问题。</p>
+<h3 id="3-Logical-Positivism-the-Vienna-Circle-and-Quine"><a href="#3-Logical-Positivism-the-Vienna-Circle-and-Quine" class="headerlink" title="3. Logical Positivism, the Vienna Circle, and Quine"></a>3. Logical Positivism, the Vienna Circle, and Quine</h3><hr>
+<h4 id="a-Logical-Positivism-and-the-Vienna-Circle"><a href="#a-Logical-Positivism-and-the-Vienna-Circle" class="headerlink" title="a. Logical Positivism and the Vienna Circle"></a>a. Logical Positivism and the Vienna Circle</h4><blockquote>
+<p>Logical positivism is the result of combining the central aspects of the positivisms of Auguste Comte and Ernst Mach with the meta-philosophical and methodological views of the analytic movement, especially as understood by the ideal-language camp. In all its forms, positivism was animated by the idealization of scientific knowledge as it was commonly understood from at least the time of Newton through the early twentieth century. Consequently, at its core is a view called scientism: the view that all knowledge is scientific knowledge.</p>
+</blockquote>
+<p>逻辑实证主义结合了孔德和马赫实证主义和分析哲学运动中的元哲学和方法论，特别是由理想语言阵营所理解的方法。在各种形式上，实证主义都将牛顿时代末期到二十世纪早期的常识认识作了一个科学知识的理想化。因此，实证主义的核心被称作是科学主义：即所有的知识都是科学知识的观点。</p>
+<blockquote>
+<p>As twentieth-century philosophy of science has shown, the definition and demarcation of science is a very difficult task. Still, for several centuries it has been common to presume that metaphysics and other branches of philosophy-as-traditionally-practiced, not to mention religious and “common sense” beliefs, do not qualify as scientific. From the standpoint of scientism, these are not fields of knowledge, and their claims should not be regarded as carrying any serious weight.</p>
+</blockquote>
+<p>正如二十世纪的科学哲学所展现的，很难对科学进行定义和划界。然而，几个世纪以来，在哲学界，有一个普遍的假定就是形而上学和其它传统哲学的实践分支，更不用提及宗教和“常识”信念，都不能称之为科学。根据科学主义的观点，这些领域是没有任何知识的，他们的言论不应该具有任何重要的意义。</p>
+<blockquote>
+<p>At the heart of logical positivism was a novel way of dismissing certain non-scientific views by declaring them not merely wrong or false, but meaningless. According to the verification theory of meaning, sometimes also called the empiricist theory of meaning, any non-tautological statement has meaning if and only if it can be empirically verified. This “verification principle” of meaning is similar to the principle maintained in Wittgenstein’s Tractatus that the realm of meaning is coextensive with the realm of the natural (empirical) sciences. In fact the logical positivists drew many of their views straight from the pages of the Tractatus (though their reading of it has since been criticized as being too inclined to emphasize the parts friendly to scientific naturalism at the expense of those less-friendly). With Wittgenstein, the logical positivists concluded that the bulk of traditional philosophy consisted in meaningless pseudo-problems generated by the misuse of language, and that the true role of philosophy was to establish and enforce the limits of meaningful language through linguistic analysis.</p>
+</blockquote>
+<p>逻辑实证主义的核心是提供了一种新的消解特定的非科学观点，其方法是指出他们不仅仅是正确或错误的，而是缺少意义的。根据关于意义的证实理论，也被称作关于意义的经验主义者理论，即任何非重言式的描述如果要有意义的话，当且仅当它可以被经验地证明。这个关于意义的实证原则和维特根斯坦的逻辑哲学论中所持有的意义的领域是与自然（经验）科学的领域是共同延伸的这一观点时相似的。事实上，逻辑实证主义者直接从逻辑哲学论的字里行间中取得了很多观点（尽管他们的理解被批评为过分强调了那些与科学自然主义相关的部分，而牺牲了其它没有太多关联的部分）。同维特根斯坦一样，逻辑实证主义者得出了大部分传统哲学都涉及到了误用语言而造成的缺乏意义的伪似的命题的结论，而哲学真正的作用是通过语言分析确立和加强有意义的语言的界限。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" data-id="ck0z6d1o50007p8tq6ltn3l95" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Modern-Anglo-American-philosophy-translation-10" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" class="article-date">
+  <time datetime="2018-12-04T15:08:43.000Z" itemprop="datePublished">2018-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/04/Modern-Anglo-American-philosophy-translation-10/">Modern Anglo-American philosophy translation_10</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>The body of the Tractatus consists in cascading levels of numbered elaborations of these propositions (1 is elaborated by 1.1 which is elaborated by 1.11, 1.12 and 1.13, and so forth)—except for 7, which stands on its own. Propositions 1 and 2 establish the metaphysical side of logical atomism: the world is nothing but a complex of atomic facts. Propositions 3 and 4 establish the isomorphism between language and reality: a significant (meaningful) proposition is a “logical picture” of the facts that constitute some possible or actual state of affairs. It is a picture in the sense that the structure of the proposition is identical to the structure of the corresponding atomic facts. It is here, incidentally, that we get the first explicit statement of the metaphilosophical view characteristic of early analytic philosophy: “All philosophy is a ‘critique of language’ …” (4.0031).</p>
+</blockquote>
+<p>逻辑哲学论的主体包括了多级详细阐述的关于命题的串联（1.1是用来详细解释1的，而1.11,1.12是用来详细解释1.1的，一直这样下去）——除了第七点，它只有这一句话。命题1和2建立了逻辑原子主义的形而上学方面的内容：这个世界只是原子事实的复合。命题3和4建立了语言和现实的同构：一个重要的（有意义的）命题是事实的一个“逻辑图像”，由一些可能的和实存的事态所组成。在某种意义上，它只是一个与相应的原子事实的结构相同的命题结构的图像。正是在这里，我们第一次了解到元哲学对于早期分析哲学的观点的说明：“所有的哲学都只是语言批判。”</p>
+<blockquote>
+<p>Proposition 5 asserts the thesis of truth-functionality, the view that all complex propositions are built out of atomic propositions joined by truth-functional connectives, and that atomic propositions are truth-functional in themselves. Even existentially quantified propositions are considered to be long disjunctions of atomic propositions. It has since been recognized that a truth-functional logic is not adequate to capture all the phenomena of the world; or at least that, if there is an adequate truth-functional system, we haven’t found it yet. Certain phenomena seem to defy truth-functional characterization; for instance, moral facts are problematic. </p>
+</blockquote>
+<p>命题5提出了真值函数的观点，其声称所有的复杂命题都是由连接词串联的原子命题所构成的，而原子命题本身是具有真值的。甚至存在量词命题也被认为是原子命题的长期析取。它开始意识到，一个具有真值意义的逻辑对于捕捉世界上所有的现象来说是不充分的，或者至少，我们还没有发现这样的真值系统。一些现象似乎是拒斥真值函数特征的；例如，道德事实就是不确定的。</p>
+<blockquote>
+<p>Knowing whether the constituent proposition “p” is true, doesn’t seem to tell us whether “It ought to be the case that p” is true. Similarly problematical are facts about thoughts, beliefs, and other mental states (captured in statements such as “John believes that…”), and modal facts (captured in statements about the necessity or possibility of certain states of affairs). And treating existential quantifiers as long disjunctions doesn’t seem to be adequate for the infinite number of facts about numbers since there surely are more real numbers than there are available names to name them even if we were willing to accept infinitely long disjunctions. The hope that truth-functional logic will prove adequate for resolving all these problems has inspired a good bit of thinking in the analytic tradition, especially during the first half of the twentieth century. This hope lies at the heart of logical atomism.</p>
+</blockquote>
+<p>认识到是否命题“p”的成分为真，似乎并不能使我们判别“这个事实p”为真。相似的不确定的事实是关于思想，信仰和一些其它的心理的（可以从陈述“约翰相信…”中看出），情感的状态（可以从关于具体事态的必然性和可能性的讨论中看出）。由于毫无疑问的，有远比我们可以命名的多得多的析取式，哪怕是我们愿意接受有无穷的析取式，因而将存在连词视作长析取式对于解释无穷的事态似乎是不充分的。</p>
+<blockquote>
+<p>In its full form, Proposition 6 includes some unusual symbolism that is not reproduced here.  All it does, however, is to give a general “recipe” for the creation of molecular propositions by giving the general form of a truth-function. Basically, Wittgenstein is saying that all propositions are truth-functional, and that, ultimately, there is only one kind of truth-function. Principia Mathematica had employed a number of truth-functional connectives: “and,” “or,” “not,” and so forth.  However, in 1913 a logician named Henry Sheffer showed that propositions involving these connectives could be rephrased (analyzed) as propositions involving a single connective consisting in the negation of a conjunction. </p>
+</blockquote>
+<p>在整本书中，命题6包括了一些不寻常的符号化，在这里将不会展示它们。所有的这些工作，只是为通过一种通用的真值形式来给分子命题的创造给出通用的“方法”。简单来说，维特根斯坦说所有的命题都具有真值，最终，就只有一种真值形式。数学原理提供了一系列的真值连词：“and”,”or”,”not”等等。然而，在1913年一个名为Henry Sheffer的逻辑学家展示到使用这些连词的命题都可以只使用一个单独的连词而不需要其它连词。</p>
+<blockquote>
+<p>This was called the “not and” or “nand” connective, and was supposed to be equivalent to the ordinary language formulation “not both x and y.” It is usually symbolized by a short vertical line ( | ) called the Sheffer stroke. Though Wittgenstein uses his own idiosyncratic symbolism, this is the operation identified in proposition 6 and some of its elaborations as showing the general form of a truth-function. Replacing the Principia’s plurality of connectives with the “nand” connective made for an extremely minimalistic system—all one needed to construct a complete picture/description of the world was a single truth-functional connective applied repeatedly to the set of all atomic propositions.</p>
+</blockquote>
+<p>它们被称为”not and” 或者”nand”，它的具体意义是和日常语言中的“不是 a和b”相同。它通常用一根竖线表示，这个符号被称为“Sheffer stroke”。尽管维特根斯坦使用了他自己特定的符号，这是命题6中所执行的方法，它的一些阐述显示了真理函数的一般形式。通过取代数学原理中多元的连词而采用”nand”来替代，构建了一个最小的系统——一个人要构建一个关于这个世界图像的描述，就仅仅是用一个连词连接的关于所有的原子命题的不同类型。</p>
+<blockquote>
+<p>Proposition 7, which stands on its own, is the culmination of a series of observations made throughout the Tractatus, and especially in the elaborations of proposition 6. Throughout the Tractatus there runs a distinction between showing and saying. Saying is a matter of expressing a meaningful proposition. Showing is a matter of presenting something’s form or structure. Thus, as Wittgenstein observes at 4.022, “A proposition shows its sense. A proposition shows how things stand if it is true. And it says that they do so stand.”</p>
+</blockquote>
+<p>命题7，是一个自成立的命题，是整个逻辑哲学论的高潮部分，特别是在建立了命题6之后。贯穿逻辑哲学论的是一条关于言说和展示的界限。言说是一种表达有意义的命题的方式。展示是一种<br>表现形式和结构的方式。因此，正如维特根斯坦在4.022中所表达的“一个命题展示了它的意义。一个命题展示了它是否为真。同时也言说了其为何为真。”</p>
+<blockquote>
+<p>In the introduction to the Tractatus, Wittgenstein indicates that his overarching purpose is to set the criteria and limits of meaningful saying. The structural aspects of language and the world—those aspects that are shown—fall beyond the limits of meaningful saying. According to Wittgenstein, the propositions of logic and mathematics are purely structural and therefore meaningless—they show the form of all possible propositions/states of affairs, but they do not themselves picture any particular state of affairs, thus they do not say anything. This has the odd consequence that the propositions of the Tractatus themselves, which are supposed to be about logic, are meaningless. Hence the famous dictum at 6.54:</p>
+</blockquote>
+<p>在逻辑哲学论的前言中，维特根斯坦说明了他首要的目的就是建立一个有意义的言说的标准。语言和世界的结构——那些所展示的部分——是在有意义的言说的界限之外的。根据维特根斯坦的说法，逻辑和数学的命题只是纯粹的结构上的，因此他们能够描述任何特定的事态，因此，它们什么也没有言说。这造成一个奇怪的现象，就是在逻辑哲学论中的那些论题本身，就是逻辑命题，因此也就是没有意义的。因此在6.54中，有一个著名的声明：</p>
+<blockquote>
+<p>My propositions are elucidatory in this way: he who understands me finally recognizes them as senseless, when he has climbed out through them, on them, over them. (He must so to speak throw away the ladder, after he has climbed up on it.) He must transcend these propositions, and then he will see the world aright.</p>
+</blockquote>
+<p>我的命题是以这样一种方式来阐明的：一个真正理解我的人最终会意识到我的命题是缺少意义的，当他登上他们，站在他们之上，并超越他们（他必须丢掉这个梯子，当他真正爬上去之后。）他必须超越这些命题，最终他将会看到真正的世界。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" data-id="ck0z6d1q4001vp8tqzml5cizw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-github-use" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/01/github-use/" class="article-date">
@@ -112,7 +362,7 @@ git push （在后续过程中，直接git push）即可
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/01/github-use/" data-id="cjv9as4zv000rkstqr4txqlnf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/01/github-use/" data-id="ck0z6d1ow000mp8tqhyqwijf0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-git/">github/git</a></li></ul>
@@ -184,7 +434,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/01/MCM-ICM-preparation-two/" data-id="cjv9as4zc000ckstqqrbzftuf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/01/MCM-ICM-preparation-two/" data-id="ck0z6d1mg0003p8tqta2tgiwx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li></ul>
@@ -246,7 +496,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" data-id="cjv9as4zo000mkstqk2ub2990" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" data-id="ck0z6d1ou000lp8tq8xwefe16" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -304,7 +554,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" data-id="cjv9as4ze000ekstq5w10xd8u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" data-id="ck0z6d1og000cp8tqxyq95lgu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -394,7 +644,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/26/MCM-ICM-preparation-one/" data-id="cjv9as4yu0003kstqyk1h9nz4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/26/MCM-ICM-preparation-one/" data-id="ck0z6d1o10006p8tqe16njg64" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li></ul>
@@ -454,254 +704,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/26/Modern-Anglo-American-philosophy-translation-7/" data-id="cjv9as4zh000hkstq6l1gul67" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-龙芯杯备战3" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/25/龙芯杯备战3/" class="article-date">
-  <time datetime="2018-11-25T08:34:53.000Z" itemprop="datePublished">2018-11-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/25/龙芯杯备战3/">龙芯杯备战3</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本周总结：</p>
-<pre><code>这一周任务比较明确，主要是把数电的知识全部过一遍，然后学习verilog，并且开始了一些机组的学习，希望能从中有所收获。大体方向上都准备地较为不错，但是在看机组实验的手册的时候依旧出现了一些问题，还是不太清楚需要做些什么。
-</code></pre><hr>
-<h2 id="verilog-的学习"><a href="#verilog-的学习" class="headerlink" title="verilog 的学习"></a>verilog 的学习</h2><hr>
-<h3 id="语法要点"><a href="#语法要点" class="headerlink" title="语法要点"></a>语法要点</h3><ol>
-<li>always 里面赋值左边必须申明为reg</li>
-<li>assign表达式左边必须申明为wire</li>
-<li>阻塞赋值用&lt;=</li>
-<li>非阻塞赋值用=</li>
-</ol>
-<p>1) 边沿触发生成寄存器的时序逻辑<br>2) 电平触发条件完整，生成组合逻辑<br>3) 电平触发条件不完整，生成锁存器的时序逻辑</p>
-<p>结论：<br>    声明成reg,不一定得到寄存器<br>    未声明为reg，也可能得到寄存器</p>
-<h3 id="coding-要点"><a href="#coding-要点" class="headerlink" title="coding 要点"></a>coding 要点</h3><pre><code>·如果是边沿触发的逻辑 比如always@(posedge clk)，里面一律使用&lt;=赋值
-·如果是电平触发的逻辑，一律使用=赋值
-逻辑简单用assign语句；逻辑复杂，用always语句
-分支条件写完整，防止出现锁存器
-</code></pre><h3 id="系统任务与系统函数-task-or-function"><a href="#系统任务与系统函数-task-or-function" class="headerlink" title="系统任务与系统函数(task or function)"></a>系统任务与系统函数(task or function)</h3><pre><code>标准输出任务 $display等
-文件管理任务 $fopen等
-仿真控制任务 $monitor等
-时间函数 $timeformat等
-时间显示函数 $time等
-其他 $random等
-</code></pre><p>关于verilog的学习这一周主要还是看了不少代码，并对其进行了理解。通过对其进行注释，了解到了很多知识，关于注释的代码后续会传到github上。</p>
-<hr>
-<p>下周目标：</p>
-<pre><code>下一周主要的任务主要是关于机组的学习以及基于学习手册的学习，希望能通过这一方面的学习，尽量快速地入门。
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/25/龙芯杯备战3/" data-id="cjv9as50k001hkstqmxhps023" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Modern-Anglo-American-philosophy-translation-6" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/23/Modern-Anglo-American-philosophy-translation-6/" class="article-date">
-  <time datetime="2018-11-23T15:26:10.000Z" itemprop="datePublished">2018-11-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/23/Modern-Anglo-American-philosophy-translation-6/">Modern Anglo-American philosophy translation_6</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="a-The-Theory-of-Descriptions"><a href="#a-The-Theory-of-Descriptions" class="headerlink" title="a. The Theory of Descriptions"></a>a. The Theory of Descriptions</h3><blockquote>
-<p>Much of Russell’s exuberance over Moore’s realism had to do with its consequences for logic and mathematics. Like so many philosophers before him, Russell was attracted to the objective certainty of mathematical and logical truths. However, because Idealism taught that no proposition about a bit of reality in isolation could be true simpliciter, an apparently straightforward truth such as 2+2=4, or If a=b and b=c then a=c, was not so straightforward after all.</p>
-</blockquote>
-<p>&emsp;罗素超过的穆尔的实在论的方面的工作主要与他的逻辑和数学方面的努力相联系。与在他之前的许多哲学家相同，罗素被数学和逻辑客观的肯定性所吸引。然而，由于唯心主义言明，没有任何关于现实的命题能够绝对独立地正确，甚至像2+2=4，或如果a=b,b=c，那么a=c这样一些显然正确的真理都不能独立正确。</p>
-<blockquote>
-<p> Even worse, Idealism made such truths dependent upon their being thought or conceived. This follows from the doctrine of internal relations; for, on the natural assumption that knowledge is or involves a relation between a knower (subject) and something known (object), the doctrine implies that objects of knowledge are not independent of the subjects that know them. This left Idealism open to the charge of endorsing psychologism—the view that apparently objective truths are to be accounted for in terms of the operations of subjective cognitive or “psychological” faculties. Psychologism was common to nearly all versions of Kantian and post-Kantian Idealism (including British Idealism). It was also a common feature of thought in the British empirical tradition, from Hume to Mill (albeit with a naturalistic twist). Moore’s early realism allowed Russell to avoid psychologism and other aspects of Idealism that prevented treating logical and mathematical truths as absolutely true in themselves.</p>
-</blockquote>
-<p>&emsp;更糟糕的是，唯心主义说这些真理都取决于它们被思维的方式。这来自于有关内部联系的这一主张，表示为，在自然的猜想中，知识涉及到关于一个knower（主体）和一些被知道的东西（客体）的联系，这一主义暗示知识的客观性并不独立于我们所知的主体之外。这导致唯心主义开始承认心理主义——这一主义表明任何客观真理都取决于主观认识或者“心理”官能。心理主义者普遍上和康德与后康德的唯心主义（包括英国唯心主义）的所有类型都相似。这也是在从Hume 到Mill的英国经验论传统中的一个普遍特点。穆尔早期的实在论使得罗素可以避免心理主义或其它方面的唯心主义的干扰，而能保护逻辑和数学的真理作为一个绝对的真理。</p>
-<blockquote>
-<p>A crucial part of this early realism, however, was the object theory of meaning; and this had implications that Russell found unacceptable. On the object theory, the meaning of a sentence is the object or state of affairs to which it refers (this is one reason why Moore could identify ordinary objects as propositions or meanings; see Section 1). For instance, the sentence “That leaf is green” is meaningful in virtue of bearing a special relationship to the state of affairs it is about, namely, a certain leaf’s being green.</p>
-</blockquote>
-<p>&emsp;然而，早期实在论的关键的一个部分是关于意义的对象理论，但在这一方面中，罗素意识到有一些不可接受的暗示在其中。在客体理论中，一个语句的意义就是它所指的客体或事态（这就是为什么穆尔可以辨认出作为命题或意义的日常客体的一个原因）。例如，“树叶是绿色的”这个句子是有意义的，只是因为一个特殊的关系它所关乎的事态存在，更确切的说，存在一个特定的树的叶子是绿色的。</p>
-<blockquote>
-<p>This may seem plausible at first glance; problems emerge, however, when one recognizes that the class of meaningful sentences includes many that, from an empirical point of view, lack objects. Any statement referring to something that does not exist, such as a fictional character in a novel, will have this problem. A particularly interesting species of this genus is the negative existential statement—statements that express the denial of their subjects’ existence. For example, when we say “The golden mountain does not exist,” we seem to refer to a golden mountain—a nonexistent object—in the very act of denying its existence. But, on the object theory, if this sentence is to be meaningful, it must have an object to serve as its meaning. Thus it seems that the object theorist is faced with a dilemma: either give-up the object theory of meaning or postulate a realm of non-empirical objects that stand as the meanings of these apparently objectless sentences.</p>
-</blockquote>
-<p>&emsp;第一眼看起来这是合理的，然而，当一个人意识到在有意义的命题中包括了许多缺乏客体的经验的观点的时候，问题就出现了。任何一个指向不存在的事物的陈述，就像小说中的虚幻人物，就会因此而具有问题。这一类陈述中很有趣的一个就是否定存在命题，一个否定主观存在的命题。例如，当我们说“金山不存在”的时候，我们似乎在指金山这一不存在的客体来说明它的不存在。但是，在客观理论中，如果这个句子是有意义的，必定有一个客体来指代它的意义。因此，似乎客观理论陷入了一个两难的境地，要不放弃意义客观理论，要不假定一个非经验对象的领域，作为这些明显无对象的句子的意义。</p>
-<blockquote>
-<p>The Austrian philosopher Alexius Meinong took the latter horn of the dilemma, notoriously postulating a realm of non-existent objects. This alternative was too much for Russell. Instead, he found a way of going between the horns of the dilemma. His escape route was called the “theory of descriptions,” a bit of creative reasoning that the logician F. P. Ramsey called a “paradigm of philosophy,” and one which helped to stimulate extraordinary social momentum for the budding analytic movement. The theory of descriptions appears in Russell’s 1905 essay, “On Denoting,” which has become a central text in the analytic canon. There, Russell argues that “denoting phrases”—phrases that involve a noun preceded by “a,” “an,” “some,” “any,” “every,” “all,” or “the”—are incomplete symbols; that is, they have no meaning on their own, but only in the context of a complete sentence that expresses a proposition. Such sentences can be rephrased—analyzed in Moore’s sense of “analyzed”—into sentences that are meaningful and yet do not refer to anything nonexistent.</p>
-</blockquote>
-<p>&emsp;奥地利哲学家迈农采取了这个两难中的第二种解决方式，即一个被哲学家们所厌弃的关于不存在的客体的领域。这样的抉择超出了罗素能承受的范围。相反，他找到了一种跳出这个两难局面的方法。他跳出这个两难局面的方式被称作“摹状实体论”，由于其在推理上的一点创新性，逻辑学家F. P. Ramsey “哲学范式”，并且它能帮助极大地激励社会动力来推动分析运动。这种描述的理论出现在罗素1905年的文章“论指谓”，而这也成为了分析标准中的一个中心内容。在这本书中，罗素声明由’a’,’an’,’some’,’any’,’every’,’all’或’the’这些冠词所指的名词都是不完全的符号；即是说，他们本身是没有意义的，只是在一个表达命题的完整语句的语境中被理解。这些句子能够被理解并且有意义但他们不指向任何非存在——可以用穆尔的”分析“来对其进行分析。</p>
-<blockquote>
-<p>For instance, according to Russell, saying “The golden mountain does not exist” is really just a misleading way of saying “It is not the case that there is exactly one thing that is a mountain and is golden.” Thus analyzed, it becomes clear that the proposition does not refer to anything, but simply denies an existential claim. Since it does not refer to any “golden mountain,” it does not need a Meinongian object to provide it with meaning. In fact, taking the latter formulation to be the true logical form of the statement, Russell construes the original’s reference to a non-existent golden mountain as a matter of grammatical illusion. One dispels the illusion by making the grammatical form match the true logical form, and this is done through logical analysis. The idea that language could cast illusions that needed to be dispelled, some form of linguistic analysis was to be a prominent theme in analytic philosophy, both in its ideal language and ordinary language camps, through roughly 1960.</p>
-</blockquote>
-<p>&emsp;例如，根据罗素的说法，“金山不存在”事实上只是一种令人误解的关于“完全没有一个事物它既是山，又全是金”的说法。经过这样的分析，可以清晰地说这个命题不指向任何事物，而只是简单地拒绝了一个存在主张。由于它并不指向任何“金山”，那么也不需要一个迈农式的客体来提供它的意义。事实上，与其采用后一种方式在逻辑上也是正确的陈述形式，罗素建立了一种指向不存在的金山仅仅是一种语法上的误解的方式。一个消除这种误解的方式就是将语法形式转换为正确的逻辑形式，而这正是通过逻辑分析实现的。这种关于语言可能会导致误解的观点需要被清除，一些形式的语言分析在分析哲学这一主题下都是影响显著的，包括理想语言和日常语言阵营，在1960年左右。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/Modern-Anglo-American-philosophy-translation-6/" data-id="cjv9as4z70009kstqbqxcf8s8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Modern-Anglo-American-philosophy-translation-5" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/21/Modern-Anglo-American-philosophy-translation-5/" class="article-date">
-  <time datetime="2018-11-21T15:35:59.000Z" itemprop="datePublished">2018-11-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/21/Modern-Anglo-American-philosophy-translation-5/">Modern Anglo-American philosophy translation_5</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>All of these cases exhibit what proved to be the most influential aspect of Moore’s philosophical work, namely his method of analysis, which many of his contemporaries took to be linguistic analysis. For instance, Norman Malcolm represents the standard view of Moore for much of the twentieth century when he says that “the essence of Moore’s technique of refuting philosophical statements consists in pointing out that these statements go against ordinary language” (Malcolm 1942, 349). In the same essay, he goes on to tie Moore’s entire philosophical legacy to his “linguistic method:”</p>
-</blockquote>
-<p>&emsp;上面所展示的这些例子是穆尔哲学工作中最具影响的方面，尤其是他的分析方法，被当时许多哲学家视作语言学分析。例如，Norman Malcolm 代表了二十世纪大多数人对于穆尔的标准看法，他说“穆尔的方法的本质在于通过指出违背了日常语言来驳斥哲学陈述。”在这篇文章啊中，他也把穆尔整个的哲学遗产归结为他的“语言学方法”。</p>
-<blockquote>
-<p>Moore’s great historical role consists in the fact that he has been perhaps the first philosopher to sense that any philosophical statement that violates ordinary language is false, and consistently to defend ordinary language against its philosophical violators. (Malcolm 1942, 368)</p>
-</blockquote>
-<p>&emsp;穆尔在哲学史上的伟大贡献都归结为他可能是第一个察觉到任何一个违反日常语言的哲学陈述都是错误的，并且需要坚持去捍卫日常语言而反对它的哲学反对者。</p>
-<blockquote>
-<p>Malcolm is right to note the novelty of Moore’s approach. Although previous philosophers occasionally had philosophized about language, and had, in their philosophizing, paid close attention to the way language was used, none had ever claimed that philosophizing itself was merely a matter of analyzing language. Of course, Moore did not make this claim either, but what Moore actually did as a philosopher seemed to make saying it superfluous—in practice, he seemed to be doing exactly what Malcolm said he was doing. Thus, though it took some time for the philosophical community to realize it, it eventually became clear that this new “linguistic method,” pioneered by Moore, constituted a radical break not only with the British Idealists but with the larger philosophical tradition itself. To put it generally, philosophy was traditionally understood as the practice of reasoning about the world.</p>
-</blockquote>
-<p>&emsp;Malcolm 正确地指出了穆尔的所提供的哲学路径的新颖之处。尽管过去也有过哲学家曾对语言进行过哲学的探讨，并且在他们的哲学论中，关注语言的使用方式，但没有人提出过哲学探讨本身就仅仅是对语言的分析。当然，穆尔也没有直接这样表述，但是穆尔作为一个哲学家所做的工作已经不证自明了——事实上，他似乎确实就是在做Malcolm所说的。因此，尽管哲学圈花费了一段时间才意识到这件事情，但被穆尔所首先提出的“语言学方法”作为一种哲学方法逐渐变得清晰，并且引起了一个不仅是从英国唯心主义，而甚至是传统哲学本身的巨大转变。或者更明确地说，哲学在传统意义上被理解为关于这个世界的理性的实践。</p>
-<blockquote>
-<p>Its goal was to give a logos—a rationally coherent account—of the world and its parts at various levels of granularity, but ultimately as a whole and at the most general level. There were other aspects of the project, too, of course, but this was the heart of it. With Moore, however, philosophy seemed to be recast as the practice of linguistic analysis applied to isolated issues. Thus, the rise of analytic philosophy, understood as the relatively continuous growth of a new philosophical school originating in Moore’s “linguistic turn,” was eventually recognized as being not just the emergence of another philosophical school, but as constituting a “revolution in philosophy” at large. (See Ayer et al. 1963 and Tugendhat 1982.)</p>
-</blockquote>
-<p>&emsp;它的目标是提出一个理性的——即在理性层面相互融贯——并且在不同层次都具有，但最终作为一个整体的世界。当然，传统哲学的研究也有其它的方面，但是这个目标是它的核心。但是在穆尔的工作中，起初哲学似乎被重铸成应用在孤立论题上的语言学分析的实践。因此，分析哲学的哲学地位的提高，被认为是一个起源于穆尔的“语言学转向”的相当具有连续性的一个新的哲学学派的成长，最终不仅被认为是一个新兴哲学学派的诞生，而是哲学史层面一个“哲学的革命”。</p>
-<h3 id="2-Russell-and-the-Early-Wittgenstein-Ideal-Language-and-Logical-Atomism"><a href="#2-Russell-and-the-Early-Wittgenstein-Ideal-Language-and-Logical-Atomism" class="headerlink" title="2. Russell and the Early Wittgenstein: Ideal Language and Logical Atomism"></a>2. Russell and the Early Wittgenstein: Ideal Language and Logical Atomism</h3><blockquote>
-<p>The second phase of analytic philosophy is charaterized by the turn to ideal language analysis and, along with it, logical atomism—a metaphysical system developed by Bertrand Russell and Ludwig Wittgenstein. Russell laid the essential groundwork for both in his pioneering work in formal logic, which is covered in Sections 2a and 2b. Though this work was done during the first phase of analytic philosophy (1900-1910), it colaesced into a system only toward the end of that period, as Russell and Whitehead completed their work on the monumental Principia Mathematica (Russell and Whitehead 1910-13), and as Russell began to work closely with Ludwig Wittgenstein.<br>&emsp;分析哲学的第二个阶段的标志性事件是理想语言分析的转向和逻辑原子主义——一个由罗素和维特根斯坦提出并发展的形而上学体系。罗素在我们将在2a,2b节涉及到的他的关于形式逻辑的工作中打下了必要的基础。尽管这部分工作是在分析哲学发展的第一阶段完成的，但是知道第一阶段的最后阶段——罗素和怀特海德完成了那部具有里程碑意义的作品数学原理之后，它才融合成一个体系，而在此之后，罗素开始和维特根斯坦一起合作。</p>
-<p>Wittgenstein seems to have been the sine qua non of the system. Russell was the first to use the term “logical atomism,” in a 1911 lecture to the French Philosophical Society. He was also the first to publicly provide a full-length, systematic treatment of it, in his 1918 lectures on “The Philosophy of Logical Atomism” (Russell 1918-19). However, despite the centrality of Russell’s logical work for the system, in the opening paragraph of these lectures Russell acknowedges that they “are very largely concerned with explaining certain ideas which I learnt from my friend and former pupil Ludwig Wittgenstein” (Russell 1918, 35). Wittgenstein’s own views are recorded in his TractatusLogico-Philosophicus. First published in 1921, the Tractatus proved to be the most influential piece written on logical atomism. Because of its influence, we shall pay special attention to the Tractatus when it comes to presenting logical atomism as a complete system in Section 2d.<br>&emsp;维特根斯坦是这个体系建立的不可或缺的一个人物。罗素第一次使用“逻辑原子论”这一说法是在法国哲学大会的演讲中。他也是第一个公开地，长篇地，系统地表述这个体系的人——在他1918年的“逻辑原子主义哲学”的演讲中。然而，尽管罗素的逻辑工作处在这个体系的中心地位，在这次演讲的开头，罗素也承认道“这个体系大部分的确定的知识都是来自于我的朋友和以前的学生，维特根斯坦”。维特根斯坦自己的观点被记录在他的逻辑哲学论中。第一版出版于1921年的逻辑哲学论被证明是关于逻辑原子主义的最有影响力的文章。因为它的影响力，我们将特别关注逻辑哲学论在2d节我们展现逻辑原子论的时候。</p>
-<p>Though Russell and Wittgenstein differed over some of the details of logical atomism, these disagreements can be ignored for present purposes. What mattered for the development of analytic philosophy on the whole was the emergence in the second decade of the twentieth century of a new view of reality tailored to fit recent developments in formal logic and the philosophical methodology connected to it, as discussed in Section 2b. This was the common core of the Russellian and Wittegensteinian versions of logical atomism; thus, blurring the lines between Russell and Wittgenstein actually enables us to maintain better focus on the emerging analytic tradition. It will also make convenient a brief word on Frege, to see why some have wanted to include him as a founder of analytic philosophy (Section 2c).<br>&emsp;尽管罗素和维特根斯坦在逻辑哲学论的一些细枝末节上有不同的意见，但是在展示他们的主张上，这些矛盾可以被忽略。总体上而言，分析哲学整体上最大的进步是在二十世纪第二个十年中所诞生的一种对于真实的新的符合形式逻辑和与之相关的哲学方法的发展的观点，这个将在2b节中被讨论。这是罗素主义者和维特根斯坦主义者逻辑原子论版本中共同的核心，因此，模糊罗素和维特根斯坦观点上的界限使我们能更好地专注于分析传统的出现。这里我们也将用一点简短的文字来讨论弗洛伊德，来看为什么一些人想要将他作为分析哲学的创始人之一。</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/21/Modern-Anglo-American-philosophy-translation-5/" data-id="cjv9as4zw000tkstqs8qx3ism" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Modern-Anglo-American-philosophy-translation-4" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/19/Modern-Anglo-American-philosophy-translation-4/" class="article-date">
-  <time datetime="2018-11-19T12:41:50.000Z" itemprop="datePublished">2018-11-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/19/Modern-Anglo-American-philosophy-translation-4/">Modern Anglo-American philosophy translation_4</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Moore thought that to call common sense into question this way is perverse because the ordinary meaning of a common sense proposition is plain to all competent language-users. So, to question its meaning, and to suggest it has a different meaning, is disingenuous. Moreover, since the bounds of intelligibility seem to be fixed by the ordinary meanings of common sense proposition, the philosopher must accept them as starting points for philosophical reflection. Thus, the task of the philosopher is not to question the truth of common sense propositions, but to provide their correct analyses or explanations.</p>
-</blockquote>
-<p>&emsp;穆尔认为如果用这种方式将常识视作为可以讨论的问题是不正当的，因为这些命题的日常意义对于能够掌握语言的人来说都是显然的。因此，质疑这些命题的意义并且提出它们含有其它不同的意义，是毫无坦诚的意义的。因此，由于可理解的界限已经被日常命题的意义所确定，哲学家必须接受这些命题的意义并对此作出哲学上的反映。因此，哲学家的任务不是质疑这些日常表达的命题的真实性，而是提供正确的分析和解释。</p>
-<blockquote>
-<p>Moore’s use of the term “analysis” in this way is the source of the name “analytic philosophy.” Early on in analytic history, Moorean analysis was taken to be a matter of rephrasing some common sense proposition so as to yield greater insight into its already-clear and unquestionable meaning. For example, just as one elucidates the meaning of “brother” by saying a brother is a male sibling or by saying it means “male sibling,” so one might say that seeing a hand means experiencing a certain external object—which is exactly what Moore claims in his paper “Proof of an External World” (Moore 1939).</p>
-</blockquote>
-<p>&emsp;穆尔所使用的这个词“分析”就是分析哲学名称的来源。在分析哲学早期历史中，穆尔的分析方法被用作为改述一些日常表达的命题，来为了洞悉它本身希望表达的真实且逻辑正确，不容置疑的意义。例如，就像一个人将“兄弟”准确地表述为兄弟就是一个男性的兄弟姐妹，或者“male sibling”， 所以一个人可能会说”seeing a hand” （即指看到一个方面)意味着经验一个外观所见的客体，而这正是穆尔在他的论文中所宣称的“对表层世界的证明”。</p>
-<blockquote>
-<p>The argument of that essay runs as follows. “Here is one hand” is a common sense proposition with an ordinary meaning. Using it in accordance with that meaning, presenting the hand for inspection is sufficient proof that the proposition is true—that there is indeed a hand there. But a hand, according to the ordinary meaning of “hand,” is a material object, and a material object, according to the ordinary meaning of “material object,” is an external object, an object that isn’t just in our mind. Thus, since we can prove that there is a hand there, and since a hand is an external object, there is an external world, according to the ordinary meaning of “external world.”</p>
-</blockquote>
-<p>&emsp;这篇文章的论述如下：“这里有一只手”是一个具有日常意义的命题。 人们用这句话的意识是，将这只手伸出来给别人看是一个完全充分地对于这句话的证明——确实这里有一只手。但是一只手，根据日常的意义而言，是一个物质的实体，而物质的实体，根据传统的意义来看，是一个外在的客体，一个客体不存在于我们的头脑中的。 因此，因为我们可以证明这里确实有一只手，并且因为手是一个外在客体，那么这里必然有一个外在的世界，根据日常所指向的“外在世界”。</p>
-<blockquote>
-<p>These examples are from papers written in the second half of Moore’s career, but his “linguistic method” can be discerned much earlier, in works dating all the way back to the late 1800s—the period of his rebellion against Idealism. Even in Moore’s first influential paper, “The Nature of Judgment” (Moore 1899), he can be found paying very close attention to propositions and their meanings. In his celebrated paper, “The Refutation of Idealism” (Moore 1903b), Moore uses linguistic analysis to argue against the Idealist’s slogan Esseestpercipi (to be is to be perceived). </p>
-</blockquote>
-<p>&emsp;这些例子都取自于穆尔哲学生涯的第二段中期，但是他的“语言学方法”可以更早地被看到，甚至在他的19世纪晚期所写的论文中——那个他干开始反叛唯心主义的阶段。甚至在穆尔第一篇有影响力的论文中，都可以很明显地看出他十分关注命题和它们的意义。在他的成名作中，”The Refutation of Idealism”，穆尔就用了语言学分析的方法来驳斥唯心主义的口号“存在就是被感知”。</p>
-<blockquote>
-<p>Moore reads the slogan as a definition or, as he would later call it, an analysis: just as we say “bachelor” means “unmarried man,” so the Idealist says “to exist” means “to be cognized.” However, if these bits of language had the same meaning, Moore argues, it would be superfluous to assert that they were identical, just as it is superfluous to say “a bachelor is a bachelor.” The fact that the Idealist sees some need to assert the formula reveals that there is a difference in meanings of “to be” and “to be perceived,” and hence a difference in the corresponding phenomena as well.</p>
-</blockquote>
-<p>&emsp;穆尔解读这个口号为一个定义，或者他后来所称作的，一个分析：就像我们说“单身汉”意味着“未结婚的男子”一样。所以唯心主义者所说的“存在”意味着“被感知”，然而，如果这些语言上的表述有这样相同的意义，穆尔驳斥道，那么主张说它们是相同的是多余的，就像说“单身汉是单身汉”是多余的一样。事实上，唯心主义者看到为什么需要说明这个口号实际上是因为“存在”和“被感知”的意义不同的，因此在相应的现象中也有类似的不同。</p>
-<blockquote>
-<p>Moore’s most famous meaning-centered argument is perhaps the “open question argument” of his Principia Ethica (Moore 1903a). The open question argument purports to show that it is a mistake to define “good” in terms of anything other than itself. For any definition of good—“goodness is pleasure,” say—it makes sense to ask whether goodness really is pleasure (or whatever it has been identified with); thus, every attempt at definition leaves it an open question as to what good really is. This is so because every purported definition fails to capture the meaning of “good.”</p>
-</blockquote>
-<p>&emsp;穆尔最著名的以意义为中心的论证可能是在他的心理学原理中的“开放问题论证”。这个开放问题旨在展示在“good”的定义中，按照任何超过它的解释，都是有误的。对任何关于good的解释——“善就是愉快”的言论，它会自然而然地让人质疑到底什么是愉快（或者说愉快是如何被定义的），因此，任何尝试性的定义都会留下一个开放的问题，让人去思考到底什么是善（good）。这是因为每个旨在给出定义的尝试都没有成功捕捉住“善”的意义。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/19/Modern-Anglo-American-philosophy-translation-4/" data-id="cjv9as4yw0004kstq1b6l6t7j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/26/Modern-Anglo-American-philosophy-translation-7/" data-id="ck0z6d1oe000bp8tq5enhkd8h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -717,7 +720,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -731,7 +734,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-learning/">English_learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-system/">computer_system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-git/">github/git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paperReading/">paperReading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/use-of-Colab-deep-learning/">use of Colab(deep learning)</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-learning/">English_learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-system/">computer_system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-git/">github/git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paperReading/">paperReading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-reading/">paper_reading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/use-of-Colab-deep-learning/">use of Colab(deep learning)</a></li></ul>
     </div>
   </div>
 
@@ -741,7 +744,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 10px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 16.67px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 13.33px;">paperReading</a> <a href="/tags/use-of-Colab-deep-learning/" style="font-size: 10px;">use of Colab(deep learning)</a>
+      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 12.5px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 17.5px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 15px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 17.5px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 12.5px;">paperReading</a> <a href="/tags/paper-reading/" style="font-size: 10px;">paper_reading</a> <a href="/tags/use-of-Colab-deep-learning/" style="font-size: 10px;">use of Colab(deep learning)</a>
     </div>
   </div>
 
@@ -750,7 +753,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
     </div>
   </div>
 
@@ -763,23 +766,23 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       <ul>
         
           <li>
+            <a href="/2019/09/25/github-use-1/">github&amp;git</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/25/github&git/">github&amp;git</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/05/django-learning/">django_learning</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/05/paper-reading/">paper_reading</a>
+          </li>
+        
+          <li>
             <a href="/2019/05/04/colab/">colab</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/28/reading1/">BTS-DSN</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/28/recording2/">AlexNet</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/23/龙芯杯6/">龙芯杯备战4</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/28/ma_model_pre5/">ma_model_preparation5</a>
           </li>
         
       </ul>

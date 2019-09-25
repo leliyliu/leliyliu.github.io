@@ -69,6 +69,253 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-龙芯杯备战3" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/25/龙芯杯备战3/" class="article-date">
+  <time datetime="2018-11-25T08:34:53.000Z" itemprop="datePublished">2018-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/25/龙芯杯备战3/">龙芯杯备战3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本周总结：</p>
+<pre><code>这一周任务比较明确，主要是把数电的知识全部过一遍，然后学习verilog，并且开始了一些机组的学习，希望能从中有所收获。大体方向上都准备地较为不错，但是在看机组实验的手册的时候依旧出现了一些问题，还是不太清楚需要做些什么。
+</code></pre><hr>
+<h2 id="verilog-的学习"><a href="#verilog-的学习" class="headerlink" title="verilog 的学习"></a>verilog 的学习</h2><hr>
+<h3 id="语法要点"><a href="#语法要点" class="headerlink" title="语法要点"></a>语法要点</h3><ol>
+<li>always 里面赋值左边必须申明为reg</li>
+<li>assign表达式左边必须申明为wire</li>
+<li>阻塞赋值用&lt;=</li>
+<li>非阻塞赋值用=</li>
+</ol>
+<p>1) 边沿触发生成寄存器的时序逻辑<br>2) 电平触发条件完整，生成组合逻辑<br>3) 电平触发条件不完整，生成锁存器的时序逻辑</p>
+<p>结论：<br>    声明成reg,不一定得到寄存器<br>    未声明为reg，也可能得到寄存器</p>
+<h3 id="coding-要点"><a href="#coding-要点" class="headerlink" title="coding 要点"></a>coding 要点</h3><pre><code>·如果是边沿触发的逻辑 比如always@(posedge clk)，里面一律使用&lt;=赋值
+·如果是电平触发的逻辑，一律使用=赋值
+逻辑简单用assign语句；逻辑复杂，用always语句
+分支条件写完整，防止出现锁存器
+</code></pre><h3 id="系统任务与系统函数-task-or-function"><a href="#系统任务与系统函数-task-or-function" class="headerlink" title="系统任务与系统函数(task or function)"></a>系统任务与系统函数(task or function)</h3><pre><code>标准输出任务 $display等
+文件管理任务 $fopen等
+仿真控制任务 $monitor等
+时间函数 $timeformat等
+时间显示函数 $time等
+其他 $random等
+</code></pre><p>关于verilog的学习这一周主要还是看了不少代码，并对其进行了理解。通过对其进行注释，了解到了很多知识，关于注释的代码后续会传到github上。</p>
+<hr>
+<p>下周目标：</p>
+<pre><code>下一周主要的任务主要是关于机组的学习以及基于学习手册的学习，希望能通过这一方面的学习，尽量快速地入门。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/25/龙芯杯备战3/" data-id="ck0z6d1pj001ap8tqben1msky" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Modern-Anglo-American-philosophy-translation-6" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/23/Modern-Anglo-American-philosophy-translation-6/" class="article-date">
+  <time datetime="2018-11-23T15:26:10.000Z" itemprop="datePublished">2018-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/23/Modern-Anglo-American-philosophy-translation-6/">Modern Anglo-American philosophy translation_6</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="a-The-Theory-of-Descriptions"><a href="#a-The-Theory-of-Descriptions" class="headerlink" title="a. The Theory of Descriptions"></a>a. The Theory of Descriptions</h3><blockquote>
+<p>Much of Russell’s exuberance over Moore’s realism had to do with its consequences for logic and mathematics. Like so many philosophers before him, Russell was attracted to the objective certainty of mathematical and logical truths. However, because Idealism taught that no proposition about a bit of reality in isolation could be true simpliciter, an apparently straightforward truth such as 2+2=4, or If a=b and b=c then a=c, was not so straightforward after all.</p>
+</blockquote>
+<p>&emsp;罗素超过的穆尔的实在论的方面的工作主要与他的逻辑和数学方面的努力相联系。与在他之前的许多哲学家相同，罗素被数学和逻辑客观的肯定性所吸引。然而，由于唯心主义言明，没有任何关于现实的命题能够绝对独立地正确，甚至像2+2=4，或如果a=b,b=c，那么a=c这样一些显然正确的真理都不能独立正确。</p>
+<blockquote>
+<p> Even worse, Idealism made such truths dependent upon their being thought or conceived. This follows from the doctrine of internal relations; for, on the natural assumption that knowledge is or involves a relation between a knower (subject) and something known (object), the doctrine implies that objects of knowledge are not independent of the subjects that know them. This left Idealism open to the charge of endorsing psychologism—the view that apparently objective truths are to be accounted for in terms of the operations of subjective cognitive or “psychological” faculties. Psychologism was common to nearly all versions of Kantian and post-Kantian Idealism (including British Idealism). It was also a common feature of thought in the British empirical tradition, from Hume to Mill (albeit with a naturalistic twist). Moore’s early realism allowed Russell to avoid psychologism and other aspects of Idealism that prevented treating logical and mathematical truths as absolutely true in themselves.</p>
+</blockquote>
+<p>&emsp;更糟糕的是，唯心主义说这些真理都取决于它们被思维的方式。这来自于有关内部联系的这一主张，表示为，在自然的猜想中，知识涉及到关于一个knower（主体）和一些被知道的东西（客体）的联系，这一主义暗示知识的客观性并不独立于我们所知的主体之外。这导致唯心主义开始承认心理主义——这一主义表明任何客观真理都取决于主观认识或者“心理”官能。心理主义者普遍上和康德与后康德的唯心主义（包括英国唯心主义）的所有类型都相似。这也是在从Hume 到Mill的英国经验论传统中的一个普遍特点。穆尔早期的实在论使得罗素可以避免心理主义或其它方面的唯心主义的干扰，而能保护逻辑和数学的真理作为一个绝对的真理。</p>
+<blockquote>
+<p>A crucial part of this early realism, however, was the object theory of meaning; and this had implications that Russell found unacceptable. On the object theory, the meaning of a sentence is the object or state of affairs to which it refers (this is one reason why Moore could identify ordinary objects as propositions or meanings; see Section 1). For instance, the sentence “That leaf is green” is meaningful in virtue of bearing a special relationship to the state of affairs it is about, namely, a certain leaf’s being green.</p>
+</blockquote>
+<p>&emsp;然而，早期实在论的关键的一个部分是关于意义的对象理论，但在这一方面中，罗素意识到有一些不可接受的暗示在其中。在客体理论中，一个语句的意义就是它所指的客体或事态（这就是为什么穆尔可以辨认出作为命题或意义的日常客体的一个原因）。例如，“树叶是绿色的”这个句子是有意义的，只是因为一个特殊的关系它所关乎的事态存在，更确切的说，存在一个特定的树的叶子是绿色的。</p>
+<blockquote>
+<p>This may seem plausible at first glance; problems emerge, however, when one recognizes that the class of meaningful sentences includes many that, from an empirical point of view, lack objects. Any statement referring to something that does not exist, such as a fictional character in a novel, will have this problem. A particularly interesting species of this genus is the negative existential statement—statements that express the denial of their subjects’ existence. For example, when we say “The golden mountain does not exist,” we seem to refer to a golden mountain—a nonexistent object—in the very act of denying its existence. But, on the object theory, if this sentence is to be meaningful, it must have an object to serve as its meaning. Thus it seems that the object theorist is faced with a dilemma: either give-up the object theory of meaning or postulate a realm of non-empirical objects that stand as the meanings of these apparently objectless sentences.</p>
+</blockquote>
+<p>&emsp;第一眼看起来这是合理的，然而，当一个人意识到在有意义的命题中包括了许多缺乏客体的经验的观点的时候，问题就出现了。任何一个指向不存在的事物的陈述，就像小说中的虚幻人物，就会因此而具有问题。这一类陈述中很有趣的一个就是否定存在命题，一个否定主观存在的命题。例如，当我们说“金山不存在”的时候，我们似乎在指金山这一不存在的客体来说明它的不存在。但是，在客观理论中，如果这个句子是有意义的，必定有一个客体来指代它的意义。因此，似乎客观理论陷入了一个两难的境地，要不放弃意义客观理论，要不假定一个非经验对象的领域，作为这些明显无对象的句子的意义。</p>
+<blockquote>
+<p>The Austrian philosopher Alexius Meinong took the latter horn of the dilemma, notoriously postulating a realm of non-existent objects. This alternative was too much for Russell. Instead, he found a way of going between the horns of the dilemma. His escape route was called the “theory of descriptions,” a bit of creative reasoning that the logician F. P. Ramsey called a “paradigm of philosophy,” and one which helped to stimulate extraordinary social momentum for the budding analytic movement. The theory of descriptions appears in Russell’s 1905 essay, “On Denoting,” which has become a central text in the analytic canon. There, Russell argues that “denoting phrases”—phrases that involve a noun preceded by “a,” “an,” “some,” “any,” “every,” “all,” or “the”—are incomplete symbols; that is, they have no meaning on their own, but only in the context of a complete sentence that expresses a proposition. Such sentences can be rephrased—analyzed in Moore’s sense of “analyzed”—into sentences that are meaningful and yet do not refer to anything nonexistent.</p>
+</blockquote>
+<p>&emsp;奥地利哲学家迈农采取了这个两难中的第二种解决方式，即一个被哲学家们所厌弃的关于不存在的客体的领域。这样的抉择超出了罗素能承受的范围。相反，他找到了一种跳出这个两难局面的方法。他跳出这个两难局面的方式被称作“摹状实体论”，由于其在推理上的一点创新性，逻辑学家F. P. Ramsey “哲学范式”，并且它能帮助极大地激励社会动力来推动分析运动。这种描述的理论出现在罗素1905年的文章“论指谓”，而这也成为了分析标准中的一个中心内容。在这本书中，罗素声明由’a’,’an’,’some’,’any’,’every’,’all’或’the’这些冠词所指的名词都是不完全的符号；即是说，他们本身是没有意义的，只是在一个表达命题的完整语句的语境中被理解。这些句子能够被理解并且有意义但他们不指向任何非存在——可以用穆尔的”分析“来对其进行分析。</p>
+<blockquote>
+<p>For instance, according to Russell, saying “The golden mountain does not exist” is really just a misleading way of saying “It is not the case that there is exactly one thing that is a mountain and is golden.” Thus analyzed, it becomes clear that the proposition does not refer to anything, but simply denies an existential claim. Since it does not refer to any “golden mountain,” it does not need a Meinongian object to provide it with meaning. In fact, taking the latter formulation to be the true logical form of the statement, Russell construes the original’s reference to a non-existent golden mountain as a matter of grammatical illusion. One dispels the illusion by making the grammatical form match the true logical form, and this is done through logical analysis. The idea that language could cast illusions that needed to be dispelled, some form of linguistic analysis was to be a prominent theme in analytic philosophy, both in its ideal language and ordinary language camps, through roughly 1960.</p>
+</blockquote>
+<p>&emsp;例如，根据罗素的说法，“金山不存在”事实上只是一种令人误解的关于“完全没有一个事物它既是山，又全是金”的说法。经过这样的分析，可以清晰地说这个命题不指向任何事物，而只是简单地拒绝了一个存在主张。由于它并不指向任何“金山”，那么也不需要一个迈农式的客体来提供它的意义。事实上，与其采用后一种方式在逻辑上也是正确的陈述形式，罗素建立了一种指向不存在的金山仅仅是一种语法上的误解的方式。一个消除这种误解的方式就是将语法形式转换为正确的逻辑形式，而这正是通过逻辑分析实现的。这种关于语言可能会导致误解的观点需要被清除，一些形式的语言分析在分析哲学这一主题下都是影响显著的，包括理想语言和日常语言阵营，在1960年左右。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/23/Modern-Anglo-American-philosophy-translation-6/" data-id="ck0z6d1q5001xp8tqunkl3puz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Modern-Anglo-American-philosophy-translation-5" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/21/Modern-Anglo-American-philosophy-translation-5/" class="article-date">
+  <time datetime="2018-11-21T15:35:59.000Z" itemprop="datePublished">2018-11-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/21/Modern-Anglo-American-philosophy-translation-5/">Modern Anglo-American philosophy translation_5</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>All of these cases exhibit what proved to be the most influential aspect of Moore’s philosophical work, namely his method of analysis, which many of his contemporaries took to be linguistic analysis. For instance, Norman Malcolm represents the standard view of Moore for much of the twentieth century when he says that “the essence of Moore’s technique of refuting philosophical statements consists in pointing out that these statements go against ordinary language” (Malcolm 1942, 349). In the same essay, he goes on to tie Moore’s entire philosophical legacy to his “linguistic method:”</p>
+</blockquote>
+<p>&emsp;上面所展示的这些例子是穆尔哲学工作中最具影响的方面，尤其是他的分析方法，被当时许多哲学家视作语言学分析。例如，Norman Malcolm 代表了二十世纪大多数人对于穆尔的标准看法，他说“穆尔的方法的本质在于通过指出违背了日常语言来驳斥哲学陈述。”在这篇文章啊中，他也把穆尔整个的哲学遗产归结为他的“语言学方法”。</p>
+<blockquote>
+<p>Moore’s great historical role consists in the fact that he has been perhaps the first philosopher to sense that any philosophical statement that violates ordinary language is false, and consistently to defend ordinary language against its philosophical violators. (Malcolm 1942, 368)</p>
+</blockquote>
+<p>&emsp;穆尔在哲学史上的伟大贡献都归结为他可能是第一个察觉到任何一个违反日常语言的哲学陈述都是错误的，并且需要坚持去捍卫日常语言而反对它的哲学反对者。</p>
+<blockquote>
+<p>Malcolm is right to note the novelty of Moore’s approach. Although previous philosophers occasionally had philosophized about language, and had, in their philosophizing, paid close attention to the way language was used, none had ever claimed that philosophizing itself was merely a matter of analyzing language. Of course, Moore did not make this claim either, but what Moore actually did as a philosopher seemed to make saying it superfluous—in practice, he seemed to be doing exactly what Malcolm said he was doing. Thus, though it took some time for the philosophical community to realize it, it eventually became clear that this new “linguistic method,” pioneered by Moore, constituted a radical break not only with the British Idealists but with the larger philosophical tradition itself. To put it generally, philosophy was traditionally understood as the practice of reasoning about the world.</p>
+</blockquote>
+<p>&emsp;Malcolm 正确地指出了穆尔的所提供的哲学路径的新颖之处。尽管过去也有过哲学家曾对语言进行过哲学的探讨，并且在他们的哲学论中，关注语言的使用方式，但没有人提出过哲学探讨本身就仅仅是对语言的分析。当然，穆尔也没有直接这样表述，但是穆尔作为一个哲学家所做的工作已经不证自明了——事实上，他似乎确实就是在做Malcolm所说的。因此，尽管哲学圈花费了一段时间才意识到这件事情，但被穆尔所首先提出的“语言学方法”作为一种哲学方法逐渐变得清晰，并且引起了一个不仅是从英国唯心主义，而甚至是传统哲学本身的巨大转变。或者更明确地说，哲学在传统意义上被理解为关于这个世界的理性的实践。</p>
+<blockquote>
+<p>Its goal was to give a logos—a rationally coherent account—of the world and its parts at various levels of granularity, but ultimately as a whole and at the most general level. There were other aspects of the project, too, of course, but this was the heart of it. With Moore, however, philosophy seemed to be recast as the practice of linguistic analysis applied to isolated issues. Thus, the rise of analytic philosophy, understood as the relatively continuous growth of a new philosophical school originating in Moore’s “linguistic turn,” was eventually recognized as being not just the emergence of another philosophical school, but as constituting a “revolution in philosophy” at large. (See Ayer et al. 1963 and Tugendhat 1982.)</p>
+</blockquote>
+<p>&emsp;它的目标是提出一个理性的——即在理性层面相互融贯——并且在不同层次都具有，但最终作为一个整体的世界。当然，传统哲学的研究也有其它的方面，但是这个目标是它的核心。但是在穆尔的工作中，起初哲学似乎被重铸成应用在孤立论题上的语言学分析的实践。因此，分析哲学的哲学地位的提高，被认为是一个起源于穆尔的“语言学转向”的相当具有连续性的一个新的哲学学派的成长，最终不仅被认为是一个新兴哲学学派的诞生，而是哲学史层面一个“哲学的革命”。</p>
+<h3 id="2-Russell-and-the-Early-Wittgenstein-Ideal-Language-and-Logical-Atomism"><a href="#2-Russell-and-the-Early-Wittgenstein-Ideal-Language-and-Logical-Atomism" class="headerlink" title="2. Russell and the Early Wittgenstein: Ideal Language and Logical Atomism"></a>2. Russell and the Early Wittgenstein: Ideal Language and Logical Atomism</h3><blockquote>
+<p>The second phase of analytic philosophy is charaterized by the turn to ideal language analysis and, along with it, logical atomism—a metaphysical system developed by Bertrand Russell and Ludwig Wittgenstein. Russell laid the essential groundwork for both in his pioneering work in formal logic, which is covered in Sections 2a and 2b. Though this work was done during the first phase of analytic philosophy (1900-1910), it colaesced into a system only toward the end of that period, as Russell and Whitehead completed their work on the monumental Principia Mathematica (Russell and Whitehead 1910-13), and as Russell began to work closely with Ludwig Wittgenstein.<br>&emsp;分析哲学的第二个阶段的标志性事件是理想语言分析的转向和逻辑原子主义——一个由罗素和维特根斯坦提出并发展的形而上学体系。罗素在我们将在2a,2b节涉及到的他的关于形式逻辑的工作中打下了必要的基础。尽管这部分工作是在分析哲学发展的第一阶段完成的，但是知道第一阶段的最后阶段——罗素和怀特海德完成了那部具有里程碑意义的作品数学原理之后，它才融合成一个体系，而在此之后，罗素开始和维特根斯坦一起合作。</p>
+<p>Wittgenstein seems to have been the sine qua non of the system. Russell was the first to use the term “logical atomism,” in a 1911 lecture to the French Philosophical Society. He was also the first to publicly provide a full-length, systematic treatment of it, in his 1918 lectures on “The Philosophy of Logical Atomism” (Russell 1918-19). However, despite the centrality of Russell’s logical work for the system, in the opening paragraph of these lectures Russell acknowedges that they “are very largely concerned with explaining certain ideas which I learnt from my friend and former pupil Ludwig Wittgenstein” (Russell 1918, 35). Wittgenstein’s own views are recorded in his TractatusLogico-Philosophicus. First published in 1921, the Tractatus proved to be the most influential piece written on logical atomism. Because of its influence, we shall pay special attention to the Tractatus when it comes to presenting logical atomism as a complete system in Section 2d.<br>&emsp;维特根斯坦是这个体系建立的不可或缺的一个人物。罗素第一次使用“逻辑原子论”这一说法是在法国哲学大会的演讲中。他也是第一个公开地，长篇地，系统地表述这个体系的人——在他1918年的“逻辑原子主义哲学”的演讲中。然而，尽管罗素的逻辑工作处在这个体系的中心地位，在这次演讲的开头，罗素也承认道“这个体系大部分的确定的知识都是来自于我的朋友和以前的学生，维特根斯坦”。维特根斯坦自己的观点被记录在他的逻辑哲学论中。第一版出版于1921年的逻辑哲学论被证明是关于逻辑原子主义的最有影响力的文章。因为它的影响力，我们将特别关注逻辑哲学论在2d节我们展现逻辑原子论的时候。</p>
+<p>Though Russell and Wittgenstein differed over some of the details of logical atomism, these disagreements can be ignored for present purposes. What mattered for the development of analytic philosophy on the whole was the emergence in the second decade of the twentieth century of a new view of reality tailored to fit recent developments in formal logic and the philosophical methodology connected to it, as discussed in Section 2b. This was the common core of the Russellian and Wittegensteinian versions of logical atomism; thus, blurring the lines between Russell and Wittgenstein actually enables us to maintain better focus on the emerging analytic tradition. It will also make convenient a brief word on Frege, to see why some have wanted to include him as a founder of analytic philosophy (Section 2c).<br>&emsp;尽管罗素和维特根斯坦在逻辑哲学论的一些细枝末节上有不同的意见，但是在展示他们的主张上，这些矛盾可以被忽略。总体上而言，分析哲学整体上最大的进步是在二十世纪第二个十年中所诞生的一种对于真实的新的符合形式逻辑和与之相关的哲学方法的发展的观点，这个将在2b节中被讨论。这是罗素主义者和维特根斯坦主义者逻辑原子论版本中共同的核心，因此，模糊罗素和维特根斯坦观点上的界限使我们能更好地专注于分析传统的出现。这里我们也将用一点简短的文字来讨论弗洛伊德，来看为什么一些人想要将他作为分析哲学的创始人之一。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/21/Modern-Anglo-American-philosophy-translation-5/" data-id="ck0z6d1q7001zp8tqvs8wfb47" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Modern-Anglo-American-philosophy-translation-4" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/19/Modern-Anglo-American-philosophy-translation-4/" class="article-date">
+  <time datetime="2018-11-19T12:41:50.000Z" itemprop="datePublished">2018-11-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/19/Modern-Anglo-American-philosophy-translation-4/">Modern Anglo-American philosophy translation_4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Moore thought that to call common sense into question this way is perverse because the ordinary meaning of a common sense proposition is plain to all competent language-users. So, to question its meaning, and to suggest it has a different meaning, is disingenuous. Moreover, since the bounds of intelligibility seem to be fixed by the ordinary meanings of common sense proposition, the philosopher must accept them as starting points for philosophical reflection. Thus, the task of the philosopher is not to question the truth of common sense propositions, but to provide their correct analyses or explanations.</p>
+</blockquote>
+<p>&emsp;穆尔认为如果用这种方式将常识视作为可以讨论的问题是不正当的，因为这些命题的日常意义对于能够掌握语言的人来说都是显然的。因此，质疑这些命题的意义并且提出它们含有其它不同的意义，是毫无坦诚的意义的。因此，由于可理解的界限已经被日常命题的意义所确定，哲学家必须接受这些命题的意义并对此作出哲学上的反映。因此，哲学家的任务不是质疑这些日常表达的命题的真实性，而是提供正确的分析和解释。</p>
+<blockquote>
+<p>Moore’s use of the term “analysis” in this way is the source of the name “analytic philosophy.” Early on in analytic history, Moorean analysis was taken to be a matter of rephrasing some common sense proposition so as to yield greater insight into its already-clear and unquestionable meaning. For example, just as one elucidates the meaning of “brother” by saying a brother is a male sibling or by saying it means “male sibling,” so one might say that seeing a hand means experiencing a certain external object—which is exactly what Moore claims in his paper “Proof of an External World” (Moore 1939).</p>
+</blockquote>
+<p>&emsp;穆尔所使用的这个词“分析”就是分析哲学名称的来源。在分析哲学早期历史中，穆尔的分析方法被用作为改述一些日常表达的命题，来为了洞悉它本身希望表达的真实且逻辑正确，不容置疑的意义。例如，就像一个人将“兄弟”准确地表述为兄弟就是一个男性的兄弟姐妹，或者“male sibling”， 所以一个人可能会说”seeing a hand” （即指看到一个方面)意味着经验一个外观所见的客体，而这正是穆尔在他的论文中所宣称的“对表层世界的证明”。</p>
+<blockquote>
+<p>The argument of that essay runs as follows. “Here is one hand” is a common sense proposition with an ordinary meaning. Using it in accordance with that meaning, presenting the hand for inspection is sufficient proof that the proposition is true—that there is indeed a hand there. But a hand, according to the ordinary meaning of “hand,” is a material object, and a material object, according to the ordinary meaning of “material object,” is an external object, an object that isn’t just in our mind. Thus, since we can prove that there is a hand there, and since a hand is an external object, there is an external world, according to the ordinary meaning of “external world.”</p>
+</blockquote>
+<p>&emsp;这篇文章的论述如下：“这里有一只手”是一个具有日常意义的命题。 人们用这句话的意识是，将这只手伸出来给别人看是一个完全充分地对于这句话的证明——确实这里有一只手。但是一只手，根据日常的意义而言，是一个物质的实体，而物质的实体，根据传统的意义来看，是一个外在的客体，一个客体不存在于我们的头脑中的。 因此，因为我们可以证明这里确实有一只手，并且因为手是一个外在客体，那么这里必然有一个外在的世界，根据日常所指向的“外在世界”。</p>
+<blockquote>
+<p>These examples are from papers written in the second half of Moore’s career, but his “linguistic method” can be discerned much earlier, in works dating all the way back to the late 1800s—the period of his rebellion against Idealism. Even in Moore’s first influential paper, “The Nature of Judgment” (Moore 1899), he can be found paying very close attention to propositions and their meanings. In his celebrated paper, “The Refutation of Idealism” (Moore 1903b), Moore uses linguistic analysis to argue against the Idealist’s slogan Esseestpercipi (to be is to be perceived). </p>
+</blockquote>
+<p>&emsp;这些例子都取自于穆尔哲学生涯的第二段中期，但是他的“语言学方法”可以更早地被看到，甚至在他的19世纪晚期所写的论文中——那个他干开始反叛唯心主义的阶段。甚至在穆尔第一篇有影响力的论文中，都可以很明显地看出他十分关注命题和它们的意义。在他的成名作中，”The Refutation of Idealism”，穆尔就用了语言学分析的方法来驳斥唯心主义的口号“存在就是被感知”。</p>
+<blockquote>
+<p>Moore reads the slogan as a definition or, as he would later call it, an analysis: just as we say “bachelor” means “unmarried man,” so the Idealist says “to exist” means “to be cognized.” However, if these bits of language had the same meaning, Moore argues, it would be superfluous to assert that they were identical, just as it is superfluous to say “a bachelor is a bachelor.” The fact that the Idealist sees some need to assert the formula reveals that there is a difference in meanings of “to be” and “to be perceived,” and hence a difference in the corresponding phenomena as well.</p>
+</blockquote>
+<p>&emsp;穆尔解读这个口号为一个定义，或者他后来所称作的，一个分析：就像我们说“单身汉”意味着“未结婚的男子”一样。所以唯心主义者所说的“存在”意味着“被感知”，然而，如果这些语言上的表述有这样相同的意义，穆尔驳斥道，那么主张说它们是相同的是多余的，就像说“单身汉是单身汉”是多余的一样。事实上，唯心主义者看到为什么需要说明这个口号实际上是因为“存在”和“被感知”的意义不同的，因此在相应的现象中也有类似的不同。</p>
+<blockquote>
+<p>Moore’s most famous meaning-centered argument is perhaps the “open question argument” of his Principia Ethica (Moore 1903a). The open question argument purports to show that it is a mistake to define “good” in terms of anything other than itself. For any definition of good—“goodness is pleasure,” say—it makes sense to ask whether goodness really is pleasure (or whatever it has been identified with); thus, every attempt at definition leaves it an open question as to what good really is. This is so because every purported definition fails to capture the meaning of “good.”</p>
+</blockquote>
+<p>&emsp;穆尔最著名的以意义为中心的论证可能是在他的心理学原理中的“开放问题论证”。这个开放问题旨在展示在“good”的定义中，按照任何超过它的解释，都是有误的。对任何关于good的解释——“善就是愉快”的言论，它会自然而然地让人质疑到底什么是愉快（或者说愉快是如何被定义的），因此，任何尝试性的定义都会留下一个开放的问题，让人去思考到底什么是善（good）。这是因为每个旨在给出定义的尝试都没有成功捕捉住“善”的意义。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/19/Modern-Anglo-American-philosophy-translation-4/" data-id="ck0z6d1oa0009p8tqnh090ohh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-龙芯杯备战2" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/18/龙芯杯备战2/" class="article-date">
@@ -261,7 +508,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/18/龙芯杯备战2/" data-id="cjv9as50n001jkstqmvj3vanp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/18/龙芯杯备战2/" data-id="ck0z6d1pn001fp8tqbj8a3eeg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
@@ -351,7 +598,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/18/Modern-Anglo-American-philosophy-translation-3/" data-id="cjv9as4z20005kstqckydhkb1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/18/Modern-Anglo-American-philosophy-translation-3/" data-id="ck0z6d1q2001up8tq81dn2si0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -422,7 +669,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/17/Modern-Anglo-American-philosophy-translation-2/" data-id="cjv9as50g001ckstqpm2szl1h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/17/Modern-Anglo-American-philosophy-translation-2/" data-id="ck0z6d1pg0017p8tq8ru263he" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -499,7 +746,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/15/Modern-Anglo-American-philosophy-translation-1/" data-id="cjv9as50i001ekstqg2cezrm6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/15/Modern-Anglo-American-philosophy-translation-1/" data-id="ck0z6d1pe0015p8tqwmzcrg9f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -575,7 +822,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/12/philosophy-of-science1/" data-id="cjv9as50e001akstqrpt6gjc2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/12/philosophy-of-science1/" data-id="ck0z6d1qi0024p8tq8oq7tqx2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li></ul>
@@ -624,7 +871,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/11/A-Winkle-in-Time/" data-id="cjv9as4yk0000kstqo9o1c2k2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/11/A-Winkle-in-Time/" data-id="ck0z6d1m20000p8tq1kd7y4ta" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English-learning/">English_learning</a></li></ul>
@@ -636,110 +883,11 @@ div , divu , ddiv , ddivu
 
 
   
-    <article id="post-龙芯杯备战1" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/09/龙芯杯备战1/" class="article-date">
-  <time datetime="2018-11-09T06:32:20.000Z" itemprop="datePublished">2018-11-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/09/龙芯杯备战1/">龙芯杯备战1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="龙芯杯备战1"><a href="#龙芯杯备战1" class="headerlink" title="龙芯杯备战1"></a>龙芯杯备战1</h1><p>标签（空格分隔）： 计算机体系结构 龙芯杯</p>
-<hr>
-<h2 id="vivado-的安装以及verilog-入门"><a href="#vivado-的安装以及verilog-入门" class="headerlink" title="vivado 的安装以及verilog 入门"></a>vivado 的安装以及verilog 入门</h2><h3 id="1-vivodo的安装"><a href="#1-vivodo的安装" class="headerlink" title="1.vivodo的安装"></a>1.vivodo的安装</h3><p>&emsp; &emsp; 安装环境： ubuntu18.04 &emsp; vivado2018.1<br><br>&emsp;&emsp;如果linux系统中所开的空间不够，可以直接将压缩包和安装包放置在windows系统硬盘空间中，在ubuntu18.04文件中点开其他位置即可进行安装。直接可安装成功。（按照讲义内容进行即可，注意为web版本）<br><br>&emsp;&emsp;若需要打开vivado，则直接在终端上输入vivado则可以直接打开。具体新建项目的方式可以参考讲义。</p>
-<h3 id="2-verilog入门"><a href="#2-verilog入门" class="headerlink" title="2.verilog入门"></a>2.verilog入门</h3><h4 id="1-verilog设计说明"><a href="#1-verilog设计说明" class="headerlink" title="1.verilog设计说明"></a>1.verilog设计说明</h4><p>&emsp;&emsp;整个verilog的设计应该是寄存器级别的，尽量不要使用系统级别的代码。<br><br>&emsp;&emsp; verilog 语法和C语言很像，但是思维方式应该有很大不同，需要跳出C语言串行的思维方式，按照数字逻辑中并行的思维方式进行思考。要明确verilog语法是用来设计硬件电路的，硬件电路是并行并发的。所以 Verilog 语<br>言里面,一前一后两句 assign 语句,不是写在前面的先执行写在后面的后执行,在忽略底层电路延迟因素的情况<br>下,这两句对应的逻辑是同时并发执行的。<br><br>&emsp;&emsp; 必要的verilog学习和语法使用步骤：先进行电路结构设计,再进行 Verilog 代码编写。<br><br>&emsp;&emsp; 在设计步骤上，建议：<font color="blue">“自顶向下、模块划分、逐层细化”</font>。划分过程中,<font color="red">推荐优先沿着数据流的路径进行划分</font>。</p>
-<h4 id="2-verilog代码风格"><a href="#2-verilog代码风格" class="headerlink" title="2.verilog代码风格"></a>2.verilog代码风格</h4><p>&emsp;&emsp; 务必记住:代码写出来,要让自己过了一年半载还能看得懂改得了,要让同项目组的其它成员能看得懂改得了,要让项目无关的本领域设计人员在看了你的设计文档之后也能看得懂改得了。<br><br>&emsp;&emsp;变量命名要求：不要求大小写，但需用下划线_来区分多个单词</p>
-<font color="green">缩写需要注释清楚</font>
-<font color="red">代码需要对齐,上下行对齐的时候不要使用 Tab,而要用空格</font>
-
-<h3 id="3-verilog语法"><a href="#3-verilog语法" class="headerlink" title="3.verilog语法"></a>3.verilog语法</h3><ol>
-<li>module,endmodule——-模块声明</li>
-<li>input，output,inout——-端口声明</li>
-<li>wire———线网数据类型</li>
-<li>reg,integer———变量数据类型<br><br><a href="https://blog.csdn.net/wang1986527/article/details/77968118" target="_blank" rel="noopener">更多的语法使用</a><br><br>一个3-8的译码器的代码如下所示<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">\\<span class="number">3</span>-<span class="number">8</span>译码器</span><br><span class="line"><span class="keyword">module</span> decoder_3_8(</span><br><span class="line"><span class="keyword">input</span> [<span class="number">2</span>:<span class="number">0</span>] in,</span><br><span class="line"><span class="keyword">output</span> [<span class="number">7</span>:<span class="number">0</span>] out</span><br><span class="line">);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">0</span>] = (in==<span class="number">3'd0</span>);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">1</span>] = (in==<span class="number">3'd1</span>);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">2</span>] = (in==<span class="number">3'd2</span>);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">3</span>] = (in==<span class="number">3'd3</span>);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">4</span>] = (in==<span class="number">3'd4</span>);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">5</span>] = (in==<span class="number">3'd5</span>);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">6</span>] = (in==<span class="number">3'd6</span>);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">7</span>] = (in==<span class="number">3'd7</span>);</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="3-继续学习的计划以及欠缺方面"><a href="#3-继续学习的计划以及欠缺方面" class="headerlink" title="3.继续学习的计划以及欠缺方面"></a>3.继续学习的计划以及欠缺方面</h3><p>继续完善关于verilog的学习，注意掌握一些基础的语法，同时，还需要对于verilog的思想有进一步的认识，要了解verilog设计的思路，下周尝试自己进行一个简单的设计。<br>下周的工作还有熟悉MIPS汇编代码，以及尝试对于C语言代码进行反汇编（了解C语言和C++语言的部分差异）<br>下周开始尝试接触有关计算机组成原理中有关流水线部分的知识<br>  <br>[1]: <a href="https://blog.csdn.net/wang1986527/article/details/77968118" target="_blank" rel="noopener">https://blog.csdn.net/wang1986527/article/details/77968118</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/09/龙芯杯备战1/" data-id="cjv9as50q001mkstqb5zky7uw" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/27/hello-world/" class="article-date">
-  <time datetime="2018-10-27T06:37:11.796Z" itemprop="datePublished">2018-10-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/27/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/27/hello-world/" data-id="cjv9as4zr000okstqrrh00fpz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -753,7 +901,7 @@ div , divu , ddiv , ddivu
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-learning/">English_learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-system/">computer_system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-git/">github/git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paperReading/">paperReading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/use-of-Colab-deep-learning/">use of Colab(deep learning)</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-learning/">English_learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-system/">computer_system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-git/">github/git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paperReading/">paperReading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-reading/">paper_reading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/use-of-Colab-deep-learning/">use of Colab(deep learning)</a></li></ul>
     </div>
   </div>
 
@@ -763,7 +911,7 @@ div , divu , ddiv , ddivu
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 10px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 16.67px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 13.33px;">paperReading</a> <a href="/tags/use-of-Colab-deep-learning/" style="font-size: 10px;">use of Colab(deep learning)</a>
+      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 12.5px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 17.5px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 15px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 17.5px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 12.5px;">paperReading</a> <a href="/tags/paper-reading/" style="font-size: 10px;">paper_reading</a> <a href="/tags/use-of-Colab-deep-learning/" style="font-size: 10px;">use of Colab(deep learning)</a>
     </div>
   </div>
 
@@ -772,7 +920,7 @@ div , divu , ddiv , ddivu
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
     </div>
   </div>
 
@@ -785,23 +933,23 @@ div , divu , ddiv , ddivu
       <ul>
         
           <li>
+            <a href="/2019/09/25/github-use-1/">github&amp;git</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/25/github&git/">github&amp;git</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/05/django-learning/">django_learning</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/05/paper-reading/">paper_reading</a>
+          </li>
+        
+          <li>
             <a href="/2019/05/04/colab/">colab</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/28/reading1/">BTS-DSN</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/28/recording2/">AlexNet</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/23/龙芯杯6/">龙芯杯备战4</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/28/ma_model_pre5/">ma_model_preparation5</a>
           </li>
         
       </ul>

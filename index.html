@@ -69,6 +69,199 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-github-use-1" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/25/github-use-1/" class="article-date">
+  <time datetime="2019-09-25T11:15:03.000Z" itemprop="datePublished">2019-09-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/25/github-use-1/">github&amp;git</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/25/github-use-1/" data-id="ck0z6d1om000gp8tqsc30ly5n" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-git/">github/git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-github&amp;git" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/25/github&git/" class="article-date">
+  <time datetime="2019-09-25T11:15:03.000Z" itemprop="datePublished">2019-09-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/25/github&git/">github&amp;git</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Git-amp-github"><a href="#Git-amp-github" class="headerlink" title="Git &amp; github"></a>Git &amp; github</h1><hr>
+<h2 id="github-账号申请"><a href="#github-账号申请" class="headerlink" title="github 账号申请"></a>github 账号申请</h2><h3 id="personal-or-workgroup"><a href="#personal-or-workgroup" class="headerlink" title="personal or workgroup"></a>personal or workgroup</h3><ul>
+<li>个人账号注册-&gt; 登录<a href="https://github.com/" target="_blank" rel="noopener">github</a> 根据相关信息注册账号(sign up 表示注册，sign in 表示登录)</li>
+</ul>
+<p>当需要注册organization的时候，则可以如图，选择new organization 来创建一个workgroup。<br><img src="https://github.com/leliyliu/figure_lib/blob/master/loognson/git/organization.png" alt="workgourp"></p>
+<h3 id="创建仓库-new-repository"><a href="#创建仓库-new-repository" class="headerlink" title="创建仓库(new repository)"></a>创建仓库(new repository)</h3><p>其中包括了几项内容，需要填写或者选择：repository name , Description, initialization or not , gitignore and license.<br><img src="https://github.com/leliyliu/figure_lib/blob/master/loognson/git/create.jpg" alt="create"></p>
+<p>选择clone or download,然后在本地打开git bash ，然后git clone：<br><img src="https://github.com/leliyliu/figure_lib/blob/master/loognson/git/clone.jpg" alt="clone"><br><img src="https://github.com/leliyliu/figure_lib/blob/master/loognson/git/gitclone.jpg" alt="git_clone"></p>
+<h3 id="配置用户名和邮箱"><a href="#配置用户名和邮箱" class="headerlink" title="配置用户名和邮箱"></a>配置用户名和邮箱</h3><blockquote>
+<p>第一次使用gitBash需要配置邮箱和用户名，邮箱可以填你自己的邮箱，用户名可以任意写，这不是做登录使用，就是保留自己的信息而已。</p>
+</blockquote>
+<ul>
+<li>输入git config —global user.email按回车，然后输入你的邮箱</li>
+<li>输入git config —global user.name按回车，然后输入你的用户名</li>
+<li>邮箱和用户名都使用之后就可以正式使用git了</li>
+</ul>
+<h3 id="git-常用命令汇总"><a href="#git-常用命令汇总" class="headerlink" title="git 常用命令汇总"></a>git 常用命令汇总</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">克隆代码：git <span class="built_in">clone</span> 远程仓库的url</span><br><span class="line">配置邮箱：git config --global user.email</span><br><span class="line">配置用户名：git config --global user.name</span><br><span class="line">从远程仓库下拉代码到本地：git pull</span><br><span class="line">将本地代码添加到缓冲区：git add * .</span><br><span class="line">将本地代码提交到本地仓库：git commit -m<span class="string">"日志文字"</span></span><br><span class="line">将本地仓库同步到远程仓库：git push origin master</span><br><span class="line">查看日志：git <span class="built_in">log</span></span><br><span class="line">查看某个文件的提交日志：git <span class="built_in">log</span> 文件名</span><br><span class="line">查看某个用户的提交日志：git <span class="built_in">log</span> --author=“author”</span><br><span class="line">查看某条提交日志相信信息：git show 版本号</span><br><span class="line">查看git全部命令：git --<span class="built_in">help</span></span><br><span class="line">查看git某个命令的使用：git <span class="built_in">help</span> 命令名</span><br></pre></td></tr></table></figure>
+<h3 id="more-commands"><a href="#more-commands" class="headerlink" title="more commands"></a>more commands</h3><p>参考<a href="https://www.jianshu.com/p/cf1e883d69d6" target="_blank" rel="noopener">Git 命令大全</a></p>
+<h4 id="项目提交和拉取"><a href="#项目提交和拉取" class="headerlink" title="项目提交和拉取"></a>项目提交和拉取</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 克隆远程仓库到本地(先<span class="built_in">cd</span>到指定文件夹下,再执行<span class="built_in">clone</span>操作）</span><br><span class="line">$ git <span class="built_in">clone</span> git@github.com:leliyliu/augmips.git</span><br><span class="line"></span><br><span class="line">// 添加本地库</span><br><span class="line">$ git add ProjectName         --------  <span class="string">"ProjectName"</span>项目名称</span><br><span class="line"></span><br><span class="line">// 添加提交日志</span><br><span class="line">$ git commit -m ‘Journal’     </span><br><span class="line"></span><br><span class="line">// 提交到远端</span><br><span class="line">$ git push origin master      --------  <span class="string">"master"</span>分支名</span><br><span class="line"></span><br><span class="line">// 从远端拉取代</span><br><span class="line">$ git pull origin master</span><br></pre></td></tr></table></figure>
+<h4 id="常用辅助命令"><a href="#常用辅助命令" class="headerlink" title="常用辅助命令"></a>常用辅助命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 查看提交日志</span><br><span class="line">$ git <span class="built_in">log</span> -3  --------查看最近三次提交的记录</span><br><span class="line"></span><br><span class="line">// 查看文件提交状态</span><br><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+<h4 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 打一个新标签</span><br><span class="line">$ git tag v1.0.0</span><br><span class="line"></span><br><span class="line">// 查看所有标签</span><br><span class="line">$ git tag</span><br><span class="line"></span><br><span class="line">// 根据commit id 打标签</span><br><span class="line">$ git tag v1.0.1 2fbb88d5fad5a03e5b4ef2df316b4d32f5339ef5</span><br><span class="line"></span><br><span class="line">// 删除标签</span><br><span class="line">$ git tag -d v1.1.0</span><br></pre></td></tr></table></figure>
+<h4 id="关于分支"><a href="#关于分支" class="headerlink" title="关于分支"></a>关于分支</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//1、 查看当前所有分支</span><br><span class="line">$ git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># * dev          ---- 当前分支</span></span><br><span class="line"><span class="comment">#   master       ---- 主分支</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//2、 创建分支</span><br><span class="line">$ git branch dev</span><br><span class="line"></span><br><span class="line">//3、 切换分支</span><br><span class="line">$ git checkout dev</span><br><span class="line"></span><br><span class="line">//4、 创建并切换分支（相当于前两步操作）</span><br><span class="line">$ git checkout -b dev</span><br><span class="line"></span><br><span class="line">//5.1、 合并分支</span><br><span class="line">$ git merge dev                 ------ ⚠️ （此命令为：合并某分支到当前分支，例：将dev合并到master），则当前所处于master分支。</span><br><span class="line"></span><br><span class="line">//5.2、 合并dev分支上的某条记录到master上</span><br><span class="line">//（例如：在dev上有三次提交记录，但是只想把其中的第二次合并到master上去，采取这个命令）</span><br><span class="line">git cherry-pick <span class="string">"ddec59e2..."</span>   ------⚠️ 在master分支下输入命令，参数为 commit-id</span><br><span class="line"></span><br><span class="line">// 如果在合并中存在以下冲突，进入文件夹手动解决冲突再次提交</span><br><span class="line">hint: after resolving the conflicts, mark the corrected paths</span><br><span class="line">hint: with <span class="string">'git add &lt;paths&gt;'</span> or <span class="string">'git rm &lt;paths&gt;'</span></span><br><span class="line"></span><br><span class="line">//6、 删除指定分支</span><br><span class="line">$ git branch -D dev              ------ ⚠️（保证当前分支为非删除分支）</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//1、 查看当前所有分支</span><br><span class="line">$ git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># * dev          ---- 当前分支</span></span><br><span class="line"><span class="comment">#   master       ---- 主分支</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//2、 创建分支</span><br><span class="line">$ git branch dev</span><br><span class="line"></span><br><span class="line">//3、 切换分支</span><br><span class="line">$ git checkout dev</span><br><span class="line"></span><br><span class="line">//4、 创建并切换分支（相当于前两步操作）</span><br><span class="line">$ git checkout -b dev</span><br><span class="line"></span><br><span class="line">//5.1、 合并分支</span><br><span class="line">$ git merge dev                 ------ ⚠️ （此命令为：合并某分支到当前分支，例：将dev合并到master），则当前所处于master分支。</span><br><span class="line"></span><br><span class="line">//5.2、 合并dev分支上的某条记录到master上</span><br><span class="line">//（例如：在dev上有三次提交记录，但是只想把其中的第二次合并到master上去，采取这个命令）</span><br><span class="line">git cherry-pick <span class="string">"ddec59e2..."</span>   ------⚠️ 在master分支下输入命令，参数为 commit-id</span><br><span class="line"></span><br><span class="line">// 如果在合并中存在以下冲突，进入文件夹手动解决冲突再次提交</span><br><span class="line">hint: after resolving the conflicts, mark the corrected paths</span><br><span class="line">hint: with <span class="string">'git add &lt;paths&gt;'</span> or <span class="string">'git rm &lt;paths&gt;'</span></span><br><span class="line"></span><br><span class="line">//6、 删除指定分支</span><br><span class="line">$ git branch -D dev              ------ ⚠️（保证当前分支为非删除分支）</span><br></pre></td></tr></table></figure>
+<h4 id="版本的回退"><a href="#版本的回退" class="headerlink" title="版本的回退"></a>版本的回退</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> -3</span><br><span class="line"></span><br><span class="line"><span class="comment"># commit 65e19bef8eed336aefedaca636d78e71cea1d4f6 (HEAD -&gt; master, origin/master, origin/HEAD)</span></span><br><span class="line"><span class="comment"># Author: lizhiqiang &lt;601623654@qq.com&gt;</span></span><br><span class="line"><span class="comment"># Date:   Wed Mar 14 15:54:06 2018 +0800</span></span><br><span class="line"></span><br><span class="line">    增加1.1.3版本</span><br><span class="line"></span><br><span class="line"><span class="comment"># commit 2fbb88d5fad5a03e5b4ef2df316b4d32f5339ef5</span></span><br><span class="line"><span class="comment"># Author: lizhiqiang &lt;601623654@qq.com&gt;</span></span><br><span class="line"><span class="comment"># Date:   Wed Mar 14 15:51:22 2018 +0800</span></span><br><span class="line"></span><br><span class="line">    增加1.1.2版本</span><br><span class="line"></span><br><span class="line"><span class="comment"># commit aa0f5ce90153c76249a12b8fa638a42b5155612b</span></span><br><span class="line"><span class="comment"># Author: lizhiqiang &lt;601623654@qq.com&gt;</span></span><br><span class="line"><span class="comment"># Date:   Wed Mar 14 15:46:03 2018 +0800</span></span><br><span class="line"></span><br><span class="line">    增加1.1.1版本</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 退回到上一个版本</span><br><span class="line">$ git reset --hard HEAD^</span><br><span class="line"><span class="comment"># HEAD is now at 2fbb88d 增加1.1.2版本    </span></span><br><span class="line">-----在此我们可以看到，HEAD指针已经由1.1.3版本指向了1.1.2版本，如果你把xcode打开就可以看到，1.1.3的代码已经消失了</span><br><span class="line">-----如果你的命令窗口没有关闭的话，通过commit id 还是可以返回1.1.3的,具体请看下一条命令</span><br><span class="line"></span><br><span class="line">// 返回任意版本</span><br><span class="line">$ git reset --hard 65e19bef8eed336aefedaca636d78e71cea1d4f6</span><br><span class="line"><span class="comment"># HEAD is now at 65e19be 增加1.1.3版本</span></span><br><span class="line"></span><br><span class="line">// 将修改后的版本推送至服务器</span><br><span class="line">$ git push -f -u origin master</span><br></pre></td></tr></table></figure>
+<h4 id="阶段的撤销更改"><a href="#阶段的撤销更改" class="headerlink" title="阶段的撤销更改"></a>阶段的撤销更改</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 已修改，未暂存   ------------没有执行 git add</span><br><span class="line">$ git checkout .    （或 $ git reset --hard）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 已暂存，未提交   ------------你已经执行了 git add . ，但还没有执行 git commit -m <span class="string">"comment"</span> 。</span><br><span class="line">$ git reset</span><br><span class="line">$ git checkout .     (或 $ git reset --hard)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 已提交，未推送   ------------既执行了 git add . ，又执行了 git commit </span><br><span class="line">$ git reset --hard origin/master</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 已推送          ------------既 git add 了，又 git commit 了，并且还 git push 了</span><br><span class="line">$ git reset --hard HEAD^</span><br><span class="line">$ git push -f</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/25/github&git/" data-id="ck0z6d1oi000dp8tq0bl1jkpt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-git/">github/git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-django-learning" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/05/django-learning/" class="article-date">
+  <time datetime="2019-05-05T06:56:16.000Z" itemprop="datePublished">2019-05-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/05/django-learning/">django_learning</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/05/django-learning/" data-id="ck0z6d1op000ip8tq3l1vr2a1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-paper-reading" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/05/paper-reading/" class="article-date">
+  <time datetime="2019-05-05T00:07:26.000Z" itemprop="datePublished">2019-05-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/05/paper-reading/">paper_reading</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Neural-Collaborative-Filtering"><a href="#Neural-Collaborative-Filtering" class="headerlink" title="Neural Collaborative Filtering"></a>Neural Collaborative Filtering</h1><p>这篇文章主要介绍了深度学习在推荐系统方面的应用，主要是应用了神经网络搭建协同过滤的网络，形成一个较好的结果。</p>
+<p>我将结合文章中所提及的主要方法及其代码来回顾整篇文章。</p>
+<h2 id="3-NEURAL-COLLABORATIVE-FILTERING"><a href="#3-NEURAL-COLLABORATIVE-FILTERING" class="headerlink" title="3. NEURAL COLLABORATIVE FILTERING"></a>3. NEURAL COLLABORATIVE FILTERING</h2><p>从第三部分才来到实践的关键，所以我们直接跳过前两个部分，来到第三部分，并对它进行学习和理解。论文的主要部分在于，首先实现NCF，并对于NCF实例化之后利用DNN对其进行改善，提出了MLP，然后结合NCF和MLP来综合形成最后的结果。</p>
+<h3 id="GMF"><a href="#GMF" class="headerlink" title="GMF"></a>GMF</h3><p>首先的input层是一个one-hot向量，将每一个user和每一个item都设置为one-hot向量之后再进行处理。在input 层之后是一个embedding 层，然后将item和user 的embedding层 的结果合在一起之后放入一个多层神经网络中，我们将这个多层的神经网络视作神经协同过滤层，隐藏层的最后一层的维度决定了这个模型的泛化能力。最终的输出层(output)得到的是最终预测的结果。</p>
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p>关于range 和 xrange，如果只看效果的话，两者差距很小，但是xrange每次返回的是xrange 的一个数据结构，而不是range返回的list，因此，当对于大数据进行处理时，建议使用xrange，而不是range。</p>
+<p>关于代码中的参数说明：<br>| 符号| 含义|<br>| —- | —- |<br>| num_factors|将其映射到的空间的维度大小|<br>|regs|即正则化过程中的偏移量|<br>|num_neg|展示的negtive数量|<br>|lr|学习率|<br>|learner|学习的方式，一般来说使用adam|<br>|verbose|实质上是设置多少次迭代后输出结果|<br>|out| 设置输出|<br>|epochs| 迭代次数（学习次数）|<br>|batch_size|每一个batch的数量，使用sgd进行训练时需要弄清楚|</p>
+<p>重点看model函数，即训练的函数。<br>这里的模型极其简单，实际上加深模型，应该有助于最后的训练结果。加深应该在哪里呢？从predict_vector开始，多加入几层，同时应该考虑不要社会太少的latent_dim，毕竟是大数据量的结果，考虑将其加深。原文中主要是为了能使得CPU较快的运行，才使用了这样一种方式。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_model</span><span class="params">(num_users, num_items, latent_dim, regs=[<span class="number">0</span>,<span class="number">0</span>])</span>:</span></span><br><span class="line">    <span class="comment"># Input variables</span></span><br><span class="line">    user_input = Input(shape=(<span class="number">1</span>,), dtype=<span class="string">'int32'</span>, name = <span class="string">'user_input'</span>)</span><br><span class="line">    item_input = Input(shape=(<span class="number">1</span>,), dtype=<span class="string">'int32'</span>, name = <span class="string">'item_input'</span>)</span><br><span class="line"></span><br><span class="line">    MF_Embedding_User = Embedding(input_dim = num_users, output_dim = latent_dim, name = <span class="string">'user_embedding'</span>,</span><br><span class="line">                                  init = init_normal, W_regularizer = l2(regs[<span class="number">0</span>]), input_length=<span class="number">1</span>)</span><br><span class="line">    MF_Embedding_Item = Embedding(input_dim = num_items, output_dim = latent_dim, name = <span class="string">'item_embedding'</span>,</span><br><span class="line">                                  init = init_normal, W_regularizer = l2(regs[<span class="number">1</span>]), input_length=<span class="number">1</span>)   </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Crucial to flatten an embedding vector!</span></span><br><span class="line">    user_latent = Flatten()(MF_Embedding_User(user_input))</span><br><span class="line">    item_latent = Flatten()(MF_Embedding_Item(item_input))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Element-wise product of user and item embeddings </span></span><br><span class="line">    predict_vector = merge([user_latent, item_latent], mode = <span class="string">'mul'</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Final prediction layer</span></span><br><span class="line">    <span class="comment">#prediction = Lambda(lambda x: K.sigmoid(K.sum(x)), output_shape=(1,))(predict_vector)</span></span><br><span class="line">    prediction = Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>, init=<span class="string">'lecun_uniform'</span>, name = <span class="string">'prediction'</span>)(predict_vector)</span><br><span class="line">    </span><br><span class="line">    model = Model(input=[user_input, item_input], </span><br><span class="line">                output=prediction)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></table></figure></p>
+<p>get_train_instances函数将训练集传入并对其进行处理，构成one-hot向量。<br>但是实际上这里的label只是用于论文中所说的是否进行点击，对于后续的操作的意义不大。需要注意这里的区别。实际上，如果真正需要做评分系统的话，那么就需要将label定义为打分的结果，而不是0,1的二值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_train_instances</span><span class="params">(train, num_negatives)</span>:</span></span><br><span class="line">    user_input, item_input, labels = [],[],[]</span><br><span class="line">    num_users = train.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> (u, i) <span class="keyword">in</span> train.keys():</span><br><span class="line">        <span class="comment"># positive instance</span></span><br><span class="line">        user_input.append(u)</span><br><span class="line">        item_input.append(i)</span><br><span class="line">        labels.append(<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># negative instances</span></span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> xrange(num_negatives):</span><br><span class="line">            j = np.random.randint(num_items)<span class="comment">#从0到item_num的数量中选择一个</span></span><br><span class="line">            <span class="keyword">while</span> train.has_key((u, j)):</span><br><span class="line">                j = np.random.randint(num_items)</span><br><span class="line">            user_input.append(u)</span><br><span class="line">            item_input.append(j)</span><br><span class="line">            labels.append(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> user_input, item_input, labels</span><br></pre></td></tr></table></figure>
+<p>自己的尝试，主要用于大数据作业的数据集，简要介绍一下这个数据集：</p>
+<ol>
+<li>大概有20000个用户和600000个item，同时，总共有5000000条的打分，打分从0-100，但是分布极其不均匀，因此，需要对其进行处理，为了避免与稀疏矩阵的重合，将score变为:<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">score=np.floor(score/<span class="number">10</span>)+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>因此，构建的模型为<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_model</span><span class="params">(num_users, num_items, latent_dim=<span class="number">100</span>, regs=[<span class="number">0</span>,<span class="number">0</span>])</span>:</span></span><br><span class="line">    <span class="comment"># Input variables</span></span><br><span class="line">    user_input = Input(shape=(<span class="number">1</span>,), dtype=<span class="string">'int32'</span>, name = <span class="string">'user_input'</span>)</span><br><span class="line">    item_input = Input(shape=(<span class="number">1</span>,), dtype=<span class="string">'int32'</span>, name = <span class="string">'item_input'</span>)</span><br><span class="line"></span><br><span class="line">    MF_Embedding_User = Embedding(input_dim = num_users, output_dim = latent_dim, name = <span class="string">'user_embedding'</span>,</span><br><span class="line">                                  init = <span class="string">'uniform'</span>, W_regularizer = l2(regs[<span class="number">0</span>]), input_length=<span class="number">1</span>)</span><br><span class="line">    MF_Embedding_Item = Embedding(input_dim = num_items, output_dim = latent_dim, name = <span class="string">'item_embedding'</span>,</span><br><span class="line">                                  init = <span class="string">'uniform'</span>, W_regularizer = l2(regs[<span class="number">1</span>]), input_length=<span class="number">1</span>)   </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Crucial to flatten an embedding vector!</span></span><br><span class="line">    user_latent = Flatten()(MF_Embedding_User(user_input))</span><br><span class="line">    item_latent = Flatten()(MF_Embedding_Item(item_input))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Element-wise product of user and item embeddings </span></span><br><span class="line">    <span class="comment">#predict_vector = merge([user_latent, item_latent], mode = 'mul')</span></span><br><span class="line">    predict_vector = keras.layers.Multiply()([user_latent,item_latent])</span><br><span class="line">    <span class="comment"># Final prediction layer</span></span><br><span class="line">    <span class="comment">#prediction = Lambda(lambda x: K.sigmoid(K.sum(x)), output_shape=(1,))(predict_vector)</span></span><br><span class="line">    predict_layer1=Dense(<span class="number">64</span>,activation=<span class="string">'sigmoid'</span>,init=<span class="string">'lecun_uniform'</span>,name=<span class="string">'predict_layer1'</span>)(predict_vector)</span><br><span class="line">    predict_layer2=Dense(<span class="number">32</span>,activation=<span class="string">'sigmoid'</span>,init=<span class="string">'lecun_uniform'</span>,name=<span class="string">'predict_layer2'</span>)(predict_layer1)</span><br><span class="line">    prediction = Dense(<span class="number">11</span>, activation=<span class="string">'softmax'</span>, init=<span class="string">'lecun_uniform'</span>, name = <span class="string">'prediction'</span>)(predict_layer2)</span><br><span class="line">    </span><br><span class="line">    model = Model(input=[user_input, item_input], </span><br><span class="line">                output=prediction)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></table></figure></p>
+<p>中间多加了几层，对于报错处的记录</p>
+<blockquote>
+<p>‘Dense’ object has no attribute ‘outbound_nodes’</p>
+</blockquote>
+<h3 id="MLP"><a href="#MLP" class="headerlink" title="MLP"></a>MLP</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/05/paper-reading/" data-id="ck0z6d1p8000xp8tq1imz3llg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper-reading/">paper_reading</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-colab" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/04/colab/" class="article-date">
@@ -103,105 +296,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/04/colab/" data-id="cjv9as4zl000jkstq4vbiyzks" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/04/colab/" data-id="ck0z6d1p0000pp8tq2ufomdif" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/use-of-Colab-deep-learning/">use of Colab(deep learning)</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-reading1" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/28/reading1/" class="article-date">
-  <time datetime="2019-04-28T10:59:18.000Z" itemprop="datePublished">2019-04-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/28/reading1/">BTS-DSN</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Paper-Reading"><a href="#Paper-Reading" class="headerlink" title="Paper Reading"></a>Paper Reading</h1><h2 id="BTS-DSN-Deeply-supervised-neural-network-with-short-connections-forretinal-vessel-segmentation"><a href="#BTS-DSN-Deeply-supervised-neural-network-with-short-connections-forretinal-vessel-segmentation" class="headerlink" title="BTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation"></a>BTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation</h2><hr>
-<blockquote>
-<p><code>references</code>: you can read this papar via <a href="https://linkinghub.elsevier.com/retrieve/pii/S138650561831195X" target="_blank" rel="noopener">BTS-DSN</a> or star/fork this github <a href="https://github.com/guomugong/BTS-DSN" target="_blank" rel="noopener">project</a></p>
-</blockquote>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ol>
-<li>An important method was proposed by this group called short-connection, that improve quite a lot the result of this model’s ability. They use sensitivity,specificity, AUC and F1-score to test their model. If you aren’t familiar with these indicators, you can read these two blogs to learn more<a href="https://tracholar.github.io/machine-learning/2018/01/26/auc.html" target="_blank" rel="noopener">AUC</a>  &amp;<a href="https://blog.csdn.net/u013385925/article/details/80385873" target="_blank" rel="noopener">AUC-2</a>. </li>
-</ol>
-<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h3><ol>
-<li>why we hope to achieve early dignosis.</li>
-<li>some researchs done by other scholar group<blockquote>
-<p>(1) Unsupervised methods: some methods have been proposed by scholoars, mainly about detect the profile and contour of vessel. These methods are mostly based on geometric computation model. defects: <code>However, the unsupervised methods are sensitive to the
-manually designed features and rules.</code>(poor in generalization)</p>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<p>(2)supervised methods:when we use supervised method, we usually view this problem as a pixel-wise binary classification. deep learning methods are popular in this area. Other ways to solve this problem about semantic segmentation results. <code>defects:different methods have different disadvantages such as time-consuming and so on</code></p>
-</blockquote>
-<ol>
-<li>the contributions of this paper<blockquote>
-<p>(1)”We propose a deeply-supervised fully convolutional neural network with bottom-top and top-bottom short connections (BTS-DSN) for vessel segmentation. “</p>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<p>(2)”We used VGGNet and ResNet-101 as backbone and conducted extensive experiments on DRIVE, STARE and CHASE_DB1”</p>
-<p>“We employed cross-training experiments to show the generalization of BTS-DSN.”</p>
-</blockquote>
-<p>attributes : more about VGGNet and ResNet can be found in their papers.{<a href="https://github.com/machrisaa/tensorflow-vgg" target="_blank" rel="noopener">vgg(including vgg-16&amp;vgg-19)</a>&amp;<a href="https://arxiv.org/abs/1512.03385" target="_blank" rel="noopener">ResNet_paper</a>&amp;<a href="https://github.com/tensorflow/models/blob/master/research/slim/nets/resnet_v2.py" target="_blank" rel="noopener">ResNet_github</a>}.If you want to understand these model better, baidu or google it may help you.</p>
-<h3 id="2-BTS-DSN"><a href="#2-BTS-DSN" class="headerlink" title="2.BTS-DSN"></a>2.BTS-DSN</h3><ol>
-<li><p>from HED to DSN, and then to BS-DSN and BST-DSN. this method was proposed to alleviate the gradient vanish problem in deep network. It’s a deep supervision</p>
-</li>
-<li><p>bottom-top short connnections: pass low level fine semantic information to high levels to alleviate the blurring situation.</p>
-</li>
-<li><p>top-bottom short connection: Bottom-top short connections aim to refine high-level segmentation results.</p>
-</li>
-<li><p>inference: do feature confusion</p>
-</li>
-</ol>
-<h3 id="3-Implementation-details"><a href="#3-Implementation-details" class="headerlink" title="3. Implementation details"></a>3. Implementation details</h3><ol>
-<li><p>data augmentation: using quite a lot various transformations to augment the training set, including rotation, flipping and scaling. </p>
-</li>
-<li><p>model implementation : using the network framework Caffe, short connections of the BTS-DSN. </p>
-</li>
-<li><p>Parameter settings</p>
-</li>
-</ol>
-<p><code>When the backbone is VGGNet, we fine-tuned our network with a
-learning rate of 1e-8, a weight decay of 0.0005, and a momentum of
-0.9. We use a fixed learning rate.</code></p>
-<p>in two different backbone(VGGNet &amp; ResNet-101),they use different type of parameters . </p>
-<p>and for patch-level S-DSN, they split a raw retinal image into 9 patches, each of which was 1/4 the size of the raw image, meanwhile, patches were up-sampled $2 \times$ </p>
-<p>4.running environment:……</p>
-<h4 id="Evaluation-criteria"><a href="#Evaluation-criteria" class="headerlink" title="Evaluation criteria"></a>Evaluation criteria</h4><p><code>In vessel segmentation, each pixel belongs to a vessel or non-vessel
-pixel.</code>(be seen as a binary classfication problem).they iemployed six evaluation criteria, including AUC,SE,SP,ACC,F1-score and MCC.</p>
-<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><p>the result are shown in the fig in this paper, so you can just look through and get them.</p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>这篇文章成功实现了目前基本上是最高水平的眼底血管分类成果，其使用VGGNet或者ResNet-101作为支柱(backbone)来实现整个CNN卷积的过程，同时，为了缓解语义分割中语义分割之间的差距，使用top-bottom 和 bottom-top short connection来实现整个过程，最终实现了BTS-DSN网络，达到了好的效果。同时，这个网络也使用了特征融合的方法，可以加以了解。对于更多的细节，还需要继续了解。</p>
-<h3 id="发散"><a href="#发散" class="headerlink" title="发散"></a>发散</h3><h4 id="（采样方法）上采样与下采样"><a href="#（采样方法）上采样与下采样" class="headerlink" title="（采样方法）上采样与下采样"></a>（采样方法）上采样与下采样</h4><h4 id="短连接与ResNet连接方式的不同"><a href="#短连接与ResNet连接方式的不同" class="headerlink" title="短连接与ResNet连接方式的不同"></a>短连接与ResNet连接方式的不同</h4><h4 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/28/reading1/" data-id="cjv9as50a0015kstqb3zwxrnc" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paperReading/">paperReading</a></li></ul>
 
     </footer>
   </div>
@@ -300,7 +398,102 @@ weight decay of 0.0005.</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/28/recording2/" data-id="cjv9as50d0018kstqmcym124v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/28/recording2/" data-id="ck0z6d1pd0013p8tqn5ii59kc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paperReading/">paperReading</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-reading1" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/28/reading1/" class="article-date">
+  <time datetime="2019-04-28T10:59:18.000Z" itemprop="datePublished">2019-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/28/reading1/">BTS-DSN</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Paper-Reading"><a href="#Paper-Reading" class="headerlink" title="Paper Reading"></a>Paper Reading</h1><h2 id="BTS-DSN-Deeply-supervised-neural-network-with-short-connections-forretinal-vessel-segmentation"><a href="#BTS-DSN-Deeply-supervised-neural-network-with-short-connections-forretinal-vessel-segmentation" class="headerlink" title="BTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation"></a>BTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation</h2><hr>
+<blockquote>
+<p><code>references</code>: you can read this papar via <a href="https://linkinghub.elsevier.com/retrieve/pii/S138650561831195X" target="_blank" rel="noopener">BTS-DSN</a> or star/fork this github <a href="https://github.com/guomugong/BTS-DSN" target="_blank" rel="noopener">project</a></p>
+</blockquote>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ol>
+<li>An important method was proposed by this group called short-connection, that improve quite a lot the result of this model’s ability. They use sensitivity,specificity, AUC and F1-score to test their model. If you aren’t familiar with these indicators, you can read these two blogs to learn more<a href="https://tracholar.github.io/machine-learning/2018/01/26/auc.html" target="_blank" rel="noopener">AUC</a>  &amp;<a href="https://blog.csdn.net/u013385925/article/details/80385873" target="_blank" rel="noopener">AUC-2</a>. </li>
+</ol>
+<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h3><ol>
+<li>why we hope to achieve early dignosis.</li>
+<li>some researchs done by other scholar group<blockquote>
+<p>(1) Unsupervised methods: some methods have been proposed by scholoars, mainly about detect the profile and contour of vessel. These methods are mostly based on geometric computation model. defects: <code>However, the unsupervised methods are sensitive to the
+manually designed features and rules.</code>(poor in generalization)</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>(2)supervised methods:when we use supervised method, we usually view this problem as a pixel-wise binary classification. deep learning methods are popular in this area. Other ways to solve this problem about semantic segmentation results. <code>defects:different methods have different disadvantages such as time-consuming and so on</code></p>
+</blockquote>
+<ol>
+<li>the contributions of this paper<blockquote>
+<p>(1)”We propose a deeply-supervised fully convolutional neural network with bottom-top and top-bottom short connections (BTS-DSN) for vessel segmentation. “</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>(2)”We used VGGNet and ResNet-101 as backbone and conducted extensive experiments on DRIVE, STARE and CHASE_DB1”</p>
+<p>“We employed cross-training experiments to show the generalization of BTS-DSN.”</p>
+</blockquote>
+<p>attributes : more about VGGNet and ResNet can be found in their papers.{<a href="https://github.com/machrisaa/tensorflow-vgg" target="_blank" rel="noopener">vgg(including vgg-16&amp;vgg-19)</a>&amp;<a href="https://arxiv.org/abs/1512.03385" target="_blank" rel="noopener">ResNet_paper</a>&amp;<a href="https://github.com/tensorflow/models/blob/master/research/slim/nets/resnet_v2.py" target="_blank" rel="noopener">ResNet_github</a>}.If you want to understand these model better, baidu or google it may help you.</p>
+<h3 id="2-BTS-DSN"><a href="#2-BTS-DSN" class="headerlink" title="2.BTS-DSN"></a>2.BTS-DSN</h3><ol>
+<li><p>from HED to DSN, and then to BS-DSN and BST-DSN. this method was proposed to alleviate the gradient vanish problem in deep network. It’s a deep supervision</p>
+</li>
+<li><p>bottom-top short connnections: pass low level fine semantic information to high levels to alleviate the blurring situation.</p>
+</li>
+<li><p>top-bottom short connection: Bottom-top short connections aim to refine high-level segmentation results.</p>
+</li>
+<li><p>inference: do feature confusion</p>
+</li>
+</ol>
+<h3 id="3-Implementation-details"><a href="#3-Implementation-details" class="headerlink" title="3. Implementation details"></a>3. Implementation details</h3><ol>
+<li><p>data augmentation: using quite a lot various transformations to augment the training set, including rotation, flipping and scaling. </p>
+</li>
+<li><p>model implementation : using the network framework Caffe, short connections of the BTS-DSN. </p>
+</li>
+<li><p>Parameter settings</p>
+</li>
+</ol>
+<p><code>When the backbone is VGGNet, we fine-tuned our network with a
+learning rate of 1e-8, a weight decay of 0.0005, and a momentum of
+0.9. We use a fixed learning rate.</code></p>
+<p>in two different backbone(VGGNet &amp; ResNet-101),they use different type of parameters . </p>
+<p>and for patch-level S-DSN, they split a raw retinal image into 9 patches, each of which was 1/4 the size of the raw image, meanwhile, patches were up-sampled $2 \times$ </p>
+<p>4.running environment:……</p>
+<h4 id="Evaluation-criteria"><a href="#Evaluation-criteria" class="headerlink" title="Evaluation criteria"></a>Evaluation criteria</h4><p><code>In vessel segmentation, each pixel belongs to a vessel or non-vessel
+pixel.</code>(be seen as a binary classfication problem).they iemployed six evaluation criteria, including AUC,SE,SP,ACC,F1-score and MCC.</p>
+<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><p>the result are shown in the fig in this paper, so you can just look through and get them.</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>这篇文章成功实现了目前基本上是最高水平的眼底血管分类成果，其使用VGGNet或者ResNet-101作为支柱(backbone)来实现整个CNN卷积的过程，同时，为了缓解语义分割中语义分割之间的差距，使用top-bottom 和 bottom-top short connection来实现整个过程，最终实现了BTS-DSN网络，达到了好的效果。同时，这个网络也使用了特征融合的方法，可以加以了解。对于更多的细节，还需要继续了解。</p>
+<h3 id="发散"><a href="#发散" class="headerlink" title="发散"></a>发散</h3><h4 id="（采样方法）上采样与下采样"><a href="#（采样方法）上采样与下采样" class="headerlink" title="（采样方法）上采样与下采样"></a>（采样方法）上采样与下采样</h4><h4 id="短连接与ResNet连接方式的不同"><a href="#短连接与ResNet连接方式的不同" class="headerlink" title="短连接与ResNet连接方式的不同"></a>短连接与ResNet连接方式的不同</h4><h4 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/28/reading1/" data-id="ck0z6d1pb0011p8tq0n3zn62a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paperReading/">paperReading</a></li></ul>
@@ -351,7 +544,7 @@ weight decay of 0.0005.</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/23/龙芯杯6/" data-id="cjv9as515001xkstqq42ab1t1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/23/龙芯杯6/" data-id="ck0z6d1qj0025p8tq8f6zch7e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
@@ -456,7 +649,7 @@ subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/28/ma_model_pre5/" data-id="cjv9as5050010kstqysrsk7j8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/28/ma_model_pre5/" data-id="ck0z6d1q90021p8tqqzkv55rd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -519,260 +712,10 @@ subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/22/ma_model_pre4/" data-id="cjv9as4zz000wkstqbln8fq3l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/22/ma_model_pre4/" data-id="ck0z6d1p4000tp8tq4xxrrw7l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ma_model_pre3" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/15/ma_model_pre3/" class="article-date">
-  <time datetime="2019-03-15T02:05:27.000Z" itemprop="datePublished">2019-03-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/15/ma_model_pre3/">ma_model_preparation2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-蒙特卡洛方法"><a href="#1-蒙特卡洛方法" class="headerlink" title="1. 蒙特卡洛方法"></a>1. 蒙特卡洛方法</h3><h4 id="（1）基本思路："><a href="#（1）基本思路：" class="headerlink" title="（1）基本思路："></a>（1）基本思路：</h4><p>蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。</p>
-<h4 id="（2）一种应用：利用蒙特卡洛方法求积分："><a href="#（2）一种应用：利用蒙特卡洛方法求积分：" class="headerlink" title="（2）一种应用：利用蒙特卡洛方法求积分："></a>（2）一种应用：利用蒙特卡洛方法求积分：</h4><p>假设我们需要求这样一个图的积分<br><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%861.png?raw=true" alt="求积分图1"><br>那么实际上，我们所需要的过程可以表示如下<br><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%862.png?raw=true" alt="求积分过程"></p>
-<p>从这两个过程中，我们可以看到，实际上对于积分的求解可以简化为这样一个过程：<br><br>假设要计算的积分如下：</p>
-<script type="math/tex; mode=display">I=\int_{a}^{b}g(x)\text{d}x</script><p>那么如果选择一个概率密度函数为$f_X(x)$的方式进行抽样,并且满足$\int_{a}^{b}f_X(x)\text{d}x=1$,那么令$g^*(x)=\frac{g(x)}{f_X(x)}$,原有的积分可以写成如下形式：</p>
-<script type="math/tex; mode=display">I=\int_{a}^{b}g^*(x)f_X(x)\text{d}x</script><p>故，我们求积分的步骤为：<br><br><br>1.产生服从分布律$F_X$的随机变量$X_i(i=1,2,…,N)$</p>
-<p>2.计算均值</p>
-<script type="math/tex; mode=display">\overline{I}=\frac{1}{N}\sum_{i=1}^ng^*(X_i)</script><p>一般采用均匀分布求解</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calpai</span><span class="params">()</span>:</span></span><br><span class="line">    n = <span class="number">1000000</span></span><br><span class="line">    r = <span class="number">1.0</span></span><br><span class="line">    a, b = (<span class="number">0.0</span>, <span class="number">0.0</span>)</span><br><span class="line">    x_neg, x_pos = a - r, a + r</span><br><span class="line">    y_neg, y_pos = b - r, b + r</span><br><span class="line"></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n):</span><br><span class="line">        x = random.uniform(x_neg, x_pos)</span><br><span class="line">        y = random.uniform(y_neg, y_pos)</span><br><span class="line">        <span class="keyword">if</span> x*x + y*y &lt;= <span class="number">1.0</span>:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> (count / float(n)) * <span class="number">4</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-蒙特卡洛树搜索"><a href="#3-蒙特卡洛树搜索" class="headerlink" title="(3)蒙特卡洛树搜索"></a>(3)蒙特卡洛树搜索</h4><p>as we know, an important method used in alpha go and alpha zero is Monte Carlo Tree search. So if you want to know more about this method, you can search this <a href="https://blog.csdn.net/qq_16137569/article/details/83543641" target="_blank" rel="noopener">website(Monte Carlo Tree search)</a> and get some knowledge yourself. also, you can get information in almost every game theory book.And try to get the big idea in Monte Carlo Tree search.</p>
-<h3 id="2-马尔科夫链"><a href="#2-马尔科夫链" class="headerlink" title="2. 马尔科夫链"></a>2. 马尔科夫链</h3><h5 id="2-1-马尔可夫链的定义"><a href="#2-1-马尔可夫链的定义" class="headerlink" title="2.1 马尔可夫链的定义"></a>2.1 马尔可夫链的定义</h5><p>现实世界中有很多这样的现象：某一系统在已知现在情况的条件下，系统未来时刻<br>的情况只与现在有关，而与过去的历史无直接关系。比如，研究一个商店的累计销售额，<br>如果现在时刻的累计销售额已知，则未来某一时刻的累计销售额与现在时刻以前的任一<br>时刻累计销售额无关。上节中的几个例子也均属此类。描述这类随机现象的数学模型称<br>为马氏模型。</p>
-<p>对于马尔科夫链的数学定义，可以直接参照<a href="http://vdisk.weibo.com/s/D8miedWz2uXT" target="_blank" rel="noopener">《数学建模算法与应用》（司守奎）</a>。</p>
-<h5 id="2-2-马尔科夫链的性质"><a href="#2-2-马尔科夫链的性质" class="headerlink" title="2.2 马尔科夫链的性质"></a>2.2 马尔科夫链的性质</h5><p>转移概率矩阵及柯尔莫哥洛夫定理</p>
-<p>对于这个性质，可以查看我给出的<a href="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/learning_code/morkov.py" target="_blank" rel="noopener">代码morkov.py</a>进行了解</p>
-<h5 id="2-3-马尔科夫链的应用"><a href="#2-3-马尔科夫链的应用" class="headerlink" title="2.3 马尔科夫链的应用"></a>2.3 马尔科夫链的应用</h5><p>虽然马尔科夫链的性质极其简单，但是其应用广泛，有着极大的意义。<br>应用马尔可夫链的计算方法进行马尔可夫分析，主要目的是根据某些变量现在的情<br>况及其变动趋向，来预测它在未来某特定区间可能产生的变动，作为提供某种决策的依<br>据。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="cjv9as5080013kstqdm2h9twm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ma-model-preparation1" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/09/ma-model-preparation1/" class="article-date">
-  <time datetime="2019-03-09T02:05:27.000Z" itemprop="datePublished">2019-03-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/09/ma-model-preparation1/">ma_model_preparation1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="math-modeling-competition-for-2019-preparation"><a href="#math-modeling-competition-for-2019-preparation" class="headerlink" title="math_modeling competition for 2019 preparation"></a>math_modeling competition for 2019 preparation</h1><hr>
-<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract:"></a>abstract:</h2><pre><code>I&#39;d like to record my preparation for this competition, including some tricks on coding, and comperhension on some important math models and algorithms. Also, I&#39;d like to share some interesting tools we can use, such as Gephi, Citespace, and so on.
-Meanwhile, I may record some basic knowledge on machine learning and data mining, even includes tensorflow and pytorch framework. So this series will be a hodgepodge of quite many things and knowledge. I hope I can truly learn something by doing so, and also help you work better.
-</code></pre><h2 id="part-one"><a href="#part-one" class="headerlink" title="part one"></a>part one</h2><h3 id="EA-Evolutionary-Algorithms"><a href="#EA-Evolutionary-Algorithms" class="headerlink" title="EA (Evolutionary Algorithms)"></a>EA (Evolutionary Algorithms)</h3><h4 id="1-introduce"><a href="#1-introduce" class="headerlink" title="1. introduce"></a>1. introduce</h4><p>there are so many algorithms use the idea of evolution, and in the competition of math modeling, it’s so important that almost every time, we can slove a problem using it. </p>
-<p>these algorithms include genetic algorithm, ant colony algorithm, Annealing Algorithm, neural network, tabu search and so on. I’d like to put focus on genetic algorithm this time, but I’ll also give some abstract on other algorithms. Also, codes will be shared on this <a href="https://github.com/leliyliu/ICM-MCM-preparation" target="_blank" rel="noopener">website</a> </p>
-<h4 id="2-genetic-algorithm"><a href="#2-genetic-algorithm" class="headerlink" title="2. genetic algorithm"></a>2. genetic algorithm</h4><h5 id="1-流程图-flow-chart"><a href="#1-流程图-flow-chart" class="headerlink" title="1. 流程图(flow chart)"></a>1. 流程图(flow chart)</h5><p><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/gen1.jpg?raw=true" alt="流程图"></p>
-<h5 id="2-problem-needs-sloving"><a href="#2-problem-needs-sloving" class="headerlink" title="2.problem needs sloving"></a>2.problem needs sloving</h5><pre><code>maxf(x1,x2) = 21.5+x1*sin(4*pi*x1)+x2*sin(20*pi*x2)
-
-                     s.t. -3.0&lt;=x1&lt;=12.1
-
-                            4.1&lt;=x2&lt;=5.8
-</code></pre><p>so we’d like to slove this problem using genetic algorithm, to better understand the process of this great algorithm.</p>
-<h5 id="3-the-big-ideas"><a href="#3-the-big-ideas" class="headerlink" title="3.the big ideas"></a>3.the big ideas</h5><p>basic ideas:</p>
-<ol>
-<li>适应度函数(to compute the performance)<br> <br>适应度函数能够有效帮助后续的选择过程，进行有条件的保留与选择，帮助进行有效的迭代</li>
-<li>交叉(crossover)<br> <br>针对不同的问题有不同的交叉方式，在交叉过程中需要注意保持原有数据的真实性，不能出现超越规则之外的数据。通常，我们设置crossover rate=0.8，能够有效地帮助进行迭代，较快且较好地收敛</li>
-<li>变异(mutation)<br> <br>我们一般设置mutation rete=1/L(L: len of vector)，变异能减少收敛到局部最优的可能性，使得整个算法有更好的优化性，能够得到较好的结果</li>
-<li>选择(selection)<br> <br>选择是遗传算法中一个非常重要的步骤，通常，选择的方式有多种(including roulette wheel selection, rank selection, tournament selection and Elitism + Offspring selection )，根据不同的问题，采用不同的选择方式，能够得到较好的结果。在这个问题中，我们采用轮盘赌算法来进行选择（关于轮盘赌算法的讲解，你可以查看<a href="https://blog.csdn.net/pymqq/article/details/51375522" target="_blank" rel="noopener">轮盘赌算法</a>)<h5 id="4-the-code-on-this-problem"><a href="#4-the-code-on-this-problem" class="headerlink" title="4. the code on this problem"></a>4. the code on this problem</h5>you can find the code on my github repository <a href="https://github.com/leliyliu/ICM-MCM-preparation" target="_blank" rel="noopener">MCM/ICM preparation</a>, I save the python code on the floder learning_code.<br>Because of the code is a little complicated, so maybe I’ll write down another blog or ipython to denote some details about this process. </li>
-</ol>
-<h4 id="other-basic-algorithms"><a href="#other-basic-algorithms" class="headerlink" title="other basic algorithms"></a>other basic algorithms</h4><h5 id="1-粒子群算法（蚁群算法）"><a href="#1-粒子群算法（蚁群算法）" class="headerlink" title="1. 粒子群算法（蚁群算法）"></a>1. 粒子群算法（蚁群算法）</h5><p>在使用蚁群算法求解现实问题时，先生成具有一定数量蚂蚁的蚁群，让每一只蚂<br>蚁建立一个解或解的一部分，每只人工蚁从问题的初始状态出发，根据“激素”浓度来<br>选择下一个要转移到的状态，直到建立起一个解，每只蚂蚁根据所找到的解的好坏程度<br>在所经过的状态上释放与解的质量成正比例的“激素”。之后，每只蚂蚁又开始新的求<br>解过程，直到寻找到满意解。为避免停滞现象，引入了激素更新机制。</p>
-<h5 id="2-遗传退火算法"><a href="#2-遗传退火算法" class="headerlink" title="2. 遗传退火算法"></a>2. 遗传退火算法</h5><p>模拟退火算法得益于材料的统计力学的研究成果。统计力学表明材料中粒子的不<br>同结构对应于粒子的不同能量水平。在高温条件下，粒子的能量较高，可以自由运动和<br>重新排列。在低温条件下，粒子能量较低。如果从高温开始，非常缓慢地降温（这个过<br>程被称为退火），粒子就可以在每个温度下达到热平衡。当系统完全被冷却时，最终形<br>成处于低能状态的晶体。</p>
-<p>在模拟退火算法中应注意以下问题：<br>（1）理论上，降温过程要足够缓慢，要使得在每一温度下达到热平衡。但在计算<br>机实现中，如果降温速度过缓，所得到的解的性能会较为令人满意，但是算法会太慢，<br>相对于简单的搜索算法不具有明显优势。如果降温速度过快，很可能最终得不到全局最<br>优解。因此使用时要综合考虑解的性能和算法速度，在两者之间采取一种折衷。<br>（2）要确定在每一温度下状态转换的结束准则。实际操作可以考虑当连续m 次的<br>转换过程没有使状态发生变化时结束该温度下的状态转换。最终温度的确定可以提前定<br>为一个较小的值e T ，或连续几个温度下转换过程没有使状态发生变化算法就结束。<br>（3）选择初始温度和确定某个可行解的邻域的方法也要恰当。</p>
-<h5 id="3-禁忌搜索"><a href="#3-禁忌搜索" class="headerlink" title="3. 禁忌搜索"></a>3. 禁忌搜索</h5><p>禁忌搜索算法是组合优化算法的一种，是局部搜索算法的扩展。禁忌搜索算法是人<br>工智能在组合优化算法中的一个成功应用。禁忌搜索算法的特点是采用了禁忌技术。所<br>谓禁忌就是禁止重复前面的工作。禁忌搜索算法用一个禁忌表记录下已经到达过的局部<br>最优点，在下一次搜索中，利用禁忌表中的信息不再或有选择地搜索这些点。<br>禁忌搜索算法实现的技术问题是算法的关键。禁忌搜索算法涉及侯选集合、禁忌<br>对象、评价函数、特赦规则、记忆频率信息等概念。</p>
-<h5 id="4-神经网络"><a href="#4-神经网络" class="headerlink" title="4. 神经网络"></a>4. 神经网络</h5><p>由于神经网络有极大的用途，一般会用其来进行深度学习，所以如果有时间的话，我会更新关于深度学习的部分博客用以记录和交流，故神经网络在这里不再提及。<br><br>当然，对于神经网络的搭建，现在已经有许多开源的框架，我在后续的博客中将使用pytorch框架，并尝试使用fastai 来实现相关的一些项目。</p>
-<h5 id="5-all-in-all"><a href="#5-all-in-all" class="headerlink" title="5. all in all"></a>5. all in all</h5><p>我们已经看到了一个简单的遗传算法，就要使用上百行的python代码来实现，那么显然，既然在matlab 中有实现相关进化算法的框架，在python中同样也有，推荐的一个是geatpy。<br>你可以使用  </p>
-<pre><code>pip install geatpy
-</code></pre><p>来安装它。同时，你也可以通过这个网站<a href="https://github.com/geatpy-dev/geatpy" target="_blank" rel="noopener">geatpy</a>来学习具体的框架，希望它能帮助你更好地掌握进化算法。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/09/ma-model-preparation1/" data-id="cjv9as502000ykstqsexbm8fo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Modern-Anglo-American-philosophy-translation-11" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" class="article-date">
-  <time datetime="2018-12-06T13:52:57.000Z" itemprop="datePublished">2018-12-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/06/Modern-Anglo-American-philosophy-translation-11/">Modern Anglo-American philosophy translation_11</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Though meaningless, the propositions of logic and mathematics are not nonsense. They at least have the virtue of showing the essential structure of all possible facts. On the other hand, there are concatenations of words, purported propositions, that neither show nor say anything and thus are not connected to reality in any way. Such propositions are not merely senseless, they are nonsense. Among nonsense propositions are included the bulk of traditional philosophical statements articulating traditional philosophical problems and solutions, especially in metaphysics and ethics. This is the consequence of Wittgenstein’s presumption that meaningfulness is somehow linked to the realm of phenomena studied by the natural sciences (cf. 4.11 ff). Thus, as he claims in 6.53:</p>
-</blockquote>
-<p>尽管是缺少意义的，但是这个关于数学和逻辑的论题不是完全没有意义的。他们至少展示了所有可能的事情的必要的结构。另一方面，语词，命题的组合，并没有展示或者言说任何有关事实的东西。这些论题不仅仅是缺少意义的，而是毫无意义的。在这些毫无意义的论题中，包括了大部分表达传统哲学问题和解决方法的传统哲学陈述，特别是关于形而上学和伦理学的表述。基于维特根斯的推测，有意义的命题是和自然科学领域方面的现象相联系的。</p>
-<blockquote>
-<p>The correct method in philosophy would really be the following: to say nothing except what can be said, that is propositions of natural science—that is something that has nothing to do with philosophy—and then, whenever someone else wanted to say something metaphysical, to demonstrate to him that he had failed to give a meaning to certain signs in his propositions.</p>
-</blockquote>
-<p>哲学研究的正确方法如下：只说那些可以言说的部分，也就是关于自然科学的命题——而那正是哲学没有探讨的——然后，当某个人想要谈论任何关于形而上学的命题的时候，向他表明他无法给他命题中的某些符号特定的意义。</p>
-<blockquote>
-<p>In the eyes of its author (as he avers in its Introduction), the real accomplishment of the Tractatus was to have solved, or rather dissolved, all the traditional problems of philosophy by showing that they were meaningless conundrums generated by a failure to understand the limits of meaningful discourse.</p>
-</blockquote>
-<p>在逻辑哲学论作者的眼中（正如他在前言中所断言的那样），逻辑哲学论真正的成就就是解决了，或者更确切地说，通过展示这些所提出了缺乏意义的难题是由于错误地理解了有意义的论述的界限而消解了传统哲学的问题。</p>
-<h3 id="3-Logical-Positivism-the-Vienna-Circle-and-Quine"><a href="#3-Logical-Positivism-the-Vienna-Circle-and-Quine" class="headerlink" title="3. Logical Positivism, the Vienna Circle, and Quine"></a>3. Logical Positivism, the Vienna Circle, and Quine</h3><hr>
-<h4 id="a-Logical-Positivism-and-the-Vienna-Circle"><a href="#a-Logical-Positivism-and-the-Vienna-Circle" class="headerlink" title="a. Logical Positivism and the Vienna Circle"></a>a. Logical Positivism and the Vienna Circle</h4><blockquote>
-<p>Logical positivism is the result of combining the central aspects of the positivisms of Auguste Comte and Ernst Mach with the meta-philosophical and methodological views of the analytic movement, especially as understood by the ideal-language camp. In all its forms, positivism was animated by the idealization of scientific knowledge as it was commonly understood from at least the time of Newton through the early twentieth century. Consequently, at its core is a view called scientism: the view that all knowledge is scientific knowledge.</p>
-</blockquote>
-<p>逻辑实证主义结合了孔德和马赫实证主义和分析哲学运动中的元哲学和方法论，特别是由理想语言阵营所理解的方法。在各种形式上，实证主义都将牛顿时代末期到二十世纪早期的常识认识作了一个科学知识的理想化。因此，实证主义的核心被称作是科学主义：即所有的知识都是科学知识的观点。</p>
-<blockquote>
-<p>As twentieth-century philosophy of science has shown, the definition and demarcation of science is a very difficult task. Still, for several centuries it has been common to presume that metaphysics and other branches of philosophy-as-traditionally-practiced, not to mention religious and “common sense” beliefs, do not qualify as scientific. From the standpoint of scientism, these are not fields of knowledge, and their claims should not be regarded as carrying any serious weight.</p>
-</blockquote>
-<p>正如二十世纪的科学哲学所展现的，很难对科学进行定义和划界。然而，几个世纪以来，在哲学界，有一个普遍的假定就是形而上学和其它传统哲学的实践分支，更不用提及宗教和“常识”信念，都不能称之为科学。根据科学主义的观点，这些领域是没有任何知识的，他们的言论不应该具有任何重要的意义。</p>
-<blockquote>
-<p>At the heart of logical positivism was a novel way of dismissing certain non-scientific views by declaring them not merely wrong or false, but meaningless. According to the verification theory of meaning, sometimes also called the empiricist theory of meaning, any non-tautological statement has meaning if and only if it can be empirically verified. This “verification principle” of meaning is similar to the principle maintained in Wittgenstein’s Tractatus that the realm of meaning is coextensive with the realm of the natural (empirical) sciences. In fact the logical positivists drew many of their views straight from the pages of the Tractatus (though their reading of it has since been criticized as being too inclined to emphasize the parts friendly to scientific naturalism at the expense of those less-friendly). With Wittgenstein, the logical positivists concluded that the bulk of traditional philosophy consisted in meaningless pseudo-problems generated by the misuse of language, and that the true role of philosophy was to establish and enforce the limits of meaningful language through linguistic analysis.</p>
-</blockquote>
-<p>逻辑实证主义的核心是提供了一种新的消解特定的非科学观点，其方法是指出他们不仅仅是正确或错误的，而是缺少意义的。根据关于意义的证实理论，也被称作关于意义的经验主义者理论，即任何非重言式的描述如果要有意义的话，当且仅当它可以被经验地证明。这个关于意义的实证原则和维特根斯坦的逻辑哲学论中所持有的意义的领域是与自然（经验）科学的领域是共同延伸的这一观点时相似的。事实上，逻辑实证主义者直接从逻辑哲学论的字里行间中取得了很多观点（尽管他们的理解被批评为过分强调了那些与科学自然主义相关的部分，而牺牲了其它没有太多关联的部分）。同维特根斯坦一样，逻辑实证主义者得出了大部分传统哲学都涉及到了误用语言而造成的缺乏意义的伪似的命题的结论，而哲学真正的作用是通过语言分析确立和加强有意义的语言的界限。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" data-id="cjv9as4yp0001kstqd1obzk5x" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Modern-Anglo-American-philosophy-translation-10" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" class="article-date">
-  <time datetime="2018-12-04T15:08:43.000Z" itemprop="datePublished">2018-12-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/04/Modern-Anglo-American-philosophy-translation-10/">Modern Anglo-American philosophy translation_10</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>The body of the Tractatus consists in cascading levels of numbered elaborations of these propositions (1 is elaborated by 1.1 which is elaborated by 1.11, 1.12 and 1.13, and so forth)—except for 7, which stands on its own. Propositions 1 and 2 establish the metaphysical side of logical atomism: the world is nothing but a complex of atomic facts. Propositions 3 and 4 establish the isomorphism between language and reality: a significant (meaningful) proposition is a “logical picture” of the facts that constitute some possible or actual state of affairs. It is a picture in the sense that the structure of the proposition is identical to the structure of the corresponding atomic facts. It is here, incidentally, that we get the first explicit statement of the metaphilosophical view characteristic of early analytic philosophy: “All philosophy is a ‘critique of language’ …” (4.0031).</p>
-</blockquote>
-<p>逻辑哲学论的主体包括了多级详细阐述的关于命题的串联（1.1是用来详细解释1的，而1.11,1.12是用来详细解释1.1的，一直这样下去）——除了第七点，它只有这一句话。命题1和2建立了逻辑原子主义的形而上学方面的内容：这个世界只是原子事实的复合。命题3和4建立了语言和现实的同构：一个重要的（有意义的）命题是事实的一个“逻辑图像”，由一些可能的和实存的事态所组成。在某种意义上，它只是一个与相应的原子事实的结构相同的命题结构的图像。正是在这里，我们第一次了解到元哲学对于早期分析哲学的观点的说明：“所有的哲学都只是语言批判。”</p>
-<blockquote>
-<p>Proposition 5 asserts the thesis of truth-functionality, the view that all complex propositions are built out of atomic propositions joined by truth-functional connectives, and that atomic propositions are truth-functional in themselves. Even existentially quantified propositions are considered to be long disjunctions of atomic propositions. It has since been recognized that a truth-functional logic is not adequate to capture all the phenomena of the world; or at least that, if there is an adequate truth-functional system, we haven’t found it yet. Certain phenomena seem to defy truth-functional characterization; for instance, moral facts are problematic. </p>
-</blockquote>
-<p>命题5提出了真值函数的观点，其声称所有的复杂命题都是由连接词串联的原子命题所构成的，而原子命题本身是具有真值的。甚至存在量词命题也被认为是原子命题的长期析取。它开始意识到，一个具有真值意义的逻辑对于捕捉世界上所有的现象来说是不充分的，或者至少，我们还没有发现这样的真值系统。一些现象似乎是拒斥真值函数特征的；例如，道德事实就是不确定的。</p>
-<blockquote>
-<p>Knowing whether the constituent proposition “p” is true, doesn’t seem to tell us whether “It ought to be the case that p” is true. Similarly problematical are facts about thoughts, beliefs, and other mental states (captured in statements such as “John believes that…”), and modal facts (captured in statements about the necessity or possibility of certain states of affairs). And treating existential quantifiers as long disjunctions doesn’t seem to be adequate for the infinite number of facts about numbers since there surely are more real numbers than there are available names to name them even if we were willing to accept infinitely long disjunctions. The hope that truth-functional logic will prove adequate for resolving all these problems has inspired a good bit of thinking in the analytic tradition, especially during the first half of the twentieth century. This hope lies at the heart of logical atomism.</p>
-</blockquote>
-<p>认识到是否命题“p”的成分为真，似乎并不能使我们判别“这个事实p”为真。相似的不确定的事实是关于思想，信仰和一些其它的心理的（可以从陈述“约翰相信…”中看出），情感的状态（可以从关于具体事态的必然性和可能性的讨论中看出）。由于毫无疑问的，有远比我们可以命名的多得多的析取式，哪怕是我们愿意接受有无穷的析取式，因而将存在连词视作长析取式对于解释无穷的事态似乎是不充分的。</p>
-<blockquote>
-<p>In its full form, Proposition 6 includes some unusual symbolism that is not reproduced here.  All it does, however, is to give a general “recipe” for the creation of molecular propositions by giving the general form of a truth-function. Basically, Wittgenstein is saying that all propositions are truth-functional, and that, ultimately, there is only one kind of truth-function. Principia Mathematica had employed a number of truth-functional connectives: “and,” “or,” “not,” and so forth.  However, in 1913 a logician named Henry Sheffer showed that propositions involving these connectives could be rephrased (analyzed) as propositions involving a single connective consisting in the negation of a conjunction. </p>
-</blockquote>
-<p>在整本书中，命题6包括了一些不寻常的符号化，在这里将不会展示它们。所有的这些工作，只是为通过一种通用的真值形式来给分子命题的创造给出通用的“方法”。简单来说，维特根斯坦说所有的命题都具有真值，最终，就只有一种真值形式。数学原理提供了一系列的真值连词：“and”,”or”,”not”等等。然而，在1913年一个名为Henry Sheffer的逻辑学家展示到使用这些连词的命题都可以只使用一个单独的连词而不需要其它连词。</p>
-<blockquote>
-<p>This was called the “not and” or “nand” connective, and was supposed to be equivalent to the ordinary language formulation “not both x and y.” It is usually symbolized by a short vertical line ( | ) called the Sheffer stroke. Though Wittgenstein uses his own idiosyncratic symbolism, this is the operation identified in proposition 6 and some of its elaborations as showing the general form of a truth-function. Replacing the Principia’s plurality of connectives with the “nand” connective made for an extremely minimalistic system—all one needed to construct a complete picture/description of the world was a single truth-functional connective applied repeatedly to the set of all atomic propositions.</p>
-</blockquote>
-<p>它们被称为”not and” 或者”nand”，它的具体意义是和日常语言中的“不是 a和b”相同。它通常用一根竖线表示，这个符号被称为“Sheffer stroke”。尽管维特根斯坦使用了他自己特定的符号，这是命题6中所执行的方法，它的一些阐述显示了真理函数的一般形式。通过取代数学原理中多元的连词而采用”nand”来替代，构建了一个最小的系统——一个人要构建一个关于这个世界图像的描述，就仅仅是用一个连词连接的关于所有的原子命题的不同类型。</p>
-<blockquote>
-<p>Proposition 7, which stands on its own, is the culmination of a series of observations made throughout the Tractatus, and especially in the elaborations of proposition 6. Throughout the Tractatus there runs a distinction between showing and saying. Saying is a matter of expressing a meaningful proposition. Showing is a matter of presenting something’s form or structure. Thus, as Wittgenstein observes at 4.022, “A proposition shows its sense. A proposition shows how things stand if it is true. And it says that they do so stand.”</p>
-</blockquote>
-<p>命题7，是一个自成立的命题，是整个逻辑哲学论的高潮部分，特别是在建立了命题6之后。贯穿逻辑哲学论的是一条关于言说和展示的界限。言说是一种表达有意义的命题的方式。展示是一种<br>表现形式和结构的方式。因此，正如维特根斯坦在4.022中所表达的“一个命题展示了它的意义。一个命题展示了它是否为真。同时也言说了其为何为真。”</p>
-<blockquote>
-<p>In the introduction to the Tractatus, Wittgenstein indicates that his overarching purpose is to set the criteria and limits of meaningful saying. The structural aspects of language and the world—those aspects that are shown—fall beyond the limits of meaningful saying. According to Wittgenstein, the propositions of logic and mathematics are purely structural and therefore meaningless—they show the form of all possible propositions/states of affairs, but they do not themselves picture any particular state of affairs, thus they do not say anything. This has the odd consequence that the propositions of the Tractatus themselves, which are supposed to be about logic, are meaningless. Hence the famous dictum at 6.54:</p>
-</blockquote>
-<p>在逻辑哲学论的前言中，维特根斯坦说明了他首要的目的就是建立一个有意义的言说的标准。语言和世界的结构——那些所展示的部分——是在有意义的言说的界限之外的。根据维特根斯坦的说法，逻辑和数学的命题只是纯粹的结构上的，因此他们能够描述任何特定的事态，因此，它们什么也没有言说。这造成一个奇怪的现象，就是在逻辑哲学论中的那些论题本身，就是逻辑命题，因此也就是没有意义的。因此在6.54中，有一个著名的声明：</p>
-<blockquote>
-<p>My propositions are elucidatory in this way: he who understands me finally recognizes them as senseless, when he has climbed out through them, on them, over them. (He must so to speak throw away the ladder, after he has climbed up on it.) He must transcend these propositions, and then he will see the world aright.</p>
-</blockquote>
-<p>我的命题是以这样一种方式来阐明的：一个真正理解我的人最终会意识到我的命题是缺少意义的，当他登上他们，站在他们之上，并超越他们（他必须丢掉这个梯子，当他真正爬上去之后。）他必须超越这些命题，最终他将会看到真正的世界。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" data-id="cjv9as4z50008kstqwhyi8j8l" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
 
     </footer>
   </div>
@@ -785,7 +728,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -799,7 +742,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-learning/">English_learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-system/">computer_system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-git/">github/git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paperReading/">paperReading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/use-of-Colab-deep-learning/">use of Colab(deep learning)</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-learning/">English_learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-system/">computer_system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github-git/">github/git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paperReading/">paperReading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-reading/">paper_reading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/use-of-Colab-deep-learning/">use of Colab(deep learning)</a></li></ul>
     </div>
   </div>
 
@@ -809,7 +752,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 10px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 16.67px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 13.33px;">paperReading</a> <a href="/tags/use-of-Colab-deep-learning/" style="font-size: 10px;">use of Colab(deep learning)</a>
+      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 12.5px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 17.5px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 15px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 17.5px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 12.5px;">paperReading</a> <a href="/tags/paper-reading/" style="font-size: 10px;">paper_reading</a> <a href="/tags/use-of-Colab-deep-learning/" style="font-size: 10px;">use of Colab(deep learning)</a>
     </div>
   </div>
 
@@ -818,7 +761,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
     </div>
   </div>
 
@@ -831,23 +774,23 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       <ul>
         
           <li>
+            <a href="/2019/09/25/github-use-1/">github&amp;git</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/25/github&git/">github&amp;git</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/05/django-learning/">django_learning</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/05/paper-reading/">paper_reading</a>
+          </li>
+        
+          <li>
             <a href="/2019/05/04/colab/">colab</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/28/reading1/">BTS-DSN</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/28/recording2/">AlexNet</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/23/龙芯杯6/">龙芯杯备战4</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/28/ma_model_pre5/">ma_model_preparation5</a>
           </li>
         
       </ul>
