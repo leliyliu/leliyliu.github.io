@@ -69,58 +69,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-ma_model_pre3" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/15/ma_model_pre3/" class="article-date">
-  <time datetime="2019-03-15T02:05:27.000Z" itemprop="datePublished">2019-03-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/15/ma_model_pre3/">ma_model_preparation2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-蒙特卡洛方法"><a href="#1-蒙特卡洛方法" class="headerlink" title="1. 蒙特卡洛方法"></a>1. 蒙特卡洛方法</h3><h4 id="（1）基本思路："><a href="#（1）基本思路：" class="headerlink" title="（1）基本思路："></a>（1）基本思路：</h4><p>蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。</p>
-<h4 id="（2）一种应用：利用蒙特卡洛方法求积分："><a href="#（2）一种应用：利用蒙特卡洛方法求积分：" class="headerlink" title="（2）一种应用：利用蒙特卡洛方法求积分："></a>（2）一种应用：利用蒙特卡洛方法求积分：</h4><p>假设我们需要求这样一个图的积分<br><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%861.png?raw=true" alt="求积分图1"><br>那么实际上，我们所需要的过程可以表示如下<br><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%862.png?raw=true" alt="求积分过程"></p>
-<p>从这两个过程中，我们可以看到，实际上对于积分的求解可以简化为这样一个过程：<br><br>假设要计算的积分如下：</p>
-<script type="math/tex; mode=display">I=\int_{a}^{b}g(x)\text{d}x</script><p>那么如果选择一个概率密度函数为$f_X(x)$的方式进行抽样,并且满足$\int_{a}^{b}f_X(x)\text{d}x=1$,那么令$g^*(x)=\frac{g(x)}{f_X(x)}$,原有的积分可以写成如下形式：</p>
-<script type="math/tex; mode=display">I=\int_{a}^{b}g^*(x)f_X(x)\text{d}x</script><p>故，我们求积分的步骤为：<br><br><br>1.产生服从分布律$F_X$的随机变量$X_i(i=1,2,…,N)$</p>
-<p>2.计算均值</p>
-<script type="math/tex; mode=display">\overline{I}=\frac{1}{N}\sum_{i=1}^ng^*(X_i)</script><p>一般采用均匀分布求解</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calpai</span><span class="params">()</span>:</span></span><br><span class="line">    n = <span class="number">1000000</span></span><br><span class="line">    r = <span class="number">1.0</span></span><br><span class="line">    a, b = (<span class="number">0.0</span>, <span class="number">0.0</span>)</span><br><span class="line">    x_neg, x_pos = a - r, a + r</span><br><span class="line">    y_neg, y_pos = b - r, b + r</span><br><span class="line"></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n):</span><br><span class="line">        x = random.uniform(x_neg, x_pos)</span><br><span class="line">        y = random.uniform(y_neg, y_pos)</span><br><span class="line">        <span class="keyword">if</span> x*x + y*y &lt;= <span class="number">1.0</span>:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> (count / float(n)) * <span class="number">4</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-蒙特卡洛树搜索"><a href="#3-蒙特卡洛树搜索" class="headerlink" title="(3)蒙特卡洛树搜索"></a>(3)蒙特卡洛树搜索</h4><p>as we know, an important method used in alpha go and alpha zero is Monte Carlo Tree search. So if you want to know more about this method, you can search this <a href="https://blog.csdn.net/qq_16137569/article/details/83543641" target="_blank" rel="noopener">website(Monte Carlo Tree search)</a> and get some knowledge yourself. also, you can get information in almost every game theory book.And try to get the big idea in Monte Carlo Tree search.</p>
-<h3 id="2-马尔科夫链"><a href="#2-马尔科夫链" class="headerlink" title="2. 马尔科夫链"></a>2. 马尔科夫链</h3><h5 id="2-1-马尔可夫链的定义"><a href="#2-1-马尔可夫链的定义" class="headerlink" title="2.1 马尔可夫链的定义"></a>2.1 马尔可夫链的定义</h5><p>现实世界中有很多这样的现象：某一系统在已知现在情况的条件下，系统未来时刻<br>的情况只与现在有关，而与过去的历史无直接关系。比如，研究一个商店的累计销售额，<br>如果现在时刻的累计销售额已知，则未来某一时刻的累计销售额与现在时刻以前的任一<br>时刻累计销售额无关。上节中的几个例子也均属此类。描述这类随机现象的数学模型称<br>为马氏模型。</p>
-<p>对于马尔科夫链的数学定义，可以直接参照<a href="http://vdisk.weibo.com/s/D8miedWz2uXT" target="_blank" rel="noopener">《数学建模算法与应用》（司守奎）</a>。</p>
-<h5 id="2-2-马尔科夫链的性质"><a href="#2-2-马尔科夫链的性质" class="headerlink" title="2.2 马尔科夫链的性质"></a>2.2 马尔科夫链的性质</h5><p>转移概率矩阵及柯尔莫哥洛夫定理</p>
-<p>对于这个性质，可以查看我给出的<a href="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/learning_code/morkov.py" target="_blank" rel="noopener">代码morkov.py</a>进行了解</p>
-<h5 id="2-3-马尔科夫链的应用"><a href="#2-3-马尔科夫链的应用" class="headerlink" title="2.3 马尔科夫链的应用"></a>2.3 马尔科夫链的应用</h5><p>虽然马尔科夫链的性质极其简单，但是其应用广泛，有着极大的意义。<br>应用马尔可夫链的计算方法进行马尔可夫分析，主要目的是根据某些变量现在的情<br>况及其变动趋向，来预测它在未来某特定区间可能产生的变动，作为提供某种决策的依<br>据。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="ck0z6d1pa000zp8tqszud8yfd" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-ma-model-preparation1" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/09/ma-model-preparation1/" class="article-date">
@@ -174,7 +122,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/09/ma-model-preparation1/" data-id="ck0z6d1p6000vp8tqtacr5xnl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/09/ma-model-preparation1/" data-id="ck0zdhipb000mwotqrmy1340q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -237,7 +185,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" data-id="ck0z6d1o50007p8tq6ltn3l95" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" data-id="ck0zdhioh0003wotqagbaezyi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -307,7 +255,7 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" data-id="ck0z6d1q4001vp8tqzml5cizw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" data-id="ck0zdhiqn001twotq3ifz62px" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -362,7 +310,7 @@ git push （在后续过程中，直接git push）即可
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/01/github-use/" data-id="ck0z6d1ow000mp8tqhyqwijf0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/01/github-use/" data-id="ck0zdhip8000kwotqksqu2ne2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-git/">github/git</a></li></ul>
@@ -434,7 +382,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/01/MCM-ICM-preparation-two/" data-id="ck0z6d1mg0003p8tqta2tgiwx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/01/MCM-ICM-preparation-two/" data-id="ck0zdhioj0004wotqnti9540b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li></ul>
@@ -496,7 +444,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" data-id="ck0z6d1ou000lp8tq8xwefe16" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" data-id="ck0zdhior000bwotqtfndy2jn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -554,7 +502,7 @@ merge
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" data-id="ck0z6d1og000cp8tqxyq95lgu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" data-id="ck0zdhiop0009wotqla77c3c3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -644,7 +592,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/26/MCM-ICM-preparation-one/" data-id="ck0z6d1o10006p8tqe16njg64" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/26/MCM-ICM-preparation-one/" data-id="ck0zdhioc0001wotqm9n1575s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MCM-ICM-preparation/">MCM/ICM preparation</a></li></ul>
@@ -704,10 +652,74 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/26/Modern-Anglo-American-philosophy-translation-7/" data-id="ck0z6d1oe000bp8tq5enhkd8h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/26/Modern-Anglo-American-philosophy-translation-7/" data-id="ck0zdhion0008wotqzowy4pwx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-龙芯杯备战3" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/25/龙芯杯备战3/" class="article-date">
+  <time datetime="2018-11-25T08:34:53.000Z" itemprop="datePublished">2018-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/25/龙芯杯备战3/">龙芯杯备战3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本周总结：</p>
+<pre><code>这一周任务比较明确，主要是把数电的知识全部过一遍，然后学习verilog，并且开始了一些机组的学习，希望能从中有所收获。大体方向上都准备地较为不错，但是在看机组实验的手册的时候依旧出现了一些问题，还是不太清楚需要做些什么。
+</code></pre><hr>
+<h2 id="verilog-的学习"><a href="#verilog-的学习" class="headerlink" title="verilog 的学习"></a>verilog 的学习</h2><hr>
+<h3 id="语法要点"><a href="#语法要点" class="headerlink" title="语法要点"></a>语法要点</h3><ol>
+<li>always 里面赋值左边必须申明为reg</li>
+<li>assign表达式左边必须申明为wire</li>
+<li>阻塞赋值用&lt;=</li>
+<li>非阻塞赋值用=</li>
+</ol>
+<p>1) 边沿触发生成寄存器的时序逻辑<br>2) 电平触发条件完整，生成组合逻辑<br>3) 电平触发条件不完整，生成锁存器的时序逻辑</p>
+<p>结论：<br>    声明成reg,不一定得到寄存器<br>    未声明为reg，也可能得到寄存器</p>
+<h3 id="coding-要点"><a href="#coding-要点" class="headerlink" title="coding 要点"></a>coding 要点</h3><pre><code>·如果是边沿触发的逻辑 比如always@(posedge clk)，里面一律使用&lt;=赋值
+·如果是电平触发的逻辑，一律使用=赋值
+逻辑简单用assign语句；逻辑复杂，用always语句
+分支条件写完整，防止出现锁存器
+</code></pre><h3 id="系统任务与系统函数-task-or-function"><a href="#系统任务与系统函数-task-or-function" class="headerlink" title="系统任务与系统函数(task or function)"></a>系统任务与系统函数(task or function)</h3><pre><code>标准输出任务 $display等
+文件管理任务 $fopen等
+仿真控制任务 $monitor等
+时间函数 $timeformat等
+时间显示函数 $time等
+其他 $random等
+</code></pre><p>关于verilog的学习这一周主要还是看了不少代码，并对其进行了理解。通过对其进行注释，了解到了很多知识，关于注释的代码后续会传到github上。</p>
+<hr>
+<p>下周目标：</p>
+<pre><code>下一周主要的任务主要是关于机组的学习以及基于学习手册的学习，希望能通过这一方面的学习，尽量快速地入门。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/25/龙芯杯备战3/" data-id="ck0zdhiq50019wotqn6ijk8kt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
 
     </footer>
   </div>
@@ -744,7 +756,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 12.5px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 17.5px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 15px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 17.5px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 12.5px;">paperReading</a> <a href="/tags/paper-reading/" style="font-size: 10px;">paper_reading</a> <a href="/tags/use-of-Colab-deep-learning/" style="font-size: 10px;">use of Colab(deep learning)</a>
+      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 13.33px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 16.67px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 13.33px;">paperReading</a> <a href="/tags/paper-reading/" style="font-size: 10px;">paper_reading</a> <a href="/tags/use-of-Colab-deep-learning/" style="font-size: 10px;">use of Colab(deep learning)</a>
     </div>
   </div>
 
@@ -766,10 +778,6 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
       <ul>
         
           <li>
-            <a href="/2019/09/25/github-use-1/">github&amp;git</a>
-          </li>
-        
-          <li>
             <a href="/2019/09/25/github&git/">github&amp;git</a>
           </li>
         
@@ -783,6 +791,10 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
         
           <li>
             <a href="/2019/05/04/colab/">colab</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/28/recording2/">AlexNet</a>
           </li>
         
       </ul>

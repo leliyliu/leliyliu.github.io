@@ -69,70 +69,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-龙芯杯备战3" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/25/龙芯杯备战3/" class="article-date">
-  <time datetime="2018-11-25T08:34:53.000Z" itemprop="datePublished">2018-11-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/25/龙芯杯备战3/">龙芯杯备战3</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本周总结：</p>
-<pre><code>这一周任务比较明确，主要是把数电的知识全部过一遍，然后学习verilog，并且开始了一些机组的学习，希望能从中有所收获。大体方向上都准备地较为不错，但是在看机组实验的手册的时候依旧出现了一些问题，还是不太清楚需要做些什么。
-</code></pre><hr>
-<h2 id="verilog-的学习"><a href="#verilog-的学习" class="headerlink" title="verilog 的学习"></a>verilog 的学习</h2><hr>
-<h3 id="语法要点"><a href="#语法要点" class="headerlink" title="语法要点"></a>语法要点</h3><ol>
-<li>always 里面赋值左边必须申明为reg</li>
-<li>assign表达式左边必须申明为wire</li>
-<li>阻塞赋值用&lt;=</li>
-<li>非阻塞赋值用=</li>
-</ol>
-<p>1) 边沿触发生成寄存器的时序逻辑<br>2) 电平触发条件完整，生成组合逻辑<br>3) 电平触发条件不完整，生成锁存器的时序逻辑</p>
-<p>结论：<br>    声明成reg,不一定得到寄存器<br>    未声明为reg，也可能得到寄存器</p>
-<h3 id="coding-要点"><a href="#coding-要点" class="headerlink" title="coding 要点"></a>coding 要点</h3><pre><code>·如果是边沿触发的逻辑 比如always@(posedge clk)，里面一律使用&lt;=赋值
-·如果是电平触发的逻辑，一律使用=赋值
-逻辑简单用assign语句；逻辑复杂，用always语句
-分支条件写完整，防止出现锁存器
-</code></pre><h3 id="系统任务与系统函数-task-or-function"><a href="#系统任务与系统函数-task-or-function" class="headerlink" title="系统任务与系统函数(task or function)"></a>系统任务与系统函数(task or function)</h3><pre><code>标准输出任务 $display等
-文件管理任务 $fopen等
-仿真控制任务 $monitor等
-时间函数 $timeformat等
-时间显示函数 $time等
-其他 $random等
-</code></pre><p>关于verilog的学习这一周主要还是看了不少代码，并对其进行了理解。通过对其进行注释，了解到了很多知识，关于注释的代码后续会传到github上。</p>
-<hr>
-<p>下周目标：</p>
-<pre><code>下一周主要的任务主要是关于机组的学习以及基于学习手册的学习，希望能通过这一方面的学习，尽量快速地入门。
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/25/龙芯杯备战3/" data-id="ck0z6d1pj001ap8tqben1msky" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-Modern-Anglo-American-philosophy-translation-6" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/23/Modern-Anglo-American-philosophy-translation-6/" class="article-date">
@@ -183,7 +119,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/Modern-Anglo-American-philosophy-translation-6/" data-id="ck0z6d1q5001xp8tqunkl3puz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/Modern-Anglo-American-philosophy-translation-6/" data-id="ck0zdhiqs001ywotqll9fp1ml" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -242,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/21/Modern-Anglo-American-philosophy-translation-5/" data-id="ck0z6d1q7001zp8tqvs8wfb47" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/21/Modern-Anglo-American-philosophy-translation-5/" data-id="ck0zdhiqq001wwotqju2gip13" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -304,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/19/Modern-Anglo-American-philosophy-translation-4/" data-id="ck0z6d1oa0009p8tqnh090ohh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/19/Modern-Anglo-American-philosophy-translation-4/" data-id="ck0zdhiol0005wotqm9dcmqak" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -508,7 +444,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/18/龙芯杯备战2/" data-id="ck0z6d1pn001fp8tqbj8a3eeg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/18/龙芯杯备战2/" data-id="ck0zdhiq10014wotqe9x018qm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
@@ -598,7 +534,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/18/Modern-Anglo-American-philosophy-translation-3/" data-id="ck0z6d1q2001up8tq81dn2si0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/18/Modern-Anglo-American-philosophy-translation-3/" data-id="ck0zdhiqp001uwotqcg4pyh0v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -669,7 +605,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/17/Modern-Anglo-American-philosophy-translation-2/" data-id="ck0z6d1pg0017p8tq8ru263he" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/17/Modern-Anglo-American-philosophy-translation-2/" data-id="ck0zdhipw0010wotq19p0kj3t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -746,7 +682,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/15/Modern-Anglo-American-philosophy-translation-1/" data-id="ck0z6d1pe0015p8tqwmzcrg9f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/15/Modern-Anglo-American-philosophy-translation-1/" data-id="ck0zdhipz0012wotqgynz0kt5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-Anglo-American-philosophy/">Modern Anglo-American philosophy</a></li></ul>
@@ -822,7 +758,7 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/12/philosophy-of-science1/" data-id="ck0z6d1qi0024p8tq8oq7tqx2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/12/philosophy-of-science1/" data-id="ck0zdhir20025wotqbrnnx4mz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Philosophy-of-Science/">Philosophy of Science</a></li></ul>
@@ -871,10 +807,64 @@ div , divu , ddiv , ddivu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/11/A-Winkle-in-Time/" data-id="ck0z6d1m20000p8tq1kd7y4ta" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/11/A-Winkle-in-Time/" data-id="ck0zdhio30000wotqhvmfpeb9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English-learning/">English_learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-龙芯杯备战1" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/09/龙芯杯备战1/" class="article-date">
+  <time datetime="2018-11-09T06:32:20.000Z" itemprop="datePublished">2018-11-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/09/龙芯杯备战1/">龙芯杯备战1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="龙芯杯备战1"><a href="#龙芯杯备战1" class="headerlink" title="龙芯杯备战1"></a>龙芯杯备战1</h1><p>标签（空格分隔）： 计算机体系结构 龙芯杯</p>
+<hr>
+<h2 id="vivado-的安装以及verilog-入门"><a href="#vivado-的安装以及verilog-入门" class="headerlink" title="vivado 的安装以及verilog 入门"></a>vivado 的安装以及verilog 入门</h2><h3 id="1-vivodo的安装"><a href="#1-vivodo的安装" class="headerlink" title="1.vivodo的安装"></a>1.vivodo的安装</h3><p>&emsp; &emsp; 安装环境： ubuntu18.04 &emsp; vivado2018.1<br><br>&emsp;&emsp;如果linux系统中所开的空间不够，可以直接将压缩包和安装包放置在windows系统硬盘空间中，在ubuntu18.04文件中点开其他位置即可进行安装。直接可安装成功。（按照讲义内容进行即可，注意为web版本）<br><br>&emsp;&emsp;若需要打开vivado，则直接在终端上输入vivado则可以直接打开。具体新建项目的方式可以参考讲义。</p>
+<h3 id="2-verilog入门"><a href="#2-verilog入门" class="headerlink" title="2.verilog入门"></a>2.verilog入门</h3><h4 id="1-verilog设计说明"><a href="#1-verilog设计说明" class="headerlink" title="1.verilog设计说明"></a>1.verilog设计说明</h4><p>&emsp;&emsp;整个verilog的设计应该是寄存器级别的，尽量不要使用系统级别的代码。<br><br>&emsp;&emsp; verilog 语法和C语言很像，但是思维方式应该有很大不同，需要跳出C语言串行的思维方式，按照数字逻辑中并行的思维方式进行思考。要明确verilog语法是用来设计硬件电路的，硬件电路是并行并发的。所以 Verilog 语<br>言里面,一前一后两句 assign 语句,不是写在前面的先执行写在后面的后执行,在忽略底层电路延迟因素的情况<br>下,这两句对应的逻辑是同时并发执行的。<br><br>&emsp;&emsp; 必要的verilog学习和语法使用步骤：先进行电路结构设计,再进行 Verilog 代码编写。<br><br>&emsp;&emsp; 在设计步骤上，建议：<font color="blue">“自顶向下、模块划分、逐层细化”</font>。划分过程中,<font color="red">推荐优先沿着数据流的路径进行划分</font>。</p>
+<h4 id="2-verilog代码风格"><a href="#2-verilog代码风格" class="headerlink" title="2.verilog代码风格"></a>2.verilog代码风格</h4><p>&emsp;&emsp; 务必记住:代码写出来,要让自己过了一年半载还能看得懂改得了,要让同项目组的其它成员能看得懂改得了,要让项目无关的本领域设计人员在看了你的设计文档之后也能看得懂改得了。<br><br>&emsp;&emsp;变量命名要求：不要求大小写，但需用下划线_来区分多个单词</p>
+<font color="green">缩写需要注释清楚</font>
+<font color="red">代码需要对齐,上下行对齐的时候不要使用 Tab,而要用空格</font>
+
+<h3 id="3-verilog语法"><a href="#3-verilog语法" class="headerlink" title="3.verilog语法"></a>3.verilog语法</h3><ol>
+<li>module,endmodule——-模块声明</li>
+<li>input，output,inout——-端口声明</li>
+<li>wire———线网数据类型</li>
+<li>reg,integer———变量数据类型<br><br><a href="https://blog.csdn.net/wang1986527/article/details/77968118" target="_blank" rel="noopener">更多的语法使用</a><br><br>一个3-8的译码器的代码如下所示<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">\\<span class="number">3</span>-<span class="number">8</span>译码器</span><br><span class="line"><span class="keyword">module</span> decoder_3_8(</span><br><span class="line"><span class="keyword">input</span> [<span class="number">2</span>:<span class="number">0</span>] in,</span><br><span class="line"><span class="keyword">output</span> [<span class="number">7</span>:<span class="number">0</span>] out</span><br><span class="line">);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">0</span>] = (in==<span class="number">3'd0</span>);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">1</span>] = (in==<span class="number">3'd1</span>);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">2</span>] = (in==<span class="number">3'd2</span>);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">3</span>] = (in==<span class="number">3'd3</span>);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">4</span>] = (in==<span class="number">3'd4</span>);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">5</span>] = (in==<span class="number">3'd5</span>);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">6</span>] = (in==<span class="number">3'd6</span>);</span><br><span class="line"><span class="keyword">assign</span> out[<span class="number">7</span>] = (in==<span class="number">3'd7</span>);</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="3-继续学习的计划以及欠缺方面"><a href="#3-继续学习的计划以及欠缺方面" class="headerlink" title="3.继续学习的计划以及欠缺方面"></a>3.继续学习的计划以及欠缺方面</h3><p>继续完善关于verilog的学习，注意掌握一些基础的语法，同时，还需要对于verilog的思想有进一步的认识，要了解verilog设计的思路，下周尝试自己进行一个简单的设计。<br>下周的工作还有熟悉MIPS汇编代码，以及尝试对于C语言代码进行反汇编（了解C语言和C++语言的部分差异）<br>下周开始尝试接触有关计算机组成原理中有关流水线部分的知识<br>  <br>[1]: <a href="https://blog.csdn.net/wang1986527/article/details/77968118" target="_blank" rel="noopener">https://blog.csdn.net/wang1986527/article/details/77968118</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/09/龙芯杯备战1/" data-id="ck0zdhiq40017wotqw0109iry" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
 
     </footer>
   </div>
@@ -911,7 +901,7 @@ div , divu , ddiv , ddivu
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 12.5px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 17.5px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 15px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 17.5px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 12.5px;">paperReading</a> <a href="/tags/paper-reading/" style="font-size: 10px;">paper_reading</a> <a href="/tags/use-of-Colab-deep-learning/" style="font-size: 10px;">use of Colab(deep learning)</a>
+      <a href="/tags/English-learning/" style="font-size: 10px;">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 13.33px;">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 20px;">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 10px;">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 16.67px;">computer_system</a> <a href="/tags/github-git/" style="font-size: 13.33px;">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 16.67px;">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 13.33px;">paperReading</a> <a href="/tags/paper-reading/" style="font-size: 10px;">paper_reading</a> <a href="/tags/use-of-Colab-deep-learning/" style="font-size: 10px;">use of Colab(deep learning)</a>
     </div>
   </div>
 
@@ -933,10 +923,6 @@ div , divu , ddiv , ddivu
       <ul>
         
           <li>
-            <a href="/2019/09/25/github-use-1/">github&amp;git</a>
-          </li>
-        
-          <li>
             <a href="/2019/09/25/github&git/">github&amp;git</a>
           </li>
         
@@ -950,6 +936,10 @@ div , divu , ddiv , ddivu
         
           <li>
             <a href="/2019/05/04/colab/">colab</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/28/recording2/">AlexNet</a>
           </li>
         
       </ul>
