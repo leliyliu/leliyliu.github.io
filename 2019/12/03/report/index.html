@@ -5,19 +5,22 @@
   
 
   
-  <title>django_learning | 坠落</title>
+  <title>坠落</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="record">
+  <meta name="description" content="简单的路由程序设计实验报告实验环境实验要求本实验的目的是利用 visual C++编写一个简单的路由程序，实现 IP 数据报的转发。本实验可以在一个局域网中进行，采用如下图所示的实验环境：  其中路由 R1 和 R2 是连接不同子网的通用计算机，通过 R1 和 R2 上运行编制的路由程序，绑定双 IP，通过路由程序添加路由表，对接收的数据包进行分析和转发，实现处于不同网络中的主机 I 和 II 的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="django_learning">
-<meta property="og:url" content="http://yoursite.com/2019/05/05/django-learning/index.html">
+<meta property="og:title" content="坠落">
+<meta property="og:url" content="http://yoursite.com/2019/12/03/report/index.html">
 <meta property="og:site_name" content="坠落">
-<meta property="og:description" content="record">
+<meta property="og:description" content="简单的路由程序设计实验报告实验环境实验要求本实验的目的是利用 visual C++编写一个简单的路由程序，实现 IP 数据报的转发。本实验可以在一个局域网中进行，采用如下图所示的实验环境：  其中路由 R1 和 R2 是连接不同子网的通用计算机，通过 R1 和 R2 上运行编制的路由程序，绑定双 IP，通过路由程序添加路由表，对接收的数据包进行分析和转发，实现处于不同网络中的主机 I 和 II 的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-05T06:56:18.000Z">
+<meta property="og:image" content="http://yoursite.com/2019/12/03/report/pic1.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/03/report/pic4.png">
+<meta property="og:updated_time" content="2019-12-03T01:58:09.960Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="django_learning">
-<meta name="twitter:description" content="record">
+<meta name="twitter:title" content="坠落">
+<meta name="twitter:description" content="简单的路由程序设计实验报告实验环境实验要求本实验的目的是利用 visual C++编写一个简单的路由程序，实现 IP 数据报的转发。本实验可以在一个局域网中进行，采用如下图所示的实验环境：  其中路由 R1 和 R2 是连接不同子网的通用计算机，通过 R1 和 R2 上运行编制的路由程序，绑定双 IP，通过路由程序添加路由表，对接收的数据包进行分析和转发，实现处于不同网络中的主机 I 和 II 的">
+<meta name="twitter:image" content="http://yoursite.com/2019/12/03/report/pic1.png">
   
     <link rel="alternate" href="/atom.xml" title="坠落" type="application/atom+xml">
   
@@ -68,33 +71,32 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-django-learning" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-report" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/05/05/django-learning/" class="article-date">
-  <time datetime="2019-05-05T06:56:16.000Z" itemprop="datePublished">2019-05-05</time>
+    <a href="/2019/12/03/report/" class="article-date">
+  <time datetime="2019-12-03T14:17:20.537Z" itemprop="datePublished">2019-12-03</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      django_learning
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="简单的路由程序设计实验报告"><a href="#简单的路由程序设计实验报告" class="headerlink" title="简单的路由程序设计实验报告"></a>简单的路由程序设计实验报告</h1><h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><h3 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h3><p>本实验的目的是利用 visual C++编写一个简单的路由程序，实现 IP 数<br>据报的转发。本实验可以在一个局域网中进行，采用如下图所示的实验环<br>境：</p>
+<p><img src="pic1.png" alt="环境"></p>
+<p>其中路由 R1 和 R2 是连接不同子网的通用计算机，通过 R1 和 R2 上运行<br>编制的路由程序，绑定双 IP，通过路由程序添加路由表，对接收的数据包进<br>行分析和转发，实现处于不同网络中的主机 I 和 II 的相互通信。通信测试由<br>ping 命令执行，可以通过 tracer +IP 地址来追踪数据包在网络中的转发路<br>径。</p>
+<h3 id="路由软件应该处理的内容"><a href="#路由软件应该处理的内容" class="headerlink" title="路由软件应该处理的内容"></a>路由软件应该处理的内容</h3><p>编制一个较为完整的路由软件相当复杂包含如下工作：</p>
+<ol>
+<li>为经过的 IP 数据报选择路由：路由器基本功能，对接受的 IP 数据报<br>提取目的 IP 地址，根据自己的路由表信息为该数据报选择最优的转发路径。<br>2.处理 IP 数据报的 TTL 域中的数值，抛弃 TTL&lt;=0 的数据报，将转发的<br>IP 数据报 TTL 减一。<br>3.分片处理。<br>4.处理 IP 数据报选项：处理 IP 数据报可能的选项（记录路由、源路<br>由、时间戳等）。<br>5.重新计算 IP 数据报的头部校验和：由于路由软件需要进行 TTL 处理、<br>分片处理、选项处理等工作，因此，需要送出的 IP 数据报报头需要重新计算<br>校验和。<br>6.生成和处理 ICMP 报头<br>7.实现路由协议，维护静态路由。<br>8.实现 ARP 协议，形成数据帧：在将一个 IP 数据报送往下一跳步之前，<br>路由处理软件需要获取下一站的物理地址，然后形成数据帧从选择的网络接<br>口发送出去。<br>其中，简单的路由软件可以忽略分片处理、选项处理、动态路由等功能<br>的实现，将精力重点放在路由的选择与 IP 数据报的转发。</li>
+</ol>
+<h3 id="路由选择的基本原理"><a href="#路由选择的基本原理" class="headerlink" title="路由选择的基本原理"></a>路由选择的基本原理</h3><h4 id="IP-互联网采用表驱动的路由选择算法"><a href="#IP-互联网采用表驱动的路由选择算法" class="headerlink" title="IP 互联网采用表驱动的路由选择算法"></a>IP 互联网采用表驱动的路由选择算法</h4><p> 需要路由选择的设备保存一张 IP 路由表<br> 路由表存储有关目的地址及怎样到达目的地址的信息<br> 通过查询路由表决定把数据报发往何处</p>
+<h4 id="IP-路由选择利用-P-IP-地址隐藏主机的信息"><a href="#IP-路由选择利用-P-IP-地址隐藏主机的信息" class="headerlink" title="IP 路由选择利用 P IP 地址隐藏主机的信息"></a>IP 路由选择利用 P IP 地址隐藏主机的信息</h4><p><img src="pic4.png" alt="image-20191203082738868"></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/05/django-learning/" data-id="ck3pyahea000qykuggms77mrz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/03/report/" data-id="ck3pyahf2001uykugjn0ugngh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -103,19 +105,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/09/25/github&git/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          github&amp;git
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/05/paper-reading/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/11/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">paper_reading</div>
+      <div class="article-nav-title">Hello World</div>
     </a>
   
 </nav>

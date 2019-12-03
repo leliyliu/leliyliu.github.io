@@ -69,6 +69,86 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-report" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/03/report/" class="article-date">
+  <time datetime="2019-12-03T14:17:20.537Z" itemprop="datePublished">2019-12-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简单的路由程序设计实验报告"><a href="#简单的路由程序设计实验报告" class="headerlink" title="简单的路由程序设计实验报告"></a>简单的路由程序设计实验报告</h1><h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><h3 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h3><p>本实验的目的是利用 visual C++编写一个简单的路由程序，实现 IP 数<br>据报的转发。本实验可以在一个局域网中进行，采用如下图所示的实验环<br>境：</p>
+<p><img src="pic1.png" alt="环境"></p>
+<p>其中路由 R1 和 R2 是连接不同子网的通用计算机，通过 R1 和 R2 上运行<br>编制的路由程序，绑定双 IP，通过路由程序添加路由表，对接收的数据包进<br>行分析和转发，实现处于不同网络中的主机 I 和 II 的相互通信。通信测试由<br>ping 命令执行，可以通过 tracer +IP 地址来追踪数据包在网络中的转发路<br>径。</p>
+<h3 id="路由软件应该处理的内容"><a href="#路由软件应该处理的内容" class="headerlink" title="路由软件应该处理的内容"></a>路由软件应该处理的内容</h3><p>编制一个较为完整的路由软件相当复杂包含如下工作：</p>
+<ol>
+<li>为经过的 IP 数据报选择路由：路由器基本功能，对接受的 IP 数据报<br>提取目的 IP 地址，根据自己的路由表信息为该数据报选择最优的转发路径。<br>2.处理 IP 数据报的 TTL 域中的数值，抛弃 TTL&lt;=0 的数据报，将转发的<br>IP 数据报 TTL 减一。<br>3.分片处理。<br>4.处理 IP 数据报选项：处理 IP 数据报可能的选项（记录路由、源路<br>由、时间戳等）。<br>5.重新计算 IP 数据报的头部校验和：由于路由软件需要进行 TTL 处理、<br>分片处理、选项处理等工作，因此，需要送出的 IP 数据报报头需要重新计算<br>校验和。<br>6.生成和处理 ICMP 报头<br>7.实现路由协议，维护静态路由。<br>8.实现 ARP 协议，形成数据帧：在将一个 IP 数据报送往下一跳步之前，<br>路由处理软件需要获取下一站的物理地址，然后形成数据帧从选择的网络接<br>口发送出去。<br>其中，简单的路由软件可以忽略分片处理、选项处理、动态路由等功能<br>的实现，将精力重点放在路由的选择与 IP 数据报的转发。</li>
+</ol>
+<h3 id="路由选择的基本原理"><a href="#路由选择的基本原理" class="headerlink" title="路由选择的基本原理"></a>路由选择的基本原理</h3><h4 id="IP-互联网采用表驱动的路由选择算法"><a href="#IP-互联网采用表驱动的路由选择算法" class="headerlink" title="IP 互联网采用表驱动的路由选择算法"></a>IP 互联网采用表驱动的路由选择算法</h4><p> 需要路由选择的设备保存一张 IP 路由表<br> 路由表存储有关目的地址及怎样到达目的地址的信息<br> 通过查询路由表决定把数据报发往何处</p>
+<h4 id="IP-路由选择利用-P-IP-地址隐藏主机的信息"><a href="#IP-路由选择利用-P-IP-地址隐藏主机的信息" class="headerlink" title="IP 路由选择利用 P IP 地址隐藏主机的信息"></a>IP 路由选择利用 P IP 地址隐藏主机的信息</h4><p><img src="pic4.png" alt="image-20191203082738868"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/03/report/" data-id="ck3pyahf2001uykugjn0ugngh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/01/hello-world/" class="article-date">
+  <time datetime="2019-11-01T11:51:23.372Z" itemprop="datePublished">2019-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/01/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/01/hello-world/" data-id="ck3pyahej0011ykugx91xyiju" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-github&amp;git" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/09/25/github&git/" class="article-date">
@@ -121,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/25/github&git/" data-id="ck0zffjov000k3gtqmz3oxmcv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/25/github&git/" data-id="ck3pyahef000vykug4bztwe8d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-git/">github/git</a></li></ul>
@@ -159,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/05/django-learning/" data-id="ck0zffjoq000g3gtqqngc1u7b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/05/django-learning/" data-id="ck3pyahea000qykuggms77mrz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -214,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/05/paper-reading/" data-id="ck0zffjp4000u3gtqi6er3pqk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/05/paper-reading/" data-id="ck3pyaheq001bykug9ecbtmm4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper-reading/">paper_reading</a></li></ul>
@@ -260,10 +340,105 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/04/colab/" data-id="ck0zffjom000d3gtqoxfvuoou" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/04/colab/" data-id="ck3pyahec000sykugn1eyoqxp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/use-of-Colab-deep-learning/">use of Colab(deep learning)</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-reading1" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/28/reading1/" class="article-date">
+  <time datetime="2019-04-28T10:59:18.000Z" itemprop="datePublished">2019-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/28/reading1/">BTS-DSN</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Paper-Reading"><a href="#Paper-Reading" class="headerlink" title="Paper Reading"></a>Paper Reading</h1><h2 id="BTS-DSN-Deeply-supervised-neural-network-with-short-connections-forretinal-vessel-segmentation"><a href="#BTS-DSN-Deeply-supervised-neural-network-with-short-connections-forretinal-vessel-segmentation" class="headerlink" title="BTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation"></a>BTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation</h2><hr>
+<blockquote>
+<p><code>references</code>: you can read this papar via <a href="https://linkinghub.elsevier.com/retrieve/pii/S138650561831195X" target="_blank" rel="noopener">BTS-DSN</a> or star/fork this github <a href="https://github.com/guomugong/BTS-DSN" target="_blank" rel="noopener">project</a></p>
+</blockquote>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ol>
+<li>An important method was proposed by this group called short-connection, that improve quite a lot the result of this model’s ability. They use sensitivity,specificity, AUC and F1-score to test their model. If you aren’t familiar with these indicators, you can read these two blogs to learn more<a href="https://tracholar.github.io/machine-learning/2018/01/26/auc.html" target="_blank" rel="noopener">AUC</a>  &amp;<a href="https://blog.csdn.net/u013385925/article/details/80385873" target="_blank" rel="noopener">AUC-2</a>. </li>
+</ol>
+<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h3><ol>
+<li>why we hope to achieve early dignosis.</li>
+<li>some researchs done by other scholar group<blockquote>
+<p>(1) Unsupervised methods: some methods have been proposed by scholoars, mainly about detect the profile and contour of vessel. These methods are mostly based on geometric computation model. defects: <code>However, the unsupervised methods are sensitive to the
+manually designed features and rules.</code>(poor in generalization)</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>(2)supervised methods:when we use supervised method, we usually view this problem as a pixel-wise binary classification. deep learning methods are popular in this area. Other ways to solve this problem about semantic segmentation results. <code>defects:different methods have different disadvantages such as time-consuming and so on</code></p>
+</blockquote>
+<ol>
+<li>the contributions of this paper<blockquote>
+<p>(1)”We propose a deeply-supervised fully convolutional neural network with bottom-top and top-bottom short connections (BTS-DSN) for vessel segmentation. “</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>(2)”We used VGGNet and ResNet-101 as backbone and conducted extensive experiments on DRIVE, STARE and CHASE_DB1”</p>
+<p>“We employed cross-training experiments to show the generalization of BTS-DSN.”</p>
+</blockquote>
+<p>attributes : more about VGGNet and ResNet can be found in their papers.{<a href="https://github.com/machrisaa/tensorflow-vgg" target="_blank" rel="noopener">vgg(including vgg-16&amp;vgg-19)</a>&amp;<a href="https://arxiv.org/abs/1512.03385" target="_blank" rel="noopener">ResNet_paper</a>&amp;<a href="https://github.com/tensorflow/models/blob/master/research/slim/nets/resnet_v2.py" target="_blank" rel="noopener">ResNet_github</a>}.If you want to understand these model better, baidu or google it may help you.</p>
+<h3 id="2-BTS-DSN"><a href="#2-BTS-DSN" class="headerlink" title="2.BTS-DSN"></a>2.BTS-DSN</h3><ol>
+<li><p>from HED to DSN, and then to BS-DSN and BST-DSN. this method was proposed to alleviate the gradient vanish problem in deep network. It’s a deep supervision</p>
+</li>
+<li><p>bottom-top short connnections: pass low level fine semantic information to high levels to alleviate the blurring situation.</p>
+</li>
+<li><p>top-bottom short connection: Bottom-top short connections aim to refine high-level segmentation results.</p>
+</li>
+<li><p>inference: do feature confusion</p>
+</li>
+</ol>
+<h3 id="3-Implementation-details"><a href="#3-Implementation-details" class="headerlink" title="3. Implementation details"></a>3. Implementation details</h3><ol>
+<li><p>data augmentation: using quite a lot various transformations to augment the training set, including rotation, flipping and scaling. </p>
+</li>
+<li><p>model implementation : using the network framework Caffe, short connections of the BTS-DSN. </p>
+</li>
+<li><p>Parameter settings</p>
+</li>
+</ol>
+<p><code>When the backbone is VGGNet, we fine-tuned our network with a
+learning rate of 1e-8, a weight decay of 0.0005, and a momentum of
+0.9. We use a fixed learning rate.</code></p>
+<p>in two different backbone(VGGNet &amp; ResNet-101),they use different type of parameters . </p>
+<p>and for patch-level S-DSN, they split a raw retinal image into 9 patches, each of which was 1/4 the size of the raw image, meanwhile, patches were up-sampled $2 \times$ </p>
+<p>4.running environment:……</p>
+<h4 id="Evaluation-criteria"><a href="#Evaluation-criteria" class="headerlink" title="Evaluation criteria"></a>Evaluation criteria</h4><p><code>In vessel segmentation, each pixel belongs to a vessel or non-vessel
+pixel.</code>(be seen as a binary classfication problem).they iemployed six evaluation criteria, including AUC,SE,SP,ACC,F1-score and MCC.</p>
+<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><p>the result are shown in the fig in this paper, so you can just look through and get them.</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>这篇文章成功实现了目前基本上是最高水平的眼底血管分类成果，其使用VGGNet或者ResNet-101作为支柱(backbone)来实现整个CNN卷积的过程，同时，为了缓解语义分割中语义分割之间的差距，使用top-bottom 和 bottom-top short connection来实现整个过程，最终实现了BTS-DSN网络，达到了好的效果。同时，这个网络也使用了特征融合的方法，可以加以了解。对于更多的细节，还需要继续了解。</p>
+<h3 id="发散"><a href="#发散" class="headerlink" title="发散"></a>发散</h3><h4 id="（采样方法）上采样与下采样"><a href="#（采样方法）上采样与下采样" class="headerlink" title="（采样方法）上采样与下采样"></a>（采样方法）上采样与下采样</h4><h4 id="短连接与ResNet连接方式的不同"><a href="#短连接与ResNet连接方式的不同" class="headerlink" title="短连接与ResNet连接方式的不同"></a>短连接与ResNet连接方式的不同</h4><h4 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/28/reading1/" data-id="ck3pyaheo0019ykug2130rhqs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paperReading/">paperReading</a></li></ul>
 
     </footer>
   </div>
@@ -362,102 +537,7 @@ weight decay of 0.0005.</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/28/recording2/" data-id="ck0zffjpx001d3gtq70lrl2d9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paperReading/">paperReading</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-reading1" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/28/reading1/" class="article-date">
-  <time datetime="2019-04-28T10:59:18.000Z" itemprop="datePublished">2019-04-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/28/reading1/">BTS-DSN</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Paper-Reading"><a href="#Paper-Reading" class="headerlink" title="Paper Reading"></a>Paper Reading</h1><h2 id="BTS-DSN-Deeply-supervised-neural-network-with-short-connections-forretinal-vessel-segmentation"><a href="#BTS-DSN-Deeply-supervised-neural-network-with-short-connections-forretinal-vessel-segmentation" class="headerlink" title="BTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation"></a>BTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation</h2><hr>
-<blockquote>
-<p><code>references</code>: you can read this papar via <a href="https://linkinghub.elsevier.com/retrieve/pii/S138650561831195X" target="_blank" rel="noopener">BTS-DSN</a> or star/fork this github <a href="https://github.com/guomugong/BTS-DSN" target="_blank" rel="noopener">project</a></p>
-</blockquote>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ol>
-<li>An important method was proposed by this group called short-connection, that improve quite a lot the result of this model’s ability. They use sensitivity,specificity, AUC and F1-score to test their model. If you aren’t familiar with these indicators, you can read these two blogs to learn more<a href="https://tracholar.github.io/machine-learning/2018/01/26/auc.html" target="_blank" rel="noopener">AUC</a>  &amp;<a href="https://blog.csdn.net/u013385925/article/details/80385873" target="_blank" rel="noopener">AUC-2</a>. </li>
-</ol>
-<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h3><ol>
-<li>why we hope to achieve early dignosis.</li>
-<li>some researchs done by other scholar group<blockquote>
-<p>(1) Unsupervised methods: some methods have been proposed by scholoars, mainly about detect the profile and contour of vessel. These methods are mostly based on geometric computation model. defects: <code>However, the unsupervised methods are sensitive to the
-manually designed features and rules.</code>(poor in generalization)</p>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<p>(2)supervised methods:when we use supervised method, we usually view this problem as a pixel-wise binary classification. deep learning methods are popular in this area. Other ways to solve this problem about semantic segmentation results. <code>defects:different methods have different disadvantages such as time-consuming and so on</code></p>
-</blockquote>
-<ol>
-<li>the contributions of this paper<blockquote>
-<p>(1)”We propose a deeply-supervised fully convolutional neural network with bottom-top and top-bottom short connections (BTS-DSN) for vessel segmentation. “</p>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<p>(2)”We used VGGNet and ResNet-101 as backbone and conducted extensive experiments on DRIVE, STARE and CHASE_DB1”</p>
-<p>“We employed cross-training experiments to show the generalization of BTS-DSN.”</p>
-</blockquote>
-<p>attributes : more about VGGNet and ResNet can be found in their papers.{<a href="https://github.com/machrisaa/tensorflow-vgg" target="_blank" rel="noopener">vgg(including vgg-16&amp;vgg-19)</a>&amp;<a href="https://arxiv.org/abs/1512.03385" target="_blank" rel="noopener">ResNet_paper</a>&amp;<a href="https://github.com/tensorflow/models/blob/master/research/slim/nets/resnet_v2.py" target="_blank" rel="noopener">ResNet_github</a>}.If you want to understand these model better, baidu or google it may help you.</p>
-<h3 id="2-BTS-DSN"><a href="#2-BTS-DSN" class="headerlink" title="2.BTS-DSN"></a>2.BTS-DSN</h3><ol>
-<li><p>from HED to DSN, and then to BS-DSN and BST-DSN. this method was proposed to alleviate the gradient vanish problem in deep network. It’s a deep supervision</p>
-</li>
-<li><p>bottom-top short connnections: pass low level fine semantic information to high levels to alleviate the blurring situation.</p>
-</li>
-<li><p>top-bottom short connection: Bottom-top short connections aim to refine high-level segmentation results.</p>
-</li>
-<li><p>inference: do feature confusion</p>
-</li>
-</ol>
-<h3 id="3-Implementation-details"><a href="#3-Implementation-details" class="headerlink" title="3. Implementation details"></a>3. Implementation details</h3><ol>
-<li><p>data augmentation: using quite a lot various transformations to augment the training set, including rotation, flipping and scaling. </p>
-</li>
-<li><p>model implementation : using the network framework Caffe, short connections of the BTS-DSN. </p>
-</li>
-<li><p>Parameter settings</p>
-</li>
-</ol>
-<p><code>When the backbone is VGGNet, we fine-tuned our network with a
-learning rate of 1e-8, a weight decay of 0.0005, and a momentum of
-0.9. We use a fixed learning rate.</code></p>
-<p>in two different backbone(VGGNet &amp; ResNet-101),they use different type of parameters . </p>
-<p>and for patch-level S-DSN, they split a raw retinal image into 9 patches, each of which was 1/4 the size of the raw image, meanwhile, patches were up-sampled $2 \times$ </p>
-<p>4.running environment:……</p>
-<h4 id="Evaluation-criteria"><a href="#Evaluation-criteria" class="headerlink" title="Evaluation criteria"></a>Evaluation criteria</h4><p><code>In vessel segmentation, each pixel belongs to a vessel or non-vessel
-pixel.</code>(be seen as a binary classfication problem).they iemployed six evaluation criteria, including AUC,SE,SP,ACC,F1-score and MCC.</p>
-<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><p>the result are shown in the fig in this paper, so you can just look through and get them.</p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>这篇文章成功实现了目前基本上是最高水平的眼底血管分类成果，其使用VGGNet或者ResNet-101作为支柱(backbone)来实现整个CNN卷积的过程，同时，为了缓解语义分割中语义分割之间的差距，使用top-bottom 和 bottom-top short connection来实现整个过程，最终实现了BTS-DSN网络，达到了好的效果。同时，这个网络也使用了特征融合的方法，可以加以了解。对于更多的细节，还需要继续了解。</p>
-<h3 id="发散"><a href="#发散" class="headerlink" title="发散"></a>发散</h3><h4 id="（采样方法）上采样与下采样"><a href="#（采样方法）上采样与下采样" class="headerlink" title="（采样方法）上采样与下采样"></a>（采样方法）上采样与下采样</h4><h4 id="短连接与ResNet连接方式的不同"><a href="#短连接与ResNet连接方式的不同" class="headerlink" title="短连接与ResNet连接方式的不同"></a>短连接与ResNet连接方式的不同</h4><h4 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/28/reading1/" data-id="ck0zffjp6000w3gtqp7bvtod9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/28/recording2/" data-id="ck3pyahes001eykugv3k1jru2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paperReading/">paperReading</a></li></ul>
@@ -508,7 +588,7 @@ pixel.</code>(be seen as a binary classfication problem).they iemployed six eval
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/23/龙芯杯6/" data-id="ck0zffjqs00223gtqjbzkqhub" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/23/龙芯杯6/" data-id="ck3pyahew001lykug5j4wsnwl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-system/">computer_system</a></li></ul>
@@ -613,122 +693,7 @@ subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/28/ma_model_pre5/" data-id="ck0zffjqb001m3gtqcyhmjfru" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ma_model_pre4" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/22/ma_model_pre4/" class="article-date">
-  <time datetime="2019-03-22T01:12:32.000Z" itemprop="datePublished">2019-03-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/22/ma_model_pre4/">ma_model_preparation1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="图与网络"><a href="#图与网络" class="headerlink" title="图与网络"></a>图与网络</h2><h3 id="basic-conception"><a href="#basic-conception" class="headerlink" title="basic conception"></a>basic conception</h3><pre><code>无向图 有向图 赋权图 有限图 简单图
-完全图 二分图 子图 母图 顶点的度（入度，出度）
-</code></pre><p>一个图称为<font color="blue">简单图(simple graph)</font>，如果它既没有环也没有两条边连接同一对顶点。</p>
-<pre><code>邻接矩阵表示法  邻接链表表示法   弧表表示法   关联矩阵  星形表示法（前向和反向）
-</code></pre><p><font color="0xffffff">弧表表示法</font>将图以弧表（arc list）的形式存储在计算机中。所谓图的弧表，也就是图的弧集合中的所有有序对。弧表表示法直接列出所有弧的起点和终点，共需2m个存储单元，因此当网络比较稀疏时比较方便。</p>
-<p><font color="0xffffff">也就是说，在关联矩阵中，每行对应于图的一个节点，每列对应于图的一条弧。</font>如果一个节点是一条弧的起点，则关联矩阵中对应的元素为1；如果一个节点是一条弧的终点，则关联矩阵中对应的元素为−1；如果一个节点与一条弧不关联，则关联矩阵中对应的元素为 0。</p>
-<pre><code>道路(walk) 迹(trail) 轨(path) 圈(cycle)
-</code></pre><p>一个连通图的生成树很多,用 $\tau(G)$ 来表示图的生成树的个数，则有如下公式：</p>
-<script type="math/tex; mode=display">\tau(K_n)=n^{n-2}</script><script type="math/tex; mode=display">\tau(G)=\tau(G-e)+\tau(G\cdot e)</script><h3 id="匹配问题"><a href="#匹配问题" class="headerlink" title="匹配问题"></a>匹配问题</h3><h4 id="1-几个定义"><a href="#1-几个定义" class="headerlink" title="1.几个定义"></a>1.几个定义</h4><p> 对集  匹配   完美对集    最大对集  交错轨  可增广轨</p>
-<h4 id="2-定理"><a href="#2-定理" class="headerlink" title="2.定理:"></a>2.定理:</h4><p>(1)M是图G的最大对集当且仅当G中无M可增广轨</p>
-<p>(2)G 为二分图， X与Y是顶点集的划分，G中存在把X中顶点皆许配的对集的充要条件是，∀S ⊂ X ，则|N(S)|≥|S|，其中N(S)是S中顶点的邻集。</p>
-<blockquote>
-<p>推论 若G是k次正则二分图（每个顶点皆K度的图），则G有完美对集</p>
-</blockquote>
-<h4 id="3-人员分派问题"><a href="#3-人员分派问题" class="headerlink" title="3.人员分派问题"></a>3.人员分派问题</h4><p>1.匈牙利算法：利用匈牙利算法可以直接解决人员分派问题，其思路非常简单，故在这里不做介绍。</p>
-<p>2.-&gt;最优分派问题<br>这个问题的数学模型是：在人员分派问题的模型中，图 G 的每边加了权$w(x_i,y_j)&gt;=0$表示$x_i$干$y_j$ 工作的效益，求加权图G 上的权最大的完美对集。</p>
-<p>解决这个问题可以参照<a href="http://vdisk.weibo.com/s/D8miedWz2uXT" target="_blank" rel="noopener">《数学建模算法与应用》（司守奎）</a>（P84）所给出的定义以及Kuhn-Munkres算法，其实质上是在匈牙利算法的进一步改善<br>如果想要对KM算法作深入的理解，可以参考这个<a href="https://blog.csdn.net/liu_y_r/article/details/79219405?utm_source=blogxgwz7" target="_blank" rel="noopener">blog</a></p>
-<p>可行顶标$l$,对于任意弧,满足$e(x \rightarrow y)  都有 l_x+l_y\ge w_e$，后定义相等子图，其包含所有的点，但只包含满足$l_x+l_y=w_e$的所有弧$e(x \rightarrow y)$,这些弧已经是最大的弧，如果有完美匹配，那么可以得到最优分派。KM 算法仅仅只适用于找二分图最佳完美匹配，如果无完美匹配，那么算法很可能陷入死循环（如果不存在的边为 -INF 的话就不会，但正确性就无法保证了），对于这种情况要小心处理。</p>
-<h4 id="4-Euler-图和Hamilton-图"><a href="#4-Euler-图和Hamilton-图" class="headerlink" title="4. Euler 图和Hamilton 图"></a>4. Euler 图和Hamilton 图</h4><p>1.基本概念</p>
-<p>经过G 的每条边的迹叫做G 的Euler 迹；闭的Euler 迹叫做Euler 回路或E<br>回路；含Euler 回路的图叫做Euler 图。</p>
-<p>定理<br>（i）G 是Euler 图的充分必要条件是G 连通且每顶点皆偶次。</p>
-<p>（ ii ） G 是Euler 图的充分必要条件是G 连通且$G=\bigcup_{i=1}^dC_i,C_i$是圈，$E（C_i)\bigcap E(C_j)(i \neq j)$</p>
-<p>（iii）G 中有Euler 迹的充要条件是G 连通且至多有两个奇次点。</p>
-<p>包含G 的每个顶点的轨叫做Hamilton(哈密顿)轨；闭的Hamilton 轨叫做Hamilton 圈或H 圈；含Hamilton 圈的图叫做Hamilton 图。</p>
-<p>Fleury 算法给出了求Euler 回路的算法</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/22/ma_model_pre4/" data-id="ck0zffjp2000s3gtq2uk2j7zk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ma_model_pre3" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/15/ma_model_pre3/" class="article-date">
-  <time datetime="2019-03-15T02:05:27.000Z" itemprop="datePublished">2019-03-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/15/ma_model_pre3/">ma_model_preparation2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-蒙特卡洛方法"><a href="#1-蒙特卡洛方法" class="headerlink" title="1. 蒙特卡洛方法"></a>1. 蒙特卡洛方法</h3><h4 id="（1）基本思路："><a href="#（1）基本思路：" class="headerlink" title="（1）基本思路："></a>（1）基本思路：</h4><p>蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。</p>
-<h4 id="（2）一种应用：利用蒙特卡洛方法求积分："><a href="#（2）一种应用：利用蒙特卡洛方法求积分：" class="headerlink" title="（2）一种应用：利用蒙特卡洛方法求积分："></a>（2）一种应用：利用蒙特卡洛方法求积分：</h4><p>假设我们需要求这样一个图的积分<br><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%861.png?raw=true" alt="求积分图1"><br>那么实际上，我们所需要的过程可以表示如下<br><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%862.png?raw=true" alt="求积分过程"></p>
-<p>从这两个过程中，我们可以看到，实际上对于积分的求解可以简化为这样一个过程：<br><br>假设要计算的积分如下：</p>
-<script type="math/tex; mode=display">I=\int_{a}^{b}g(x)\text{d}x</script><p>那么如果选择一个概率密度函数为$f_X(x)$的方式进行抽样,并且满足$\int_{a}^{b}f_X(x)\text{d}x=1$,那么令$g^*(x)=\frac{g(x)}{f_X(x)}$,原有的积分可以写成如下形式：</p>
-<script type="math/tex; mode=display">I=\int_{a}^{b}g^*(x)f_X(x)\text{d}x</script><p>故，我们求积分的步骤为：<br><br><br>1.产生服从分布律$F_X$的随机变量$X_i(i=1,2,…,N)$</p>
-<p>2.计算均值</p>
-<script type="math/tex; mode=display">\overline{I}=\frac{1}{N}\sum_{i=1}^ng^*(X_i)</script><p>一般采用均匀分布求解</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calpai</span><span class="params">()</span>:</span></span><br><span class="line">    n = <span class="number">1000000</span></span><br><span class="line">    r = <span class="number">1.0</span></span><br><span class="line">    a, b = (<span class="number">0.0</span>, <span class="number">0.0</span>)</span><br><span class="line">    x_neg, x_pos = a - r, a + r</span><br><span class="line">    y_neg, y_pos = b - r, b + r</span><br><span class="line"></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n):</span><br><span class="line">        x = random.uniform(x_neg, x_pos)</span><br><span class="line">        y = random.uniform(y_neg, y_pos)</span><br><span class="line">        <span class="keyword">if</span> x*x + y*y &lt;= <span class="number">1.0</span>:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> (count / float(n)) * <span class="number">4</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-蒙特卡洛树搜索"><a href="#3-蒙特卡洛树搜索" class="headerlink" title="(3)蒙特卡洛树搜索"></a>(3)蒙特卡洛树搜索</h4><p>as we know, an important method used in alpha go and alpha zero is Monte Carlo Tree search. So if you want to know more about this method, you can search this <a href="https://blog.csdn.net/qq_16137569/article/details/83543641" target="_blank" rel="noopener">website(Monte Carlo Tree search)</a> and get some knowledge yourself. also, you can get information in almost every game theory book.And try to get the big idea in Monte Carlo Tree search.</p>
-<h3 id="2-马尔科夫链"><a href="#2-马尔科夫链" class="headerlink" title="2. 马尔科夫链"></a>2. 马尔科夫链</h3><h5 id="2-1-马尔可夫链的定义"><a href="#2-1-马尔可夫链的定义" class="headerlink" title="2.1 马尔可夫链的定义"></a>2.1 马尔可夫链的定义</h5><p>现实世界中有很多这样的现象：某一系统在已知现在情况的条件下，系统未来时刻<br>的情况只与现在有关，而与过去的历史无直接关系。比如，研究一个商店的累计销售额，<br>如果现在时刻的累计销售额已知，则未来某一时刻的累计销售额与现在时刻以前的任一<br>时刻累计销售额无关。上节中的几个例子也均属此类。描述这类随机现象的数学模型称<br>为马氏模型。</p>
-<p>对于马尔科夫链的数学定义，可以直接参照<a href="http://vdisk.weibo.com/s/D8miedWz2uXT" target="_blank" rel="noopener">《数学建模算法与应用》（司守奎）</a>。</p>
-<h5 id="2-2-马尔科夫链的性质"><a href="#2-2-马尔科夫链的性质" class="headerlink" title="2.2 马尔科夫链的性质"></a>2.2 马尔科夫链的性质</h5><p>转移概率矩阵及柯尔莫哥洛夫定理</p>
-<p>对于这个性质，可以查看我给出的<a href="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/learning_code/morkov.py" target="_blank" rel="noopener">代码morkov.py</a>进行了解</p>
-<h5 id="2-3-马尔科夫链的应用"><a href="#2-3-马尔科夫链的应用" class="headerlink" title="2.3 马尔科夫链的应用"></a>2.3 马尔科夫链的应用</h5><p>虽然马尔科夫链的性质极其简单，但是其应用广泛，有着极大的意义。<br>应用马尔可夫链的计算方法进行马尔可夫分析，主要目的是根据某些变量现在的情<br>况及其变动趋向，来预测它在未来某特定区间可能产生的变动，作为提供某种决策的依<br>据。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/15/ma_model_pre3/" data-id="ck0zffjp1000q3gtqhup00gkg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/28/ma_model_pre5/" data-id="ck3pyahel0014ykugf35g1khn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-model-preparation/">math_model_preparation</a></li></ul>
@@ -777,7 +742,7 @@ subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
     </div>
   </div>
 
@@ -790,6 +755,14 @@ subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
       <ul>
         
           <li>
+            <a href="/2019/12/03/report/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/01/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
             <a href="/2019/09/25/github&git/">github&amp;git</a>
           </li>
         
@@ -799,14 +772,6 @@ subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
         
           <li>
             <a href="/2019/05/05/paper-reading/">paper_reading</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/04/colab/">colab</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/28/recording2/">AlexNet</a>
           </li>
         
       </ul>
