@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="math_model_preparation,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="SVM关于SVM的内容介绍，主要参考了这位博主的SVM文章点击此处进行查看（讲得太好了） 1.简介支持向量机(Support Vector Machine)是Cortes和Vapnik于1995年首先提出的，它在解决小样本、非线性及高维模式识别中表现出许多特有的优势，并能够推广应用到函数拟合等其他机器学习问题中. 支持向量机方法是建立在统计学习理论的VC维理论和结构风险最小原理基础上的，根据有限的">
+<meta name="keywords" content="math_model_preparation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ma_model_preparation5">
+<meta property="og:url" content="http://leliyliu.github.io/2019/03/28/ma_model_pre5/index.html">
+<meta property="og:site_name" content="禾声">
+<meta property="og:description" content="SVM关于SVM的内容介绍，主要参考了这位博主的SVM文章点击此处进行查看（讲得太好了） 1.简介支持向量机(Support Vector Machine)是Cortes和Vapnik于1995年首先提出的，它在解决小样本、非线性及高维模式识别中表现出许多特有的优势，并能够推广应用到函数拟合等其他机器学习问题中. 支持向量机方法是建立在统计学习理论的VC维理论和结构风险最小原理基础上的，根据有限的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-28T13:32:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ma_model_preparation5">
+<meta name="twitter:description" content="SVM关于SVM的内容介绍，主要参考了这位博主的SVM文章点击此处进行查看（讲得太好了） 1.简介支持向量机(Support Vector Machine)是Cortes和Vapnik于1995年首先提出的，它在解决小样本、非线性及高维模式识别中表现出许多特有的优势，并能够推广应用到函数拟合等其他机器学习问题中. 支持向量机方法是建立在统计学习理论的VC维理论和结构风险最小原理基础上的，根据有限的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://leliyliu.github.io/2019/03/28/ma_model_pre5/">
+
+
+
+
+
+  <title>ma_model_preparation5 | 禾声</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">禾声</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">in the arm of the angel, fly away</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2019/03/28/ma_model_pre5/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ma_model_preparation5</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-28T21:31:55+08:00">
+                2019-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h1><p>关于SVM的内容介绍，主要参考了这位博主的SVM文章<a href="http://www.blogjava.net/zhenandaci/category/31868.html" target="_blank" rel="noopener">点击此处进行查看</a>（讲得太好了）</p>
+<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>支持向量机(Support Vector Machine)是Cortes和Vapnik于1995年首先提出的，它在解决小样本、非线性及高维模式识别中表现出许多特有的优势，并能够推广应用到函数拟合等其他机器学习问题中.</p>
+<p>支持向量机方法是建立在统计学习理论的VC维理论和结构风险最小原理基础上的，根据有限的样本信息在模型的复杂性（即对特定训练样本的学习精度，Accuracy）和学习能力（即无错误地识别任意样本的能力）之间寻求最佳折衷，以期获得最好的推广能力（泛化能力）<br>所谓VC维是对函数类的一种度量，可以简单的理解为问题的复杂程度，VC维越高，一个问题就越复杂。正是因为SVM关注的是VC维，后面我们可以看到，SVM解决问题的时候，和样本的维数是无关的（甚至样本是上万维的都可以，这使得SVM很适合用来解决文本分类的问题，当然，有这样的能力也因为引入了核函数）。</p>
+<p>与问题真实解之间的误差，就叫做风险（更严格的说，误差的累积叫做风险）。统计学习因此而引入了泛化误差界的概念，就是指真实风险应该由两部分内容刻画，一是经验风险，代表了分类器在给定样本上的误差；二是置信风险，代表了我们在多大程度上可以信任分类器在未知文本上分类的结果。很显然，第二部分是没有办法精确计算的，因此只能给出一个估计的区间，也使得整个误差只能计算上界，而无法计算准确的值（所以叫做泛化误差界，而不叫泛化误差）。置信风险与两个量有关，一是样本数量，显然给定的样本数量越大，我们的学习结果越有可能正确，此时置信风险越小；二是分类函数的VC维，显然VC维越大，推广能力越差，置信风险会变大。<br>SVM 有如下的优点</p>
+<blockquote>
+<p>小样本  非线性  高维模式识别</p>
+</blockquote>
+<h2 id="2-数学定义"><a href="#2-数学定义" class="headerlink" title="2.数学定义"></a>2.数学定义</h2><h3 id="考虑线性分类器"><a href="#考虑线性分类器" class="headerlink" title="考虑线性分类器"></a>考虑线性分类器</h3><blockquote>
+<p>假设线性分类函数 g(x)=wx+b ，当然，其中w,x,b 均为高维向量，那么，不妨假设以g(x)=0为分界面，对于每个$x_i$而言，即有$y_i=sign(g(x_i))$,那么$y_i$要么为1，要么为-1，如此，定义$\sigma_i =\frac{y_i*g(x_i)}{||w||_2}$ ,因此，实际上$\sigma = \sum_{i=1}^n {\sigma_i}$为所有的距离之和,因而，我们找到一个最好的分类的目标变为$min ||w||$,为了在后续过程中使得我们的计算简单，我们将目标函数变为</p>
+</blockquote>
+<script type="math/tex; mode=display">min  \frac{1}{2}||w||^2</script><blockquote>
+<p>但如若着这样，会存在一个问题，即分类的结果都会存在于两个分类器的中间地带，那么这样会导致$||w||=0$实际上不是我们需要的值，故在此基础上，我们还需要加上约束条件$y_i*g(x_i)&gt;=1(i=1,2,\ldots,n)$ 故，最终结果表示为</p>
+</blockquote>
+<script type="math/tex; mode=display">min \quad  \frac{1}{2}||w||^2</script><script type="math/tex; mode=display">subject\quad to: \quad y_i*g(x_i)-1>=0 \,\,(i=1,2,\ldots,n)</script><blockquote>
+<p>实际上，这里的问题变为了一个凸优化问题，同时也是一个二次规划问题。我们知道，这样一个凸的规划问题，完全可以求得最优解，故我们的问题能够得到实际上的解决。那么需要怎么解决呢？</p>
+</blockquote>
+<h2 id="3-问题解决"><a href="#3-问题解决" class="headerlink" title="3.问题解决"></a>3.问题解决</h2><blockquote>
+<p>实际上，我们求解的目标就是w，因为求得了w之后，可以求得b，则最终可以求到我们想要得到的g(x)这个函数，也就是分界面。而实际上，w与样本有关，那么我们可以定义$w=a_1x_1+a_2x_2+\ldots+a_nx_n$ 其中$a$为拉格朗日乘子，那么再次回顾$g(x)=\vec{w} \cdot \vec{x} +\vec{b}$,再次分析$\vec{w}$ 的表达式，我们可以发现，依然有错误，实际上，w还与y有关，故，我们可以将w这样表示</p>
+</blockquote>
+<script type="math/tex; mode=display">\vec{w}=\sum_{i=1}^n{(a_iy_ix_i)}</script><blockquote>
+<p>因此 $g(x) =<w,x> +b= \sum_{i=1}^n{(a_iy_i<x_i,x>)}+b$,因此我们可以看到，我们实际上把w给消掉了，没有了w，实际上也减少了很多约束条件，接下来，我们将开始很重要的一个介绍，核函数</x_i,x></w,x></p>
+</blockquote>
+<h2 id="4-核函数"><a href="#4-核函数" class="headerlink" title="4.核函数"></a>4.核函数</h2><blockquote>
+<p>一个解决线性不可分问题的基本思路————向高维空间转化，使其变得线性可分（一个二维空间中的问题，当映射到四维空间中的时候，就变得线性可分了），然而于此同时，也出现了很多问题，例如对于一个文本分类问题，将其映射到上万维的空间中，依旧是线性不可分的，然而，对于高维空间的计算，需要耗费大量的计算资源，因此，这就带来了不可计算的问题（这是实际工程中的一个重要的问题）</p>
+<p>因此我们的目标已经明确了，找到一种能够映射到很高维的方法（要是能到无穷维就更好了！），并且能保证其在有限时间中可计算（如果能与没有升维之前有同样的计算阶那就再好不过了，即是线性的）。因此我们幻想，是否能有这样一种函数K(w,x),他接受低维空间的输入值，却能算出高维空间的内积值<w’,x’>。我们不妨假设这个函数为核函数K，那么即有</w’,x’></p>
+</blockquote>
+<script type="math/tex; mode=display">g(x)=K(w,x)+b\\
+f(x')=<w',x'>+b</script><blockquote>
+<p>这两个函数完全相等。因此，我们的目标变为了对非线性的分类问题，有$g(x)=\sum_{i=1}^n a_iy_i<x_i',x'>+b$<br>那么核函数(kernel)存在吗？万幸的是，这样的K(w,x)确实存在（发现凡是我们人类能解决的问题，大都是巧得不能再巧，特殊得不能再特殊的问题，总是恰好有些能投机取巧的地方才能解决，由此感到人类的渺小），它被称作核函数（核，kernel），而且还不止一个，事实上，只要是满足了Mercer条件的函数，都可以作为核函数。核函数的基本作用就是接受两个低维空间里的向量，能够计算出经过某个变换后在高维空间里的向量内积值。<br>常用的核函数有哪些呢？这里可以直接参考这一篇<a href="https://blog.csdn.net/batuwuhanpei/article/details/52354822" target="_blank" rel="noopener">blog</a>，常用的核函数有四个，分别为线性核函数,多项式核函数，高斯(RBF)核函数与sigmoid核函数,对于其的比较，我在这里就不区分了，在实践中，多用，就能更好地理解这几个核函数的区别。</x_i',x'></p>
+</blockquote>
+<h2 id="5-其它问题"><a href="#5-其它问题" class="headerlink" title="5.其它问题"></a>5.其它问题</h2><blockquote>
+<p>我们必须再次思考其它的问题，即如果使用核函数向高维空间映射后，问题仍然是线性不可分的，那怎么办？</p>
+<p>这一问题实际上我们可以理解为噪声问题，在实际过程中，我们所采集到的数据通常都会有噪声，那么，噪声会改变我们本来正确的分类结果，对程序而言，会导致一种情况，即我们无法对这样的数据，甚至映射到高维空间中后，也线性不可分。那么如何抑制此现象的产生呢？这实际上与我们之前提出的思路有极大的关联，即我们之前给出定义为</p>
+</blockquote>
+<script type="math/tex; mode=display">y_i[(wx_i)+b]>=1\quad(i=1,2,\ldots,n)</script><blockquote>
+<p>这实际上要求了所有的点，均必须满足这一条件，那么这会导致不可分（纵然在极高维的空间中，或许它也可分，但所分出来的结果必然是过拟合的，而不是我们想要的），所以我们模仿人类的思想，只保证绝大多数分类正确，因此,我们给这个阈值加上一个松弛变量，使得原式变为：</p>
+</blockquote>
+<script type="math/tex; mode=display">y_i[(wx_i)+b]>=1-\zeta_i \quad (i=1,2,\ldots,n)</script><blockquote>
+<p>在此基础上，我们的优化问题的目标有所改变</p>
+</blockquote>
+<script type="math/tex; mode=display">min \quad \frac{1}{2}||w||^2+C\sum_{i=1}^n{\zeta_i}\\
+subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
+ \zeta_i\geq0</script><blockquote>
+<p>其中，C是一个超参数，建议设一组值来进行尝试。这里在具体对C进行一个讨论，C是一个固定参数，对此可以这样理解，如果C设置得较大，则说明我们很care那些被丢弃掉的点，如果我们不care那些点的话，我们则可以将C设置得小一点，同时，我们也能对不同的点设置不同的C，那么，则代表我们对某些点有特殊的偏好,这被称作数据集偏斜。对于特定的问题，读者应该对C的设置有不同的思考，要把握C的实质内容。</p>
+</blockquote>
+<h2 id="6-将SVM用于多类分类"><a href="#6-将SVM用于多类分类" class="headerlink" title="6. 将SVM用于多类分类"></a>6. 将SVM用于多类分类</h2><blockquote>
+<p>我们实际上可以将一个多分类问题，看做一个”一类对其余“的问题，那么每次仍然是解一个两类分类的问题。比如我们有5个类别，第一次就把类别1的样本定为正样本，其余2，3，4，5的样本合起来定为负样本，这样得到一个两类分类器，它能够指出一篇文章是还是不是第1类的；第二次我们把类别2 的样本定为正样本，把1，3，4，5的样本合起来定为负样本，得到一个分类器，如此下去，我们可以得到5个这样的两类分类器（总是和类别的数目一致）。到了有文章需要分类的时候，我们就拿着这篇文章挨个分类器的问：是属于你的么？是属于你的么？哪个分类器点头说是了，文章的类别就确定了。这种方法的好处是每个优化问题的规模比较小，而且分类的时候速度很快（只需要调用5个分类器就知道了结果）。但有时也会出现两种很尴尬的情况，例如拿一篇文章问了一圈，每一个分类器都说它是属于它那一类的，或者每一个分类器都说它不是它那一类的，前者叫分类重叠现象，后者叫不可分类现象。分类重叠倒还好办，随便选一个结果都不至于太离谱，或者看看这篇文章到各个超平面的距离，哪个远就判给哪个。不可分类现象就着实难办了，只能把它分给第6个类别了……更要命的是，本来各个类别的样本数目是差不多的，但“其余”的那一类样本数总是要数倍于正类（因为它是除正类以外其他类别的样本之和嘛），这就人为的造成了上一节所说的“数据集偏斜”问题。<br>因此，这样一个思路看上去可行，但实际上也需要一定的调整才能对实际的多分类问题进行应用。那需要哪些改善呢？还是解两类分类问题，还是每次选一个类的样本作正类样本，而负类样本则变成只选一个类（称为“一对一单挑”的方法，哦，不对，没有单挑，就是“一对一”的方法），这就避免了偏斜。但这样，会大量增加分类器的数量。<br>看来我们必须再退一步，在分类的时候下功夫，我们还是像一对一方法那样来训练，只是在对一篇文章进行分类之前，我们先按照下面图的样子来组织分类器（如你所见，这是一个有向无环图，因此这种方法也叫做DAG SVM）</p>
+</blockquote>
+<p><img alt="DAG SVM" data-src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/clip_image002_thumb.gif?raw=true" class="lazyload"></p>
+<blockquote>
+<p>这样在分类时,我们就可以先问分类器“1对5”（意思是它能够回答“是第1类还是第5类”），如果它回答5，我们就往左走，再问“2对5”这个分类器，如果它还说是“5”，我们就继续往左走，这样一直问下去，就可以得到分类结果。好处在哪？我们其实只调用了4个分类器（如果类别数是k，则只调用k-1个），分类速度飞快，且没有分类重叠和不可分类现象！缺点在哪？假如最一开始的分类器回答错误（明明是类别1的文章，它说成了5），那么后面的分类器是无论如何也无法纠正它的错误的（因为后面的分类器压根没有出现“1”这个类别标签），其实对下面每一层的分类器都存在这种错误向下累积的现象。</p>
+<p>关于SMO算法的学习，在这里就不加以重点介绍，需要的可以参考<a href="https://www.cnblogs.com/bentuwuying/p/6444516.html" target="_blank" rel="noopener">SMO</a>这一篇博客</p>
+</blockquote>
+<h2 id="python-代码实现"><a href="#python-代码实现" class="headerlink" title="python 代码实现"></a>python 代码实现</h2><blockquote>
+<p>在python中，scikit-learn是一个广泛使用的用于实现机器学习算法的库（也许后面我也会对这个库的使用方法作一系列的博客介绍），SVM算法可以在这个库中找到并用于实现。<br>这里的python实现借用了<a href="https://blog.csdn.net/u010665216/article/details/78382984" target="_blank" rel="noopener">blog</a>的实现方式，需要源码的也可以从中进行下载</p>
+<p>sklearn中的SVC函数是基于libsvm实现的，所以在参数设置上有很多相似的地方。（PS: libsvm中的二次规划问题的解决算法是SMO）。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Import Library</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="comment">#Assumed you have, X (predictor) and Y (target) for training data set and x_test(predictor) of test_dataset</span></span><br><span class="line"><span class="comment"># Create SVM classification object </span></span><br><span class="line">model = svm.svc(kernel=<span class="string">'linear'</span>, c=<span class="number">1</span>, gamma=<span class="number">1</span>) </span><br><span class="line"><span class="comment"># there is various option associated with it, like changing kernel, gamma and C value. Will discuss more # about it in next section.Train the model using the training sets and check score</span></span><br><span class="line">model.fit(X, y)</span><br><span class="line">model.score(X, y)</span><br><span class="line"><span class="comment">#Predict Output</span></span><br><span class="line">predicted= model.predict(x_test)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sklearn.svm.SVC(C=<span class="number">1.0</span>, kernel=<span class="string">'rbf'</span>, degree=<span class="number">3</span>, gamma=<span class="number">0.0</span>, coef0=<span class="number">0.0</span>, shrinking=<span class="keyword">True</span>, probability=<span class="keyword">False</span>,tol=<span class="number">0.001</span>, cache_size=<span class="number">200</span>, class_weight=<span class="keyword">None</span>, verbose=<span class="keyword">False</span>, max_iter=<span class="number">-1</span>, random_state=<span class="keyword">None</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里展示了sklearn.svm.SVC的主要的参数，其中C为我们设置的超参数，而kernel有多种选择，这里为’rbf’,即高斯核函数。除此之外，还可以选择’linear’:线性核函数 ‘poly’ 多项式核函数 ‘sigmoid’ sigmoid核函数 ‘precomputed’:核矩阵（precomputed表示自己提前计算好核函数矩阵，这时候算法内部就不再用核函数去计算核矩阵，而是直接用你给的核矩阵。）</p>
+<p>degree: int型参数 默认为3这个参数只对多项式核函数有用，是指多项式核函数的阶数n如果给的核函数参数是其他核函数，则会自动忽略该参数。</p>
+<p>gamma: float参数 默认为auto核函数系数，只对‘rbf’,‘poly’,‘sigmod’有效。如果gamma为auto，代表其值为样本特征数的倒数，即1/n_features.</p>
+<p>coef0: float参数 默认为0.0。核函数中的独立项，只有对‘poly’和‘sigmod’核函数有用，是指其中的参数c</p>
+<p>probability： bool参数 默认为False。是否启用概率估计。 这必须在调用fit()之前启用，并且会fit()方法速度变慢。</p>
+</blockquote>
+<p>还有其它的参数，都可以参照<a href="https://blog.csdn.net/github_39261590/article/details/75009069" target="_blank" rel="noopener">svm参数说明</a>进行学习，这里就不再具体说明。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/math-model-preparation/" rel="tag"># math_model_preparation</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/22/ma_model_pre4/" rel="next" title="ma_model_preparation1">
+                <i class="fa fa-chevron-left"></i> ma_model_preparation1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/23/龙芯杯6/" rel="prev" title="龙芯杯备战4">
+                龙芯杯备战4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Leliyliu</p>
+              <p class="site-description motion-element" itemprop="description">record</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SVM"><span class="nav-number">1.</span> <span class="nav-text">SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-简介"><span class="nav-number">1.1.</span> <span class="nav-text">1.简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-数学定义"><span class="nav-number">1.2.</span> <span class="nav-text">2.数学定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#考虑线性分类器"><span class="nav-number">1.2.1.</span> <span class="nav-text">考虑线性分类器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-问题解决"><span class="nav-number">1.3.</span> <span class="nav-text">3.问题解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-核函数"><span class="nav-number">1.4.</span> <span class="nav-text">4.核函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-其它问题"><span class="nav-number">1.5.</span> <span class="nav-text">5.其它问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-将SVM用于多类分类"><span class="nav-number">1.6.</span> <span class="nav-text">6. 将SVM用于多类分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-代码实现"><span class="nav-number">1.7.</span> <span class="nav-text">python 代码实现</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leliyliu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

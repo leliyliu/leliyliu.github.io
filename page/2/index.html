@@ -1,121 +1,1961 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>禾声 - in the arm of the angel, fly away</title><meta name="description" content="record"><meta name="keywords"><meta name="author" content="Leliyliu,leliynankai@163.com"><meta name="copyright" content="Leliyliu"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="禾声"><meta name="twitter:description" content="record"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/avatar.png"><meta property="og:type" content="website"><meta property="og:title" content="禾声"><meta property="og:url" content="http://leliyliu.github.io/page/2/"><meta property="og:site_name" content="禾声"><meta property="og:description" content="record"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/avatar.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
-var t = Cookies.get("theme");
-if (autoChangeMode == '1'){
-const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
-const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
-const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
-const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-
-if (t === undefined){
-  if (isLightMode) activateLightMode()
-  else if (isDarkMode) activateDarkMode()
-  else if (isNotSpecified || hasNoSupport){
-    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
-    now = new Date();
-    hour = now.getHours();
-    isNight = hour < 6 || hour >= 18
-    isNight ? activateDarkMode() : activateLightMode()
-}
-} else if (t == 'light') activateLightMode()
-else activateDarkMode()
+<!DOCTYPE html>
 
 
-} else if (autoChangeMode == '2'){
-  now = new Date();
-  hour = now.getHours();
-  isNight = hour < 6 || hour >= 18
-  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
-  else if (t === 'light') activateLightMode()
-  else activateDarkMode() 
-} else {
-  if ( t == 'dark' ) activateDarkMode()
-  else if ( t == 'light') activateLightMode()
-}
 
-function activateDarkMode(){
-  document.documentElement.setAttribute('data-theme', 'dark')
-  if (document.querySelector('meta[name="theme-color"]') !== null){
-    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
-  }
-}
-function activateLightMode(){
-  document.documentElement.setAttribute('data-theme', 'light')
-  if (document.querySelector('meta[name="theme-color"]') !== null){
-  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
-  }
-}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="canonical" href="http://leliyliu.github.io/page/2/"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><link rel="preload" href="/img/default.jpg" as="image"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://leliyliu.github.io/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
-  highlight_copy: 'true',
-  highlight_lang: 'true',
-  highlight_shrink: 'false',
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  bookmark: {
-    title: 'Snackbar.bookmark.title',
-    message_prev: '按',
-    message_next: '键将本页加入书签'
-  },
-  runtime_unit: '天',
-  copyright: {"languages":{"author":"作者: Leliyliu","link":"链接: http://leliyliu.github.io/page/2/","source":"来源: 禾声","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
-  copy_copyright_js: true,
-  ClickShowText: {"text":"禾声,我想,我是,喜欢,颖馨,永远,不会,改变,为你,值得,一切,一生","fontSize":"15px"},
-  medium_zoom: 'true',
-  Snackbar: undefined
   
-}</script></head><body><canvas class="fireworks"></canvas><div id="header"> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">禾声</a></span><i class="fa fa-bars fa-fw toggle-menu pull_right close" aria-hidden="true"></i><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div></span><span class="pull_right" id="search_button"></span></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="lazyload avatar_img" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'"></div><div class="mobile_post_data"><div class="mobile_data_item is_center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">31</div></a></div></div><div class="mobile_data_item is_center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">10</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div></div></div><div id="body-wrap"><nav class="full_page" id="nav"><div class="nav_bg" style="background-image: url(img/default.jpg)"></div><div id="site-info"><div id="site-title"><span class="blogtitle">禾声</span></div><div id="site-sub-title"><span class="subtitle"></span></div><div id="site-social-icons"><a class="social-icon" href="https://github.com/leliyliu" target="_blank"><i class="fa fa-github"></i></a><a class="social-icon" href="mailto:leliynankai@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></div></div><div class="scroll-down"><i class="fa fa-angle-down scroll-down-effects"></i></div></nav><div id="content-outer"><div class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item article-container"><div class="post_cover pull_left left_radius"><a href="/2019/03/15/ma_model_pre3/" title="ma_model_preparation2"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2019/03/15/ma_model_pre3/" title="ma_model_preparation2">ma_model_preparation2</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-15</time><div class="content">1. 蒙特卡洛方法（1）基本思路：蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。
-（2）一种应用：利用蒙特卡洛方法求积分：假设我们需要求这样一个图的积分那么实际上，我们所需要的过程可以表示如下
-从这两个过程中，我们可以看到，实际上对于积分的求解可以简化为这 ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_right right_radius"><a href="/2019/03/09/ma-model-preparation1/" title="ma_model_preparation1"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2019/03/09/ma-model-preparation1/" title="ma_model_preparation1">ma_model_preparation1</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-09</time><div class="content">math_modeling competition for 2019 preparation
-abstract:I&#39;d like to record my preparation for this competition, including some tricks on coding, a ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_left left_radius"><a href="/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" title="Modern Anglo-American philosophy translation_11"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" title="Modern Anglo-American philosophy translation_11">Modern Anglo-American philosophy translation_11</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-12-06</time><div class="content">
-Though meaningless, the propositions of logic and mathematics are not nonsense. They at least have the virtue of showing the essential structure of a ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_right right_radius"><a href="/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" title="Modern Anglo-American philosophy translation_10"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" title="Modern Anglo-American philosophy translation_10">Modern Anglo-American philosophy translation_10</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-12-04</time><div class="content">
-The body of the Tractatus consists in cascading levels of numbered elaborations of these propositions (1 is elaborated by 1.1 which is elaborated by  ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_left left_radius"><a href="/2018/12/01/github-use/" title="github_use"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/12/01/github-use/" title="github_use">github_use</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-12-01</time><div class="content">github 使用，创建代码库并使用
-导入库git clone + 地址  将github中的文件目录及库拷贝
-添加文件git init 用于生成本地的git 管理
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="record">
+<meta property="og:type" content="website">
+<meta property="og:title" content="禾声">
+<meta property="og:url" content="http://leliyliu.github.io/page/2/index.html">
+<meta property="og:site_name" content="禾声">
+<meta property="og:description" content="record">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="禾声">
+<meta name="twitter:description" content="record">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://leliyliu.github.io/page/2/">
+
+
+
+
+
+  <title>禾声</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">禾声</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">in the arm of the angel, fly away</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2019/03/15/ma_model_pre3/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/15/ma_model_pre3/" itemprop="url">ma_model_preparation2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-15T10:05:27+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-蒙特卡洛方法"><a href="#1-蒙特卡洛方法" class="headerlink" title="1. 蒙特卡洛方法"></a>1. 蒙特卡洛方法</h3><h4 id="（1）基本思路："><a href="#（1）基本思路：" class="headerlink" title="（1）基本思路："></a>（1）基本思路：</h4><p>蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。</p>
+<h4 id="（2）一种应用：利用蒙特卡洛方法求积分："><a href="#（2）一种应用：利用蒙特卡洛方法求积分：" class="headerlink" title="（2）一种应用：利用蒙特卡洛方法求积分："></a>（2）一种应用：利用蒙特卡洛方法求积分：</h4><p>假设我们需要求这样一个图的积分<br><img alt="求积分图1" data-src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%861.png?raw=true" class="lazyload"><br>那么实际上，我们所需要的过程可以表示如下<br><img alt="求积分过程" data-src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B1%82%E7%A7%AF%E5%88%862.png?raw=true" class="lazyload"></p>
+<p>从这两个过程中，我们可以看到，实际上对于积分的求解可以简化为这样一个过程：<br><br>假设要计算的积分如下：</p>
+<script type="math/tex; mode=display">I=\int_{a}^{b}g(x)\text{d}x</script><p>那么如果选择一个概率密度函数为$f_X(x)$的方式进行抽样,并且满足$\int_{a}^{b}f_X(x)\text{d}x=1$,那么令$g^*(x)=\frac{g(x)}{f_X(x)}$,原有的积分可以写成如下形式：</p>
+<script type="math/tex; mode=display">I=\int_{a}^{b}g^*(x)f_X(x)\text{d}x</script><p>故，我们求积分的步骤为：<br><br><br>1.产生服从分布律$F_X$的随机变量$X_i(i=1,2,…,N)$</p>
+<p>2.计算均值</p>
+<script type="math/tex; mode=display">\overline{I}=\frac{1}{N}\sum_{i=1}^ng^*(X_i)</script><p>一般采用均匀分布求解</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calpai</span><span class="params">()</span>:</span></span><br><span class="line">    n = <span class="number">1000000</span></span><br><span class="line">    r = <span class="number">1.0</span></span><br><span class="line">    a, b = (<span class="number">0.0</span>, <span class="number">0.0</span>)</span><br><span class="line">    x_neg, x_pos = a - r, a + r</span><br><span class="line">    y_neg, y_pos = b - r, b + r</span><br><span class="line"></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n):</span><br><span class="line">        x = random.uniform(x_neg, x_pos)</span><br><span class="line">        y = random.uniform(y_neg, y_pos)</span><br><span class="line">        <span class="keyword">if</span> x*x + y*y &lt;= <span class="number">1.0</span>:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> (count / float(n)) * <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-蒙特卡洛树搜索"><a href="#3-蒙特卡洛树搜索" class="headerlink" title="(3)蒙特卡洛树搜索"></a>(3)蒙特卡洛树搜索</h4><p>as we know, an important method used in alpha go and alpha zero is Monte Carlo Tree search. So if you want to know more about this method, you can search this <a href="https://blog.csdn.net/qq_16137569/article/details/83543641" target="_blank" rel="noopener">website(Monte Carlo Tree search)</a> and get some knowledge yourself. also, you can get information in almost every game theory book.And try to get the big idea in Monte Carlo Tree search.</p>
+<h3 id="2-马尔科夫链"><a href="#2-马尔科夫链" class="headerlink" title="2. 马尔科夫链"></a>2. 马尔科夫链</h3><h5 id="2-1-马尔可夫链的定义"><a href="#2-1-马尔可夫链的定义" class="headerlink" title="2.1 马尔可夫链的定义"></a>2.1 马尔可夫链的定义</h5><p>现实世界中有很多这样的现象：某一系统在已知现在情况的条件下，系统未来时刻<br>的情况只与现在有关，而与过去的历史无直接关系。比如，研究一个商店的累计销售额，<br>如果现在时刻的累计销售额已知，则未来某一时刻的累计销售额与现在时刻以前的任一<br>时刻累计销售额无关。上节中的几个例子也均属此类。描述这类随机现象的数学模型称<br>为马氏模型。</p>
+<p>对于马尔科夫链的数学定义，可以直接参照<a href="http://vdisk.weibo.com/s/D8miedWz2uXT" target="_blank" rel="noopener">《数学建模算法与应用》（司守奎）</a>。</p>
+<h5 id="2-2-马尔科夫链的性质"><a href="#2-2-马尔科夫链的性质" class="headerlink" title="2.2 马尔科夫链的性质"></a>2.2 马尔科夫链的性质</h5><p>转移概率矩阵及柯尔莫哥洛夫定理</p>
+<p>对于这个性质，可以查看我给出的<a href="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/learning_code/morkov.py" target="_blank" rel="noopener">代码morkov.py</a>进行了解</p>
+<h5 id="2-3-马尔科夫链的应用"><a href="#2-3-马尔科夫链的应用" class="headerlink" title="2.3 马尔科夫链的应用"></a>2.3 马尔科夫链的应用</h5><p>虽然马尔科夫链的性质极其简单，但是其应用广泛，有着极大的意义。<br>应用马尔可夫链的计算方法进行马尔可夫分析，主要目的是根据某些变量现在的情<br>况及其变动趋向，来预测它在未来某特定区间可能产生的变动，作为提供某种决策的依<br>据。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2019/03/09/ma-model-preparation1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/09/ma-model-preparation1/" itemprop="url">ma_model_preparation1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-09T10:05:27+08:00">
+                2019-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="math-modeling-competition-for-2019-preparation"><a href="#math-modeling-competition-for-2019-preparation" class="headerlink" title="math_modeling competition for 2019 preparation"></a>math_modeling competition for 2019 preparation</h1><hr>
+<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract:"></a>abstract:</h2><pre><code>I&#39;d like to record my preparation for this competition, including some tricks on coding, and comperhension on some important math models and algorithms. Also, I&#39;d like to share some interesting tools we can use, such as Gephi, Citespace, and so on.
+Meanwhile, I may record some basic knowledge on machine learning and data mining, even includes tensorflow and pytorch framework. So this series will be a hodgepodge of quite many things and knowledge. I hope I can truly learn something by doing so, and also help you work better.
+</code></pre><h2 id="part-one"><a href="#part-one" class="headerlink" title="part one"></a>part one</h2><h3 id="EA-Evolutionary-Algorithms"><a href="#EA-Evolutionary-Algorithms" class="headerlink" title="EA (Evolutionary Algorithms)"></a>EA (Evolutionary Algorithms)</h3><h4 id="1-introduce"><a href="#1-introduce" class="headerlink" title="1. introduce"></a>1. introduce</h4><p>there are so many algorithms use the idea of evolution, and in the competition of math modeling, it’s so important that almost every time, we can slove a problem using it. </p>
+<p>these algorithms include genetic algorithm, ant colony algorithm, Annealing Algorithm, neural network, tabu search and so on. I’d like to put focus on genetic algorithm this time, but I’ll also give some abstract on other algorithms. Also, codes will be shared on this <a href="https://github.com/leliyliu/ICM-MCM-preparation" target="_blank" rel="noopener">website</a> </p>
+<h4 id="2-genetic-algorithm"><a href="#2-genetic-algorithm" class="headerlink" title="2. genetic algorithm"></a>2. genetic algorithm</h4><h5 id="1-流程图-flow-chart"><a href="#1-流程图-flow-chart" class="headerlink" title="1. 流程图(flow chart)"></a>1. 流程图(flow chart)</h5><p><img alt="流程图" data-src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/gen1.jpg?raw=true" class="lazyload"></p>
+<h5 id="2-problem-needs-sloving"><a href="#2-problem-needs-sloving" class="headerlink" title="2.problem needs sloving"></a>2.problem needs sloving</h5><pre><code>maxf(x1,x2) = 21.5+x1*sin(4*pi*x1)+x2*sin(20*pi*x2)
+
+                     s.t. -3.0&lt;=x1&lt;=12.1
+
+                            4.1&lt;=x2&lt;=5.8
+</code></pre><p>so we’d like to slove this problem using genetic algorithm, to better understand the process of this great algorithm.</p>
+<h5 id="3-the-big-ideas"><a href="#3-the-big-ideas" class="headerlink" title="3.the big ideas"></a>3.the big ideas</h5><p>basic ideas:</p>
+<ol>
+<li>适应度函数(to compute the performance)<br> <br>适应度函数能够有效帮助后续的选择过程，进行有条件的保留与选择，帮助进行有效的迭代</li>
+<li>交叉(crossover)<br> <br>针对不同的问题有不同的交叉方式，在交叉过程中需要注意保持原有数据的真实性，不能出现超越规则之外的数据。通常，我们设置crossover rate=0.8，能够有效地帮助进行迭代，较快且较好地收敛</li>
+<li>变异(mutation)<br> <br>我们一般设置mutation rete=1/L(L: len of vector)，变异能减少收敛到局部最优的可能性，使得整个算法有更好的优化性，能够得到较好的结果</li>
+<li>选择(selection)<br> <br>选择是遗传算法中一个非常重要的步骤，通常，选择的方式有多种(including roulette wheel selection, rank selection, tournament selection and Elitism + Offspring selection )，根据不同的问题，采用不同的选择方式，能够得到较好的结果。在这个问题中，我们采用轮盘赌算法来进行选择（关于轮盘赌算法的讲解，你可以查看<a href="https://blog.csdn.net/pymqq/article/details/51375522" target="_blank" rel="noopener">轮盘赌算法</a>)<h5 id="4-the-code-on-this-problem"><a href="#4-the-code-on-this-problem" class="headerlink" title="4. the code on this problem"></a>4. the code on this problem</h5>you can find the code on my github repository <a href="https://github.com/leliyliu/ICM-MCM-preparation" target="_blank" rel="noopener">MCM/ICM preparation</a>, I save the python code on the floder learning_code.<br>Because of the code is a little complicated, so maybe I’ll write down another blog or ipython to denote some details about this process. </li>
+</ol>
+<h4 id="other-basic-algorithms"><a href="#other-basic-algorithms" class="headerlink" title="other basic algorithms"></a>other basic algorithms</h4><h5 id="1-粒子群算法（蚁群算法）"><a href="#1-粒子群算法（蚁群算法）" class="headerlink" title="1. 粒子群算法（蚁群算法）"></a>1. 粒子群算法（蚁群算法）</h5><p>在使用蚁群算法求解现实问题时，先生成具有一定数量蚂蚁的蚁群，让每一只蚂<br>蚁建立一个解或解的一部分，每只人工蚁从问题的初始状态出发，根据“激素”浓度来<br>选择下一个要转移到的状态，直到建立起一个解，每只蚂蚁根据所找到的解的好坏程度<br>在所经过的状态上释放与解的质量成正比例的“激素”。之后，每只蚂蚁又开始新的求<br>解过程，直到寻找到满意解。为避免停滞现象，引入了激素更新机制。</p>
+<h5 id="2-遗传退火算法"><a href="#2-遗传退火算法" class="headerlink" title="2. 遗传退火算法"></a>2. 遗传退火算法</h5><p>模拟退火算法得益于材料的统计力学的研究成果。统计力学表明材料中粒子的不<br>同结构对应于粒子的不同能量水平。在高温条件下，粒子的能量较高，可以自由运动和<br>重新排列。在低温条件下，粒子能量较低。如果从高温开始，非常缓慢地降温（这个过<br>程被称为退火），粒子就可以在每个温度下达到热平衡。当系统完全被冷却时，最终形<br>成处于低能状态的晶体。</p>
+<p>在模拟退火算法中应注意以下问题：<br>（1）理论上，降温过程要足够缓慢，要使得在每一温度下达到热平衡。但在计算<br>机实现中，如果降温速度过缓，所得到的解的性能会较为令人满意，但是算法会太慢，<br>相对于简单的搜索算法不具有明显优势。如果降温速度过快，很可能最终得不到全局最<br>优解。因此使用时要综合考虑解的性能和算法速度，在两者之间采取一种折衷。<br>（2）要确定在每一温度下状态转换的结束准则。实际操作可以考虑当连续m 次的<br>转换过程没有使状态发生变化时结束该温度下的状态转换。最终温度的确定可以提前定<br>为一个较小的值e T ，或连续几个温度下转换过程没有使状态发生变化算法就结束。<br>（3）选择初始温度和确定某个可行解的邻域的方法也要恰当。</p>
+<h5 id="3-禁忌搜索"><a href="#3-禁忌搜索" class="headerlink" title="3. 禁忌搜索"></a>3. 禁忌搜索</h5><p>禁忌搜索算法是组合优化算法的一种，是局部搜索算法的扩展。禁忌搜索算法是人<br>工智能在组合优化算法中的一个成功应用。禁忌搜索算法的特点是采用了禁忌技术。所<br>谓禁忌就是禁止重复前面的工作。禁忌搜索算法用一个禁忌表记录下已经到达过的局部<br>最优点，在下一次搜索中，利用禁忌表中的信息不再或有选择地搜索这些点。<br>禁忌搜索算法实现的技术问题是算法的关键。禁忌搜索算法涉及侯选集合、禁忌<br>对象、评价函数、特赦规则、记忆频率信息等概念。</p>
+<h5 id="4-神经网络"><a href="#4-神经网络" class="headerlink" title="4. 神经网络"></a>4. 神经网络</h5><p>由于神经网络有极大的用途，一般会用其来进行深度学习，所以如果有时间的话，我会更新关于深度学习的部分博客用以记录和交流，故神经网络在这里不再提及。<br><br>当然，对于神经网络的搭建，现在已经有许多开源的框架，我在后续的博客中将使用pytorch框架，并尝试使用fastai 来实现相关的一些项目。</p>
+<h5 id="5-all-in-all"><a href="#5-all-in-all" class="headerlink" title="5. all in all"></a>5. all in all</h5><p>我们已经看到了一个简单的遗传算法，就要使用上百行的python代码来实现，那么显然，既然在matlab 中有实现相关进化算法的框架，在python中同样也有，推荐的一个是geatpy。<br>你可以使用  </p>
+<pre><code>pip install geatpy
+</code></pre><p>来安装它。同时，你也可以通过这个网站<a href="https://github.com/geatpy-dev/geatpy" target="_blank" rel="noopener">geatpy</a>来学习具体的框架，希望它能帮助你更好地掌握进化算法。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/12/06/Modern-Anglo-American-philosophy-translation-11/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" itemprop="url">Modern Anglo-American philosophy translation_11</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-06T21:52:57+08:00">
+                2018-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Though meaningless, the propositions of logic and mathematics are not nonsense. They at least have the virtue of showing the essential structure of all possible facts. On the other hand, there are concatenations of words, purported propositions, that neither show nor say anything and thus are not connected to reality in any way. Such propositions are not merely senseless, they are nonsense. Among nonsense propositions are included the bulk of traditional philosophical statements articulating traditional philosophical problems and solutions, especially in metaphysics and ethics. This is the consequence of Wittgenstein’s presumption that meaningfulness is somehow linked to the realm of phenomena studied by the natural sciences (cf. 4.11 ff). Thus, as he claims in 6.53:</p>
+</blockquote>
+<p>尽管是缺少意义的，但是这个关于数学和逻辑的论题不是完全没有意义的。他们至少展示了所有可能的事情的必要的结构。另一方面，语词，命题的组合，并没有展示或者言说任何有关事实的东西。这些论题不仅仅是缺少意义的，而是毫无意义的。在这些毫无意义的论题中，包括了大部分表达传统哲学问题和解决方法的传统哲学陈述，特别是关于形而上学和伦理学的表述。基于维特根斯的推测，有意义的命题是和自然科学领域方面的现象相联系的。</p>
+<blockquote>
+<p>The correct method in philosophy would really be the following: to say nothing except what can be said, that is propositions of natural science—that is something that has nothing to do with philosophy—and then, whenever someone else wanted to say something metaphysical, to demonstrate to him that he had failed to give a meaning to certain signs in his propositions.</p>
+</blockquote>
+<p>哲学研究的正确方法如下：只说那些可以言说的部分，也就是关于自然科学的命题——而那正是哲学没有探讨的——然后，当某个人想要谈论任何关于形而上学的命题的时候，向他表明他无法给他命题中的某些符号特定的意义。</p>
+<blockquote>
+<p>In the eyes of its author (as he avers in its Introduction), the real accomplishment of the Tractatus was to have solved, or rather dissolved, all the traditional problems of philosophy by showing that they were meaningless conundrums generated by a failure to understand the limits of meaningful discourse.</p>
+</blockquote>
+<p>在逻辑哲学论作者的眼中（正如他在前言中所断言的那样），逻辑哲学论真正的成就就是解决了，或者更确切地说，通过展示这些所提出了缺乏意义的难题是由于错误地理解了有意义的论述的界限而消解了传统哲学的问题。</p>
+<h3 id="3-Logical-Positivism-the-Vienna-Circle-and-Quine"><a href="#3-Logical-Positivism-the-Vienna-Circle-and-Quine" class="headerlink" title="3. Logical Positivism, the Vienna Circle, and Quine"></a>3. Logical Positivism, the Vienna Circle, and Quine</h3><hr>
+<h4 id="a-Logical-Positivism-and-the-Vienna-Circle"><a href="#a-Logical-Positivism-and-the-Vienna-Circle" class="headerlink" title="a. Logical Positivism and the Vienna Circle"></a>a. Logical Positivism and the Vienna Circle</h4><blockquote>
+<p>Logical positivism is the result of combining the central aspects of the positivisms of Auguste Comte and Ernst Mach with the meta-philosophical and methodological views of the analytic movement, especially as understood by the ideal-language camp. In all its forms, positivism was animated by the idealization of scientific knowledge as it was commonly understood from at least the time of Newton through the early twentieth century. Consequently, at its core is a view called scientism: the view that all knowledge is scientific knowledge.</p>
+</blockquote>
+<p>逻辑实证主义结合了孔德和马赫实证主义和分析哲学运动中的元哲学和方法论，特别是由理想语言阵营所理解的方法。在各种形式上，实证主义都将牛顿时代末期到二十世纪早期的常识认识作了一个科学知识的理想化。因此，实证主义的核心被称作是科学主义：即所有的知识都是科学知识的观点。</p>
+<blockquote>
+<p>As twentieth-century philosophy of science has shown, the definition and demarcation of science is a very difficult task. Still, for several centuries it has been common to presume that metaphysics and other branches of philosophy-as-traditionally-practiced, not to mention religious and “common sense” beliefs, do not qualify as scientific. From the standpoint of scientism, these are not fields of knowledge, and their claims should not be regarded as carrying any serious weight.</p>
+</blockquote>
+<p>正如二十世纪的科学哲学所展现的，很难对科学进行定义和划界。然而，几个世纪以来，在哲学界，有一个普遍的假定就是形而上学和其它传统哲学的实践分支，更不用提及宗教和“常识”信念，都不能称之为科学。根据科学主义的观点，这些领域是没有任何知识的，他们的言论不应该具有任何重要的意义。</p>
+<blockquote>
+<p>At the heart of logical positivism was a novel way of dismissing certain non-scientific views by declaring them not merely wrong or false, but meaningless. According to the verification theory of meaning, sometimes also called the empiricist theory of meaning, any non-tautological statement has meaning if and only if it can be empirically verified. This “verification principle” of meaning is similar to the principle maintained in Wittgenstein’s Tractatus that the realm of meaning is coextensive with the realm of the natural (empirical) sciences. In fact the logical positivists drew many of their views straight from the pages of the Tractatus (though their reading of it has since been criticized as being too inclined to emphasize the parts friendly to scientific naturalism at the expense of those less-friendly). With Wittgenstein, the logical positivists concluded that the bulk of traditional philosophy consisted in meaningless pseudo-problems generated by the misuse of language, and that the true role of philosophy was to establish and enforce the limits of meaningful language through linguistic analysis.</p>
+</blockquote>
+<p>逻辑实证主义的核心是提供了一种新的消解特定的非科学观点，其方法是指出他们不仅仅是正确或错误的，而是缺少意义的。根据关于意义的证实理论，也被称作关于意义的经验主义者理论，即任何非重言式的描述如果要有意义的话，当且仅当它可以被经验地证明。这个关于意义的实证原则和维特根斯坦的逻辑哲学论中所持有的意义的领域是与自然（经验）科学的领域是共同延伸的这一观点时相似的。事实上，逻辑实证主义者直接从逻辑哲学论的字里行间中取得了很多观点（尽管他们的理解被批评为过分强调了那些与科学自然主义相关的部分，而牺牲了其它没有太多关联的部分）。同维特根斯坦一样，逻辑实证主义者得出了大部分传统哲学都涉及到了误用语言而造成的缺乏意义的伪似的命题的结论，而哲学真正的作用是通过语言分析确立和加强有意义的语言的界限。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/12/04/Modern-Anglo-American-philosophy-translation-10/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/04/Modern-Anglo-American-philosophy-translation-10/" itemprop="url">Modern Anglo-American philosophy translation_10</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-04T23:08:43+08:00">
+                2018-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>The body of the Tractatus consists in cascading levels of numbered elaborations of these propositions (1 is elaborated by 1.1 which is elaborated by 1.11, 1.12 and 1.13, and so forth)—except for 7, which stands on its own. Propositions 1 and 2 establish the metaphysical side of logical atomism: the world is nothing but a complex of atomic facts. Propositions 3 and 4 establish the isomorphism between language and reality: a significant (meaningful) proposition is a “logical picture” of the facts that constitute some possible or actual state of affairs. It is a picture in the sense that the structure of the proposition is identical to the structure of the corresponding atomic facts. It is here, incidentally, that we get the first explicit statement of the metaphilosophical view characteristic of early analytic philosophy: “All philosophy is a ‘critique of language’ …” (4.0031).</p>
+</blockquote>
+<p>逻辑哲学论的主体包括了多级详细阐述的关于命题的串联（1.1是用来详细解释1的，而1.11,1.12是用来详细解释1.1的，一直这样下去）——除了第七点，它只有这一句话。命题1和2建立了逻辑原子主义的形而上学方面的内容：这个世界只是原子事实的复合。命题3和4建立了语言和现实的同构：一个重要的（有意义的）命题是事实的一个“逻辑图像”，由一些可能的和实存的事态所组成。在某种意义上，它只是一个与相应的原子事实的结构相同的命题结构的图像。正是在这里，我们第一次了解到元哲学对于早期分析哲学的观点的说明：“所有的哲学都只是语言批判。”</p>
+<blockquote>
+<p>Proposition 5 asserts the thesis of truth-functionality, the view that all complex propositions are built out of atomic propositions joined by truth-functional connectives, and that atomic propositions are truth-functional in themselves. Even existentially quantified propositions are considered to be long disjunctions of atomic propositions. It has since been recognized that a truth-functional logic is not adequate to capture all the phenomena of the world; or at least that, if there is an adequate truth-functional system, we haven’t found it yet. Certain phenomena seem to defy truth-functional characterization; for instance, moral facts are problematic. </p>
+</blockquote>
+<p>命题5提出了真值函数的观点，其声称所有的复杂命题都是由连接词串联的原子命题所构成的，而原子命题本身是具有真值的。甚至存在量词命题也被认为是原子命题的长期析取。它开始意识到，一个具有真值意义的逻辑对于捕捉世界上所有的现象来说是不充分的，或者至少，我们还没有发现这样的真值系统。一些现象似乎是拒斥真值函数特征的；例如，道德事实就是不确定的。</p>
+<blockquote>
+<p>Knowing whether the constituent proposition “p” is true, doesn’t seem to tell us whether “It ought to be the case that p” is true. Similarly problematical are facts about thoughts, beliefs, and other mental states (captured in statements such as “John believes that…”), and modal facts (captured in statements about the necessity or possibility of certain states of affairs). And treating existential quantifiers as long disjunctions doesn’t seem to be adequate for the infinite number of facts about numbers since there surely are more real numbers than there are available names to name them even if we were willing to accept infinitely long disjunctions. The hope that truth-functional logic will prove adequate for resolving all these problems has inspired a good bit of thinking in the analytic tradition, especially during the first half of the twentieth century. This hope lies at the heart of logical atomism.</p>
+</blockquote>
+<p>认识到是否命题“p”的成分为真，似乎并不能使我们判别“这个事实p”为真。相似的不确定的事实是关于思想，信仰和一些其它的心理的（可以从陈述“约翰相信…”中看出），情感的状态（可以从关于具体事态的必然性和可能性的讨论中看出）。由于毫无疑问的，有远比我们可以命名的多得多的析取式，哪怕是我们愿意接受有无穷的析取式，因而将存在连词视作长析取式对于解释无穷的事态似乎是不充分的。</p>
+<blockquote>
+<p>In its full form, Proposition 6 includes some unusual symbolism that is not reproduced here.  All it does, however, is to give a general “recipe” for the creation of molecular propositions by giving the general form of a truth-function. Basically, Wittgenstein is saying that all propositions are truth-functional, and that, ultimately, there is only one kind of truth-function. Principia Mathematica had employed a number of truth-functional connectives: “and,” “or,” “not,” and so forth.  However, in 1913 a logician named Henry Sheffer showed that propositions involving these connectives could be rephrased (analyzed) as propositions involving a single connective consisting in the negation of a conjunction. </p>
+</blockquote>
+<p>在整本书中，命题6包括了一些不寻常的符号化，在这里将不会展示它们。所有的这些工作，只是为通过一种通用的真值形式来给分子命题的创造给出通用的“方法”。简单来说，维特根斯坦说所有的命题都具有真值，最终，就只有一种真值形式。数学原理提供了一系列的真值连词：“and”,”or”,”not”等等。然而，在1913年一个名为Henry Sheffer的逻辑学家展示到使用这些连词的命题都可以只使用一个单独的连词而不需要其它连词。</p>
+<blockquote>
+<p>This was called the “not and” or “nand” connective, and was supposed to be equivalent to the ordinary language formulation “not both x and y.” It is usually symbolized by a short vertical line ( | ) called the Sheffer stroke. Though Wittgenstein uses his own idiosyncratic symbolism, this is the operation identified in proposition 6 and some of its elaborations as showing the general form of a truth-function. Replacing the Principia’s plurality of connectives with the “nand” connective made for an extremely minimalistic system—all one needed to construct a complete picture/description of the world was a single truth-functional connective applied repeatedly to the set of all atomic propositions.</p>
+</blockquote>
+<p>它们被称为”not and” 或者”nand”，它的具体意义是和日常语言中的“不是 a和b”相同。它通常用一根竖线表示，这个符号被称为“Sheffer stroke”。尽管维特根斯坦使用了他自己特定的符号，这是命题6中所执行的方法，它的一些阐述显示了真理函数的一般形式。通过取代数学原理中多元的连词而采用”nand”来替代，构建了一个最小的系统——一个人要构建一个关于这个世界图像的描述，就仅仅是用一个连词连接的关于所有的原子命题的不同类型。</p>
+<blockquote>
+<p>Proposition 7, which stands on its own, is the culmination of a series of observations made throughout the Tractatus, and especially in the elaborations of proposition 6. Throughout the Tractatus there runs a distinction between showing and saying. Saying is a matter of expressing a meaningful proposition. Showing is a matter of presenting something’s form or structure. Thus, as Wittgenstein observes at 4.022, “A proposition shows its sense. A proposition shows how things stand if it is true. And it says that they do so stand.”</p>
+</blockquote>
+<p>命题7，是一个自成立的命题，是整个逻辑哲学论的高潮部分，特别是在建立了命题6之后。贯穿逻辑哲学论的是一条关于言说和展示的界限。言说是一种表达有意义的命题的方式。展示是一种<br>表现形式和结构的方式。因此，正如维特根斯坦在4.022中所表达的“一个命题展示了它的意义。一个命题展示了它是否为真。同时也言说了其为何为真。”</p>
+<blockquote>
+<p>In the introduction to the Tractatus, Wittgenstein indicates that his overarching purpose is to set the criteria and limits of meaningful saying. The structural aspects of language and the world—those aspects that are shown—fall beyond the limits of meaningful saying. According to Wittgenstein, the propositions of logic and mathematics are purely structural and therefore meaningless—they show the form of all possible propositions/states of affairs, but they do not themselves picture any particular state of affairs, thus they do not say anything. This has the odd consequence that the propositions of the Tractatus themselves, which are supposed to be about logic, are meaningless. Hence the famous dictum at 6.54:</p>
+</blockquote>
+<p>在逻辑哲学论的前言中，维特根斯坦说明了他首要的目的就是建立一个有意义的言说的标准。语言和世界的结构——那些所展示的部分——是在有意义的言说的界限之外的。根据维特根斯坦的说法，逻辑和数学的命题只是纯粹的结构上的，因此他们能够描述任何特定的事态，因此，它们什么也没有言说。这造成一个奇怪的现象，就是在逻辑哲学论中的那些论题本身，就是逻辑命题，因此也就是没有意义的。因此在6.54中，有一个著名的声明：</p>
+<blockquote>
+<p>My propositions are elucidatory in this way: he who understands me finally recognizes them as senseless, when he has climbed out through them, on them, over them. (He must so to speak throw away the ladder, after he has climbed up on it.) He must transcend these propositions, and then he will see the world aright.</p>
+</blockquote>
+<p>我的命题是以这样一种方式来阐明的：一个真正理解我的人最终会意识到我的命题是缺少意义的，当他登上他们，站在他们之上，并超越他们（他必须丢掉这个梯子，当他真正爬上去之后。）他必须超越这些命题，最终他将会看到真正的世界。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/12/01/github-use/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/01/github-use/" itemprop="url">github_use</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-01T15:50:10+08:00">
+                2018-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="github-使用，创建代码库并使用"><a href="#github-使用，创建代码库并使用" class="headerlink" title="github 使用，创建代码库并使用"></a>github 使用，创建代码库并使用</h2><hr>
+<h3 id="导入库"><a href="#导入库" class="headerlink" title="导入库"></a>导入库</h3><pre><code>git clone + 地址  将github中的文件目录及库拷贝
+</code></pre><h3 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h3><pre><code>git init 用于生成本地的git 管理
 git add . 添加文件到git的本地中 如果想添加某个特定的文件，只需把.换成这个特定的文件名即可
-输入git commit - ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_right right_radius"><a href="/2018/12/01/MCM-ICM-preparation-two/" title="MCM/ICM preparation -two"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/12/01/MCM-ICM-preparation-two/" title="MCM/ICM preparation -two">MCM/ICM preparation -two</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-12-01</time><div class="content">MCM/ICM preparationsecond(numpy &amp; pandas)
-numpy1.深浅拷贝
-深拷贝:a=np.array([...]) b=a   则b is a 为True  传的是引用
+输入git commit -m &#39;first commit&#39;，表示你对这次提交的注释，双引号里面的内容可以根据个人的需要修改。 
+git remote add origin https://自己的仓库url地址
+移除origin ———————— git remote rm origin 
+git push -u origin master 上传到github 中
+(当使用上面push时遇到错误时，1.git pull origin master
+2.git pull --rebase origin master)
+语句1.代表先进行pull，即下拉之后再进行上传
+语句2.代表当本地与最新的库不同时，先进行保留，再上传。
+</code></pre><h3 id="后续改动及理解"><a href="#后续改动及理解" class="headerlink" title="后续改动及理解"></a>后续改动及理解</h3><pre><code>git pull ,拉取当前分支最新代码
+利用git status 查看git 仓库状态
+git add * 更新全部 或者用git add -all
+git push （在后续过程中，直接git push）即可
+</code></pre><h4 id="附"><a href="#附" class="headerlink" title="附"></a>附</h4><p><a href="https://blog.csdn.net/u012661010/article/details/73433872/" target="_blank" rel="noopener">可参考博客</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/12/01/MCM-ICM-preparation-two/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/01/MCM-ICM-preparation-two/" itemprop="url">MCM/ICM preparation -two</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-01T15:03:01+08:00">
+                2018-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="MCM-ICM-preparation"><a href="#MCM-ICM-preparation" class="headerlink" title="MCM/ICM preparation"></a>MCM/ICM preparation</h1><h2 id="second-numpy-amp-pandas"><a href="#second-numpy-amp-pandas" class="headerlink" title="second(numpy &amp; pandas)"></a>second(numpy &amp; pandas)</h2><hr>
+<h3 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h3><p>1.深浅拷贝</p>
+<pre><code>深拷贝:a=np.array([...]) b=a   则b is a 为True  传的是引用
 浅拷贝:b=a.copy()  则b is a 为Flase 
-pandas1.对于p ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_left left_radius"><a href="/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" title="Modern Anglo-American philosophy translation_9"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" title="Modern Anglo-American philosophy translation_9">Modern Anglo-American philosophy translation_9</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-28</time><div class="content">d. Logical Atomism and Wittgenstein’s Tractatus
-Ludwig Wittgenstein came to Cambridge to study mathematical logic under Russell, but he quickly establ ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_right right_radius"><a href="/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" title="Modern Anglo-American philosophy translation_8"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" title="Modern Anglo-American philosophy translation_8">Modern Anglo-American philosophy translation_8</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-27</time><div class="content">c. Frege: Influence or Instigator?
-In developing the formal system of Principia Mathematica, Russell relied heavily on the work of several forebears i ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_left left_radius"><a href="/2018/11/26/MCM-ICM-preparation-one/" title="MCM/ICM preparation_one"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/11/26/MCM-ICM-preparation-one/" title="MCM/ICM preparation_one">MCM/ICM preparation_one</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-26</time><div class="content">MCM/ICM preparationfirst week(matplotlib learning)
-pyplot面向对象的方式(object-oriented)·折线图 plot
+</code></pre><h3 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h3><p>1.对于pd.Series() 以及pd.DateFrame() 的使用</p>
+<pre><code>对所生成的数据进行排序，进行数据的简单处理与查看，进行对于index 与 columns 的查看与使用, 按照index与colums的方式来进行排序的方法.
+</code></pre><p>2.选择数据</p>
+<pre><code>#select by label: df.loc  
+#select by position: df.iloc
+#select by mixed selection:df.ix(在新的pandas中，ix方式已经不建议被使用，将被移除)
+#bool indexing  利用df.A&gt;num 来进行选择某些值
+</code></pre><p>3.设置值</p>
+<pre><code>利用iloc，loc，以及bool indexing来进行修改
+直接添加一行或者一列，那么就可以直接用df[&#39;E&#39;]=...来进行添加
+</code></pre><p>4.处理丢失数据</p>
+<pre><code>df.dropna()   df.fillna()  df.isnull()   np.any(df.isnull==True)/df.isnull().any()
+这四种方式对于丢失的数据进行处理，1.丢掉 2，填充 3、4.判断是否有丢失
+</code></pre><p>5.储存数据<br>    read_csv/to_csv</p>
+<p>6.合并数据</p>
+<pre><code>利用concat([df1,df2,df3],axis=0,ignore_index=True)#aixs=0竖向合并
+利用join参数  join=&#39;outer&#39;/&#39;inner&#39; 这两个如果是outer，则都显示,inner则只是显示都共有的index与columns
+利用参数join_axes，按照某一个具体的来进行考虑
+append()的方法,将具体某些加到原pandas中。
+
+merge 
+利用merge()函数中的on参数进行合并
+注意on的参数类型可以使多样的，比如单独的一个是字符串，多个的话就是列表
+合并的时候是用inner 的方式来进行的
+注意indicator这个参数为True时能够展示合并的方式(left_only,both,right_only)
+注意区别index 和column两个的合并，参数有一点小小的不同
+添加标签-&gt; suffixes
+</code></pre><p>7.pandas 绘图</p>
+<pre><code>利用pandas直接plot(),不需要plt
+对于scatter，是直接在plot()后的属性，而不是一个特别的方式。
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/28/Modern-Anglo-American-philosophy-translation-9/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" itemprop="url">Modern Anglo-American philosophy translation_9</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-28T23:15:18+08:00">
+                2018-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="d-Logical-Atomism-and-Wittgenstein’s-Tractatus"><a href="#d-Logical-Atomism-and-Wittgenstein’s-Tractatus" class="headerlink" title="d. Logical Atomism and Wittgenstein’s Tractatus"></a>d. Logical Atomism and Wittgenstein’s Tractatus</h3><blockquote>
+<p>Ludwig Wittgenstein came to Cambridge to study mathematical logic under Russell, but he quickly established himself as his teacher’s intellectual peer. Together, they devised a metaphysical system called “logical atomism.” As discussed at the beginning of Section 2, qua total system, logical atomism seems to have been Wittgenstein’s brainchild. Still, this should not be seen as in any way marginalizing Russell’s significance for the system, which can be described as a metaphysics based on the assumption that an ideal language the likes of which was provided in Principia Mathematica is the key to reality.</p>
+</blockquote>
+<p>维特根斯坦来到剑桥向罗素学习数学逻辑，但他很快变为了他老师在研究中的同伴。他们在一起设计了一种被称作是“逻辑原子主义”的形而上学系统。正如在第二节开头所讨论的，作为一个完整的系统，逻辑原子论似乎是维特根斯坦所思考出来的。然而，这不应该被认作是罗素在这个系统中所做出的卓越的贡献，他基于一个在数学原理中类似的理想语言是与现实相联系的关键的猜想，而形成了一种形而上学的体系。</p>
+<blockquote>
+<p>According to logical atomism, propositions are built out of elements corresponding to the basic constituents of the world, just as sentences are built out of words. The combination of words in a meaningful sentence mirrors the combination of constituents in the corresponding proposition and also in the corresponding possible or actual state of affairs. That is, the structure of every possible or actual state of affairs is isomorphic with both the structure of the proposition that refers to it and the structure of the sentence that expresses that proposition—so long as the sentence is properly formulated in the notation of symbolic logic. The simplest sort of combination is called an atomic fact because this fact has no sub-facts as part of its structure. An atomic fact for some logical atomists might be something like an individual having a property—a certain leaf’s being green, for instance. Linguistically, this fact is represented by an atomic proposition: for example, “this leaf is green,” or, in logical symbolism “F(a).” Both the fact F(a) and the proposition “F(a)” are called “atomic” not because they themselves are atomic [that is, without structure], but because all their constituents are. Atomic facts are the basic constituents of the world, and atomic propositions are the basic constituents of language.</p>
+</blockquote>
+<p>根据逻辑原子主义，命题是由那些与世界的基本组成部分相联系的元素所构成的，就像语言是由单词构成的一样。在一句有意义的话中，单词的组合反映了命题相应的组成部分，同时也是事态的可能或实在的组成部分。即是说，每个事态的可能或实在的结构是与指向其的命题或者表达这个命题的语句同构的——正如语句被恰当地被转化为符号逻辑那样。最简单的组合被称为原子事实因为这类事实没有子事实来作为它的构成部分。一个原子事实对一些逻辑原子主义者来说就是一些只具有一种性质的单独个体——例如，一片特定的叶子是绿色的。从语言学角度看，这个事实是一个原子论点：例如“这片叶子是绿色的”，或者用符号逻辑“F(a)”来表示。不论是事实F(a)还是命题“F(a)”都被叫做“原子的”不仅仅是因为他们是原子的（即没有结构的），也是因为它的组成部分也是原子的。原子事实是这个世界最基本的组成部分，同时，原子命题是语言最基本的组成部分。</p>
+<blockquote>
+<p>More complex propositions representing more complex facts are called molecular propositions and molecular facts.  The propositions are made by linking atomic propositions together with truth-functional connectives, such as “and,” “or” and “not.” A truth-functional connective is one that combines constituent propositions in such a way that their truth-values (that is, their respective statuses as true or false) completely determine the truth value of the resulting molecular proposition. For instance, the truth value of a proposition of the form “not-p” can be characterized in terms of, and hence treated as determined by, the truth value of “p” because if “p” is true, then “not-p” is false, and if it is false, “not-p” is true. Similarly, a proposition of the form “p and q” will be true if and only if its constituent propositions “p” and “q” are true on their own.</p>
+</blockquote>
+<p>反映了更复杂的事实的复杂命题被称为分子命题和分子事实。这些命题利用像“and”，“or”和“not”这样的真值连词将原子命题联系起来。一个真值连词就是一个将组成命题的原子命题用一种方式串联起来的词，它使得分子命题的真值完全取决于原子命题的真值。例如，形如“not -p”的命题的真值可以按照，也由”p”的真值来决定，因为，当p为真时，“not -p”就是假，反之亦然。同样地，要使得”p and q”为真必须要组成这个命题的“p”和“q”同时为真。</p>
+<blockquote>
+<p>The logic of Principia Mathematica is entirely truth-functional; that is, it only allows for molecular propositions whose truth-values are determined by their atomic constituents. Thus, as Russell observed in the introduction to the second edition of the Principia, “given all true atomic propositions, together with the fact that they are all, every other true proposition can theoretically be deduced by logical methods” (Russell 1925, xv). The same assumption—called the thesis of truth-functionality or the thesis of extensionality—lies behind Wittgenstien’sTractatusLogico-Philosophicus.</p>
+</blockquote>
+<p>数学原理的逻辑就是一个完全真值表：即是，它只让分子命题的真实取决于组成它是原子命题。因此，当罗素在数学原理第二版的引言部分写道：“将所有为真的原子命题给出，和所有他们指向的原子事实，任何其他的真命题都可以利用逻辑方法推导出来”。同样的假设——被称作真值函数的论点或其外延性的论点——成为了维特根斯坦逻辑哲学论的基础。</p>
+<blockquote>
+<p>As mentioned previously, Wittgenstein’s Tractatus proved to be the most influential expression of logical atomism. The Tractatus is organized around seven propositions, here taken from the 1922 translation by C. K. Ogden:</p>
+</blockquote>
+<p>正如之前所提到的，维特根斯坦的逻辑哲学论被证明是在逻辑原子主义中最具影响力的著作。逻辑哲学论由骐达观点组成，这里采用了1922年C. K. Ogden翻译的版本：</p>
+<blockquote>
+<p>The world is everything that is the case.<br><br>What is the case, the fact, is the existence of atomic facts.<br><br>The logical picture of the facts is the thought.<br><br>The thought is the significant proposition.<br><br>Propositions are truth-functions of elementary propositions. (An elementary proposition is a truth function of itself.)<br><br>The general form of a truth-function is…. This is the general form of a proposition.<br><br>Where of one cannot speak, thereof one must be silent.</p>
+</blockquote>
+<p>1.世界是所发生的一切事情的总和<br><br>2.事态和事实就是原子事实的存在<br><br>3.事实的逻辑图像就是思想<br><br>4.思考是最重要的命题<br><br>5.命题是基本命题的真值函数（一个基本命题就是它自己的真值）<br><br>6.真值函数的一般形式即是命题的一般形式<br><br>7.对于不可言说者，必须保持沉默</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/27/Modern-Anglo-American-philosophy-translation-8/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/27/Modern-Anglo-American-philosophy-translation-8/" itemprop="url">Modern Anglo-American philosophy translation_8</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-27T22:33:52+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="c-Frege-Influence-or-Instigator"><a href="#c-Frege-Influence-or-Instigator" class="headerlink" title="c. Frege: Influence or Instigator?"></a>c. Frege: Influence or Instigator?</h3><blockquote>
+<p>In developing the formal system of Principia Mathematica, Russell relied heavily on the work of several forebears including the German mathematician and philosopher GottlobFrege. A generation before Russell and the Principia, Frege had provided his own system of formal logic, with its own system of symbolic notation. Frege’s goal in doing so was to prove logicism, the view that mathematics is reducible to logic. This was also Russell’s goal in the Principia. (For more on the development of logic in the late 19th and early 20th centuries, see the article on Propositional Logic, especially Section 2). Frege also anticipated Russell’s notion of incomplete symbols by invoking what has come to be called “the context principle:” words have meaning only in the context of complete sentences.</p>
+</blockquote>
+<p>在构建数学原理的形式系统时，罗素大量依靠了几个先贤，包括德国数学家，哲学家弗洛伊德所做的工作。在罗素和数学原理之前的一代，弗洛伊德已经提出了他的形式逻辑的系统与它的符号记法。弗洛伊德这样做的目的是论证逻辑主义——一种认为数学可被还原为逻辑的观点。这也是罗素在数学原理中的目标。弗洛伊德也提前调用了罗素不完整的符号标记中最终被称为“语境原则”——语词只有在特定的完整语境中才有意义的观点。</p>
+<blockquote>
+<p>Frege’s focus on the formalization and symbolization of logic naturally led him into terrain that we would now classify as falling under the philosophy of language, and to approach certain philosophical problems as if they were problems about language, or at least as if they could be resolved by linguistic means. This has led some to see in Frege a linguistic turn similar to that perceivable in the early work of Moore and Russell (on this point, see the article on Frege and Language).</p>
+</blockquote>
+<p>弗洛伊德在逻辑的形式化和符号化的关注自然而然地将他一道进入我们现在分类为语言哲学的哲学当中，并且将解决哲学问题视作他们就是有关语言的问题，或者至少它们可以用语言学手段解决。这使得一些人将弗洛伊德为语言学转向，就像穆尔和罗素早期工作所被认为的那样。</p>
+<blockquote>
+<p>Because of these similarities and anticipations, and because Russell explicitly relied on Frege’s work, many have seen Frege as a founder of analytic philosophy more or less on a par with Moore and Russell (See Dummett 1993 and Kenny 2000). Others see this as an exaggeration both of Frege’s role and of the similarities between him and other canonical analysts. For instance, Peter Hacker notes that Frege was not interested in reforming philosophy the way all the early analysts were:</p>
+</blockquote>
+<p>由于这些相似之处和提前运用，并且由于罗素明确依赖了弗洛伊德的工作，许多人将弗洛伊德分析哲学的创始人之一，而与罗素和穆尔相提并论。一些人则认为这是对弗洛伊德作用和他与其他依循规定的分析者相似之处的夸大。例如，Peter Hacker表示弗洛伊德对于像分析哲学者那样发动哲学的改革没有兴趣。</p>
+<blockquote>
+<p>Frege’s professional life was a single-minded pursuit of a demonstration that arithmetic had its foundations in pure logic alone … One will search Frege’s works in vain for a systematic discussion of the nature of philosophy. (Hacker 1986: 5, 7)</p>
+</blockquote>
+<p>弗洛伊德的职业生涯只是一门心思地追求论证算术有它的纯逻辑的基础。一个人想要寻找弗洛伊德作品中关于哲学本质系统的讨论，都只可能是徒劳的。</p>
+<blockquote>
+<p>There is no doubt that Frege’s views proved crucially useful and inspiring to key players on the ideal-language side of analytic philosophy. Whether or not this qualifies him as a founder of analytic philosophy depends on the extent to which we see the analytic movement as born of a desire for metaphilosophical revolution on the grand scale. To the extent that this is essential to our understanding of analytic philosophy, Frege’s role will be that of an influence rather than a founder.</p>
+</blockquote>
+<p>毫无疑问，弗洛伊德的观点被证明是极其有效的，并且启发了一些关键的在理想语言方面的分析哲学做出贡献的哲学家。是否这就可以使他有资格成为分析哲学的创始人之一取决于我们对分析运动在大的整体上对于发动形而上学革命的期望的程度。从这样一个程度而言，从我们认识的分析哲学来看，弗洛伊德的角色相对于一个创始人而言，更像是一个影响者。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/26/MCM-ICM-preparation-one/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/26/MCM-ICM-preparation-one/" itemprop="url">MCM/ICM preparation_one</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-26T22:23:45+08:00">
+                2018-11-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="MCM-ICM-preparation"><a href="#MCM-ICM-preparation" class="headerlink" title="MCM/ICM preparation"></a>MCM/ICM preparation</h1><h2 id="first-week-matplotlib-learning"><a href="#first-week-matplotlib-learning" class="headerlink" title="first week(matplotlib learning)"></a>first week(matplotlib learning)</h2><hr>
+<h3 id="pyplot"><a href="#pyplot" class="headerlink" title="pyplot"></a>pyplot</h3><h3 id="面向对象的方式-object-oriented"><a href="#面向对象的方式-object-oriented" class="headerlink" title="面向对象的方式(object-oriented)"></a>面向对象的方式(object-oriented)</h3><pre><code>·折线图 plot
 ·饼状图 pie
 ·散点图 scatter
 ·直方图 hist,hist2d
 ·条形图 bar,barh
-三种方式简介 ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_right right_radius"><a href="/2018/11/26/Modern-Anglo-American-philosophy-translation-7/" title="Modern Anglo-American philosophy translation_7"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/11/26/Modern-Anglo-American-philosophy-translation-7/" title="Modern Anglo-American philosophy translation_7">Modern Anglo-American philosophy translation_7</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-26</time><div class="content">b. Ideal-Language Philosophy vs. Ordinary-Language Philosophy
-Russellian analysis has just been just identified as logical rather than linguistic anal ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fa fa-chevron-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-chevron-right"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card_widget card-author"><div class="card-content"><div class="post_data"><div class="data-item is_center"><img class="lazyload avatar_img" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'"><p class="author-info__name is_center">Leliyliu</p><p class="author-info__description is_center">record</p></div></div><div class="post_data data_config"><div class="data-item is_center"><div class="data_link"><a href="/archives/"><p class="headline">文章</p><p class="length_num">31</p></a></div></div><div class="data-item is_center">      <div class="data_link"><a href="/tags/"><p class="headline">标签</p><p class="length_num">10</p></a></div></div></div><div class="post_data is_center"><a class="data-item bookmark bookmarke--primary bookmark--animated" id="bookmark-it" href="javascript:;" title="加入书签" target="_self"><i class="fa fa-bookmark" aria-hidden="true"></i><span>加入书签</span></a></div><div class="post_data data_config"><div id="aside-social-icons"> <a class="social-icon data-item" href="https://github.com/leliyliu" target="_blank"><i class="fa fa-github"></i></a><a class="social-icon data-item" href="mailto:leliynankai@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a><a class="social-icon data-item" href="/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></div></div></div></div><div class="card_widget card-announcement"><div class="card-content"><div class="item_headline"><i class="fa fa-bullhorn card-announcement-animation" aria-hidden="true"></i><span>公告</span></div><div class="announcement_content">感謝訪問本站，若喜歡請收藏 ^_^</div></div></div><div class="card_widget card-recent-post"><div class="card-content"><div class="item_headline"><i class="fa fa-history" aria-hidden="true"></i><span>最新文章</span></div><div class="aside_recent_item"><div class="aside_recent_post"><a href="/2019/11/01/hello-world/"><div class="aside_post_cover"><img class="aside_post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" title="Hello World"></div><div id="aside_title"><div class="aside_post_title" href="/2019/11/01/hello-world/" title="Hello World">Hello World</div><time class="aside_post_meta post-meta__date">2019-11-01</time></div></a></div><div class="aside_recent_post"><a href="/2019/09/25/github&amp;git/"><div class="aside_post_cover"><img class="aside_post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" title="github&amp;git"></div><div id="aside_title"><div class="aside_post_title" href="/2019/09/25/github&amp;git/" title="github&amp;git">github&amp;git</div><time class="aside_post_meta post-meta__date">2019-09-25</time></div></a></div><div class="aside_recent_post"><a href="/2019/05/05/django-learning/"><div class="aside_post_cover"><img class="aside_post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" title="django_learning"></div><div id="aside_title"><div class="aside_post_title" href="/2019/05/05/django-learning/" title="django_learning">django_learning</div><time class="aside_post_meta post-meta__date">2019-05-05</time></div></a></div><div class="aside_recent_post"><a href="/2019/05/05/paper-reading/"><div class="aside_post_cover"><img class="aside_post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" title="paper_reading"></div><div id="aside_title"><div class="aside_post_title" href="/2019/05/05/paper-reading/" title="paper_reading">paper_reading</div><time class="aside_post_meta post-meta__date">2019-05-05</time></div></a></div><div class="aside_recent_post"><a href="/2019/05/04/colab/"><div class="aside_post_cover"><img class="aside_post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" title="colab"></div><div id="aside_title"><div class="aside_post_title" href="/2019/05/04/colab/" title="colab">colab</div><time class="aside_post_meta post-meta__date">2019-05-04</time></div></a></div></div></div></div><div class="card_widget card-tags"><div class="card-content"><div class="item_headline"><i class="fa fa-tags" aria-hidden="true"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/English-learning/" style="font-size: 16px; color: #999">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 18.67px; color: #666">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 24px; color: #000">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 16px; color: #999">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 21.33px; color: #333">computer_system</a> <a href="/tags/github-git/" style="font-size: 18.67px; color: #666">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 21.33px; color: #333">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 18.67px; color: #666">paperReading</a> <a href="/tags/paper-reading/" style="font-size: 16px; color: #999">paper_reading</a> <a href="/tags/use-of-Colab-deep-learning/" style="font-size: 16px; color: #999">use of Colab(deep learning)</a></div></div></div><div class="card_widget card-archives"><div class="card-content"><div class="item_headline"><i class="fa fa-archive" aria-hidden="true"></i><span>归档</span></div><div class="archives_item"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月<span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月<span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月<span class="archive-list-count">3</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月<span class="archive-list-count">3</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月<span class="archive-list-count">4</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月<span class="archive-list-count">4</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月<span class="archive-list-count">15</span></a></li></ul></div></div></div><div class="card_widget card-webinfo"><div class="card-content"><div class="item_headline"><i class="fa fa-line-chart" aria-hidden="true"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo_item"><div class="webinfo_article_name">文章数目 :</div><div class="webinfo_article_count">31</div></div><div class="webinfo_item"><div class="webinfo_runtime_name">已运行时间 :</div><div class="webinfo_runtime_count" id="webinfo_runtime_count"></div><script id="runtionshow" src="/js/runtimeshow.js" start_date="6/7/2018 00:00:00">      </script></div><div class="webinfo_item">      <div class="webinfo_site_uv_name">本站访客数 :</div><div class="webinfo_site_uv_count" id="busuanzi_value_site_uv"></div></div><div class="webinfo_item"><div class="webinfo_site_name">本站总访问量 :</div><div class="webinfo_site_pv_count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></div></div><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2019 By Leliyliu</div><div class="framework-info"><span>驱动 </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true; // make power mode colorful
-POWERMODE.shake = true; // turn off shake
-document.body.addEventListener('input', POWERMODE);
-</script><script src="/js/tw_cn.js"></script><script>translateInitilization()
-</script><script>if (/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {} else {
-  $('.full_page .nav_bg').css('background-attachment', 'fixed');
-}
+</code></pre><h4 id="三种方式简介："><a href="#三种方式简介：" class="headerlink" title="三种方式简介："></a>三种方式简介：</h4><p>pyplot: 经典高层封装。<br><br>pylab：将matplotlib 和numpy 合并的模块，模拟matlab编程环境<br><br>面向对象的方式:matplotlib的精髓，更基础和底层的方法</p>
+<p> 1.matplotlib 对象实例</p>
+<pre><code>fig=plt.figure()
+ax=fig.add_subplott(111)  #设置fig的子图类型   
+返回Axes实例 
 
-</script><script src="https://cdn.jsdelivr.net/npm/typed.js"></script><script>var typed = new Typed(".subtitle", {
-strings: 'for you , a thousand times,in the arm of the angel , fly away'.split(","),
-startDelay: 300,
-typeSpeed: 100,
-loop: true,
-backSpeed: 50
-});
-</script><script>//首頁fullpage
-function alignContent() {
-  for (var n = $(window).height(), e = document.querySelectorAll(".full_page"), i = 0; i < e.length; i++) 
-    e[i].style.height = n + "px";
-    $("#site-info").each(function () {
-      var x = $(this).height();
-      $(this).css("top", (n-x)/2)       
-    })
-}
-alignContent();
+·学习生成多个子图和生成多张图
+·网格的画法 利用plt.grid()来对网格进行定制，包括颜色，宽度，线性等等
+</code></pre><p>2.图例</p>
+<pre><code>plt.legend()生成图例
+parameter: loc   
+loc=0,1,2,3...   loc=0时为best
+ncol = num 分为几列
+</code></pre><p>3.x,y轴的调整</p>
+<pre><code>plt.axis([])#调整4个数值
+plt.xlim([])#调整一个或者两个数值
+plt.ylim([])#调整一个或者两个数值
+</code></pre><p>4.调整坐标轴的刻度&amp;生成日期序列</p>
+<pre><code>ax.localtor_params(nbins=20)
+ax.localtor_params(&#39;x&#39;,nbins=20)
+</code></pre><p>5.如何在一个图中添加一条新的坐标轴（双坐标轴）</p>
+<pre><code>利用plt.twinx来实现双坐标轴的画法
+同理，有twins也有twiny
+代码参见homework8  
+</code></pre><p>6.在图形中画注释符</p>
+<pre><code>利用plt.annotate()方法来进行，具体参加代码homework9
+纯文字注释，不使用箭头 具体也参见代码homework9
+text公式（数学公式）通过利用TeX公式，来编辑数学公式。 这里注意以$作为开始和结束符 textmath的公式已经在pdf中，可以上传
+</code></pre><p>7.对曲线下面或者曲线之间的区域进行填充</p>
+<pre><code>使用fill与fill_between来对其进行处理，那么则可以达到要求
+</code></pre><p>8.生成形状</p>
+<pre><code>需要使用patches, import matplotlib.patches as mpatches
+patches 中有许多形状，事实上，还有一些其它的形状可以用来做包括指示之类的东西
+参见homework11
+</code></pre><p>9.图形的美化</p>
+<pre><code>主要是对于函数plt.style.use()进行运行就差不多了，注意查看plt.style.available中的内容,参见homework12
+</code></pre><p>10.绘制极坐标图形</p>
+<pre><code>    ax=plt.subplot(111,projection=&#39;polar&#39;)#以极坐标的形式来画图
+    主要有这样一个参数，可以使得其表示为极坐标，同时，注意极坐标的x,y指的是什么
+    代码参加homework13
+</code></pre><h4 id="实战检验"><a href="#实战检验" class="headerlink" title="实战检验"></a>实战检验</h4><p>1.函数积分图</p>
+<pre><code>具体代码直接参见homework14，这里主要强调几点，就是要利用好python中几种常用数据类型的转化，学会处理好其过程。
+</code></pre><p>2.实现图形的展示</p>
+<pre><code>具体代码参加homework15，这里要学会对于多个图形的处理，以及如何利用其来实现展示的过程，以及学会如何查阅文档
+</code></pre><p>3.球员能力的分析</p>
+<pre><code>这里主要掌握一些很有意思的方法：包括如何输出中文的标签，如何循环实现输出等等，具体参见代码homework16
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
 
-$(window).bind("resize", function () {
-  alignContent()
-})</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async></script><script src="/js/third-party/ClickShowText.js"></script></body></html>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/26/Modern-Anglo-American-philosophy-translation-7/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/26/Modern-Anglo-American-philosophy-translation-7/" itemprop="url">Modern Anglo-American philosophy translation_7</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-26T15:03:01+08:00">
+                2018-11-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="b-Ideal-Language-Philosophy-vs-Ordinary-Language-Philosophy"><a href="#b-Ideal-Language-Philosophy-vs-Ordinary-Language-Philosophy" class="headerlink" title="b. Ideal-Language Philosophy vs. Ordinary-Language Philosophy"></a>b. Ideal-Language Philosophy vs. Ordinary-Language Philosophy</h3><blockquote>
+<p>Russellian analysis has just been just identified as logical rather than linguistic analysis, and yet it was said in a previous paragraph that this was analysis in the sense made familiar by Moore. In truth, there were both significant similarities and significant differences between Moorean and Russellian analysis. On the one hand, Russellian analysis was like Moore’s in that it involved the rephrasing of a sentence into another sentence semantically equivalent but grammatically different. On the other hand, Russell’s analyses were not given in ordinary language, as Moore’s were. Instead, they were given in symbolic logic, that is, in a quasi-mathematical, symbolic notation that made the structure of Russell’s analyzed propositions exceedingly clear. For instance, with the definitions of Mx as “x is a mountain” and Gx as “x is golden,” the proposition that the golden mountain does not exist becomes<br><br><center>~[(∃x)(Mx&Gx) &∀y((My &Gy) → y=x)]</center></p>
+</blockquote>
+<p>相对于语言学分析，罗素的分析更多地被认为是逻辑分析，而在前一小节说过的，这种分析方法也和穆尔所做的类似。事实上，罗素和穆尔的分析有明显的类似和不同。在一方面，罗素的分析强调将语句改述为语义上等同，但语法上不同的另一语句，这是与穆尔相似的。在另一方面，罗素的分析没有用日常语言来表述，这不同于穆尔的做法。相反，他们采用了一种符号逻辑，就是一种类数学的，符号标记法，这使得罗素的分析命题的结构十分地清晰。例如，定义Mx是“x 是一座山”且Gx是“x是金的”，命题金山不存在则变为了</p>
+<center>~[(∃x)(Mx&Gx) &∀y((My &Gy) → y=x)]</center>
+
+<blockquote>
+<p>Equivalently, in English, it is not the case that there is some object such that (1) it is a mountain, (2) it is golden, and (3) all objects that are mountains and golden are identical to it. (For more on what this sort of notation looks like and how it works, see the article on Propositional Logic, especially Section 3.)</p>
+</blockquote>
+<p>等同地，在英语中，可以表示为，没有一种客体它既是山，又是金的，并且所有是山并且是金的客体都和它同一。</p>
+<blockquote>
+<p>By 1910, Russell, along with Alfred North Whitehead, had so developed this symbolic notation and the rules governing its use that it constituted a fairly complete system of formal logic. This they published in the three volumes of their monumental Principia Mathematica (Russell and Whitehead 1910-1913).</p>
+</blockquote>
+<p>到1910年，罗素，和Alfred North Whitehead一起，发展了符号标记法和规定它的用法的一些规则，这构建了一个相当完备的形式逻辑系统。这也出版在他们的数学原理三大卷中。</p>
+<blockquote>
+<p>Within the analytic movement, the Principia was received as providing an ideal language, capable of elucidating all sorts of ordinary-language confusions. Consequently, Russellian logical analysis was seen as a new species of the genus linguistic analysis, which had already been established by Moore. Furthermore, many took logical analysis to be superior to Moore’s ordinary-language analysis insofar as its results (its analyses) were more exact and not themselves prone to further misunderstandings or illusions.</p>
+</blockquote>
+<p>在分析哲学运动中，《数学原理》被认为是提供了一种能够解释所有日常语言疑惑的理想语言能力。因此，罗素式的逻辑分析被视作是被穆尔建立的语言分析的一种全新的方法。除此之外，许多人认为，就其更加准确并且并不会使人有迷惑的结果来看，逻辑分析要优于穆尔的日常语言分析。</p>
+<blockquote>
+<p>The distinction between ordinary-language philosophy and ideal-language philosophy formed the basis for a fundamental division within the analytic movement through the early 1960s. The introduction of logical analysis also laid the groundwork for logical atomism, a new metaphysical system developed by Russell and Ludwig Wittgenstein. Before we discuss this directly, however, we must say a word about GottlobFrege.</p>
+</blockquote>
+<p>日常语言哲学和理想语言哲学的区分形成了在1960年代早期分析哲学运动中的根本性的划分。这个关于逻辑分析的引入也为一种新的由罗素和维特根斯坦发展的形而上学系统——逻辑原子主义奠定了基础。在我们直接讨论逻辑原子主义之前，我们必须要先谈一谈弗洛伊德。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Leliyliu</p>
+              <p class="site-description motion-element" itemprop="description">record</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leliyliu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

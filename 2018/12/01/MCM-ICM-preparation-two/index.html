@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MCM/ICM preparation,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="MCM/ICM preparationsecond(numpy &amp;amp; pandas) numpy1.深浅拷贝 深拷贝:a=np.array([...]) b=a   则b is a 为True  传的是引用 浅拷贝:b=a.copy()  则b is a 为Flase  pandas1.对于pd.Series() 以及pd.DateFrame() 的使用 对所生成的数据进行排序，进行数据的简">
+<meta name="keywords" content="MCM&#x2F;ICM preparation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MCM&#x2F;ICM preparation -two">
+<meta property="og:url" content="http://leliyliu.github.io/2018/12/01/MCM-ICM-preparation-two/index.html">
+<meta property="og:site_name" content="禾声">
+<meta property="og:description" content="MCM/ICM preparationsecond(numpy &amp;amp; pandas) numpy1.深浅拷贝 深拷贝:a=np.array([...]) b=a   则b is a 为True  传的是引用 浅拷贝:b=a.copy()  则b is a 为Flase  pandas1.对于pd.Series() 以及pd.DateFrame() 的使用 对所生成的数据进行排序，进行数据的简">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-01T07:04:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MCM&#x2F;ICM preparation -two">
+<meta name="twitter:description" content="MCM/ICM preparationsecond(numpy &amp;amp; pandas) numpy1.深浅拷贝 深拷贝:a=np.array([...]) b=a   则b is a 为True  传的是引用 浅拷贝:b=a.copy()  则b is a 为Flase  pandas1.对于pd.Series() 以及pd.DateFrame() 的使用 对所生成的数据进行排序，进行数据的简">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://leliyliu.github.io/2018/12/01/MCM-ICM-preparation-two/">
+
+
+
+
+
+  <title>MCM/ICM preparation -two | 禾声</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">禾声</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">in the arm of the angel, fly away</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/12/01/MCM-ICM-preparation-two/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MCM/ICM preparation -two</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-01T15:03:01+08:00">
+                2018-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="MCM-ICM-preparation"><a href="#MCM-ICM-preparation" class="headerlink" title="MCM/ICM preparation"></a>MCM/ICM preparation</h1><h2 id="second-numpy-amp-pandas"><a href="#second-numpy-amp-pandas" class="headerlink" title="second(numpy &amp; pandas)"></a>second(numpy &amp; pandas)</h2><hr>
+<h3 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h3><p>1.深浅拷贝</p>
+<pre><code>深拷贝:a=np.array([...]) b=a   则b is a 为True  传的是引用
+浅拷贝:b=a.copy()  则b is a 为Flase 
+</code></pre><h3 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h3><p>1.对于pd.Series() 以及pd.DateFrame() 的使用</p>
+<pre><code>对所生成的数据进行排序，进行数据的简单处理与查看，进行对于index 与 columns 的查看与使用, 按照index与colums的方式来进行排序的方法.
+</code></pre><p>2.选择数据</p>
+<pre><code>#select by label: df.loc  
+#select by position: df.iloc
+#select by mixed selection:df.ix(在新的pandas中，ix方式已经不建议被使用，将被移除)
+#bool indexing  利用df.A&gt;num 来进行选择某些值
+</code></pre><p>3.设置值</p>
+<pre><code>利用iloc，loc，以及bool indexing来进行修改
+直接添加一行或者一列，那么就可以直接用df[&#39;E&#39;]=...来进行添加
+</code></pre><p>4.处理丢失数据</p>
+<pre><code>df.dropna()   df.fillna()  df.isnull()   np.any(df.isnull==True)/df.isnull().any()
+这四种方式对于丢失的数据进行处理，1.丢掉 2，填充 3、4.判断是否有丢失
+</code></pre><p>5.储存数据<br>    read_csv/to_csv</p>
+<p>6.合并数据</p>
+<pre><code>利用concat([df1,df2,df3],axis=0,ignore_index=True)#aixs=0竖向合并
+利用join参数  join=&#39;outer&#39;/&#39;inner&#39; 这两个如果是outer，则都显示,inner则只是显示都共有的index与columns
+利用参数join_axes，按照某一个具体的来进行考虑
+append()的方法,将具体某些加到原pandas中。
+
+merge 
+利用merge()函数中的on参数进行合并
+注意on的参数类型可以使多样的，比如单独的一个是字符串，多个的话就是列表
+合并的时候是用inner 的方式来进行的
+注意indicator这个参数为True时能够展示合并的方式(left_only,both,right_only)
+注意区别index 和column两个的合并，参数有一点小小的不同
+添加标签-&gt; suffixes
+</code></pre><p>7.pandas 绘图</p>
+<pre><code>利用pandas直接plot(),不需要plt
+对于scatter，是直接在plot()后的属性，而不是一个特别的方式。
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MCM-ICM-preparation/" rel="tag"># MCM/ICM preparation</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/28/Modern-Anglo-American-philosophy-translation-9/" rel="next" title="Modern Anglo-American philosophy translation_9">
+                <i class="fa fa-chevron-left"></i> Modern Anglo-American philosophy translation_9
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/01/github-use/" rel="prev" title="github_use">
+                github_use <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Leliyliu</p>
+              <p class="site-description motion-element" itemprop="description">record</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MCM-ICM-preparation"><span class="nav-number">1.</span> <span class="nav-text">MCM/ICM preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#second-numpy-amp-pandas"><span class="nav-number">1.1.</span> <span class="nav-text">second(numpy &amp; pandas)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#numpy"><span class="nav-number">1.1.1.</span> <span class="nav-text">numpy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pandas"><span class="nav-number">1.1.2.</span> <span class="nav-text">pandas</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leliyliu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="math_model_preparation,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="math_modeling competition for 2019 preparation abstract:I&amp;#39;d like to record my preparation for this competition, including some tricks on coding, and comperhension on some important math models and">
+<meta name="keywords" content="math_model_preparation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ma_model_preparation1">
+<meta property="og:url" content="http://leliyliu.github.io/2019/03/09/ma-model-preparation1/index.html">
+<meta property="og:site_name" content="禾声">
+<meta property="og:description" content="math_modeling competition for 2019 preparation abstract:I&amp;#39;d like to record my preparation for this competition, including some tricks on coding, and comperhension on some important math models and">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-16T02:05:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ma_model_preparation1">
+<meta name="twitter:description" content="math_modeling competition for 2019 preparation abstract:I&amp;#39;d like to record my preparation for this competition, including some tricks on coding, and comperhension on some important math models and">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://leliyliu.github.io/2019/03/09/ma-model-preparation1/">
+
+
+
+
+
+  <title>ma_model_preparation1 | 禾声</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">禾声</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">in the arm of the angel, fly away</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2019/03/09/ma-model-preparation1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ma_model_preparation1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-09T10:05:27+08:00">
+                2019-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="math-modeling-competition-for-2019-preparation"><a href="#math-modeling-competition-for-2019-preparation" class="headerlink" title="math_modeling competition for 2019 preparation"></a>math_modeling competition for 2019 preparation</h1><hr>
+<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract:"></a>abstract:</h2><pre><code>I&#39;d like to record my preparation for this competition, including some tricks on coding, and comperhension on some important math models and algorithms. Also, I&#39;d like to share some interesting tools we can use, such as Gephi, Citespace, and so on.
+Meanwhile, I may record some basic knowledge on machine learning and data mining, even includes tensorflow and pytorch framework. So this series will be a hodgepodge of quite many things and knowledge. I hope I can truly learn something by doing so, and also help you work better.
+</code></pre><h2 id="part-one"><a href="#part-one" class="headerlink" title="part one"></a>part one</h2><h3 id="EA-Evolutionary-Algorithms"><a href="#EA-Evolutionary-Algorithms" class="headerlink" title="EA (Evolutionary Algorithms)"></a>EA (Evolutionary Algorithms)</h3><h4 id="1-introduce"><a href="#1-introduce" class="headerlink" title="1. introduce"></a>1. introduce</h4><p>there are so many algorithms use the idea of evolution, and in the competition of math modeling, it’s so important that almost every time, we can slove a problem using it. </p>
+<p>these algorithms include genetic algorithm, ant colony algorithm, Annealing Algorithm, neural network, tabu search and so on. I’d like to put focus on genetic algorithm this time, but I’ll also give some abstract on other algorithms. Also, codes will be shared on this <a href="https://github.com/leliyliu/ICM-MCM-preparation" target="_blank" rel="noopener">website</a> </p>
+<h4 id="2-genetic-algorithm"><a href="#2-genetic-algorithm" class="headerlink" title="2. genetic algorithm"></a>2. genetic algorithm</h4><h5 id="1-流程图-flow-chart"><a href="#1-流程图-flow-chart" class="headerlink" title="1. 流程图(flow chart)"></a>1. 流程图(flow chart)</h5><p><img alt="流程图" data-src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/gen1.jpg?raw=true" class="lazyload"></p>
+<h5 id="2-problem-needs-sloving"><a href="#2-problem-needs-sloving" class="headerlink" title="2.problem needs sloving"></a>2.problem needs sloving</h5><pre><code>maxf(x1,x2) = 21.5+x1*sin(4*pi*x1)+x2*sin(20*pi*x2)
+
+                     s.t. -3.0&lt;=x1&lt;=12.1
+
+                            4.1&lt;=x2&lt;=5.8
+</code></pre><p>so we’d like to slove this problem using genetic algorithm, to better understand the process of this great algorithm.</p>
+<h5 id="3-the-big-ideas"><a href="#3-the-big-ideas" class="headerlink" title="3.the big ideas"></a>3.the big ideas</h5><p>basic ideas:</p>
+<ol>
+<li>适应度函数(to compute the performance)<br> <br>适应度函数能够有效帮助后续的选择过程，进行有条件的保留与选择，帮助进行有效的迭代</li>
+<li>交叉(crossover)<br> <br>针对不同的问题有不同的交叉方式，在交叉过程中需要注意保持原有数据的真实性，不能出现超越规则之外的数据。通常，我们设置crossover rate=0.8，能够有效地帮助进行迭代，较快且较好地收敛</li>
+<li>变异(mutation)<br> <br>我们一般设置mutation rete=1/L(L: len of vector)，变异能减少收敛到局部最优的可能性，使得整个算法有更好的优化性，能够得到较好的结果</li>
+<li>选择(selection)<br> <br>选择是遗传算法中一个非常重要的步骤，通常，选择的方式有多种(including roulette wheel selection, rank selection, tournament selection and Elitism + Offspring selection )，根据不同的问题，采用不同的选择方式，能够得到较好的结果。在这个问题中，我们采用轮盘赌算法来进行选择（关于轮盘赌算法的讲解，你可以查看<a href="https://blog.csdn.net/pymqq/article/details/51375522" target="_blank" rel="noopener">轮盘赌算法</a>)<h5 id="4-the-code-on-this-problem"><a href="#4-the-code-on-this-problem" class="headerlink" title="4. the code on this problem"></a>4. the code on this problem</h5>you can find the code on my github repository <a href="https://github.com/leliyliu/ICM-MCM-preparation" target="_blank" rel="noopener">MCM/ICM preparation</a>, I save the python code on the floder learning_code.<br>Because of the code is a little complicated, so maybe I’ll write down another blog or ipython to denote some details about this process. </li>
+</ol>
+<h4 id="other-basic-algorithms"><a href="#other-basic-algorithms" class="headerlink" title="other basic algorithms"></a>other basic algorithms</h4><h5 id="1-粒子群算法（蚁群算法）"><a href="#1-粒子群算法（蚁群算法）" class="headerlink" title="1. 粒子群算法（蚁群算法）"></a>1. 粒子群算法（蚁群算法）</h5><p>在使用蚁群算法求解现实问题时，先生成具有一定数量蚂蚁的蚁群，让每一只蚂<br>蚁建立一个解或解的一部分，每只人工蚁从问题的初始状态出发，根据“激素”浓度来<br>选择下一个要转移到的状态，直到建立起一个解，每只蚂蚁根据所找到的解的好坏程度<br>在所经过的状态上释放与解的质量成正比例的“激素”。之后，每只蚂蚁又开始新的求<br>解过程，直到寻找到满意解。为避免停滞现象，引入了激素更新机制。</p>
+<h5 id="2-遗传退火算法"><a href="#2-遗传退火算法" class="headerlink" title="2. 遗传退火算法"></a>2. 遗传退火算法</h5><p>模拟退火算法得益于材料的统计力学的研究成果。统计力学表明材料中粒子的不<br>同结构对应于粒子的不同能量水平。在高温条件下，粒子的能量较高，可以自由运动和<br>重新排列。在低温条件下，粒子能量较低。如果从高温开始，非常缓慢地降温（这个过<br>程被称为退火），粒子就可以在每个温度下达到热平衡。当系统完全被冷却时，最终形<br>成处于低能状态的晶体。</p>
+<p>在模拟退火算法中应注意以下问题：<br>（1）理论上，降温过程要足够缓慢，要使得在每一温度下达到热平衡。但在计算<br>机实现中，如果降温速度过缓，所得到的解的性能会较为令人满意，但是算法会太慢，<br>相对于简单的搜索算法不具有明显优势。如果降温速度过快，很可能最终得不到全局最<br>优解。因此使用时要综合考虑解的性能和算法速度，在两者之间采取一种折衷。<br>（2）要确定在每一温度下状态转换的结束准则。实际操作可以考虑当连续m 次的<br>转换过程没有使状态发生变化时结束该温度下的状态转换。最终温度的确定可以提前定<br>为一个较小的值e T ，或连续几个温度下转换过程没有使状态发生变化算法就结束。<br>（3）选择初始温度和确定某个可行解的邻域的方法也要恰当。</p>
+<h5 id="3-禁忌搜索"><a href="#3-禁忌搜索" class="headerlink" title="3. 禁忌搜索"></a>3. 禁忌搜索</h5><p>禁忌搜索算法是组合优化算法的一种，是局部搜索算法的扩展。禁忌搜索算法是人<br>工智能在组合优化算法中的一个成功应用。禁忌搜索算法的特点是采用了禁忌技术。所<br>谓禁忌就是禁止重复前面的工作。禁忌搜索算法用一个禁忌表记录下已经到达过的局部<br>最优点，在下一次搜索中，利用禁忌表中的信息不再或有选择地搜索这些点。<br>禁忌搜索算法实现的技术问题是算法的关键。禁忌搜索算法涉及侯选集合、禁忌<br>对象、评价函数、特赦规则、记忆频率信息等概念。</p>
+<h5 id="4-神经网络"><a href="#4-神经网络" class="headerlink" title="4. 神经网络"></a>4. 神经网络</h5><p>由于神经网络有极大的用途，一般会用其来进行深度学习，所以如果有时间的话，我会更新关于深度学习的部分博客用以记录和交流，故神经网络在这里不再提及。<br><br>当然，对于神经网络的搭建，现在已经有许多开源的框架，我在后续的博客中将使用pytorch框架，并尝试使用fastai 来实现相关的一些项目。</p>
+<h5 id="5-all-in-all"><a href="#5-all-in-all" class="headerlink" title="5. all in all"></a>5. all in all</h5><p>我们已经看到了一个简单的遗传算法，就要使用上百行的python代码来实现，那么显然，既然在matlab 中有实现相关进化算法的框架，在python中同样也有，推荐的一个是geatpy。<br>你可以使用  </p>
+<pre><code>pip install geatpy
+</code></pre><p>来安装它。同时，你也可以通过这个网站<a href="https://github.com/geatpy-dev/geatpy" target="_blank" rel="noopener">geatpy</a>来学习具体的框架，希望它能帮助你更好地掌握进化算法。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/math-model-preparation/" rel="tag"># math_model_preparation</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/06/Modern-Anglo-American-philosophy-translation-11/" rel="next" title="Modern Anglo-American philosophy translation_11">
+                <i class="fa fa-chevron-left"></i> Modern Anglo-American philosophy translation_11
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/15/ma_model_pre3/" rel="prev" title="ma_model_preparation2">
+                ma_model_preparation2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Leliyliu</p>
+              <p class="site-description motion-element" itemprop="description">record</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#math-modeling-competition-for-2019-preparation"><span class="nav-number">1.</span> <span class="nav-text">math_modeling competition for 2019 preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#abstract"><span class="nav-number">1.1.</span> <span class="nav-text">abstract:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#part-one"><span class="nav-number">1.2.</span> <span class="nav-text">part one</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EA-Evolutionary-Algorithms"><span class="nav-number">1.2.1.</span> <span class="nav-text">EA (Evolutionary Algorithms)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-introduce"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">1. introduce</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-genetic-algorithm"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2. genetic algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-流程图-flow-chart"><span class="nav-number">1.2.1.2.1.</span> <span class="nav-text">1. 流程图(flow chart)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-problem-needs-sloving"><span class="nav-number">1.2.1.2.2.</span> <span class="nav-text">2.problem needs sloving</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-the-big-ideas"><span class="nav-number">1.2.1.2.3.</span> <span class="nav-text">3.the big ideas</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-the-code-on-this-problem"><span class="nav-number">1.2.1.2.4.</span> <span class="nav-text">4. the code on this problem</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#other-basic-algorithms"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">other basic algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-粒子群算法（蚁群算法）"><span class="nav-number">1.2.1.3.1.</span> <span class="nav-text">1. 粒子群算法（蚁群算法）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-遗传退火算法"><span class="nav-number">1.2.1.3.2.</span> <span class="nav-text">2. 遗传退火算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-禁忌搜索"><span class="nav-number">1.2.1.3.3.</span> <span class="nav-text">3. 禁忌搜索</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-神经网络"><span class="nav-number">1.2.1.3.4.</span> <span class="nav-text">4. 神经网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-all-in-all"><span class="nav-number">1.2.1.3.5.</span> <span class="nav-text">5. all in all</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leliyliu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

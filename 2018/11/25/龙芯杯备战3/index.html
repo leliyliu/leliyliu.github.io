@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="computer_system,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本周总结： 这一周任务比较明确，主要是把数电的知识全部过一遍，然后学习verilog，并且开始了一些机组的学习，希望能从中有所收获。大体方向上都准备地较为不错，但是在看机组实验的手册的时候依旧出现了一些问题，还是不太清楚需要做些什么。  verilog 的学习 语法要点 always 里面赋值左边必须申明为reg assign表达式左边必须申明为wire 阻塞赋值用&amp;lt;= 非阻塞赋值用=  1">
+<meta name="keywords" content="computer_system">
+<meta property="og:type" content="article">
+<meta property="og:title" content="龙芯杯备战3">
+<meta property="og:url" content="http://leliyliu.github.io/2018/11/25/龙芯杯备战3/index.html">
+<meta property="og:site_name" content="禾声">
+<meta property="og:description" content="本周总结： 这一周任务比较明确，主要是把数电的知识全部过一遍，然后学习verilog，并且开始了一些机组的学习，希望能从中有所收获。大体方向上都准备地较为不错，但是在看机组实验的手册的时候依旧出现了一些问题，还是不太清楚需要做些什么。  verilog 的学习 语法要点 always 里面赋值左边必须申明为reg assign表达式左边必须申明为wire 阻塞赋值用&amp;lt;= 非阻塞赋值用=  1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-25T00:35:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="龙芯杯备战3">
+<meta name="twitter:description" content="本周总结： 这一周任务比较明确，主要是把数电的知识全部过一遍，然后学习verilog，并且开始了一些机组的学习，希望能从中有所收获。大体方向上都准备地较为不错，但是在看机组实验的手册的时候依旧出现了一些问题，还是不太清楚需要做些什么。  verilog 的学习 语法要点 always 里面赋值左边必须申明为reg assign表达式左边必须申明为wire 阻塞赋值用&amp;lt;= 非阻塞赋值用=  1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://leliyliu.github.io/2018/11/25/龙芯杯备战3/">
+
+
+
+
+
+  <title>龙芯杯备战3 | 禾声</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">禾声</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">in the arm of the angel, fly away</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/25/龙芯杯备战3/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">龙芯杯备战3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-25T16:34:53+08:00">
+                2018-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本周总结：</p>
+<pre><code>这一周任务比较明确，主要是把数电的知识全部过一遍，然后学习verilog，并且开始了一些机组的学习，希望能从中有所收获。大体方向上都准备地较为不错，但是在看机组实验的手册的时候依旧出现了一些问题，还是不太清楚需要做些什么。
+</code></pre><hr>
+<h2 id="verilog-的学习"><a href="#verilog-的学习" class="headerlink" title="verilog 的学习"></a>verilog 的学习</h2><hr>
+<h3 id="语法要点"><a href="#语法要点" class="headerlink" title="语法要点"></a>语法要点</h3><ol>
+<li>always 里面赋值左边必须申明为reg</li>
+<li>assign表达式左边必须申明为wire</li>
+<li>阻塞赋值用&lt;=</li>
+<li>非阻塞赋值用=</li>
+</ol>
+<p>1) 边沿触发生成寄存器的时序逻辑<br>2) 电平触发条件完整，生成组合逻辑<br>3) 电平触发条件不完整，生成锁存器的时序逻辑</p>
+<p>结论：<br>    声明成reg,不一定得到寄存器<br>    未声明为reg，也可能得到寄存器</p>
+<h3 id="coding-要点"><a href="#coding-要点" class="headerlink" title="coding 要点"></a>coding 要点</h3><pre><code>·如果是边沿触发的逻辑 比如always@(posedge clk)，里面一律使用&lt;=赋值
+·如果是电平触发的逻辑，一律使用=赋值
+逻辑简单用assign语句；逻辑复杂，用always语句
+分支条件写完整，防止出现锁存器
+</code></pre><h3 id="系统任务与系统函数-task-or-function"><a href="#系统任务与系统函数-task-or-function" class="headerlink" title="系统任务与系统函数(task or function)"></a>系统任务与系统函数(task or function)</h3><pre><code>标准输出任务 $display等
+文件管理任务 $fopen等
+仿真控制任务 $monitor等
+时间函数 $timeformat等
+时间显示函数 $time等
+其他 $random等
+</code></pre><p>关于verilog的学习这一周主要还是看了不少代码，并对其进行了理解。通过对其进行注释，了解到了很多知识，关于注释的代码后续会传到github上。</p>
+<hr>
+<p>下周目标：</p>
+<pre><code>下一周主要的任务主要是关于机组的学习以及基于学习手册的学习，希望能通过这一方面的学习，尽量快速地入门。
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/computer-system/" rel="tag"># computer_system</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/23/Modern-Anglo-American-philosophy-translation-6/" rel="next" title="Modern Anglo-American philosophy translation_6">
+                <i class="fa fa-chevron-left"></i> Modern Anglo-American philosophy translation_6
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/26/Modern-Anglo-American-philosophy-translation-7/" rel="prev" title="Modern Anglo-American philosophy translation_7">
+                Modern Anglo-American philosophy translation_7 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Leliyliu</p>
+              <p class="site-description motion-element" itemprop="description">record</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#verilog-的学习"><span class="nav-number">1.</span> <span class="nav-text">verilog 的学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法要点"><span class="nav-number">1.1.</span> <span class="nav-text">语法要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#coding-要点"><span class="nav-number">1.2.</span> <span class="nav-text">coding 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统任务与系统函数-task-or-function"><span class="nav-number">1.3.</span> <span class="nav-text">系统任务与系统函数(task or function)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leliyliu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

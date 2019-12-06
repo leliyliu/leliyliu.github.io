@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="computer_system,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="龙芯杯备战4国科大试验系统迁移  LAB3-1代码对比1.接口123456789101112131415161718192021222324252627282930313233343536373839404142434445464748//机组cpumodule pipeline_cpu(      input clk,               input resetn,">
+<meta name="keywords" content="computer_system">
+<meta property="og:type" content="article">
+<meta property="og:title" content="龙芯杯备战4">
+<meta property="og:url" content="http://leliyliu.github.io/2019/04/23/龙芯杯6/index.html">
+<meta property="og:site_name" content="禾声">
+<meta property="og:description" content="龙芯杯备战4国科大试验系统迁移  LAB3-1代码对比1.接口123456789101112131415161718192021222324252627282930313233343536373839404142434445464748//机组cpumodule pipeline_cpu(      input clk,               input resetn,">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-23T11:40:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="龙芯杯备战4">
+<meta name="twitter:description" content="龙芯杯备战4国科大试验系统迁移  LAB3-1代码对比1.接口123456789101112131415161718192021222324252627282930313233343536373839404142434445464748//机组cpumodule pipeline_cpu(      input clk,               input resetn,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://leliyliu.github.io/2019/04/23/龙芯杯6/">
+
+
+
+
+
+  <title>龙芯杯备战4 | 禾声</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">禾声</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">in the arm of the angel, fly away</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2019/04/23/龙芯杯6/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">龙芯杯备战4</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-23T19:31:25+08:00">
+                2019-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="龙芯杯备战4"><a href="#龙芯杯备战4" class="headerlink" title="龙芯杯备战4"></a>龙芯杯备战4</h1><h2 id="国科大试验系统迁移-LAB3-1"><a href="#国科大试验系统迁移-LAB3-1" class="headerlink" title="国科大试验系统迁移  LAB3-1"></a>国科大试验系统迁移  LAB3-1</h2><h3 id="代码对比"><a href="#代码对比" class="headerlink" title="代码对比"></a>代码对比</h3><h4 id="1-接口"><a href="#1-接口" class="headerlink" title="1.接口"></a>1.接口</h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//机组cpu</span></span><br><span class="line"><span class="keyword">module</span> pipeline_cpu(  </span><br><span class="line">    <span class="keyword">input</span> clk,           </span><br><span class="line">    <span class="keyword">input</span> resetn,       </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//display data</span></span><br><span class="line">    <span class="keyword">input</span>  [ <span class="number">4</span>:<span class="number">0</span>] rf_addr,<span class="comment">//regfile 的测试地址（用于测试regfile)</span></span><br><span class="line">    <span class="keyword">input</span>  [<span class="number">31</span>:<span class="number">0</span>] mem_addr,<span class="comment">//memory的地址，用于取出数据</span></span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] rf_data,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] mem_data,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] IF_pc,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] IF_inst,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] ID_pc,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] EXE_pc,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] MEM_pc,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] WB_pc,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//最后需要用来检测的数据（检测5级的valid信号以及wb的数据)</span></span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] cpu_5_valid,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] HI_data,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] LO_data</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//国科大 CPU</span></span><br><span class="line"><span class="keyword">module</span> mycpu_top(</span><br><span class="line">	<span class="keyword">input</span>         clk,<span class="comment">//时钟</span></span><br><span class="line">	<span class="keyword">input</span>         resetn,<span class="comment">//复位信号</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//ram  指令</span></span><br><span class="line">	<span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>]  inst_sram_rdata,<span class="comment">//ram 读数据  -&gt; inst(所得到的指令)</span></span><br><span class="line">	<span class="keyword">output</span>        inst_sram_en,<span class="comment">//ram 使能信号   (需要自己添加这一信号的赋值)    ----&gt;还未修改</span></span><br><span class="line">	<span class="keyword">output</span> [<span class="number">3</span>:<span class="number">0</span>]  inst_sram_wen,<span class="comment">//ram 字节写使能信号 (在机组的流水线中，并未实现)  ---&gt; 还未修改</span></span><br><span class="line">	<span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] inst_sram_addr,<span class="comment">//ram 读写地址，字节寻址  -&gt; pc  (inst_addr)   </span></span><br><span class="line">	<span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] inst_sram_wdata,<span class="comment">//ram 写数据  (所需要修改的数据指令)    ---&gt; 还未修改</span></span><br><span class="line"><span class="comment">//ram  数据    -&gt;类似于inst_sram   可以直接在mem.v阶段使用</span></span><br><span class="line">	<span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>]  data_sram_rdata,<span class="comment">//ram 读数据</span></span><br><span class="line">	<span class="keyword">output</span>        data_sram_en,<span class="comment">//ram 使能信号，高电平有效    ----&gt; 还未修改</span></span><br><span class="line">	<span class="keyword">output</span> [<span class="number">3</span>:<span class="number">0</span>]  data_sram_wen,<span class="comment">//ram 字节写使能信号</span></span><br><span class="line">	<span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] data_sram_addr,<span class="comment">//ram 读写地址</span></span><br><span class="line">	<span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] data_sram_wdata,<span class="comment">//ram 写数据 </span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] debug_wb_pc,<span class="comment">//wb级的PC，因而需要mycpu 的PC 一路带到写回级</span></span><br><span class="line">	<span class="keyword">output</span> [<span class="number">3</span>:<span class="number">0</span>]  debug_wb_rf_wen,<span class="comment">// 写回级写寄存器堆(regfiles) 的写使能，为字节写使能</span></span><br><span class="line">	<span class="keyword">output</span> [<span class="number">4</span>:<span class="number">0</span>]  debug_wb_rf_wnum,<span class="comment">// 写回级写regfiles的目的寄存器号</span></span><br><span class="line">	<span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] debug_wb_rf_wdata<span class="comment">// 写回级写regfiles的写数据</span></span><br><span class="line">	);</span><br></pre></td></tr></table></figure>
+<h4 id="2-regfile"><a href="#2-regfile" class="headerlink" title="2.regfile"></a>2.regfile</h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//regilfe 中原机组代码有test，但是由于在修改后的cpu后没有test的input信号，所以修改后直接删除就好</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">timescale</span> 1ns / 1ps</span></span><br><span class="line"><span class="comment">//*************************************************************************</span></span><br><span class="line"><span class="comment">//  LOONGSON</span></span><br><span class="line"><span class="comment">//  2016-04-14</span></span><br><span class="line"><span class="comment">//*************************************************************************</span></span><br><span class="line"><span class="keyword">module</span> regfile(</span><br><span class="line">    <span class="keyword">input</span>             clk,</span><br><span class="line">    <span class="keyword">input</span>             wen,</span><br><span class="line">    <span class="keyword">input</span>      [<span class="number">4</span> :<span class="number">0</span>] raddr1,</span><br><span class="line">    <span class="keyword">input</span>      [<span class="number">4</span> :<span class="number">0</span>] raddr2,</span><br><span class="line">    <span class="keyword">input</span>      [<span class="number">4</span> :<span class="number">0</span>] waddr,</span><br><span class="line">    <span class="keyword">input</span>      [<span class="number">31</span>:<span class="number">0</span>] wdata,</span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] rdata1,</span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] rdata2,</span><br><span class="line">    <span class="keyword">input</span>      [<span class="number">4</span> :<span class="number">0</span>] test_addr,</span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] test_data</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] rf[<span class="number">31</span>:<span class="number">0</span>];</span><br><span class="line">     </span><br><span class="line">    <span class="comment">// three ported register file</span></span><br><span class="line">    <span class="comment">// read two ports combinationally</span></span><br><span class="line">    <span class="comment">// write third port on rising edge of clock</span></span><br><span class="line">    <span class="comment">// register 0 hardwired to 0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">always</span> @(<span class="keyword">posedge</span> clk)</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> (wen) </span><br><span class="line">        <span class="keyword">begin</span></span><br><span class="line">            rf[waddr] &lt;= wdata;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">     </span><br><span class="line">    <span class="keyword">always</span> @(*)</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">case</span> (raddr1)</span><br><span class="line">            <span class="number">5'd1</span> : rdata1 &lt;= rf[<span class="number">1</span> ];</span><br><span class="line">            <span class="number">5'd2</span> : rdata1 &lt;= rf[<span class="number">2</span> ];</span><br><span class="line">            <span class="number">5'd3</span> : rdata1 &lt;= rf[<span class="number">3</span> ];</span><br><span class="line">            <span class="number">5'd4</span> : rdata1 &lt;= rf[<span class="number">4</span> ];</span><br><span class="line">            <span class="number">5'd5</span> : rdata1 &lt;= rf[<span class="number">5</span> ];</span><br><span class="line">            <span class="number">5'd6</span> : rdata1 &lt;= rf[<span class="number">6</span> ];</span><br><span class="line">            <span class="number">5'd7</span> : rdata1 &lt;= rf[<span class="number">7</span> ];</span><br><span class="line">            <span class="number">5'd8</span> : rdata1 &lt;= rf[<span class="number">8</span> ];</span><br><span class="line">            <span class="number">5'd9</span> : rdata1 &lt;= rf[<span class="number">9</span> ];</span><br><span class="line">            <span class="number">5'd10</span>: rdata1 &lt;= rf[<span class="number">10</span>];</span><br><span class="line">            <span class="number">5'd11</span>: rdata1 &lt;= rf[<span class="number">11</span>];</span><br><span class="line">            <span class="number">5'd12</span>: rdata1 &lt;= rf[<span class="number">12</span>];</span><br><span class="line">            <span class="number">5'd13</span>: rdata1 &lt;= rf[<span class="number">13</span>];</span><br><span class="line">            <span class="number">5'd14</span>: rdata1 &lt;= rf[<span class="number">14</span>];</span><br><span class="line">            <span class="number">5'd15</span>: rdata1 &lt;= rf[<span class="number">15</span>];</span><br><span class="line">            <span class="number">5'd16</span>: rdata1 &lt;= rf[<span class="number">16</span>];</span><br><span class="line">            <span class="number">5'd17</span>: rdata1 &lt;= rf[<span class="number">17</span>];</span><br><span class="line">            <span class="number">5'd18</span>: rdata1 &lt;= rf[<span class="number">18</span>];</span><br><span class="line">            <span class="number">5'd19</span>: rdata1 &lt;= rf[<span class="number">19</span>];</span><br><span class="line">            <span class="number">5'd20</span>: rdata1 &lt;= rf[<span class="number">20</span>];</span><br><span class="line">            <span class="number">5'd21</span>: rdata1 &lt;= rf[<span class="number">21</span>];</span><br><span class="line">            <span class="number">5'd22</span>: rdata1 &lt;= rf[<span class="number">22</span>];</span><br><span class="line">            <span class="number">5'd23</span>: rdata1 &lt;= rf[<span class="number">23</span>];</span><br><span class="line">            <span class="number">5'd24</span>: rdata1 &lt;= rf[<span class="number">24</span>];</span><br><span class="line">            <span class="number">5'd25</span>: rdata1 &lt;= rf[<span class="number">25</span>];</span><br><span class="line">            <span class="number">5'd26</span>: rdata1 &lt;= rf[<span class="number">26</span>];</span><br><span class="line">            <span class="number">5'd27</span>: rdata1 &lt;= rf[<span class="number">27</span>];</span><br><span class="line">            <span class="number">5'd28</span>: rdata1 &lt;= rf[<span class="number">28</span>];</span><br><span class="line">            <span class="number">5'd29</span>: rdata1 &lt;= rf[<span class="number">29</span>];</span><br><span class="line">            <span class="number">5'd30</span>: rdata1 &lt;= rf[<span class="number">30</span>];</span><br><span class="line">            <span class="number">5'd31</span>: rdata1 &lt;= rf[<span class="number">31</span>];</span><br><span class="line">            <span class="keyword">default</span> : rdata1 &lt;= <span class="number">32'd0</span>;</span><br><span class="line">        <span class="keyword">endcase</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">always</span> @(*)</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">case</span> (raddr2)</span><br><span class="line">            <span class="number">5'd1</span> : rdata2 &lt;= rf[<span class="number">1</span> ];</span><br><span class="line">            <span class="number">5'd2</span> : rdata2 &lt;= rf[<span class="number">2</span> ];</span><br><span class="line">            <span class="number">5'd3</span> : rdata2 &lt;= rf[<span class="number">3</span> ];</span><br><span class="line">            <span class="number">5'd4</span> : rdata2 &lt;= rf[<span class="number">4</span> ];</span><br><span class="line">            <span class="number">5'd5</span> : rdata2 &lt;= rf[<span class="number">5</span> ];</span><br><span class="line">            <span class="number">5'd6</span> : rdata2 &lt;= rf[<span class="number">6</span> ];</span><br><span class="line">            <span class="number">5'd7</span> : rdata2 &lt;= rf[<span class="number">7</span> ];</span><br><span class="line">            <span class="number">5'd8</span> : rdata2 &lt;= rf[<span class="number">8</span> ];</span><br><span class="line">            <span class="number">5'd9</span> : rdata2 &lt;= rf[<span class="number">9</span> ];</span><br><span class="line">            <span class="number">5'd10</span>: rdata2 &lt;= rf[<span class="number">10</span>];</span><br><span class="line">            <span class="number">5'd11</span>: rdata2 &lt;= rf[<span class="number">11</span>];</span><br><span class="line">            <span class="number">5'd12</span>: rdata2 &lt;= rf[<span class="number">12</span>];</span><br><span class="line">            <span class="number">5'd13</span>: rdata2 &lt;= rf[<span class="number">13</span>];</span><br><span class="line">            <span class="number">5'd14</span>: rdata2 &lt;= rf[<span class="number">14</span>];</span><br><span class="line">            <span class="number">5'd15</span>: rdata2 &lt;= rf[<span class="number">15</span>];</span><br><span class="line">            <span class="number">5'd16</span>: rdata2 &lt;= rf[<span class="number">16</span>];</span><br><span class="line">            <span class="number">5'd17</span>: rdata2 &lt;= rf[<span class="number">17</span>];</span><br><span class="line">            <span class="number">5'd18</span>: rdata2 &lt;= rf[<span class="number">18</span>];</span><br><span class="line">            <span class="number">5'd19</span>: rdata2 &lt;= rf[<span class="number">19</span>];</span><br><span class="line">            <span class="number">5'd20</span>: rdata2 &lt;= rf[<span class="number">20</span>];</span><br><span class="line">            <span class="number">5'd21</span>: rdata2 &lt;= rf[<span class="number">21</span>];</span><br><span class="line">            <span class="number">5'd22</span>: rdata2 &lt;= rf[<span class="number">22</span>];</span><br><span class="line">            <span class="number">5'd23</span>: rdata2 &lt;= rf[<span class="number">23</span>];</span><br><span class="line">            <span class="number">5'd24</span>: rdata2 &lt;= rf[<span class="number">24</span>];</span><br><span class="line">            <span class="number">5'd25</span>: rdata2 &lt;= rf[<span class="number">25</span>];</span><br><span class="line">            <span class="number">5'd26</span>: rdata2 &lt;= rf[<span class="number">26</span>];</span><br><span class="line">            <span class="number">5'd27</span>: rdata2 &lt;= rf[<span class="number">27</span>];</span><br><span class="line">            <span class="number">5'd28</span>: rdata2 &lt;= rf[<span class="number">28</span>];</span><br><span class="line">            <span class="number">5'd29</span>: rdata2 &lt;= rf[<span class="number">29</span>];</span><br><span class="line">            <span class="number">5'd30</span>: rdata2 &lt;= rf[<span class="number">30</span>];</span><br><span class="line">            <span class="number">5'd31</span>: rdata2 &lt;= rf[<span class="number">31</span>];</span><br><span class="line">            <span class="keyword">default</span> : rdata2 &lt;= <span class="number">32'd0</span>;</span><br><span class="line">        <span class="keyword">endcase</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">always</span> @(*)</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">case</span> (test_addr)</span><br><span class="line">            <span class="number">5'd1</span> : test_data &lt;= rf[<span class="number">1</span> ];</span><br><span class="line">            <span class="number">5'd2</span> : test_data &lt;= rf[<span class="number">2</span> ];</span><br><span class="line">            <span class="number">5'd3</span> : test_data &lt;= rf[<span class="number">3</span> ];</span><br><span class="line">            <span class="number">5'd4</span> : test_data &lt;= rf[<span class="number">4</span> ];</span><br><span class="line">            <span class="number">5'd5</span> : test_data &lt;= rf[<span class="number">5</span> ];</span><br><span class="line">            <span class="number">5'd6</span> : test_data &lt;= rf[<span class="number">6</span> ];</span><br><span class="line">            <span class="number">5'd7</span> : test_data &lt;= rf[<span class="number">7</span> ];</span><br><span class="line">            <span class="number">5'd8</span> : test_data &lt;= rf[<span class="number">8</span> ];</span><br><span class="line">            <span class="number">5'd9</span> : test_data &lt;= rf[<span class="number">9</span> ];</span><br><span class="line">            <span class="number">5'd10</span>: test_data &lt;= rf[<span class="number">10</span>];</span><br><span class="line">            <span class="number">5'd11</span>: test_data &lt;= rf[<span class="number">11</span>];</span><br><span class="line">            <span class="number">5'd12</span>: test_data &lt;= rf[<span class="number">12</span>];</span><br><span class="line">            <span class="number">5'd13</span>: test_data &lt;= rf[<span class="number">13</span>];</span><br><span class="line">            <span class="number">5'd14</span>: test_data &lt;= rf[<span class="number">14</span>];</span><br><span class="line">            <span class="number">5'd15</span>: test_data &lt;= rf[<span class="number">15</span>];</span><br><span class="line">            <span class="number">5'd16</span>: test_data &lt;= rf[<span class="number">16</span>];</span><br><span class="line">            <span class="number">5'd17</span>: test_data &lt;= rf[<span class="number">17</span>];</span><br><span class="line">            <span class="number">5'd18</span>: test_data &lt;= rf[<span class="number">18</span>];</span><br><span class="line">            <span class="number">5'd19</span>: test_data &lt;= rf[<span class="number">19</span>];</span><br><span class="line">            <span class="number">5'd20</span>: test_data &lt;= rf[<span class="number">20</span>];</span><br><span class="line">            <span class="number">5'd21</span>: test_data &lt;= rf[<span class="number">21</span>];</span><br><span class="line">            <span class="number">5'd22</span>: test_data &lt;= rf[<span class="number">22</span>];</span><br><span class="line">            <span class="number">5'd23</span>: test_data &lt;= rf[<span class="number">23</span>];</span><br><span class="line">            <span class="number">5'd24</span>: test_data &lt;= rf[<span class="number">24</span>];</span><br><span class="line">            <span class="number">5'd25</span>: test_data &lt;= rf[<span class="number">25</span>];</span><br><span class="line">            <span class="number">5'd26</span>: test_data &lt;= rf[<span class="number">26</span>];</span><br><span class="line">            <span class="number">5'd27</span>: test_data &lt;= rf[<span class="number">27</span>];</span><br><span class="line">            <span class="number">5'd28</span>: test_data &lt;= rf[<span class="number">28</span>];</span><br><span class="line">            <span class="number">5'd29</span>: test_data &lt;= rf[<span class="number">29</span>];</span><br><span class="line">            <span class="number">5'd30</span>: test_data &lt;= rf[<span class="number">30</span>];</span><br><span class="line">            <span class="number">5'd31</span>: test_data &lt;= rf[<span class="number">31</span>];</span><br><span class="line">            <span class="keyword">default</span> : test_data &lt;= <span class="number">32'd0</span>;</span><br><span class="line">        <span class="keyword">endcase</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<h4 id="其它过程"><a href="#其它过程" class="headerlink" title="其它过程"></a>其它过程</h4><blockquote>
+<p>对于整个迁移的其它过程，都主要是按照接口来做，没有什么特别的地方需要说明。</p>
+<p>另外需要说明的一点是，在机组实现的流水线cpu中，是在整个cpu的总线中进行调用inst_sram和data_sram，而在国科大的lab中，由更高一层的soc_lite_top.v进行调用和控制，而my_cpu中只需要调用fetch,decode,exe,mem,wb以及regfile进行执行即可。</p>
+</blockquote>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//*************************************************************************</span></span><br><span class="line"><span class="comment">//   &gt; File Name   : soc_top.v</span></span><br><span class="line"><span class="comment">//   &gt; Description : SoC, included cpu, 2 x 3 bridge,</span></span><br><span class="line"><span class="comment">//                   inst ram, confreg, data ram</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="comment">//           -------------------------</span></span><br><span class="line"><span class="comment">//           |           cpu         |</span></span><br><span class="line"><span class="comment">//           -------------------------</span></span><br><span class="line"><span class="comment">//         inst|                  | data</span></span><br><span class="line"><span class="comment">//             |                  | </span></span><br><span class="line"><span class="comment">//             |        ---------------------</span></span><br><span class="line"><span class="comment">//             |        |    1 x 2 bridge   |</span></span><br><span class="line"><span class="comment">//             |        ---------------------</span></span><br><span class="line"><span class="comment">//             |             |            |           </span></span><br><span class="line"><span class="comment">//             |             |            |           </span></span><br><span class="line"><span class="comment">//      -------------   -----------   -----------</span></span><br><span class="line"><span class="comment">//      | inst ram  |   | data ram|   | confreg |</span></span><br><span class="line"><span class="comment">//      -------------   -----------   -----------</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//   &gt; Author      : LOONGSON</span></span><br><span class="line"><span class="comment">//   &gt; Date        : 2017-08-04</span></span><br><span class="line"><span class="comment">//*************************************************************************</span></span><br></pre></td></tr></table></figure>
+<p>其主要框架如图所示，需要更具体地进行了解</p>
+<h4 id="IP核锁定解决方案"><a href="#IP核锁定解决方案" class="headerlink" title="IP核锁定解决方案"></a>IP核锁定解决方案</h4><blockquote>
+<p>由于从旧的vivado版本迁移到新的版本中，会遇到IP核锁定的问题，所以我跑simulation的时候，发现跑不过，我开始以为是coe文件的问题，后来重新导入coe文件后，发现还是报错，于是我发现，是IP核锁定了。</p>
+<p>首先查看网上的解决方案，在工具栏找到report-&gt;Report IP Status,然后发现没办法upgrade selected,这个时候点击右键，可以发现有UPGRADE IP的选项，果断选择，然后好像就OK了。容我跑一跑simulation(时间有点长，现在很慌~~)什么信息也不报一个</p>
+</blockquote>
+<h4 id="其它还需要修改的错误"><a href="#其它还需要修改的错误" class="headerlink" title="其它还需要修改的错误"></a>其它还需要修改的错误</h4><p>wb端实际上还需要修改，同时，并没有将所有需要的output实现，目前还有很多X与Z的存在，需要进一步修改其中的代码。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/computer-system/" rel="tag"># computer_system</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/28/ma_model_pre5/" rel="next" title="ma_model_preparation5">
+                <i class="fa fa-chevron-left"></i> ma_model_preparation5
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/28/recording2/" rel="prev" title="AlexNet">
+                AlexNet <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Leliyliu</p>
+              <p class="site-description motion-element" itemprop="description">record</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#龙芯杯备战4"><span class="nav-number">1.</span> <span class="nav-text">龙芯杯备战4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#国科大试验系统迁移-LAB3-1"><span class="nav-number">1.1.</span> <span class="nav-text">国科大试验系统迁移  LAB3-1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码对比"><span class="nav-number">1.1.1.</span> <span class="nav-text">代码对比</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-接口"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1.接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-regfile"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">2.regfile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其它过程"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">其它过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP核锁定解决方案"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">IP核锁定解决方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其它还需要修改的错误"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">其它还需要修改的错误</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leliyliu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

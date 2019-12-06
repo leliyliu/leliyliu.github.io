@@ -1,117 +1,2128 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>禾声 - in the arm of the angel, fly away</title><meta name="description" content="record"><meta name="keywords"><meta name="author" content="Leliyliu,leliynankai@163.com"><meta name="copyright" content="Leliyliu"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="禾声"><meta name="twitter:description" content="record"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/avatar.png"><meta property="og:type" content="website"><meta property="og:title" content="禾声"><meta property="og:url" content="http://leliyliu.github.io/page/3/"><meta property="og:site_name" content="禾声"><meta property="og:description" content="record"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/avatar.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
-var t = Cookies.get("theme");
-if (autoChangeMode == '1'){
-const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
-const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
-const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
-const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-
-if (t === undefined){
-  if (isLightMode) activateLightMode()
-  else if (isDarkMode) activateDarkMode()
-  else if (isNotSpecified || hasNoSupport){
-    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
-    now = new Date();
-    hour = now.getHours();
-    isNight = hour < 6 || hour >= 18
-    isNight ? activateDarkMode() : activateLightMode()
-}
-} else if (t == 'light') activateLightMode()
-else activateDarkMode()
+<!DOCTYPE html>
 
 
-} else if (autoChangeMode == '2'){
-  now = new Date();
-  hour = now.getHours();
-  isNight = hour < 6 || hour >= 18
-  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
-  else if (t === 'light') activateLightMode()
-  else activateDarkMode() 
-} else {
-  if ( t == 'dark' ) activateDarkMode()
-  else if ( t == 'light') activateLightMode()
-}
 
-function activateDarkMode(){
-  document.documentElement.setAttribute('data-theme', 'dark')
-  if (document.querySelector('meta[name="theme-color"]') !== null){
-    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
-  }
-}
-function activateLightMode(){
-  document.documentElement.setAttribute('data-theme', 'light')
-  if (document.querySelector('meta[name="theme-color"]') !== null){
-  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
-  }
-}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="canonical" href="http://leliyliu.github.io/page/3/"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><link rel="preload" href="/img/default.jpg" as="image"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://leliyliu.github.io/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
-  highlight_copy: 'true',
-  highlight_lang: 'true',
-  highlight_shrink: 'false',
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  bookmark: {
-    title: 'Snackbar.bookmark.title',
-    message_prev: '按',
-    message_next: '键将本页加入书签'
-  },
-  runtime_unit: '天',
-  copyright: {"languages":{"author":"作者: Leliyliu","link":"链接: http://leliyliu.github.io/page/3/","source":"来源: 禾声","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
-  copy_copyright_js: true,
-  ClickShowText: {"text":"禾声,我想,我是,喜欢,颖馨,永远,不会,改变,为你,值得,一切,一生","fontSize":"15px"},
-  medium_zoom: 'true',
-  Snackbar: undefined
   
-}</script></head><body><canvas class="fireworks"></canvas><div id="header"> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">禾声</a></span><i class="fa fa-bars fa-fw toggle-menu pull_right close" aria-hidden="true"></i><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div></span><span class="pull_right" id="search_button"></span></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="lazyload avatar_img" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'"></div><div class="mobile_post_data"><div class="mobile_data_item is_center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">31</div></a></div></div><div class="mobile_data_item is_center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">10</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div></div></div><div id="body-wrap"><nav class="full_page" id="nav"><div class="nav_bg" style="background-image: url(img/default.jpg)"></div><div id="site-info"><div id="site-title"><span class="blogtitle">禾声</span></div><div id="site-sub-title"><span class="subtitle"></span></div><div id="site-social-icons"><a class="social-icon" href="https://github.com/leliyliu" target="_blank"><i class="fa fa-github"></i></a><a class="social-icon" href="mailto:leliynankai@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></div></div><div class="scroll-down"><i class="fa fa-angle-down scroll-down-effects"></i></div></nav><div id="content-outer"><div class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item article-container"><div class="post_cover pull_left left_radius"><a href="/2018/11/25/龙芯杯备战3/" title="龙芯杯备战3"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/11/25/龙芯杯备战3/" title="龙芯杯备战3">龙芯杯备战3</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-25</time><div class="content">本周总结：
-这一周任务比较明确，主要是把数电的知识全部过一遍，然后学习verilog，并且开始了一些机组的学习，希望能从中有所收获。大体方向上都准备地较为不错，但是在看机组实验的手册的时候依旧出现了一些问题，还是不太清楚需要做些什么。
 
-verilog 的学习
-语法要点
-always 里面赋值左边必 ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_right right_radius"><a href="/2018/11/23/Modern-Anglo-American-philosophy-translation-6/" title="Modern Anglo-American philosophy translation_6"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/11/23/Modern-Anglo-American-philosophy-translation-6/" title="Modern Anglo-American philosophy translation_6">Modern Anglo-American philosophy translation_6</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-23</time><div class="content">a. The Theory of Descriptions
-Much of Russell’s exuberance over Moore’s realism had to do with its consequences for logic and mathematics. Like so man ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_left left_radius"><a href="/2018/11/21/Modern-Anglo-American-philosophy-translation-5/" title="Modern Anglo-American philosophy translation_5"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/11/21/Modern-Anglo-American-philosophy-translation-5/" title="Modern Anglo-American philosophy translation_5">Modern Anglo-American philosophy translation_5</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-21</time><div class="content">
-All of these cases exhibit what proved to be the most influential aspect of Moore’s philosophical work, namely his method of analysis, which many of  ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_right right_radius"><a href="/2018/11/19/Modern-Anglo-American-philosophy-translation-4/" title="Modern Anglo-American philosophy translation_4"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/11/19/Modern-Anglo-American-philosophy-translation-4/" title="Modern Anglo-American philosophy translation_4">Modern Anglo-American philosophy translation_4</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-19</time><div class="content">
-Moore thought that to call common sense into question this way is perverse because the ordinary meaning of a common sense proposition is plain to all ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_left left_radius"><a href="/2018/11/18/龙芯杯备战2/" title="龙芯杯备战2"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/11/18/龙芯杯备战2/" title="龙芯杯备战2">龙芯杯备战2</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-18</time><div class="content">本周主要学习了MIPS的指令，和上周所规划的任务相差甚远，但是也学习到了一些东西，还要继续向前。
-MIPS_learning
-直接上代码12345678    .text  #指示的是代码段    .global main  # 定义全局的变量    .ent main  #refer to ent ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_right right_radius"><a href="/2018/11/18/Modern-Anglo-American-philosophy-translation-3/" title="Modern Anglo-American philosophy translation_3"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/11/18/Modern-Anglo-American-philosophy-translation-3/" title="Modern Anglo-American philosophy translation_3">Modern Anglo-American philosophy translation_3</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-18</time><div class="content">
-Analytic philosophy began when Moore and then Russell started to defend a thoroughgoing realism about what Moore called the “common sense” or “ordina ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_left left_radius"><a href="/2018/11/17/Modern-Anglo-American-philosophy-translation-2/" title="Modern Anglo-American philosophy translation_2"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/11/17/Modern-Anglo-American-philosophy-translation-2/" title="Modern Anglo-American philosophy translation_2">Modern Anglo-American philosophy translation_2</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-17</time><div class="content">
-Even in its earlier phases, analytic philosophy was difficult to define in terms of its intrinsic features or fundamental philosophical commitments.  ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_right right_radius"><a href="/2018/11/15/Modern-Anglo-American-philosophy-translation-1/" title="Modern Anglo-American philosophy translation_1"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/11/15/Modern-Anglo-American-philosophy-translation-1/" title="Modern Anglo-American philosophy translation_1">Modern Anglo-American philosophy translation_1</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-15</time><div class="content">Modern Anglo-American philosophy translation标签（空格分隔）： Philosophy_learning 
 
-在这里我尝试对Stanford Encyclopedia of Philosophy 中的Analytic Philosophy 部分作一个翻译，来 ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_left left_radius"><a href="/2018/11/12/philosophy-of-science1/" title="Philosophy of Science mid_term review"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/11/12/philosophy-of-science1/" title="Philosophy of Science mid_term review">Philosophy of Science mid_term review</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-12</time><div class="content">Philosophy of Science mid_term review_1标签（空格分隔）： Philosophy_learning 
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
 
-CHAPTER 1a widely held commonsense view of science“Science is dereved from the  ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover pull_right right_radius"><a href="/2018/11/11/A-Winkle-in-Time/" title="A Winkle in Time"><img class="post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"></a></div><div class="recent-post-info">  <a class="article-title" href="/2018/11/11/A-Winkle-in-Time/" title="A Winkle in Time">A Winkle in Time</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-11</time><div class="content">A Winkle In Time标签（空格分隔）： English_learning 
 
-thoughts with great sentence1&gt; There is nothing to fear except fear itself &emsp;—Calvinthinking:what  ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-chevron-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-chevron-right"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card_widget card-author"><div class="card-content"><div class="post_data"><div class="data-item is_center"><img class="lazyload avatar_img" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'"><p class="author-info__name is_center">Leliyliu</p><p class="author-info__description is_center">record</p></div></div><div class="post_data data_config"><div class="data-item is_center"><div class="data_link"><a href="/archives/"><p class="headline">文章</p><p class="length_num">31</p></a></div></div><div class="data-item is_center">      <div class="data_link"><a href="/tags/"><p class="headline">标签</p><p class="length_num">10</p></a></div></div></div><div class="post_data is_center"><a class="data-item bookmark bookmarke--primary bookmark--animated" id="bookmark-it" href="javascript:;" title="加入书签" target="_self"><i class="fa fa-bookmark" aria-hidden="true"></i><span>加入书签</span></a></div><div class="post_data data_config"><div id="aside-social-icons"> <a class="social-icon data-item" href="https://github.com/leliyliu" target="_blank"><i class="fa fa-github"></i></a><a class="social-icon data-item" href="mailto:leliynankai@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a><a class="social-icon data-item" href="/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></div></div></div></div><div class="card_widget card-announcement"><div class="card-content"><div class="item_headline"><i class="fa fa-bullhorn card-announcement-animation" aria-hidden="true"></i><span>公告</span></div><div class="announcement_content">感謝訪問本站，若喜歡請收藏 ^_^</div></div></div><div class="card_widget card-recent-post"><div class="card-content"><div class="item_headline"><i class="fa fa-history" aria-hidden="true"></i><span>最新文章</span></div><div class="aside_recent_item"><div class="aside_recent_post"><a href="/2019/11/01/hello-world/"><div class="aside_post_cover"><img class="aside_post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" title="Hello World"></div><div id="aside_title"><div class="aside_post_title" href="/2019/11/01/hello-world/" title="Hello World">Hello World</div><time class="aside_post_meta post-meta__date">2019-11-01</time></div></a></div><div class="aside_recent_post"><a href="/2019/09/25/github&amp;git/"><div class="aside_post_cover"><img class="aside_post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" title="github&amp;git"></div><div id="aside_title"><div class="aside_post_title" href="/2019/09/25/github&amp;git/" title="github&amp;git">github&amp;git</div><time class="aside_post_meta post-meta__date">2019-09-25</time></div></a></div><div class="aside_recent_post"><a href="/2019/05/05/django-learning/"><div class="aside_post_cover"><img class="aside_post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" title="django_learning"></div><div id="aside_title"><div class="aside_post_title" href="/2019/05/05/django-learning/" title="django_learning">django_learning</div><time class="aside_post_meta post-meta__date">2019-05-05</time></div></a></div><div class="aside_recent_post"><a href="/2019/05/05/paper-reading/"><div class="aside_post_cover"><img class="aside_post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" title="paper_reading"></div><div id="aside_title"><div class="aside_post_title" href="/2019/05/05/paper-reading/" title="paper_reading">paper_reading</div><time class="aside_post_meta post-meta__date">2019-05-05</time></div></a></div><div class="aside_recent_post"><a href="/2019/05/04/colab/"><div class="aside_post_cover"><img class="aside_post_bg lazyload" data-src="img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" title="colab"></div><div id="aside_title"><div class="aside_post_title" href="/2019/05/04/colab/" title="colab">colab</div><time class="aside_post_meta post-meta__date">2019-05-04</time></div></a></div></div></div></div><div class="card_widget card-tags"><div class="card-content"><div class="item_headline"><i class="fa fa-tags" aria-hidden="true"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/English-learning/" style="font-size: 16px; color: #999">English_learning</a> <a href="/tags/MCM-ICM-preparation/" style="font-size: 18.67px; color: #666">MCM/ICM preparation</a> <a href="/tags/Modern-Anglo-American-philosophy/" style="font-size: 24px; color: #000">Modern Anglo-American philosophy</a> <a href="/tags/Philosophy-of-Science/" style="font-size: 16px; color: #999">Philosophy of Science</a> <a href="/tags/computer-system/" style="font-size: 21.33px; color: #333">computer_system</a> <a href="/tags/github-git/" style="font-size: 18.67px; color: #666">github/git</a> <a href="/tags/math-model-preparation/" style="font-size: 21.33px; color: #333">math_model_preparation</a> <a href="/tags/paperReading/" style="font-size: 18.67px; color: #666">paperReading</a> <a href="/tags/paper-reading/" style="font-size: 16px; color: #999">paper_reading</a> <a href="/tags/use-of-Colab-deep-learning/" style="font-size: 16px; color: #999">use of Colab(deep learning)</a></div></div></div><div class="card_widget card-archives"><div class="card-content"><div class="item_headline"><i class="fa fa-archive" aria-hidden="true"></i><span>归档</span></div><div class="archives_item"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月<span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月<span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月<span class="archive-list-count">3</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月<span class="archive-list-count">3</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月<span class="archive-list-count">4</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月<span class="archive-list-count">4</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月<span class="archive-list-count">15</span></a></li></ul></div></div></div><div class="card_widget card-webinfo"><div class="card-content"><div class="item_headline"><i class="fa fa-line-chart" aria-hidden="true"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo_item"><div class="webinfo_article_name">文章数目 :</div><div class="webinfo_article_count">31</div></div><div class="webinfo_item"><div class="webinfo_runtime_name">已运行时间 :</div><div class="webinfo_runtime_count" id="webinfo_runtime_count"></div><script id="runtionshow" src="/js/runtimeshow.js" start_date="6/7/2018 00:00:00">      </script></div><div class="webinfo_item">      <div class="webinfo_site_uv_name">本站访客数 :</div><div class="webinfo_site_uv_count" id="busuanzi_value_site_uv"></div></div><div class="webinfo_item"><div class="webinfo_site_name">本站总访问量 :</div><div class="webinfo_site_pv_count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></div></div><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2019 By Leliyliu</div><div class="framework-info"><span>驱动 </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true; // make power mode colorful
-POWERMODE.shake = true; // turn off shake
-document.body.addEventListener('input', POWERMODE);
-</script><script src="/js/tw_cn.js"></script><script>translateInitilization()
-</script><script>if (/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {} else {
-  $('.full_page .nav_bg').css('background-attachment', 'fixed');
-}
 
-</script><script src="https://cdn.jsdelivr.net/npm/typed.js"></script><script>var typed = new Typed(".subtitle", {
-strings: 'for you , a thousand times,in the arm of the angel , fly away'.split(","),
-startDelay: 300,
-typeSpeed: 100,
-loop: true,
-backSpeed: 50
-});
-</script><script>//首頁fullpage
-function alignContent() {
-  for (var n = $(window).height(), e = document.querySelectorAll(".full_page"), i = 0; i < e.length; i++) 
-    e[i].style.height = n + "px";
-    $("#site-info").each(function () {
-      var x = $(this).height();
-      $(this).css("top", (n-x)/2)       
-    })
-}
-alignContent();
 
-$(window).bind("resize", function () {
-  alignContent()
-})</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async></script><script src="/js/third-party/ClickShowText.js"></script></body></html>
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="record">
+<meta property="og:type" content="website">
+<meta property="og:title" content="禾声">
+<meta property="og:url" content="http://leliyliu.github.io/page/3/index.html">
+<meta property="og:site_name" content="禾声">
+<meta property="og:description" content="record">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="禾声">
+<meta name="twitter:description" content="record">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://leliyliu.github.io/page/3/">
+
+
+
+
+
+  <title>禾声</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">禾声</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">in the arm of the angel, fly away</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/25/龙芯杯备战3/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/25/龙芯杯备战3/" itemprop="url">龙芯杯备战3</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-25T16:34:53+08:00">
+                2018-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本周总结：</p>
+<pre><code>这一周任务比较明确，主要是把数电的知识全部过一遍，然后学习verilog，并且开始了一些机组的学习，希望能从中有所收获。大体方向上都准备地较为不错，但是在看机组实验的手册的时候依旧出现了一些问题，还是不太清楚需要做些什么。
+</code></pre><hr>
+<h2 id="verilog-的学习"><a href="#verilog-的学习" class="headerlink" title="verilog 的学习"></a>verilog 的学习</h2><hr>
+<h3 id="语法要点"><a href="#语法要点" class="headerlink" title="语法要点"></a>语法要点</h3><ol>
+<li>always 里面赋值左边必须申明为reg</li>
+<li>assign表达式左边必须申明为wire</li>
+<li>阻塞赋值用&lt;=</li>
+<li>非阻塞赋值用=</li>
+</ol>
+<p>1) 边沿触发生成寄存器的时序逻辑<br>2) 电平触发条件完整，生成组合逻辑<br>3) 电平触发条件不完整，生成锁存器的时序逻辑</p>
+<p>结论：<br>    声明成reg,不一定得到寄存器<br>    未声明为reg，也可能得到寄存器</p>
+<h3 id="coding-要点"><a href="#coding-要点" class="headerlink" title="coding 要点"></a>coding 要点</h3><pre><code>·如果是边沿触发的逻辑 比如always@(posedge clk)，里面一律使用&lt;=赋值
+·如果是电平触发的逻辑，一律使用=赋值
+逻辑简单用assign语句；逻辑复杂，用always语句
+分支条件写完整，防止出现锁存器
+</code></pre><h3 id="系统任务与系统函数-task-or-function"><a href="#系统任务与系统函数-task-or-function" class="headerlink" title="系统任务与系统函数(task or function)"></a>系统任务与系统函数(task or function)</h3><pre><code>标准输出任务 $display等
+文件管理任务 $fopen等
+仿真控制任务 $monitor等
+时间函数 $timeformat等
+时间显示函数 $time等
+其他 $random等
+</code></pre><p>关于verilog的学习这一周主要还是看了不少代码，并对其进行了理解。通过对其进行注释，了解到了很多知识，关于注释的代码后续会传到github上。</p>
+<hr>
+<p>下周目标：</p>
+<pre><code>下一周主要的任务主要是关于机组的学习以及基于学习手册的学习，希望能通过这一方面的学习，尽量快速地入门。
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/23/Modern-Anglo-American-philosophy-translation-6/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/23/Modern-Anglo-American-philosophy-translation-6/" itemprop="url">Modern Anglo-American philosophy translation_6</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-23T23:26:10+08:00">
+                2018-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="a-The-Theory-of-Descriptions"><a href="#a-The-Theory-of-Descriptions" class="headerlink" title="a. The Theory of Descriptions"></a>a. The Theory of Descriptions</h3><blockquote>
+<p>Much of Russell’s exuberance over Moore’s realism had to do with its consequences for logic and mathematics. Like so many philosophers before him, Russell was attracted to the objective certainty of mathematical and logical truths. However, because Idealism taught that no proposition about a bit of reality in isolation could be true simpliciter, an apparently straightforward truth such as 2+2=4, or If a=b and b=c then a=c, was not so straightforward after all.</p>
+</blockquote>
+<p>&emsp;罗素超过的穆尔的实在论的方面的工作主要与他的逻辑和数学方面的努力相联系。与在他之前的许多哲学家相同，罗素被数学和逻辑客观的肯定性所吸引。然而，由于唯心主义言明，没有任何关于现实的命题能够绝对独立地正确，甚至像2+2=4，或如果a=b,b=c，那么a=c这样一些显然正确的真理都不能独立正确。</p>
+<blockquote>
+<p> Even worse, Idealism made such truths dependent upon their being thought or conceived. This follows from the doctrine of internal relations; for, on the natural assumption that knowledge is or involves a relation between a knower (subject) and something known (object), the doctrine implies that objects of knowledge are not independent of the subjects that know them. This left Idealism open to the charge of endorsing psychologism—the view that apparently objective truths are to be accounted for in terms of the operations of subjective cognitive or “psychological” faculties. Psychologism was common to nearly all versions of Kantian and post-Kantian Idealism (including British Idealism). It was also a common feature of thought in the British empirical tradition, from Hume to Mill (albeit with a naturalistic twist). Moore’s early realism allowed Russell to avoid psychologism and other aspects of Idealism that prevented treating logical and mathematical truths as absolutely true in themselves.</p>
+</blockquote>
+<p>&emsp;更糟糕的是，唯心主义说这些真理都取决于它们被思维的方式。这来自于有关内部联系的这一主张，表示为，在自然的猜想中，知识涉及到关于一个knower（主体）和一些被知道的东西（客体）的联系，这一主义暗示知识的客观性并不独立于我们所知的主体之外。这导致唯心主义开始承认心理主义——这一主义表明任何客观真理都取决于主观认识或者“心理”官能。心理主义者普遍上和康德与后康德的唯心主义（包括英国唯心主义）的所有类型都相似。这也是在从Hume 到Mill的英国经验论传统中的一个普遍特点。穆尔早期的实在论使得罗素可以避免心理主义或其它方面的唯心主义的干扰，而能保护逻辑和数学的真理作为一个绝对的真理。</p>
+<blockquote>
+<p>A crucial part of this early realism, however, was the object theory of meaning; and this had implications that Russell found unacceptable. On the object theory, the meaning of a sentence is the object or state of affairs to which it refers (this is one reason why Moore could identify ordinary objects as propositions or meanings; see Section 1). For instance, the sentence “That leaf is green” is meaningful in virtue of bearing a special relationship to the state of affairs it is about, namely, a certain leaf’s being green.</p>
+</blockquote>
+<p>&emsp;然而，早期实在论的关键的一个部分是关于意义的对象理论，但在这一方面中，罗素意识到有一些不可接受的暗示在其中。在客体理论中，一个语句的意义就是它所指的客体或事态（这就是为什么穆尔可以辨认出作为命题或意义的日常客体的一个原因）。例如，“树叶是绿色的”这个句子是有意义的，只是因为一个特殊的关系它所关乎的事态存在，更确切的说，存在一个特定的树的叶子是绿色的。</p>
+<blockquote>
+<p>This may seem plausible at first glance; problems emerge, however, when one recognizes that the class of meaningful sentences includes many that, from an empirical point of view, lack objects. Any statement referring to something that does not exist, such as a fictional character in a novel, will have this problem. A particularly interesting species of this genus is the negative existential statement—statements that express the denial of their subjects’ existence. For example, when we say “The golden mountain does not exist,” we seem to refer to a golden mountain—a nonexistent object—in the very act of denying its existence. But, on the object theory, if this sentence is to be meaningful, it must have an object to serve as its meaning. Thus it seems that the object theorist is faced with a dilemma: either give-up the object theory of meaning or postulate a realm of non-empirical objects that stand as the meanings of these apparently objectless sentences.</p>
+</blockquote>
+<p>&emsp;第一眼看起来这是合理的，然而，当一个人意识到在有意义的命题中包括了许多缺乏客体的经验的观点的时候，问题就出现了。任何一个指向不存在的事物的陈述，就像小说中的虚幻人物，就会因此而具有问题。这一类陈述中很有趣的一个就是否定存在命题，一个否定主观存在的命题。例如，当我们说“金山不存在”的时候，我们似乎在指金山这一不存在的客体来说明它的不存在。但是，在客观理论中，如果这个句子是有意义的，必定有一个客体来指代它的意义。因此，似乎客观理论陷入了一个两难的境地，要不放弃意义客观理论，要不假定一个非经验对象的领域，作为这些明显无对象的句子的意义。</p>
+<blockquote>
+<p>The Austrian philosopher Alexius Meinong took the latter horn of the dilemma, notoriously postulating a realm of non-existent objects. This alternative was too much for Russell. Instead, he found a way of going between the horns of the dilemma. His escape route was called the “theory of descriptions,” a bit of creative reasoning that the logician F. P. Ramsey called a “paradigm of philosophy,” and one which helped to stimulate extraordinary social momentum for the budding analytic movement. The theory of descriptions appears in Russell’s 1905 essay, “On Denoting,” which has become a central text in the analytic canon. There, Russell argues that “denoting phrases”—phrases that involve a noun preceded by “a,” “an,” “some,” “any,” “every,” “all,” or “the”—are incomplete symbols; that is, they have no meaning on their own, but only in the context of a complete sentence that expresses a proposition. Such sentences can be rephrased—analyzed in Moore’s sense of “analyzed”—into sentences that are meaningful and yet do not refer to anything nonexistent.</p>
+</blockquote>
+<p>&emsp;奥地利哲学家迈农采取了这个两难中的第二种解决方式，即一个被哲学家们所厌弃的关于不存在的客体的领域。这样的抉择超出了罗素能承受的范围。相反，他找到了一种跳出这个两难局面的方法。他跳出这个两难局面的方式被称作“摹状实体论”，由于其在推理上的一点创新性，逻辑学家F. P. Ramsey “哲学范式”，并且它能帮助极大地激励社会动力来推动分析运动。这种描述的理论出现在罗素1905年的文章“论指谓”，而这也成为了分析标准中的一个中心内容。在这本书中，罗素声明由’a’,’an’,’some’,’any’,’every’,’all’或’the’这些冠词所指的名词都是不完全的符号；即是说，他们本身是没有意义的，只是在一个表达命题的完整语句的语境中被理解。这些句子能够被理解并且有意义但他们不指向任何非存在——可以用穆尔的”分析“来对其进行分析。</p>
+<blockquote>
+<p>For instance, according to Russell, saying “The golden mountain does not exist” is really just a misleading way of saying “It is not the case that there is exactly one thing that is a mountain and is golden.” Thus analyzed, it becomes clear that the proposition does not refer to anything, but simply denies an existential claim. Since it does not refer to any “golden mountain,” it does not need a Meinongian object to provide it with meaning. In fact, taking the latter formulation to be the true logical form of the statement, Russell construes the original’s reference to a non-existent golden mountain as a matter of grammatical illusion. One dispels the illusion by making the grammatical form match the true logical form, and this is done through logical analysis. The idea that language could cast illusions that needed to be dispelled, some form of linguistic analysis was to be a prominent theme in analytic philosophy, both in its ideal language and ordinary language camps, through roughly 1960.</p>
+</blockquote>
+<p>&emsp;例如，根据罗素的说法，“金山不存在”事实上只是一种令人误解的关于“完全没有一个事物它既是山，又全是金”的说法。经过这样的分析，可以清晰地说这个命题不指向任何事物，而只是简单地拒绝了一个存在主张。由于它并不指向任何“金山”，那么也不需要一个迈农式的客体来提供它的意义。事实上，与其采用后一种方式在逻辑上也是正确的陈述形式，罗素建立了一种指向不存在的金山仅仅是一种语法上的误解的方式。一个消除这种误解的方式就是将语法形式转换为正确的逻辑形式，而这正是通过逻辑分析实现的。这种关于语言可能会导致误解的观点需要被清除，一些形式的语言分析在分析哲学这一主题下都是影响显著的，包括理想语言和日常语言阵营，在1960年左右。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/21/Modern-Anglo-American-philosophy-translation-5/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/21/Modern-Anglo-American-philosophy-translation-5/" itemprop="url">Modern Anglo-American philosophy translation_5</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-21T23:35:59+08:00">
+                2018-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>All of these cases exhibit what proved to be the most influential aspect of Moore’s philosophical work, namely his method of analysis, which many of his contemporaries took to be linguistic analysis. For instance, Norman Malcolm represents the standard view of Moore for much of the twentieth century when he says that “the essence of Moore’s technique of refuting philosophical statements consists in pointing out that these statements go against ordinary language” (Malcolm 1942, 349). In the same essay, he goes on to tie Moore’s entire philosophical legacy to his “linguistic method:”</p>
+</blockquote>
+<p>&emsp;上面所展示的这些例子是穆尔哲学工作中最具影响的方面，尤其是他的分析方法，被当时许多哲学家视作语言学分析。例如，Norman Malcolm 代表了二十世纪大多数人对于穆尔的标准看法，他说“穆尔的方法的本质在于通过指出违背了日常语言来驳斥哲学陈述。”在这篇文章啊中，他也把穆尔整个的哲学遗产归结为他的“语言学方法”。</p>
+<blockquote>
+<p>Moore’s great historical role consists in the fact that he has been perhaps the first philosopher to sense that any philosophical statement that violates ordinary language is false, and consistently to defend ordinary language against its philosophical violators. (Malcolm 1942, 368)</p>
+</blockquote>
+<p>&emsp;穆尔在哲学史上的伟大贡献都归结为他可能是第一个察觉到任何一个违反日常语言的哲学陈述都是错误的，并且需要坚持去捍卫日常语言而反对它的哲学反对者。</p>
+<blockquote>
+<p>Malcolm is right to note the novelty of Moore’s approach. Although previous philosophers occasionally had philosophized about language, and had, in their philosophizing, paid close attention to the way language was used, none had ever claimed that philosophizing itself was merely a matter of analyzing language. Of course, Moore did not make this claim either, but what Moore actually did as a philosopher seemed to make saying it superfluous—in practice, he seemed to be doing exactly what Malcolm said he was doing. Thus, though it took some time for the philosophical community to realize it, it eventually became clear that this new “linguistic method,” pioneered by Moore, constituted a radical break not only with the British Idealists but with the larger philosophical tradition itself. To put it generally, philosophy was traditionally understood as the practice of reasoning about the world.</p>
+</blockquote>
+<p>&emsp;Malcolm 正确地指出了穆尔的所提供的哲学路径的新颖之处。尽管过去也有过哲学家曾对语言进行过哲学的探讨，并且在他们的哲学论中，关注语言的使用方式，但没有人提出过哲学探讨本身就仅仅是对语言的分析。当然，穆尔也没有直接这样表述，但是穆尔作为一个哲学家所做的工作已经不证自明了——事实上，他似乎确实就是在做Malcolm所说的。因此，尽管哲学圈花费了一段时间才意识到这件事情，但被穆尔所首先提出的“语言学方法”作为一种哲学方法逐渐变得清晰，并且引起了一个不仅是从英国唯心主义，而甚至是传统哲学本身的巨大转变。或者更明确地说，哲学在传统意义上被理解为关于这个世界的理性的实践。</p>
+<blockquote>
+<p>Its goal was to give a logos—a rationally coherent account—of the world and its parts at various levels of granularity, but ultimately as a whole and at the most general level. There were other aspects of the project, too, of course, but this was the heart of it. With Moore, however, philosophy seemed to be recast as the practice of linguistic analysis applied to isolated issues. Thus, the rise of analytic philosophy, understood as the relatively continuous growth of a new philosophical school originating in Moore’s “linguistic turn,” was eventually recognized as being not just the emergence of another philosophical school, but as constituting a “revolution in philosophy” at large. (See Ayer et al. 1963 and Tugendhat 1982.)</p>
+</blockquote>
+<p>&emsp;它的目标是提出一个理性的——即在理性层面相互融贯——并且在不同层次都具有，但最终作为一个整体的世界。当然，传统哲学的研究也有其它的方面，但是这个目标是它的核心。但是在穆尔的工作中，起初哲学似乎被重铸成应用在孤立论题上的语言学分析的实践。因此，分析哲学的哲学地位的提高，被认为是一个起源于穆尔的“语言学转向”的相当具有连续性的一个新的哲学学派的成长，最终不仅被认为是一个新兴哲学学派的诞生，而是哲学史层面一个“哲学的革命”。</p>
+<h3 id="2-Russell-and-the-Early-Wittgenstein-Ideal-Language-and-Logical-Atomism"><a href="#2-Russell-and-the-Early-Wittgenstein-Ideal-Language-and-Logical-Atomism" class="headerlink" title="2. Russell and the Early Wittgenstein: Ideal Language and Logical Atomism"></a>2. Russell and the Early Wittgenstein: Ideal Language and Logical Atomism</h3><blockquote>
+<p>The second phase of analytic philosophy is charaterized by the turn to ideal language analysis and, along with it, logical atomism—a metaphysical system developed by Bertrand Russell and Ludwig Wittgenstein. Russell laid the essential groundwork for both in his pioneering work in formal logic, which is covered in Sections 2a and 2b. Though this work was done during the first phase of analytic philosophy (1900-1910), it colaesced into a system only toward the end of that period, as Russell and Whitehead completed their work on the monumental Principia Mathematica (Russell and Whitehead 1910-13), and as Russell began to work closely with Ludwig Wittgenstein.<br>&emsp;分析哲学的第二个阶段的标志性事件是理想语言分析的转向和逻辑原子主义——一个由罗素和维特根斯坦提出并发展的形而上学体系。罗素在我们将在2a,2b节涉及到的他的关于形式逻辑的工作中打下了必要的基础。尽管这部分工作是在分析哲学发展的第一阶段完成的，但是知道第一阶段的最后阶段——罗素和怀特海德完成了那部具有里程碑意义的作品数学原理之后，它才融合成一个体系，而在此之后，罗素开始和维特根斯坦一起合作。</p>
+<p>Wittgenstein seems to have been the sine qua non of the system. Russell was the first to use the term “logical atomism,” in a 1911 lecture to the French Philosophical Society. He was also the first to publicly provide a full-length, systematic treatment of it, in his 1918 lectures on “The Philosophy of Logical Atomism” (Russell 1918-19). However, despite the centrality of Russell’s logical work for the system, in the opening paragraph of these lectures Russell acknowedges that they “are very largely concerned with explaining certain ideas which I learnt from my friend and former pupil Ludwig Wittgenstein” (Russell 1918, 35). Wittgenstein’s own views are recorded in his TractatusLogico-Philosophicus. First published in 1921, the Tractatus proved to be the most influential piece written on logical atomism. Because of its influence, we shall pay special attention to the Tractatus when it comes to presenting logical atomism as a complete system in Section 2d.<br>&emsp;维特根斯坦是这个体系建立的不可或缺的一个人物。罗素第一次使用“逻辑原子论”这一说法是在法国哲学大会的演讲中。他也是第一个公开地，长篇地，系统地表述这个体系的人——在他1918年的“逻辑原子主义哲学”的演讲中。然而，尽管罗素的逻辑工作处在这个体系的中心地位，在这次演讲的开头，罗素也承认道“这个体系大部分的确定的知识都是来自于我的朋友和以前的学生，维特根斯坦”。维特根斯坦自己的观点被记录在他的逻辑哲学论中。第一版出版于1921年的逻辑哲学论被证明是关于逻辑原子主义的最有影响力的文章。因为它的影响力，我们将特别关注逻辑哲学论在2d节我们展现逻辑原子论的时候。</p>
+<p>Though Russell and Wittgenstein differed over some of the details of logical atomism, these disagreements can be ignored for present purposes. What mattered for the development of analytic philosophy on the whole was the emergence in the second decade of the twentieth century of a new view of reality tailored to fit recent developments in formal logic and the philosophical methodology connected to it, as discussed in Section 2b. This was the common core of the Russellian and Wittegensteinian versions of logical atomism; thus, blurring the lines between Russell and Wittgenstein actually enables us to maintain better focus on the emerging analytic tradition. It will also make convenient a brief word on Frege, to see why some have wanted to include him as a founder of analytic philosophy (Section 2c).<br>&emsp;尽管罗素和维特根斯坦在逻辑哲学论的一些细枝末节上有不同的意见，但是在展示他们的主张上，这些矛盾可以被忽略。总体上而言，分析哲学整体上最大的进步是在二十世纪第二个十年中所诞生的一种对于真实的新的符合形式逻辑和与之相关的哲学方法的发展的观点，这个将在2b节中被讨论。这是罗素主义者和维特根斯坦主义者逻辑原子论版本中共同的核心，因此，模糊罗素和维特根斯坦观点上的界限使我们能更好地专注于分析传统的出现。这里我们也将用一点简短的文字来讨论弗洛伊德，来看为什么一些人想要将他作为分析哲学的创始人之一。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/19/Modern-Anglo-American-philosophy-translation-4/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/19/Modern-Anglo-American-philosophy-translation-4/" itemprop="url">Modern Anglo-American philosophy translation_4</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-19T20:41:50+08:00">
+                2018-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Moore thought that to call common sense into question this way is perverse because the ordinary meaning of a common sense proposition is plain to all competent language-users. So, to question its meaning, and to suggest it has a different meaning, is disingenuous. Moreover, since the bounds of intelligibility seem to be fixed by the ordinary meanings of common sense proposition, the philosopher must accept them as starting points for philosophical reflection. Thus, the task of the philosopher is not to question the truth of common sense propositions, but to provide their correct analyses or explanations.</p>
+</blockquote>
+<p>&emsp;穆尔认为如果用这种方式将常识视作为可以讨论的问题是不正当的，因为这些命题的日常意义对于能够掌握语言的人来说都是显然的。因此，质疑这些命题的意义并且提出它们含有其它不同的意义，是毫无坦诚的意义的。因此，由于可理解的界限已经被日常命题的意义所确定，哲学家必须接受这些命题的意义并对此作出哲学上的反映。因此，哲学家的任务不是质疑这些日常表达的命题的真实性，而是提供正确的分析和解释。</p>
+<blockquote>
+<p>Moore’s use of the term “analysis” in this way is the source of the name “analytic philosophy.” Early on in analytic history, Moorean analysis was taken to be a matter of rephrasing some common sense proposition so as to yield greater insight into its already-clear and unquestionable meaning. For example, just as one elucidates the meaning of “brother” by saying a brother is a male sibling or by saying it means “male sibling,” so one might say that seeing a hand means experiencing a certain external object—which is exactly what Moore claims in his paper “Proof of an External World” (Moore 1939).</p>
+</blockquote>
+<p>&emsp;穆尔所使用的这个词“分析”就是分析哲学名称的来源。在分析哲学早期历史中，穆尔的分析方法被用作为改述一些日常表达的命题，来为了洞悉它本身希望表达的真实且逻辑正确，不容置疑的意义。例如，就像一个人将“兄弟”准确地表述为兄弟就是一个男性的兄弟姐妹，或者“male sibling”， 所以一个人可能会说”seeing a hand” （即指看到一个方面)意味着经验一个外观所见的客体，而这正是穆尔在他的论文中所宣称的“对表层世界的证明”。</p>
+<blockquote>
+<p>The argument of that essay runs as follows. “Here is one hand” is a common sense proposition with an ordinary meaning. Using it in accordance with that meaning, presenting the hand for inspection is sufficient proof that the proposition is true—that there is indeed a hand there. But a hand, according to the ordinary meaning of “hand,” is a material object, and a material object, according to the ordinary meaning of “material object,” is an external object, an object that isn’t just in our mind. Thus, since we can prove that there is a hand there, and since a hand is an external object, there is an external world, according to the ordinary meaning of “external world.”</p>
+</blockquote>
+<p>&emsp;这篇文章的论述如下：“这里有一只手”是一个具有日常意义的命题。 人们用这句话的意识是，将这只手伸出来给别人看是一个完全充分地对于这句话的证明——确实这里有一只手。但是一只手，根据日常的意义而言，是一个物质的实体，而物质的实体，根据传统的意义来看，是一个外在的客体，一个客体不存在于我们的头脑中的。 因此，因为我们可以证明这里确实有一只手，并且因为手是一个外在客体，那么这里必然有一个外在的世界，根据日常所指向的“外在世界”。</p>
+<blockquote>
+<p>These examples are from papers written in the second half of Moore’s career, but his “linguistic method” can be discerned much earlier, in works dating all the way back to the late 1800s—the period of his rebellion against Idealism. Even in Moore’s first influential paper, “The Nature of Judgment” (Moore 1899), he can be found paying very close attention to propositions and their meanings. In his celebrated paper, “The Refutation of Idealism” (Moore 1903b), Moore uses linguistic analysis to argue against the Idealist’s slogan Esseestpercipi (to be is to be perceived). </p>
+</blockquote>
+<p>&emsp;这些例子都取自于穆尔哲学生涯的第二段中期，但是他的“语言学方法”可以更早地被看到，甚至在他的19世纪晚期所写的论文中——那个他干开始反叛唯心主义的阶段。甚至在穆尔第一篇有影响力的论文中，都可以很明显地看出他十分关注命题和它们的意义。在他的成名作中，”The Refutation of Idealism”，穆尔就用了语言学分析的方法来驳斥唯心主义的口号“存在就是被感知”。</p>
+<blockquote>
+<p>Moore reads the slogan as a definition or, as he would later call it, an analysis: just as we say “bachelor” means “unmarried man,” so the Idealist says “to exist” means “to be cognized.” However, if these bits of language had the same meaning, Moore argues, it would be superfluous to assert that they were identical, just as it is superfluous to say “a bachelor is a bachelor.” The fact that the Idealist sees some need to assert the formula reveals that there is a difference in meanings of “to be” and “to be perceived,” and hence a difference in the corresponding phenomena as well.</p>
+</blockquote>
+<p>&emsp;穆尔解读这个口号为一个定义，或者他后来所称作的，一个分析：就像我们说“单身汉”意味着“未结婚的男子”一样。所以唯心主义者所说的“存在”意味着“被感知”，然而，如果这些语言上的表述有这样相同的意义，穆尔驳斥道，那么主张说它们是相同的是多余的，就像说“单身汉是单身汉”是多余的一样。事实上，唯心主义者看到为什么需要说明这个口号实际上是因为“存在”和“被感知”的意义不同的，因此在相应的现象中也有类似的不同。</p>
+<blockquote>
+<p>Moore’s most famous meaning-centered argument is perhaps the “open question argument” of his Principia Ethica (Moore 1903a). The open question argument purports to show that it is a mistake to define “good” in terms of anything other than itself. For any definition of good—“goodness is pleasure,” say—it makes sense to ask whether goodness really is pleasure (or whatever it has been identified with); thus, every attempt at definition leaves it an open question as to what good really is. This is so because every purported definition fails to capture the meaning of “good.”</p>
+</blockquote>
+<p>&emsp;穆尔最著名的以意义为中心的论证可能是在他的心理学原理中的“开放问题论证”。这个开放问题旨在展示在“good”的定义中，按照任何超过它的解释，都是有误的。对任何关于good的解释——“善就是愉快”的言论，它会自然而然地让人质疑到底什么是愉快（或者说愉快是如何被定义的），因此，任何尝试性的定义都会留下一个开放的问题，让人去思考到底什么是善（good）。这是因为每个旨在给出定义的尝试都没有成功捕捉住“善”的意义。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/18/龙芯杯备战2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/18/龙芯杯备战2/" itemprop="url">龙芯杯备战2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T23:14:03+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本周主要学习了MIPS的指令，和上周所规划的任务相差甚远，但是也学习到了一些东西，还要继续向前。</p>
+<h1 id="MIPS-learning"><a href="#MIPS-learning" class="headerlink" title="MIPS_learning"></a>MIPS_learning</h1><hr>
+<h2 id="直接上代码"><a href="#直接上代码" class="headerlink" title="直接上代码"></a>直接上代码</h2><figure class="highlight mips"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">.text</span>  <span class="comment">#指示的是代码段</span></span><br><span class="line">    <span class="meta">.global</span> main  <span class="comment"># 定义全局的变量</span></span><br><span class="line">    .ent main  <span class="comment">#refer to entry</span></span><br><span class="line"><span class="symbol">main:</span>   <span class="keyword">nop </span>  <span class="comment">#什么也不做，空耗一个周期</span></span><br><span class="line">        li $<span class="built_in">v0</span>,<span class="number">8</span>   <span class="comment">#li load immediate 装入立即数</span></span><br><span class="line">        <span class="keyword">jr </span>$<span class="built_in">ra</span>   <span class="comment">#jr jump register 跳转到寄存器保存的地址中</span></span><br><span class="line">        <span class="comment"># ra -&gt; return address </span></span><br><span class="line">        <span class="meta">.end</span> main</span><br></pre></td></tr></table></figure>
+<h2 id="linux-的一些操作指令"><a href="#linux-的一些操作指令" class="headerlink" title="linux 的一些操作指令"></a>linux 的一些操作指令</h2><p><br>1. mkdir (make directory) # 创建目录<br><br>2. cd （change directory） #更改目录（即进入目录）<br><br>3. vi first.s (打开一个为first.v 的文件)<br><br>4. ls (list) #列出当前目录的子目录<br><br>5. gcc -g -o first first.s  //由于gcc 无法直接编译mips文档，故改用mips-linux-gnu-gcc 来替代gcc<br><br>6. ./first(执行当前目录下的first文件) .(表示当前目录)  ..(父目录)<br><br>7. echo $? （返回结果）</p>
+<h3 id="关于MIPS编译环境的搭建："><a href="#关于MIPS编译环境的搭建：" class="headerlink" title="关于MIPS编译环境的搭建："></a>关于MIPS编译环境的搭建：</h3><p><br>1、在 /etc/apt/sources.list 文件末尾添加下面的更新源：</p>
+<pre><code>deb http://ftp.de.debian.org/debian squeeze main 
+deb http://www.emdebian.org/debian/ squeeze main
+</code></pre><p>2、执行命令安装： </p>
+<pre><code>sudo apt-get update 
+sudo apt-get install emdebian-archive-keyring 
+sudo apt-get install linux-libc-dev-mips-cross 
+sudo apt-get install libc6-mips-cross libc6-dev-mips-cross 
+sudo apt-get install gcc-mips-linux-gnu
+</code></pre><p>安装完毕，就可以通过mips-linux-gnu-gcc等命令编译在mips平台的可执行程序。</p>
+<p>3、验证方法：</p>
+<pre><code>运行命令
+
+    mips-linux-gnu-gcc  -dumpmachine
+
+如果得到如下结果，则证明已经安装成功
+
+    mips-linux-gnu
+</code></pre><p>进行编译时，使用指令mips-linux-gnu-gcc -g -o xxx xxx.s即可。<br><br>但是此时执行代码后无法对得到的可执行文件进行执行，百度很长一段时间后终于发现是因为我用的是ubuntu的64位机器，所以无法运行32位的程序，因此需要可以匹配的32位库。具体方法如下：</p>
+<p>1.确定有一个64位架构的内核：</p>
+<pre><code>dpkg --print-architecture
+</code></pre><p>此时，会提示：amd64，表明确实是一个64位架构内核<br><br>2.确认打开多架构支持功能:</p>
+<pre><code>dpkg --print-foreign-architectures
+</code></pre><p>若此时输出为：i386 则说明打开了此功能，否则</p>
+<pre><code>sudo dpkg --add-architecture i386 
+sudo apt -get update
+</code></pre><p>来打开此功能<br><br><br>3、检查拥有的库文件是否需要更新版本:</p>
+<pre><code>sudo apt-get dist-upgrade
+</code></pre><p><br>4.执行下面指令：</p>
+<pre><code>sudo apt install lib32ncursesw5 lib32ncursesw5-dev
+</code></pre><p>执行之后应该来说就没有问题，但是结果我的电脑还是没有办法成功进行动态链接，陷入绝望<br><br>最后，在查了很长时间后，尝试安装了其它的编译环境，都还是不行。究其原因，是因为经过编译后的.out文件无法形成动态链接，链接中出现了很多问题，而又没有解决办法<br><br>故，用最后一个方法，即不设置动态链接，全部改用静态，将原编译指令改为：</p>
+<pre><code>mips-linux-gnu-gcc -static -o xxx xxx.s 
+</code></pre><p>再次执行，通过,利用 echo $?查看结果也显示正确，终于完成。</p>
+<h4 id="用GDB（GNU-Debuger）调试器可以查看寄存器的内容："><a href="#用GDB（GNU-Debuger）调试器可以查看寄存器的内容：" class="headerlink" title="用GDB（GNU Debuger）调试器可以查看寄存器的内容："></a>用GDB（GNU Debuger）调试器可以查看寄存器的内容：</h4><pre><code>$ gdb add
+</code></pre><h4 id="常用gdb-命令"><a href="#常用gdb-命令" class="headerlink" title="常用gdb 命令"></a>常用gdb 命令</h4><hr>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:center">作用</th>
+<th style="text-align:right">简化记号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td style="text-align:center">启动程序</td>
+<td style="text-align:right">————</td>
+</tr>
+<tr>
+<td>stepi</td>
+<td style="text-align:center">单步执行</td>
+<td style="text-align:right">————</td>
+</tr>
+<tr>
+<td>continue</td>
+<td style="text-align:center">继续执行</td>
+<td style="text-align:right">c</td>
+</tr>
+<tr>
+<td>quit</td>
+<td style="text-align:center">退出</td>
+<td style="text-align:right">q</td>
+</tr>
+<tr>
+<td>info all-registers</td>
+<td style="text-align:center">查看所有寄存器</td>
+<td style="text-align:right">i all</td>
+</tr>
+<tr>
+<td>info registers</td>
+<td style="text-align:center">查看通用寄存器</td>
+<td style="text-align:right">i r</td>
+</tr>
+<tr>
+<td>info registers t0 t1</td>
+<td style="text-align:center">查看指定寄存器</td>
+<td style="text-align:right">i r t0 t1</td>
+</tr>
+<tr>
+<td>info float</td>
+<td style="text-align:center">查看浮点寄存器</td>
+<td style="text-align:right">i float</td>
+</tr>
+<tr>
+<td>list</td>
+<td style="text-align:center">显示源码</td>
+<td style="text-align:right">l</td>
+</tr>
+<tr>
+<td>disassemble</td>
+<td style="text-align:center">反汇编</td>
+<td style="text-align:right">disas</td>
+</tr>
+<tr>
+<td>step</td>
+<td style="text-align:center">执行一条源码</td>
+<td style="text-align:right">s </td>
+</tr>
+<tr>
+<td>stepi</td>
+<td style="text-align:center">执行一条指令</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h4 id="数据移动指令"><a href="#数据移动指令" class="headerlink" title="数据移动指令"></a>数据移动指令</h4><pre><code>move $12 $13
+</code></pre><p>指令集中利用add也可以达到此功能</p>
+<pre><code>add $12 $13 ,0
+</code></pre><p>hi,lo 寄存器<br><figure class="highlight mips"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mfhi </span>$<span class="built_in">t0</span>   <span class="comment"># move from hi to $t0</span></span><br><span class="line"><span class="keyword">mflo </span>$<span class="built_in">t1</span>   <span class="comment"># move from lo to $t1</span></span><br><span class="line"><span class="keyword">mthi </span>$<span class="built_in">t0</span>    <span class="comment"># move $t0 to hi</span></span><br><span class="line"><span class="keyword">mtlo </span>$<span class="built_in">t1</span>    <span class="comment"># move $t1 to lo</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th style="text-align:right">位数</th>
+<th style="text-align:center">字节数</th>
+<th>记号</th>
+<th style="text-align:center">指令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td style="text-align:right">8</td>
+<td style="text-align:center">1</td>
+<td>b</td>
+<td style="text-align:center">lb # load byte</td>
+</tr>
+<tr>
+<td>halfworld</td>
+<td style="text-align:right">16</td>
+<td style="text-align:center">2</td>
+<td>h</td>
+<td style="text-align:center">lh # load halfbyte</td>
+</tr>
+<tr>
+<td>word</td>
+<td style="text-align:right">32</td>
+<td style="text-align:center">4</td>
+<td>w</td>
+<td style="text-align:center">lw # load word</td>
+</tr>
+<tr>
+<td>doubleworld</td>
+<td style="text-align:right">64</td>
+<td style="text-align:center">8</td>
+<td>d</td>
+<td style="text-align:center">ld # load doubleword</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><figure class="highlight mips"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">addi </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>          <span class="comment">#i -&gt; immediate</span></span><br><span class="line"><span class="keyword">addu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">addiu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>         <span class="comment">#u-&gt; unsigned </span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">subi </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>          <span class="comment">#i -&gt; immediate</span></span><br><span class="line"><span class="keyword">subu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,$<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">subiu </span>$<span class="built_in">t2</span>,$<span class="built_in">t1</span>,<span class="number">8</span>         <span class="comment">#u-&gt; unsigned </span></span><br><span class="line"><span class="comment">#dsub,dsubu  #(for 64 bits(doubleword))</span></span><br></pre></td></tr></table></figure>
+<p>同理：对于乘除法&emsp;&emsp;有:  </p>
+<pre><code>mul , mult , dmult , dmultu
+div , divu , ddiv , ddivu    
+</code></pre><p>用gdb 调试 core dump 文件： </p>
+<pre><code>$coredumpclt gdb
+</code></pre><h3 id="下周的规划："><a href="#下周的规划：" class="headerlink" title="下周的规划："></a>下周的规划：</h3><pre><code>下周的主要学习方向是verilog和计算机组成原理中有关流水线的知识，同时，还是要继续复现vivado 的一些实验结果，争取能尽快赶上进度，同时，也要学习MIPS的指令。
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/18/Modern-Anglo-American-philosophy-translation-3/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/18/Modern-Anglo-American-philosophy-translation-3/" itemprop="url">Modern Anglo-American philosophy translation_3</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T11:44:43+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Analytic philosophy began when Moore and then Russell started to defend a thoroughgoing realism about what Moore called the “common sense” or “ordinary” view of the world. This involved a lush metaphysical pluralism, the belief that there are many things that exist simpliciter. </p>
+</blockquote>
+<p>&emsp;分析哲学是以穆尔和罗素开始为被穆尔称作是对常识关注的世界观的一种完全的实在论做辩护为开端。它包括了丰富的形而上学多元论的色彩，确信有许多客体是绝对存在的。</p>
+<blockquote>
+<p>It was not this pluralism, however, nor the content of any of his philosophical views, that inspired the analytic movement. Instead, it was the manner and idiom of Moore’s philosophizing. First, Moore rejected system-building or making grand syntheses of his views, preferring to focus on narrowly defined philosophical problems held in isolation. </p>
+</blockquote>
+<p>&emsp;然而，并不是这种多元论，或是任何穆尔的哲学观点，激发了这场分析哲学的大运动，而是穆尔这种思考哲学的方式和看法真正引起了改变。第一，穆尔反对哲学体系的搭建或对它的观点作广泛地综合，而更倾向于关注一些孤立的可容思考的切入点。</p>
+<blockquote>
+<p>Second, when Moore articulated his realism, he did so in the idiom of “propositions” and “meanings.” There is a noteworthy ambiguity as to whether these are linguistic items or mental ones.</p>
+</blockquote>
+<p>&emsp;第二，当穆尔在清晰地表达他的实在论观点时，他依照了一种“命题”和“意义”的方式来进行说明。显著地看到，当论及是否有语言学或精神上的实质时，其是含混不清的。</p>
+<blockquote>
+<p>This terminology is further ambiguous in Moore’s case, for two reasons. First, his views about propositions are highly similar to a view standard in Austro-German philosophy from Bolzano and Lotze to Husserl according to which “propositions” and “meanings” have an Ideal existence—the kind of existence traditionally attributed to Platonic Forms. It is likely that Moore got the idea from reading in that tradition (cf. Bell 1999, Willard 1984).</p>
+</blockquote>
+<p>&emsp;在穆尔的实例中，由于两个原因，这个术语是相当含混不清的。其一，他的关于命题的观点和从博尔扎诺和洛策到胡塞尔的哲学观点高度相似，由于穆尔所提出的“命题”和“意义”有一个唯心主义的存在方式，在传统上倾向于柏拉图主义的形式。有可能穆尔正是通过阅读古籍才得到了这一观点。</p>
+<blockquote>
+<p>Second, despite strong similarities with the Austro-German view, it is clear that, in Moore’s early thought, “propositions” and “meanings” are primarily neither Ideal nor mental nor linguistic, but real in the sense of “thing-like.”</p>
+</blockquote>
+<p>&emsp;其二，尽管与德奥地区的哲学观点十分相似，可以很清楚地看到，在穆尔早期的想法中， “命题”和“意义”从根本上而言既不是唯心主义的，也不是语言学的，而是与经验实存相似的。</p>
+<blockquote>
+<p>For Moore and the early Russell, propositions or meanings were “identical” to ordinary objects—tables, cats, people. For more on this peculiar view, see the article on Moore, section 2b.</p>
+</blockquote>
+<p>&emsp;对于穆尔和早期的罗素而言，命题或意义与日常客体——像桌子，猫，人是相同的存在。如果想在这一块知道地更多，请看2b节，有关穆尔的文段。</p>
+<blockquote>
+<p>The deep metaphysical complexity attaching to Moore’s view was largely overlooked or ignored by his younger contemporaries, who were attracted to the form of his philosophizing rather than to its content. Taking the linguistic aspect of “propositions” and “meanings” to be paramount, they saw Moore as endorsing a linguistic approach to philosophy.</p>
+</blockquote>
+<p>&emsp;穆尔观点中深藏的形而上学复杂性大大地被他的年轻的同伴们所忽视，而这些人更重视他的哲学方式而不是他观点中显现出的内容。他们将“命题”和“意义”推为最高的准则，并且认为穆尔认可将语言学的方法应用到哲学中。</p>
+<blockquote>
+<p>This along with his penchant for attending to isolated philosophical problems rather than constructing a grand system, gave rise to the notion that he had rebelled not merely against British Idealism but against traditional philosophy on the grand scale.</p>
+</blockquote>
+<p>&emsp;因为他喜欢研究孤立的哲学问题而不是构建一个整体的体系，他也凭借此提出他用来反抗英国唯心主义甚至是传统哲学的概念。</p>
+<blockquote>
+<p>Though Moore was later to object that there was nothing especially linguistic about it (see Moore 1942b), the linguistic conception of Moore’s method was far from baseless.</p>
+</blockquote>
+<p>&emsp;尽管穆尔后来反对除了语言没有任何有意义的这种说法，穆尔方法中的语言学概念也不是毫无根据的。</p>
+<blockquote>
+<p>For instance, in a famous paper called “A Defense of Common Sense” (Moore 1925), Moore seems to argue that the common sense view of the world is built into the terms of our ordinary language, so that if some philosopher wants to say that some common sense belief is false, he thereby disqualifies the very medium in which he expresses himself, and so speaks either equivocally or nonsensically.</p>
+</blockquote>
+<p>&emsp;例如，在一篇著名的论文“A Defense of Common Sense” 中，穆尔似乎表明说我们日常经验中的世界是建立在我们日常语言的表达中的，所以如果哲学家试图言说某些常识是在逻辑上错误的，那么他即在取消自己表达的资格，因此言说本身要不就是可疑的，或者毫无意义的。</p>
+<blockquote>
+<p>His case begins with the observation that we know many things despite the fact that we do not know how we know them. Among these “beliefs of common sense,” as he calls them, are such propositions as “There exists at present a living human body, which is my body,”</p>
+</blockquote>
+<p>&emsp;他所举的例子是我们知道我们所知道的，但是我们不知道如何知道我们不知道的事实。在他所称为的这种”beliefs of common sense”中，就像一个命题说“现在这里存在一个活的人体，就是我的人体”一样。</p>
+<blockquote>
+<p>“Ever since it [this body] was born, it has been either in contact with or not far from the surface of the earth,” and “I have often perceived both body and other things which formed part of its environment, including other human bodies” (Moore 1925; in Moore 1959: 33). We can call these common sense propositions.</p>
+</blockquote>
+<p>&emsp;“自从这个人体诞生以来，它就没有远离于地球，而是与之产生联系。”并且我经常感知到我的身体和其他一些构成它的环境的客体，包括其他人的身体”。我们将其称之为常识命题。</p>
+<blockquote>
+<p>Moore argues that each common sense proposition has an “ordinary meaning” that specifies exactly what it is that one knows when one knows that proposition to be true. This “ordinary meaning” is perfectly clear to most everyone, except for some skeptical philosophers who<br>seem to think that [for example] the question “Do you believe that the earth has existed for many years past?” is not a plain question, such as should be met either by a plain “Yes” or “No,” or by a plain “I can’t make up my mind,” but is the sort of question which can be properly met by: “It all depends on what you mean by ‘the earth’ and ‘exists’ and ‘years’….” (Moore 1925; in 1959: 36)</p>
+</blockquote>
+<p>&emsp;穆尔认为，每一个常识命题都有它的“常识意义”，这个意义只有当一个人意识到这个命题是真的时候才能真正明白。这些常识意义被大多数人清晰地理解，除了一些怀疑论哲学家，他们似乎认为[例如]这些问题“你相信地球已经存在了很多年？”不是一个清楚的问题，而这些问题本可以通过简单地回答“是”与“否”或“不确定”来解决，但他们认为这个问题应该正确地被解答为“这个问题存在的意义在于’地球‘的意义，’存在‘的意义以及’许多年‘的意义的解答”。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/17/Modern-Anglo-American-philosophy-translation-2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/17/Modern-Anglo-American-philosophy-translation-2/" itemprop="url">Modern Anglo-American philosophy translation_2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-17T12:09:56+08:00">
+                2018-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Even in its earlier phases, analytic philosophy was difficult to define in terms of its intrinsic features or fundamental philosophical commitments. Consequently, it has always relied on contrasts with other approaches to philosophy—especially approaches to which it found itself fundamentally opposed—to help clarify its own nature. Initially, it was opposed to British Idealism, and then to “traditional philosophy” at large. </p>
+</blockquote>
+<p><br>&emsp; 即使是在分析哲学的早期阶段，其也很难用本质的特征和其它基本的哲学要素来定义。因此，它依赖于和其他哲学方式，尤其是哪些它所主张反对的哲学方式来形成对立，并以此来说明分析哲学本质的特点。起初，它反对的是英国唯心主义，然后扩大到反对传统哲学研究（即形而上学）</p>
+<blockquote>
+<p>Later, it found itself opposed both to classical Phenomenology (for example, Husserl) and its offspring, such as Existentialism (Sartre, Camus, and so forth) and also “Continental”’ or “Postmodern” philosophy (Heidegger, Foucault and Derrida). Though classical Pragmatism bears some similarity to early analytic philosophy, especially in the work of C. S. Peirce and C. I. Lewis, the pragmatists are usually understood as constituting a separate tradition or school.</p>
+</blockquote>
+<p><br>&emsp;之后，分析哲学不但反对传统现象学（例如，胡塞尔）并且它的后继学说，例如存在主义（萨特，加缪等等）和“欧陆哲学”或者“后现代哲学”（海德格尔， 傅科，德里达)。尽管传统的实用主义哲学在某些方面和早期的分析哲学较为相似，尤其是皮尔斯和刘易斯所作的工作中，但实用主义者通常被理解为一个分离于传统哲学或经院哲学之外的组织。</p>
+<h3 id="1-The-Revolution-of-Moore-and-Russell-Cambridge-Realism-and-The-Linguistic-Turn"><a href="#1-The-Revolution-of-Moore-and-Russell-Cambridge-Realism-and-The-Linguistic-Turn" class="headerlink" title="1. The Revolution of Moore and Russell: Cambridge Realism and The Linguistic Turn"></a>1. The Revolution of Moore and Russell: Cambridge Realism and The Linguistic Turn</h3><blockquote>
+<p>“It was towards the end of 1898,” wrote Bertrand Russell,<br>that Moore and I rebelled against both Kant and Hegel. Moore led the way, but I followed closely in his footsteps…. I felt a great liberation, as if I had escaped from a hot house onto a windswept headland. In the first exuberance of liberation, I became a naïve realist and rejoiced in the thought that grass really is green. (Russell 1959, 22)</p>
+</blockquote>
+<p><br>&emsp;罗素回忆，“那是1898年的年末，穆尔和我开始反对康德和黑格尔的哲学观点。穆尔开创了这一新的方向，并且我紧随他的步伐，我感到完全地解放，就像我刚从一个温暖的屋子中逃出到一个暴露在风雨中的山岬。起初，由于心中洋溢着自由的喜悦，我成为了一个朴素的现实主义者，并且开心地认为草真的是绿的（暗示我们所见的即为真实，标准的现实主义者的看法）（罗素，1959,22）</p>
+<blockquote>
+<p>This important event in Russell’s own intellectual history turned out to be decisive for the history of twentieth-century philosophy as a whole; for it was this revolutionary break with British Idealism—then the most influential school of philosophical thought in the British universities—that birthed analytic philosophy and set it on the path to supplanting both Idealism and philosophy as traditionally conceived and practiced.</p>
+</blockquote>
+<p><br>&emsp;这个发生于罗素个人发展历史中的重要事件也成为了整个二十世纪哲学史上的关键时刻。由于它是一个具有革命性的节点——反对英国唯心主义（最有影响力的哲学学派在英国大学中）——然后诞生出了分析哲学并且指出了一条代替唯心主义和传统哲学的新的道路。</p>
+<blockquote>
+<p>To understand Russell’s elation at the rebellion, one needs to know something about him and also something about British Idealism. Let’s begin with the latter.<br><br>&emsp;为了理解罗素为何对于这次解放如此兴奋，我们需要了解罗素本人以及一些关于英国唯心主义的知识。所以让我们从下面开始吧。</p>
+<p>At the end of the 19th century, F.H. Bradley, Bernard Bosanquet, and J.M.E. McTaggart were the leading British Idealists. They claimed that the world, although it naively appears to us to be a collection of discrete objects (this bird, that table, the earth and the sun, and so forth), is really a single indivisible whole whose nature is mental, or spiritual, or Ideal rather than material. </p>
+</blockquote>
+<p><br>&emsp;在十九世纪的末端， F.H. Bradley, Bernard Bosanquet, and J.M.E. McTaggart是英国唯心主义的主要领导人物。他们声称这个世界，尽管从表面上呈现给我们的是一种离散的物体的集合，实际上是一个本质为精神，或者心灵而不是物质上的整体。</p>
+<blockquote>
+<p>Thus, idealism was a brand of metaphysical monism, but not a form of materialism, the other leading form of metaphysical monism. It was also a form of what we would now call anti-realism, since it claimed that the world of naïve or ordinary experience is something of an illusion. Their claim was not that the objects of ordinary experience do not exist, but that they are not, as we normally take them to be, discrete. </p>
+</blockquote>
+<p><br>&emsp;因此，唯心主义实际上是形而上学一元论的一种表现形式，而不是形而上学一元论的另一种唯物主义的形式。同时，它也是一种反实在论的表现形式，因为他们声称关于日常或朴素的经验完全是一种错觉。他们声称，并不是我们日常所经验到的这些物质不存在，而是他们不是以我们所认为的离散的方式而存在。</p>
+<blockquote>
+<p>Instead, every object exists and is what it is at least partly in virtue of the relations it bears to other things—more precisely, to all other things. This was called the doctrine of internal relations. Since, on this view, everything that exists does so only in virtue of its relations to everything else, it is misleading to say of any one thing that it exists simpliciter. The only thing that exists simpliciter is the whole—the entire network of necessarily related objects. </p>
+</blockquote>
+<p><br>&emsp;相反地，每种物体都存在，并且是以一种和其它物质至少部分相联系的方式而存在，或者更确切的说，是与每一种其它的物体相联系。因此，以这种观点来看，每个物体都是因和其它所有物体所相联系而存在，故如果说，任何一个物体绝对地存在，那么必然是一种误解。唯一绝对存在的事物就是整体，整个必要事物相联系的关系。</p>
+<blockquote>
+<p>Correspondingly, the Idealists believed that no statement about some isolated object could be true simpliciter, since, on their view, to speak of an object in isolation would be to ignore the greater part of the truth about it, namely, its relations to everything else.</p>
+</blockquote>
+<p><br>&emsp;因此，唯心主义者认为，任何关于一些孤立物体的论述都不能绝对地正确，因此，从他们的角度来看，如果单独言说一个孤立的物体，将会错过绝大部分有关于此的</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/15/Modern-Anglo-American-philosophy-translation-1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/15/Modern-Anglo-American-philosophy-translation-1/" itemprop="url">Modern Anglo-American philosophy translation_1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-15T22:53:12+08:00">
+                2018-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Modern-Anglo-American-philosophy-translation"><a href="#Modern-Anglo-American-philosophy-translation" class="headerlink" title="Modern Anglo-American philosophy translation"></a>Modern Anglo-American philosophy translation</h1><p>标签（空格分隔）： Philosophy_learning </p>
+<hr>
+<p>在这里我尝试对Stanford Encyclopedia of Philosophy 中的Analytic Philosophy 部分作一个翻译，来增强我对分析哲学的理解，同时也是一个小结吧，希望每周能更新4-5次</p>
+<h2 id="Analytic-Philosophy"><a href="#Analytic-Philosophy" class="headerlink" title="Analytic Philosophy"></a>Analytic Philosophy</h2><blockquote>
+<p>The school of analytic philosophy has dominated academic philosophy in various regions, most notably Great Britain and the United States, since the early twentieth century. It originated around the turn of the twentieth century as G. E. Moore and Bertrand Russell broke away from what was then the dominant school in the British universities, Absolute Idealism. Many would also include GottlobFrege as a founder of analytic philosophy in the late 19th century, and this controversial issue is discussed in section 2c. </p>
+</blockquote>
+<p>&emsp; 二十世纪早期以来，分析哲学学派在多方面占据了哲学学术研究的主导地位，尤其是在英美两国。穆尔和罗素在二十世纪初脱离了当时在英国经院中处于统治地位的绝对唯心主义，开创了分析哲学。许多人也将弗洛伊德作为分析哲学在十九世纪末的创始人之一，这个具有争议的问题将在2c中进行讨论。</p>
+<blockquote>
+<p>When Moore and Russell articulated their alternative to Idealism, they used a linguistic idiom, frequently basing their arguments on the “meanings” of terms and propositions. Additionally, Russell believed that the grammar of natural language often is philosophically misleading, and that the way to dispel the illusion is to re-express propositions in the ideal formal language of symbolic logic, thereby revealing their true logical form. </p>
+</blockquote>
+<p>&emsp;当穆尔和罗素从理想主义转向的时候，他们运用了一种语言学的方式，即他们经常使用的关于论题的意义的讨论，来指出他们新的研究方向。除此之外，罗素认为自然语言的语法在哲学层面通常会误导他人，而消解这种误解的方式就是通过那些可以揭示实际论点的逻辑形式的逻辑符号所规定的理想语言来重新表述论点本身。</p>
+<blockquote>
+<p>Because of this emphasis on language, analytic philosophy was widely, though perhaps mistakenly, taken to involve a turn toward language as the subject matter of philosophy, and it was taken to involve an accompanying methodological turn toward linguistic analysis. Thus, on the traditional view, analytic philosophy was born in this linguistic turn. The linguistic conception of philosophy was rightly seen as novel in the history of philosophy. For this reason analytic philosophy is reputed to have originated in a philosophical revolution on the grand scale—not merely in a revolt against British Idealism, but against traditional philosophy on the whole.</p>
+</blockquote>
+<p>&emsp;由于对语言的强调，分析哲学被广泛但可能错误地认为是哲学的语言性转向的参与者，同时也是语言学分析方法转向的参与者。因此，以传统的观点看，分析哲学诞生于语言学转向。在哲学漫长的历史进程中，语言学的概念才刚开始兴起。由于这个原因，分析哲学被认为是在整个哲学研究方面发起了一项完全的革命，它不仅仅是对于英国唯心主义的反叛，而是对整个传统哲学的转向。</p>
+<blockquote>
+<p>Analytic philosophy underwent several internal micro-revolutions that divide its history into five phases. The first phase runs approximately from 1900 to 1910. It is characterized by the quasi-Platonic form of realism initially endorsed by Moore and Russell as an alternative to Idealism. Their realism was expressed and defended in the idiom of “propositions” and “meanings,” so it was taken to involve a turn toward language. </p>
+</blockquote>
+<p>&emsp;在分析哲学的发展历史中，由于其内部小的革命，可以分为五个阶段。第一阶段是从1900年到1910年。它的标志是由穆尔和罗素为发动对唯心主义转向而提出的准柏拉图形式实在论。他们所提出的实在论观点以“论题”和“意义”的表达为核心，所以它也涉及到了语言学的转向。</p>
+<blockquote>
+<p>But its other significant feature is its turn away from the method of doing philosophy by proposing grand systems or broad syntheses and its turn toward the method of offering narrowly focused discussions that probe a specific, isolated issue with precision and attention to detail. By 1910, both Moore and Russell had abandoned their propositional realism—Moore in favor of a realistic philosophy of common sense, Russell in favor of a view he developed with Ludwig Wittgenstein called logical atomism. </p>
+</blockquote>
+<p>&emsp;但是他们所提出的实在论的其他的显著特点在于它指出了一种对于哲学研究方法上的改变，即不再通过提出宏大的系统或广泛的综合来进行研究，而是特别地着眼于一个特定的，孤立的论点和问题。到了1910年，穆尔和罗素都抛弃了他们所提出的这一实在论，并在此之后，穆尔支持并着眼于对于哲学日常语言的研究，而罗素则开始对他和维特根斯坦一同提出的逻辑原子论的研究。</p>
+<blockquote>
+<p>The turn to logical atomism and to ideal-language analysis characterizes the second phase of analytic philosophy, approximately 1910-1930. The third phase, approximately 1930-1945, is characterized by the rise of logical positivism, a view developed by the members of the Vienna Circle and popularized by the British philosopher A. J. Ayer. </p>
+</blockquote>
+<p>&emsp;发生于1910到1930期间的这样一次关于逻辑原子论和理想语言分析的转向，标志着分析哲学的第二阶段的诞生。而分析哲学的第三个阶段，出现在1930-1945年前后。它的标志是由维也纳学派所提出和发展，并由英国哲学家A. J. Ayer(艾耶尔)所推广的逻辑实证主义的兴起。</p>
+<blockquote>
+<p>The fourth phase, approximately 1945-1965, is characterized by the turn to ordinary-language analysis, developed in various ways by the Cambridge philosophers Ludwig Wittgenstein and John Wisdom, and the Oxford </p>
+</blockquote>
+<p>philosophers Gilbert Ryle, John Austin, Peter Strawson, and Paul Grice.<br>&emsp;第四个阶段，发生于1945-1965年前后，其主要标志是由剑桥哲学家维特根斯坦、John Wisdom(威兹德姆)和牛津大学的哲学家 Gilbert Ryle, John Austin, Peter Strawson, and Paul Grice从多方面提出的日常语言分析的转向。</p>
+<blockquote>
+<p>During the 1960s, criticism from within and without caused the analytic movement to abandon its linguistic form. Linguistic philosophy gave way to the philosophy of language, the philosophy of language gave way to metaphysics, and this gave way to a variety of philosophical sub-disciplines. Thus the fifth phase, beginning in the mid 1960s and continuing beyond the end of the twentieth century, is characterized by eclecticism or pluralism.</p>
+</blockquote>
+<p>&emsp;在二十世纪六十年代，由于来自内部和外部的批评，分析哲学运动放弃了它的语言学形式。语言哲学让位于哲学语言，而哲学语言又继续让位于对于形而上学的研究，而这进一步引起了有关哲学的多种类型的分支学科的兴起。因此，第五阶段，诞生于二十世纪六十年代中期，并且持续到二十世纪末，其主要标志是折衷主义和多元主义。</p>
+<blockquote>
+<p>This post-linguistic analytic philosophy cannot be defined in terms of a common set of philosophical views or interests, but it can be loosely characterized in terms of its style, which tends to emphasize precision and thoroughness about a narrow topic and to deemphasize the imprecise or cavalier discussion of broad topics.</p>
+</blockquote>
+<p>&emsp;这个后语言学分析哲学不能按照传统的哲学观点来进行解释和考察，但是从宽泛的角度来进行理解，其倾向为强调准确和完全地对一个特定的哲学论题进行研究，而不是从宽泛的角度对一个宏大的哲学问题进行探讨。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/12/philosophy-of-science1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/12/philosophy-of-science1/" itemprop="url">Philosophy of Science mid_term review</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-12T23:33:18+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Philosophy-of-Science-mid-term-review-1"><a href="#Philosophy-of-Science-mid-term-review-1" class="headerlink" title="Philosophy of Science mid_term review_1"></a>Philosophy of Science mid_term review_1</h1><p>标签（空格分隔）： Philosophy_learning </p>
+<hr>
+<h2 id="CHAPTER-1"><a href="#CHAPTER-1" class="headerlink" title="CHAPTER 1"></a>CHAPTER 1</h2><h3 id="a-widely-held-commonsense-view-of-science"><a href="#a-widely-held-commonsense-view-of-science" class="headerlink" title="a widely held commonsense view of science"></a>a widely held commonsense view of science</h3><p>“Science is dereved from the facts” is a slogan (or commonsense) most people hold. but actually it’s not always true.<br><br>&emsp;eg1: Galileo’s first trial of strength is tested in the leaning tower. He prove that the axiom of Aristotle is wrong.<br><br>&emsp; An influential claim is that, as a matter of historical fact, modern science was born in the early seventeenth century when the strategy of taking the facts of observation seriously as the basis for science was first seriously adopted.  </p>
+<p><font color="green">three components:</font><br><br>(a)Facts are directly given to careful, unprejudiced observers via the senses<br><br>(b)Facts are prior to and independent of theory<br><br>(c)Facts constitute a firm and reliable foundation for scientific knowledge</p>
+<h3 id="Seeing-is-believing"><a href="#Seeing-is-believing" class="headerlink" title="Seeing is believing"></a>Seeing is believing</h3><p>this statement is wrong because that we human beings see things using eyes, but our information got by eye is not influenced by our eyesight, but our brain</p>
+<h3 id="Visual-experiences-not-determined-solely-by-the-object-viewed"><a href="#Visual-experiences-not-determined-solely-by-the-object-viewed" class="headerlink" title="Visual experiences not determined solely by the object viewed"></a>Visual experiences not determined solely by the object viewed</h3><p><br>&emsp;eg1: a picture showed in the book that we can see the picture as a staircase with the upper surface of the stairs visible. But we can also see it in another way. even some African people can’t imagine a three-dimensional object like this.<br><br>&emsp;It would seem that there is a sense in which what an observer sees is affected by his or her past experience.<br><br>&emsp;eg2:a medical student attending a course in the X-ray diagnosis of pulmonary diseases. At first, he can’t see what professors talk about. but after a long time study, he can focus on the difference of different picture.<br><br>&emsp;The experienced and skilled observer does not have preceptual experiences identical to those of the untrained novice when the two confront the same situation.<br><br>&emsp;<font color="red">summary:</font> We cannot see just what we like. However, although the images on our retinas form part of the cause of what we see, another very important part of the cause is the inner state of our minds or brains, which will itself depend on our cultural upbringing, our knowledge and our expecatations, and will not be determined solely by the physical properties of our eyes and the scene observed.</p>
+<h3 id="Observable-facts-expressed-as-statements"><a href="#Observable-facts-expressed-as-statements" class="headerlink" title="Observable facts expressed as statements"></a>Observable facts expressed as statements</h3><p>As well as distinguishing facts, understood as statements, from the states of affairs described by those statements, it is also clearly necessary to distinguish statements of facts from the preceptions that might occasion the acceptance of those statements as facts.<br><br>&emsp;eg:try to know how children learn what apple is.<br><br>&emsp;<font color="red">summary:</font>Thus, the recording of observable facts requires more than the reception of the stimuli, in the form of light rays ,that impinge on the eye. It requires the knowledge of the appropriate conceptual scheme and how to apply it.</p>
+<h3 id="Why-should-facts-precede-theory"><a href="#Why-should-facts-precede-theory" class="headerlink" title="Why should facts precede theory?"></a>Why should facts precede theory?</h3><p><font color="red">summary:</font>The idea that scientific knowledge should be based on facts established by observation need not be undermined, then, by the acknowledgment that the search for and formulation of those facts are knowledge-dependent.</p>
+<h3 id="The-fallibility-of-observation-statements"><a href="#The-fallibility-of-observation-statements" class="headerlink" title="The fallibility of observation statements"></a>The fallibility of observation statements</h3><p>&emsp;eg:the earth is stationary was a fact confirmed by observation. After alll, one cannot see or feel it move,and if we jump in the air, the earth does not spin away beneath us.<br><br>&emsp; eg: the sizes of the planets Venus and Mars as viewed from earth.<br><br>&emsp;<font color="red">summary:</font>Both kinds of difficulyt suggest that maybe the observable basis for science is not as straightforward and secure as is widely and traditionally supposed.</p>
+<h2 id="CHAPTER-2-Observation-as-practical-intervention"><a href="#CHAPTER-2-Observation-as-practical-intervention" class="headerlink" title="CHAPTER 2 Observation as practical intervention"></a>CHAPTER 2 Observation as practical intervention</h2><h3 id="Observation-passive-and-private-or-active-and-public"><a href="#Observation-passive-and-private-or-active-and-public" class="headerlink" title="Observation: passive and private or active and public?"></a>Observation: passive and private or active and public?</h3><p>&emsp;eg:When scientists such as Robert Hooke and Henry Power used the microscope to look at small insects such as flies and ants, they often disagreed about the observable facts, at least initially.<br><br>&emsp;<font color="red">summary:</font>The point that action can be taken to explore the adequacy of claims put forward as observable facts has the consequence that subjective aspects of perception need not be an intractable problem for science. The challenge, in science, is to arrange the observable situation in such a way that the reliance on such judgments is minimised if not eliminated.</p>
+<h3 id="Galileo-and-the-moons-of-Jupiter"><a href="#Galileo-and-the-moons-of-Jupiter" class="headerlink" title="Galileo and the moons of Jupiter"></a>Galileo and the moons of Jupiter</h3><p>&emsp; Galileo use his power to persuade other people to believe that using telescope is trustworthy.<br><br>&emsp;<font color="red">summary:</font>Galileo was in a strong position to argue for the veracity of his observations of Jupiter’s moons, in spite of the fact that they were invisible to the naked eye.</p>
+<h3 id="Observable-facts-objective-but-fallible"><a href="#Observable-facts-objective-but-fallible" class="headerlink" title="Observable facts objective but fallible"></a>Observable facts objective but fallible</h3><p>&emsp;<font color="red">summary:</font>According to the view put forward here, observations suitable for constituting a basis for scientific knowledge are both objective and fallible. They are objective insofar as they can be publicly tested by straightforward procedures, and they are fallible insofar as they may be undermined by new kinds of tests made possible by advances in science and technology.</p>
+<h2 id="CHAPTER-3-Experiment"><a href="#CHAPTER-3-Experiment" class="headerlink" title="CHAPTER 3 Experiment"></a>CHAPTER 3 Experiment</h2><h3 id="Not-just-facts-but-relevant-facts"><a href="#Not-just-facts-but-relevant-facts" class="headerlink" title="Not just facts but relevant facts"></a>Not just facts but relevant facts</h3><p>&emsp; One point that should be noted is that what is needed in science is not just facts but relevant facts.<br><br>&emsp;eg: the author give an example about his own experience with his brother about grass growth.<br><br>&emsp;<font color="red">summary:</font>Many kinds of precesses are at work in the world around us, and they are all superimposed on, and interact with, each other in complicated ways. To acquire facts relevant for the identification and specification of the various processes at work in nature it is, in general, necessary to practically intervene to try to isolate the process under investigation and eliminate the effects of others. In short, it is necessary to do experiments.</p>
+<h3 id="The-production-and-updating-of-experimental-results"><a href="#The-production-and-updating-of-experimental-results" class="headerlink" title="The production and updating of experimental results"></a>The production and updating of experimental results</h3><p>&emsp;eg: the author use his own experience to explain that getting and experiment to work is no easy matter.<br><br>&emsp;<font color="red">summary:</font><br><br>1.Experimental results are by no means straightforwardly given.<br><br>2.Nor are judgments about the adequacy of experimental results straightforward.<br><br><font color="blue">A consequence of these general, and in a sense quite mundane, features of experiment results are fallible, and can be updated or replaced for reasonably straightforward reasons. </font></p>
+<h3 id="Transforming-the-experimental-base-of-science-historical-examples"><a href="#Transforming-the-experimental-base-of-science-historical-examples" class="headerlink" title="Transforming the experimental base of science: historical examples"></a>Transforming the experimental base of science: historical examples</h3><p>&emsp; eg: the result about Hertz and J. J. Thomson showed that the science result can be influenced by historical examples, because of the progress of technology. It was improved technology and improved understanding of the situation that made it possible for Thomson to improve on and reject Hertz’s experimental results.<br><br>&emsp;<font color="red">summary:</font>A point to be stressed here is that experimental results are required not noly to be adequate, in the sense of being accurate recordings of what happened, but also to be appropriate or significant.</p>
+<h3 id="Experiment-as-an-adequate-basis-for-science"><a href="#Experiment-as-an-adequate-basis-for-science" class="headerlink" title="Experiment as an adequate basis for science"></a>Experiment as an adequate basis for science</h3><p>&emsp;<font color="red">summary:</font> I have made a case to the effect that they(experiments) are theory-dependent in certain respects and fallible and revisable.</p>
+<h2 id="CHAPTER-4-Deriving-theories-from-the-facts-induction"><a href="#CHAPTER-4-Deriving-theories-from-the-facts-induction" class="headerlink" title="CHAPTER 4 Deriving theories from the facts: induction"></a>CHAPTER 4 Deriving theories from the facts: induction</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>&emsp;<font color="red">summary:</font>“Science is derived from the facts” could be interpreted to mean that scientific knowledge is constructed by first establishing the facts and then subsequently building the theory to fit them. The strongest possible claim would be that the theory can be logically derived from the facts. That is, given the facts, the theory can be proven as a consequence of them.</p>
+<h3 id="Baby-logic"><a href="#Baby-logic" class="headerlink" title="Baby logic"></a>Baby logic</h3><p>&emsp; some basic logic knowledge showed in this part, and I don’t think there is something new that we can get.</p>
+<h3 id="Can-scientific-laws-be-derived-from-the-facts"><a href="#Can-scientific-laws-be-derived-from-the-facts" class="headerlink" title="Can scientific laws be derived from the facts?"></a>Can scientific laws be derived from the facts?</h3><p>&emsp;eg: a example that Bertrand Russell gave about turkey prefectly showed that using induction can’t get a completely true result. Also we can give the example of black swan.<br><br>&emsp;<font color="red">summary:</font>General scientific laws invariably go beyond the finite amount of observable evidence that is available to support them, and that is why they can never be proven in the sense of being logically deduced from that evidence.</p>
+<h3 id="What-constitutes-a-good-inductive-argument"><a href="#What-constitutes-a-good-inductive-argument" class="headerlink" title="What constitutes a good inductive argument?"></a>What constitutes a good inductive argument?</h3><p>&emsp; A first attempt at an answer to this question involves the demand that, if an inductive inference from observable facts to laws is to be justified, then the following conditions must be satisfied:<br><br>&emsp;<font color="green">1. The number of observations forming the basis of a generalisation must be large<br><br>&emsp;2. The observations must be repeated under a wide variety of conditions.<br><br>&emsp;3. No accepted observation statement should conflict with the derived law.</font><br><br>&emsp;<font color="purple">debate:<br><br>&emsp;1. Let us consider Condition 1, the demand for large numbers of observations. One problem with it is the vagueness of “large”. The problems do not stop here. There are many instances in which the demand for a large number of instances semems inappropriate.(such as nuclear warfare)<br><br>&emsp;2. Condition 2 has serious problems too, stemming from difficluties surrounding the question of what counts as a significant variation in circumstances.(how to judge what will influence the result of experiments?)<br><br>&emsp;3. About the problem of Condition 3 will be discussed in the CHAPTER 7(since little scientific knowledge would survive the demand that there be no known exceptions)</font></p>
+<h3 id="Further-problems-with-inductivism-归纳主义"><a href="#Further-problems-with-inductivism-归纳主义" class="headerlink" title="Further problems with inductivism(归纳主义)"></a>Further problems with inductivism(归纳主义)</h3><p>&emsp; Let us call the position according to which scientific knowledge is to be derived from the observable facts by some kind of inductive inference inductivism and those who subscribe to that view inductivists.<br><br>&emsp;<font color="red">summary:</font><br><br>&emsp;1. If we take contemporary scientific knowledge at anything like face value, then it has to be admitted that much of that knowledge refers to the unobservable.(such as DNA)<br><br>&emsp;2. Another problem stems from the fact that many scientific laws take the form of exact, mathematically formulated laws. Compared with the exactness of such laws we have the inexactness of any of the measurements that constitute the observable evidence for them.<br><br>&emsp;3. A third problem for the inductivist is an lod philosophical chestnut called the problem of induction. it must be justified either by an appeal to logic or by deriving it from experience.<br><br>&emsp;<font color="red">the final result:</font><br>However, what constitutes a valid deductive argument can be specified with a high degree of precision, whereas what constitutes a good inductive argument has not been made at all clear.</p>
+<h3 id="The-appeal-of-inductivism"><a href="#The-appeal-of-inductivism" class="headerlink" title="The appeal of inductivism"></a>The appeal of inductivism</h3><p><font color="green">ways:<br><br>1. Facts acquired through observation<br><br>2. Laws and theories<br><br>3. Predictions and explanations </font><br><br>Finally, we can say that there are some difficulties in inductivism.</p>
+<h2 id="CHAPTER-5-Introducing-falsificationism-证伪主义"><a href="#CHAPTER-5-Introducing-falsificationism-证伪主义" class="headerlink" title="CHAPTER 5 Introducing falsificationism(证伪主义)"></a>CHAPTER 5 Introducing falsificationism(证伪主义)</h2><h3 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h3><p>Karl Popper was the most forceful advocate of an alternative to inductivism that I will refer to as “falsificationism”. Through a famous test of Einstein’s theory of general relativity carried out by Eddington in 1919.<br>He arrived at his key idea that scientific theories are falsifiable.</p>
+<h3 id="A-logical-point-in-favour-of-falsificationism"><a href="#A-logical-point-in-favour-of-falsificationism" class="headerlink" title="A logical point in favour of falsificationism"></a>A logical point in favour of falsificationism</h3><p>&emsp; According to falsificationism, some theories can be shown to be false by false by an appeal to the results of observation and experiment.<br><br>&emsp;The falsity of universal statements can be deduced from suitable singular statements. </p>
+<h3 id="Falsifiability-as-a-criterion-for-theories"><a href="#Falsifiability-as-a-criterion-for-theories" class="headerlink" title="Falsifiability as a criterion for theories"></a>Falsifiability as a criterion for theories</h3><p>&emsp; The falsificationist sees science as a set of hypotheses that are tentatively proposed with the aim of accurately describling or accounting for the behaviour of some aspect of the world or universe.<br><br>&emsp;<font color="red">summary:</font> There is one fundamental condition that any hypothesis or system of hypotheses must satisfy if it is to be granted the status of a scientific law or theory. If it is to form part of science, a hypothesis must be falsifiable. If a theory is to have informative content, it must run the risk of being falsified.</p>
+<h3 id="Degree-of-falsifiability-clarity-and-precision"><a href="#Degree-of-falsifiability-clarity-and-precision" class="headerlink" title="Degree of falsifiability, clarity and precision"></a>Degree of falsifiability, clarity and precision</h3><p>&emsp; For the falsificationist, it follows fairly readily from this that the more falsifiable a theory is the better, in some loose sense of more.<br><br>&emsp;eg: the author propose an example between<br><br>(a): Mars moves in an ellipse around the sun<br><br>(b): All planets move in ellipses around their sun<br>(b) has a higher status than (a) as a piece of scientific knowledge. Law (b) tells us all that (a) tells us and more besides Law (b), the preferable law, is more falsifiable than (a).<br><br>&emsp;<font color="red">summary:</font> Highly falsifiable theories should be preferred to less falsifiable ones, then, provided they have not in fact been falsified. <font color="pink"> We learn from our mistakes.</font> The demand that theories should be highly falsifiable has the attractive consequence that theories should be clearly stated and precise. A similar situation exists with respect to precision.</p>
+<h3 id="Falsificationism-and-progress"><a href="#Falsificationism-and-progress" class="headerlink" title="Falsificationism and progress"></a>Falsificationism and progress</h3><p>&emsp; The progress of science as the falsificationist sees it might be summed up as follows. Science starts with problems, problems associated with the explanation of the behaviour of some aspects of the world or universe.<br><br>&emsp;<font color="red">summary:</font> From the foregoing, it is clear that the concept of progress, of the growth of science, is a conception that is a central one in the falsificationist account of science.</p>
+<h2 id="CHAPTER-6-Sophisticated-falsificationism-novel-predictions-and-the-growth-of-science"><a href="#CHAPTER-6-Sophisticated-falsificationism-novel-predictions-and-the-growth-of-science" class="headerlink" title="CHAPTER 6 Sophisticated falsificationism, novel predictions and the growth of science."></a>CHAPTER 6 Sophisticated falsificationism, novel predictions and the growth of science.</h2><h3 id="Relative-rather-than-absolute-degrees-of-falsifiability"><a href="#Relative-rather-than-absolute-degrees-of-falsifiability" class="headerlink" title="Relative rather than absolute degrees of falsifiability"></a>Relative rather than absolute degrees of falsifiability</h3><p>&emsp; A further condition is connected with the need for science to progress. A hypothesis should be more falsifiable than the one for which it is offered as a replacement.<br><br>The sophisticated falsificationist account of science, with its emphasis of the growth of science, switches the focus of attention from the merits of single theory to the relative merits of competing theories.</p>
+<h3 id="Increasing-falsifiability-and-ad-hoc-modifications"><a href="#Increasing-falsifiability-and-ad-hoc-modifications" class="headerlink" title="Increasing falsifiability and ad hoc modifications"></a>Increasing falsifiability and ad hoc modifications</h3><p>&emsp;The demand that as a science progresse its theories should become more and more falsifiable, and consequently have more and more content and be more and more informative, rules out modifications in theories that are designed merely to protect a theory from a threatening falsification.<br><br>&emsp; eg: A interesting that we should know is that Galileo use a completely wrong theory proposed by his rival to beat his rival about the observation of moon.<br><br>&emsp;<font color="red">summary:</font> Modifications of a theory in an attempt to overcome a difficuly need not be ad hoc(特设的)(such as the discovery of Neptune).</p>
+<h3 id="Confirmation-in-the-falsificationist-account-of-science"><a href="#Confirmation-in-the-falsificationist-account-of-science" class="headerlink" title="Confirmation in the falsificationist account of science"></a>Confirmation in the falsificationist account of science</h3><p>&emsp; However, exclusive attention to falsifying instances amounts to a misresentation of the more sophisticated falsificationist’s position.(such as the example that saves Newton’s position.)<br><br>&emsp;<font color="red">summary:</font>It is a mistake to regard the falsification of bold, highly falsifiable conjectures as the occasions of significant advance in science.<br><br>&emsp; The falsificationist wishes to reject ad hoc hypotheses and to encourage the proposal of bold hypotheses as potential improvements on falsified theories. The confirmations of novel predictions resulting from bold conjectures are very important in the falsificationist account of the growth of science.</p>
+<h3 id="Boldness-novelty-and-background-knowledge"><a href="#Boldness-novelty-and-background-knowledge" class="headerlink" title="Boldness, novelty and background knowledge"></a>Boldness, novelty and background knowledge</h3><p>&emsp;<font color="red">summary:</font>Just as conjectures will be considered bold or otherwise by reference to the relevant background knowledg, so predictions will be judged novel if they involve some phenomenon that does figure in, or is perhaps explicitly ruled our by, the background knowledge of the time.</p>
+<h3 id="Comparison-of-the-inductivist-and-falsificationist-view-of-confirmation"><a href="#Comparison-of-the-inductivist-and-falsificationist-view-of-confirmation" class="headerlink" title="Comparison of the inductivist and falsificationist view of confirmation"></a>Comparison of the inductivist and falsificationist view of confirmation</h3><p>&emsp;<font color="orange">We have seen that confirmation has an important role to play in science as interpreted by the sophisticated falsificationist.</font><br><br>&emsp;<font color="red">summary:</font> Because of the falsificationists’ emphasis on the growth of science, their account of confirmation is significantly different from that of the inductivists.<br><br>&emsp;1.inductivists: The significance of some confirming instances of a theory is determined solely by the logical relationship between the observation statements that are confirmed and the theory that they support.<br><br>&emsp;2.falsificationists: The significance of confirmations depends very much on their historical context. A confirmation will confer some high degree of merit on a theory if that confirmation resulted from the testing of a novel prediction.</p>
+<h3 id="Advantages-of-falsificationism-over-inductivism"><a href="#Advantages-of-falsificationism-over-inductivism" class="headerlink" title="Advantages of falsificationism over inductivism"></a>Advantages of falsificationism over inductivism</h3><p><br>&emsp;<font color="red">summary:</font>We have seen that inductivists have trouble characterising and justifying the inductive inferences that are meant to show theories to be true or probably true. The falsificationist claims to bypass these problems by insisting that science does not involve induction.<font color="orange"> The falsificationist settles for progress rather than truth. </font></p>
+<h2 id="CHAPTER-7-The-limitations-of-falsificationism"><a href="#CHAPTER-7-The-limitations-of-falsificationism" class="headerlink" title="CHAPTER 7 The limitations of falsificationism"></a>CHAPTER 7 The limitations of falsificationism</h2><h3 id="Problems-stemming-from-the-logical-situation"><a href="#Problems-stemming-from-the-logical-situation" class="headerlink" title="Problems stemming from the logical situation"></a>Problems stemming from the logical situation</h3><p>&emsp;Problem: When observation and experiment provide evidence that conflicts with the predictions of some law or theory, it may be the evidence that is at fault rather than the law or theory.<br>But simplified illustrations of the logic of a falsification such as this disguise a serious difficulty for falsificationism that arises from the complexity of any realistic test situation.<br><br>&emsp; eg:the author list some examples from the history of astronomy that illustrate the point.<br><br>&emsp;<font color="red">summary:</font>all of these examples listed by the author prove that fault can be made by observation itself.</p>
+<h3 id="Falsificationism-inadequate-on-historical-grounds"><a href="#Falsificationism-inadequate-on-historical-grounds" class="headerlink" title="Falsificationism inadequate on historical grounds"></a>Falsificationism inadequate on historical grounds</h3><p>&emsp;<font color="red">summary:</font> An embarrassing historical fact for falsificationists is that if their methodology had been strictly adhered to by scientists then those theories generally regarded as being amonog the best examples of scientific theories generally regarded as being among the best examples of scientific theories would never have been developed because they would have been rejected in their infancy.<br><br>&emsp; eg:there are plenty of examples shown in this part such as Newton’s gravitational theory, Bohr’s theory of the atom and the kinetic theory.</p>
+<h3 id="The-Copernican-Revolution"><a href="#The-Copernican-Revolution" class="headerlink" title="The Copernican Revolution"></a>The Copernican Revolution</h3><p>&emsp;eg: When Copernicus first published the details of his new astronomy, in 1543, there were many arguments that could be, and were, levelled against it.<br><br>&emsp; this part mainly talk about the history about Copernican Revolution and to prove the second part view.</p>
+<h3 id="Inadequacies-of-the-falsificationist-demarcation-criterion-and-Popper’s-response"><a href="#Inadequacies-of-the-falsificationist-demarcation-criterion-and-Popper’s-response" class="headerlink" title="Inadequacies of the falsificationist demarcation criterion and Popper’s response"></a>Inadequacies of the falsificationist demarcation criterion and Popper’s response</h3><p>&emsp;Popper made a seductive case for his criterion of demarcation between science and non- or pseudo-science. Such as Astrologists(占卜) do make claims that are falsifiable.</p>
+<p><br>&emsp;<font color="red">summary:</font>The thrust of falsificationism is to emphasise the critical component of science.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/11/A-Winkle-in-Time/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/11/A-Winkle-in-Time/" itemprop="url">A Winkle in Time</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-11T15:33:56+08:00">
+                2018-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="A-Winkle-In-Time"><a href="#A-Winkle-In-Time" class="headerlink" title="A Winkle In Time"></a>A Winkle In Time</h1><p>标签（空格分隔）： English_learning </p>
+<hr>
+<h2 id="thoughts-with-great-sentence"><a href="#thoughts-with-great-sentence" class="headerlink" title="thoughts with great sentence"></a>thoughts with great sentence</h2><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><h4 id="gt-There-is-nothing-to-fear-except-fear-itself-emsp-—Calvin"><a href="#gt-There-is-nothing-to-fear-except-fear-itself-emsp-—Calvin" class="headerlink" title="&gt; There is nothing to fear except fear itself &emsp;—Calvin"></a>&gt; There is nothing to fear except fear itself &emsp;—Calvin</h4><h4 id="thinking"><a href="#thinking" class="headerlink" title="thinking:"></a>thinking:</h4><p>what cause us feeling fear? It’t our inner terror that makes us to be hesitated and not dare to make decisions. only if we can get out of our own comfortable zone, we will have the ability to get over our inner fear and be a true warrior. keep in mind that there is always somewhere you can get comfort.  </p>
+<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><h4 id="gt-Charles-Wallace-said-“Meg-you’ve-got-to-stop-fighting-and-relax-Relax-and-be-happy-Oh-Meg-if-you’d-just-relax-you’d-realize-that-all-our-troubles-are-over-You-don’t-understand-what-a-wonderful-place-we’ve-come-to-You-see-on-this-planet-everything-is-in-perfect-order-because-everybody-has-learned-to-relax-to-give-in-to-submit-All-you-have-to-do-is-look-quietly-and-steadily-into-the-eyes-of-our-good-friend-here-for-he-is-our-friend-dear-sister-and-he-will-take-you-in-as-he-has-taken-me-”"><a href="#gt-Charles-Wallace-said-“Meg-you’ve-got-to-stop-fighting-and-relax-Relax-and-be-happy-Oh-Meg-if-you’d-just-relax-you’d-realize-that-all-our-troubles-are-over-You-don’t-understand-what-a-wonderful-place-we’ve-come-to-You-see-on-this-planet-everything-is-in-perfect-order-because-everybody-has-learned-to-relax-to-give-in-to-submit-All-you-have-to-do-is-look-quietly-and-steadily-into-the-eyes-of-our-good-friend-here-for-he-is-our-friend-dear-sister-and-he-will-take-you-in-as-he-has-taken-me-”" class="headerlink" title="&gt; Charles Wallace said. “Meg, you’ve got to stop fighting and relax. Relax and be happy. Oh, Meg, if you’d just relax you’d realize that all our troubles are over. You don’t understand what a wonderful place we’ve come to. You see, on this planet everything is in perfect order because everybody has learned to relax, to give in, to submit. All you have to do is look quietly and steadily into the eyes of our good friend here, for he is our friend, dear sister, and he will take you in as he has taken me.”"></a>&gt; Charles Wallace said. “Meg, you’ve got to stop fighting and relax. Relax and be happy. Oh, Meg, if you’d just relax you’d realize that all our troubles are over. You don’t understand what a wonderful place we’ve come to. You see, on this planet everything is in perfect order because everybody has learned to relax, to give in, to submit. All you have to do is look quietly and steadily into the eyes of our good friend here, for he is our friend, dear sister, and he will take you in as he has taken me.”</h4><h4 id="gt-“On-Camazotz-we-are-all-happy-because-we-are-all-alike-Differences-create-problems-”"><a href="#gt-“On-Camazotz-we-are-all-happy-because-we-are-all-alike-Differences-create-problems-”" class="headerlink" title="&gt; “On Camazotz we are all happy because we are all alike. Differences create problems.”"></a>&gt; “On Camazotz we are all happy because we are all alike. Differences create problems.”</h4><h4 id="thinking-1"><a href="#thinking-1" class="headerlink" title="thinking:"></a>thinking:</h4><p>if a wonderful world is such a world that all things are in order, how on earth we search for a better world? think a world that everyone has the same minds and they are all good person, on that time, how can we judge the really truth and beauty? Differences create beauty. </p>
+<h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><h4 id="gt-“Nobody-suffers-here-”-Charles-intoned-“Nobody-is-ever-unhappy-”"><a href="#gt-“Nobody-suffers-here-”-Charles-intoned-“Nobody-is-ever-unhappy-”" class="headerlink" title="&gt; “Nobody suffers here,” Charles intoned. “Nobody is ever unhappy.”"></a>&gt; “Nobody suffers here,” Charles intoned. “Nobody is ever unhappy.”</h4><h4 id="gt-”But-nobody’s-ever-happy-either-”-Meg-said-earnestly"><a href="#gt-”But-nobody’s-ever-happy-either-”-Meg-said-earnestly" class="headerlink" title="&gt;”But nobody’s ever happy, either,” Meg said earnestly."></a>&gt;”But nobody’s ever happy, either,” Meg said earnestly.</h4><h4 id="thinking-2"><a href="#thinking-2" class="headerlink" title="thinking:"></a>thinking:</h4><p>Truth. Only at the opposite of happiness we can truly understand what happiness really means. Such as Friedrich von Schiller says “Freedom is precious, because at the opposite of this mandatory, we are able to see we have the right to choose.” Happiness is so same a thing compare to freedom.</p>
+<h3 id="4"><a href="#4" class="headerlink" title="4"></a>4</h3><h4 id="gt-“If-we-knew-ahead-of-time-what-was-going-to-happen-we’d-be-like-the-people-on-Camazotz-with-no-lives-of-our-own-with-everything-all-planned-and-done-for-us-”"><a href="#gt-“If-we-knew-ahead-of-time-what-was-going-to-happen-we’d-be-like-the-people-on-Camazotz-with-no-lives-of-our-own-with-everything-all-planned-and-done-for-us-”" class="headerlink" title="&gt; “If we knew ahead of time what was going to happen we’d be like the people on Camazotz, with no lives of our own, with everything all planned and done for us.”"></a>&gt; “If we knew ahead of time what was going to happen we’d be like the people on Camazotz, with no lives of our own, with everything all planned and done for us.”</h4><h4 id="thinking-3"><a href="#thinking-3" class="headerlink" title="thinking:"></a>thinking:</h4><p>The uncertain life makes us look forward to what is going to happen in the future. If everything is all planned, then we human beings will not have the power to create. We will become the Walking Dead.  </p>
+<h3 id="5"><a href="#5" class="headerlink" title="5"></a>5</h3><h4 id="gt-”You-mean-you-are-comparing-our-haves-to-a-sonnet-A-strict-form-but-freedom-within-it-”"><a href="#gt-”You-mean-you-are-comparing-our-haves-to-a-sonnet-A-strict-form-but-freedom-within-it-”" class="headerlink" title="&gt;”You mean you are comparing our haves to a sonnet? A strict form, but freedom within it?”"></a>&gt;”You mean you are comparing our haves to a sonnet? A strict form, but freedom within it?”</h4><h4 id="thinking-4"><a href="#thinking-4" class="headerlink" title="thinking:"></a>thinking:</h4><p>We will grow older and older gradually, all of us, as well as we will die in some day. We have to study, have to work, have to make livings for ourselves. But you can’t say that our lives have no meaning. Like the sonnet, the form may looks alike, but the emotion and content are quite different. </p>
+<h2 id="metaphor"><a href="#metaphor" class="headerlink" title="metaphor"></a>metaphor</h2><h3 id="1-what-is-Winkle-in-Time-emsp-what-is-tesseract"><a href="#1-what-is-Winkle-in-Time-emsp-what-is-tesseract" class="headerlink" title="1 what is Winkle in Time? &emsp; what is tesseract?"></a>1 what is Winkle in Time? &emsp; what is tesseract?</h3><p>imagine another dimensionality beyond three-dimensional world, how it will be? Why they can travel faster than light? you should know that light doesn’t travel through straight line spatially, but it choose the shortest way affected by space and time(or by gravitation). So if we can travel through straight line, we can travel faster than light spatially.</p>
+<h3 id="2-the-dark-Thing-really-means-emsp-IT-refers-to"><a href="#2-the-dark-Thing-really-means-emsp-IT-refers-to" class="headerlink" title="2 the dark Thing really means?&emsp; IT refers to?"></a>2 the dark Thing really means?&emsp; IT refers to?</h3><p>According to the novel, we can say that IT is a huge brain without love. But what on earth IT means? It’s a higher dimensional creature, so it has tremendous power to beat all the persons. But as the novel wants to tell us, the monster doesn’t have emotion, especially love. So it can’t feel how strong love is, and finally it failed. But why a higher dimensional creature has more power than a lower one?  </p>
+<h3 id="3-what-we-should-do-with-science-and-techology"><a href="#3-what-we-should-do-with-science-and-techology" class="headerlink" title="3 what we should do with science and techology?"></a>3 what we should do with science and techology?</h3><p>A main idea of the novel is to discuss what science and techology bring to us? According to father’s behaviour, we can see that if we are absorbed in the truth(intellect), we may get some wrong and we can be beated easily. Life is not always about logos and science, but also emotion. we human beings are different because of our abundant emotions.  </p>
+<h3 id="4-what-we-are-supposed-to-do-in-life"><a href="#4-what-we-are-supposed-to-do-in-life" class="headerlink" title="4 what we are supposed to do in life?"></a>4 what we are supposed to do in life?</h3><p>from the endding of this novel, we can see that even Meg, the girl who always filled with anger realize love from others, from Calvin, from Charles Wallace, from Mr. Murry and others. And she also realize that her difference made her so special. So we are supposed to have our own special character. So that the whole world can be interesting and our own life will be fun.  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Leliyliu</p>
+              <p class="site-description motion-element" itemprop="description">record</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leliyliu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
