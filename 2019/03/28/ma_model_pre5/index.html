@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="禾声">
 <meta property="og:description" content="SVM关于SVM的内容介绍，主要参考了这位博主的SVM文章点击此处进行查看（讲得太好了） 1.简介支持向量机(Support Vector Machine)是Cortes和Vapnik于1995年首先提出的，它在解决小样本、非线性及高维模式识别中表现出许多特有的优势，并能够推广应用到函数拟合等其他机器学习问题中. 支持向量机方法是建立在统计学习理论的VC维理论和结构风险最小原理基础上的，根据有限的">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/clip_image002_thumb.gif?raw=true">
 <meta property="og:updated_time" content="2019-03-28T13:32:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ma_model_preparation5">
 <meta name="twitter:description" content="SVM关于SVM的内容介绍，主要参考了这位博主的SVM文章点击此处进行查看（讲得太好了） 1.简介支持向量机(Support Vector Machine)是Cortes和Vapnik于1995年首先提出的，它在解决小样本、非线性及高维模式识别中表现出许多特有的优势，并能够推广应用到函数拟合等其他机器学习问题中. 支持向量机方法是建立在统计学习理论的VC维理论和结构风险最小原理基础上的，根据有限的">
+<meta name="twitter:image" content="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/clip_image002_thumb.gif?raw=true">
 
 
 
@@ -348,7 +350,7 @@ subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
 <h2 id="6-将SVM用于多类分类"><a href="#6-将SVM用于多类分类" class="headerlink" title="6. 将SVM用于多类分类"></a>6. 将SVM用于多类分类</h2><blockquote>
 <p>我们实际上可以将一个多分类问题，看做一个”一类对其余“的问题，那么每次仍然是解一个两类分类的问题。比如我们有5个类别，第一次就把类别1的样本定为正样本，其余2，3，4，5的样本合起来定为负样本，这样得到一个两类分类器，它能够指出一篇文章是还是不是第1类的；第二次我们把类别2 的样本定为正样本，把1，3，4，5的样本合起来定为负样本，得到一个分类器，如此下去，我们可以得到5个这样的两类分类器（总是和类别的数目一致）。到了有文章需要分类的时候，我们就拿着这篇文章挨个分类器的问：是属于你的么？是属于你的么？哪个分类器点头说是了，文章的类别就确定了。这种方法的好处是每个优化问题的规模比较小，而且分类的时候速度很快（只需要调用5个分类器就知道了结果）。但有时也会出现两种很尴尬的情况，例如拿一篇文章问了一圈，每一个分类器都说它是属于它那一类的，或者每一个分类器都说它不是它那一类的，前者叫分类重叠现象，后者叫不可分类现象。分类重叠倒还好办，随便选一个结果都不至于太离谱，或者看看这篇文章到各个超平面的距离，哪个远就判给哪个。不可分类现象就着实难办了，只能把它分给第6个类别了……更要命的是，本来各个类别的样本数目是差不多的，但“其余”的那一类样本数总是要数倍于正类（因为它是除正类以外其他类别的样本之和嘛），这就人为的造成了上一节所说的“数据集偏斜”问题。<br>因此，这样一个思路看上去可行，但实际上也需要一定的调整才能对实际的多分类问题进行应用。那需要哪些改善呢？还是解两类分类问题，还是每次选一个类的样本作正类样本，而负类样本则变成只选一个类（称为“一对一单挑”的方法，哦，不对，没有单挑，就是“一对一”的方法），这就避免了偏斜。但这样，会大量增加分类器的数量。<br>看来我们必须再退一步，在分类的时候下功夫，我们还是像一对一方法那样来训练，只是在对一篇文章进行分类之前，我们先按照下面图的样子来组织分类器（如你所见，这是一个有向无环图，因此这种方法也叫做DAG SVM）</p>
 </blockquote>
-<p><img alt="DAG SVM" data-src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/clip_image002_thumb.gif?raw=true" class="lazyload"></p>
+<p><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/clip_image002_thumb.gif?raw=true" alt="DAG SVM"></p>
 <blockquote>
 <p>这样在分类时,我们就可以先问分类器“1对5”（意思是它能够回答“是第1类还是第5类”），如果它回答5，我们就往左走，再问“2对5”这个分类器，如果它还说是“5”，我们就继续往左走，这样一直问下去，就可以得到分类结果。好处在哪？我们其实只调用了4个分类器（如果类别数是k，则只调用k-1个），分类速度飞快，且没有分类重叠和不可分类现象！缺点在哪？假如最一开始的分类器回答错误（明明是类别1的文章，它说成了5），那么后面的分类器是无论如何也无法纠正它的错误的（因为后面的分类器压根没有出现“1”这个类别标签），其实对下面每一层的分类器都存在这种错误向下累积的现象。</p>
 <p>关于SMO算法的学习，在这里就不加以重点介绍，需要的可以参考<a href="https://www.cnblogs.com/bentuwuying/p/6444516.html" target="_blank" rel="noopener">SMO</a>这一篇博客</p>
@@ -552,7 +554,7 @@ subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
