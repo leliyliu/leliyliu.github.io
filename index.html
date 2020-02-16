@@ -232,6 +232,257 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2020/02/16/pytorch2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/16/pytorch2/" itemprop="url">pytorch2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-16T19:59:51+08:00">
+                2020-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h1 id="动手学深度学习-task2"><a href="#动手学深度学习-task2" class="headerlink" title="动手学深度学习 task2"></a>动手学深度学习 task2</h1><hr>
+<h2 id="梯度消失、梯度爆炸"><a href="#梯度消失、梯度爆炸" class="headerlink" title="梯度消失、梯度爆炸"></a>梯度消失、梯度爆炸</h2><h2 id="机器翻译及相关技术"><a href="#机器翻译及相关技术" class="headerlink" title="机器翻译及相关技术"></a>机器翻译及相关技术</h2><p>机器翻译（MT）：将一段文本从一种语言自动翻译为另一种语言，用神经网络解决这个问题通常称为神经机器翻译（NMT）。 主要特征：输出是单词序列而不是单个单词。 输出序列的长度可能与源序列的长度不同。</p>
+<h3 id="数据预处理过程"><a href="#数据预处理过程" class="headerlink" title="数据预处理过程"></a>数据预处理过程</h3><p>对于一般的数据预处理过程，首先要保证编码方式的正确。然后需要转换大小写，这里没有许多多余的处理操作。</p>
+<h4 id="载入数据集"><a href="#载入数据集" class="headerlink" title="载入数据集"></a>载入数据集</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pad</span><span class="params">(line, max_len, padding_token)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(line) &gt; max_len:</span><br><span class="line">        <span class="keyword">return</span> line[:max_len]</span><br><span class="line">    <span class="keyword">return</span> line + [padding_token] * (max_len - len(line))</span><br><span class="line">pad(src_vocab[source[<span class="number">0</span>]], <span class="number">10</span>, src_vocab.pad)</span><br></pre></td></tr></table></figure>
+<p>这个pad 函数的作用在于保持每个句子的长度是一样的，如果是大于的话，那么就进行阶段，否则进行相应的补足。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_array</span><span class="params">(lines, vocab, max_len, is_source)</span>:</span></span><br><span class="line">    lines = [vocab[line] <span class="keyword">for</span> line <span class="keyword">in</span> lines]</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> is_source:</span><br><span class="line">        lines = [[vocab.bos] + line + [vocab.eos] <span class="keyword">for</span> line <span class="keyword">in</span> lines]</span><br><span class="line">    array = torch.tensor([pad(line, max_len, vocab.pad) <span class="keyword">for</span> line <span class="keyword">in</span> lines])</span><br><span class="line">    valid_len = (array != vocab.pad).sum(<span class="number">1</span>) <span class="comment">#第一个维度</span></span><br><span class="line">    <span class="keyword">return</span> array, valid_len</span><br></pre></td></tr></table></figure>
+<p>注意这里关于有效长度的计算，也就是计算非补足的长度。</p>
+<h3 id="Encoder-Decoder"><a href="#Encoder-Decoder" class="headerlink" title="Encoder-Decoder"></a>Encoder-Decoder</h3><p>其结构是如此表示的，即所有的可能是以这样一种方式显现出来</p>
+<p><img src="https://cdn.kesci.com/upload/image/q5jcat3c8m.png?imageView2/0/w/640/h/640" alt="Image Name"></p>
+<p>因为本身的RNN的网络结构不能保持具体的翻译过程中长度的变化，那么要达到这样的目标，使用了这样一种方式，即首先对输入进行了编码，然后进行解码后输出。</p>
+<h4 id="Sequence-to-Sequence-模型"><a href="#Sequence-to-Sequence-模型" class="headerlink" title="Sequence to Sequence 模型"></a>Sequence to Sequence 模型</h4><p><img src="https://cdn.kesci.com/upload/image/q5jc7a53pt.png?imageView2/0/w/640/h/640" alt="Image Name"></p>
+<p><img src="https://cdn.kesci.com/upload/image/q5jccjhkii.png?imageView2/0/w/500/h/500" alt="Image Name"></p>
+<p>这里进行了相应的embedding，是将相应的输入转换为词向量来作为相应的输入。词向量的长度是相同的维度。</p>
+<h4 id="训练模型和测试模型"><a href="#训练模型和测试模型" class="headerlink" title="训练模型和测试模型"></a>训练模型和测试模型</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_ch7</span><span class="params">(model, data_iter, lr, num_epochs, device)</span>:</span>  <span class="comment"># Saved in d2l</span></span><br><span class="line">    model.to(device)</span><br><span class="line">    optimizer = optim.Adam(model.parameters(), lr=lr)</span><br><span class="line">    loss = MaskedSoftmaxCELoss()</span><br><span class="line">    tic = time.time()</span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(<span class="number">1</span>, num_epochs+<span class="number">1</span>):</span><br><span class="line">        l_sum, num_tokens_sum = <span class="number">0.0</span>, <span class="number">0.0</span></span><br><span class="line">        <span class="keyword">for</span> batch <span class="keyword">in</span> data_iter:</span><br><span class="line">            optimizer.zero_grad()</span><br><span class="line">            X, X_vlen, Y, Y_vlen = [x.to(device) <span class="keyword">for</span> x <span class="keyword">in</span> batch]</span><br><span class="line">            Y_input, Y_label, Y_vlen = Y[:,:<span class="number">-1</span>], Y[:,<span class="number">1</span>:], Y_vlen<span class="number">-1</span></span><br><span class="line">            </span><br><span class="line">            Y_hat, _ = model(X, Y_input, X_vlen, Y_vlen)</span><br><span class="line">            l = loss(Y_hat, Y_label, Y_vlen).sum()</span><br><span class="line">            l.backward()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">                d2l.grad_clipping_nn(model, <span class="number">5</span>, device)</span><br><span class="line">            num_tokens = Y_vlen.sum().item()</span><br><span class="line">            optimizer.step()</span><br><span class="line">            l_sum += l.sum().item()</span><br><span class="line">            num_tokens_sum += num_tokens</span><br><span class="line">        <span class="keyword">if</span> epoch % <span class="number">50</span> == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">"epoch &#123;0:4d&#125;,loss &#123;1:.3f&#125;, time &#123;2:.1f&#125; sec"</span>.format( </span><br><span class="line">                  epoch, (l_sum/num_tokens_sum), time.time()-tic))</span><br><span class="line">            tic = time.time()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">translate_ch7</span><span class="params">(model, src_sentence, src_vocab, tgt_vocab, max_len, device)</span>:</span></span><br><span class="line">    src_tokens = src_vocab[src_sentence.lower().split(<span class="string">' '</span>)]</span><br><span class="line">    src_len = len(src_tokens)</span><br><span class="line">    <span class="keyword">if</span> src_len &lt; max_len:</span><br><span class="line">        src_tokens += [src_vocab.pad] * (max_len - src_len)</span><br><span class="line">    enc_X = torch.tensor(src_tokens, device=device)</span><br><span class="line">    enc_valid_length = torch.tensor([src_len], device=device)</span><br><span class="line">    <span class="comment"># use expand_dim to add the batch_size dimension.</span></span><br><span class="line">    enc_outputs = model.encoder(enc_X.unsqueeze(dim=<span class="number">0</span>), enc_valid_length)</span><br><span class="line">    dec_state = model.decoder.init_state(enc_outputs, enc_valid_length)</span><br><span class="line">    dec_X = torch.tensor([tgt_vocab.bos], device=device).unsqueeze(dim=<span class="number">0</span>)</span><br><span class="line">    predict_tokens = []</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(max_len):</span><br><span class="line">        Y, dec_state = model.decoder(dec_X, dec_state)</span><br><span class="line">        <span class="comment"># The token with highest score is used as the next time step input.</span></span><br><span class="line">        dec_X = Y.argmax(dim=<span class="number">2</span>)</span><br><span class="line">        py = dec_X.squeeze(dim=<span class="number">0</span>).int().item()</span><br><span class="line">        <span class="keyword">if</span> py == tgt_vocab.eos:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        predict_tokens.append(py)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">' '</span>.join(tgt_vocab.to_tokens(predict_tokens))</span><br></pre></td></tr></table></figure>
+<h2 id="注意力机制"><a href="#注意力机制" class="headerlink" title="注意力机制"></a>注意力机制</h2><p><img src="https://cdn.kesci.com/upload/image/q5km4dwgf9.PNG?imageView2/0/w/960/h/960" alt="Image Name"></p>
+<p>Attention 是一种通用的带权池化方法，输入由两部分构成：询问（query）和键值对（key-value pairs）。$𝐤_𝑖∈ℝ^{𝑑_𝑘}, 𝐯_𝑖∈ℝ^{𝑑_𝑣}$. Query  $𝐪∈ℝ^{𝑑_𝑞}$ , attention layer得到输出与value的维度一致 $𝐨∈ℝ^{𝑑_𝑣}$. 对于一个query来说，attention layer 会与每一个key计算注意力分数并进行权重的归一化，输出的向量$o$则是value的加权求和，而每个key计算的权重与value一一对应。</p>
+<p>为了计算输出，我们首先假设有一个函数$\alpha$ 用于计算query和key的相似性，然后可以计算所有的 attention scores $a_1, \ldots, a_n$ by</p>
+<script type="math/tex; mode=display">
+a_i = \alpha(\mathbf q, \mathbf k_i).</script><p>我们使用<code>softmax</code>函数 获得注意力权重：</p>
+<script type="math/tex; mode=display">
+b_1, \ldots, b_n = \textrm{softmax}(a_1, \ldots, a_n).</script><p>最终的输出就是value的加权求和：</p>
+<script type="math/tex; mode=display">
+\mathbf o = \sum_{i=1}^n b_i \mathbf v_i.</script><h3 id="softmax-屏蔽"><a href="#softmax-屏蔽" class="headerlink" title="softmax 屏蔽"></a>softmax 屏蔽</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">masked_softmax</span><span class="params">(X, valid_length)</span>:</span></span><br><span class="line">    <span class="comment"># X: 3-D tensor, valid_length: 1-D or 2-D tensor</span></span><br><span class="line">    softmax = nn.Softmax(dim=<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">if</span> valid_length <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        <span class="keyword">return</span> softmax(X)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        shape = X.shape</span><br><span class="line">        <span class="keyword">if</span> valid_length.dim() == <span class="number">1</span>: </span><br><span class="line"><span class="comment">#如果是一维的话，表示没有考虑到有多个batch_size，那么需要进行考虑</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                valid_length = torch.FloatTensor(valid_length.numpy().repeat(shape[<span class="number">1</span>], axis=<span class="number">0</span>))<span class="comment">#[2,2,3,3] 进行repeat 是指需要repeat了相应的步长维度给每个batch</span></span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                valid_length = torch.FloatTensor(valid_length.cpu().numpy().repeat(shape[<span class="number">1</span>], axis=<span class="number">0</span>))<span class="comment">#[2,2,3,3] 这里考虑了是在具体哪个device 上进行训练</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            valid_length = valid_length.reshape((<span class="number">-1</span>,))</span><br><span class="line">        <span class="comment"># fill masked elements with a large negative, whose exp is 0</span></span><br><span class="line">        X = SequenceMask(X.reshape((<span class="number">-1</span>, shape[<span class="number">-1</span>])), valid_length)</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> softmax(X).reshape(shape)</span><br></pre></td></tr></table></figure>
+<p>这里的mask 的作用和上一节中实际上是一样的，由于每一句的长度是不同的，但是在进行训练的时候，我们需要保持每一句所展现出来的维度是相同的，故而对于缺少的，会进行相应的padding ,但是补足的部分不应该纳入<code>softmax</code>的计算当中。</p>
+<h4 id="维度"><a href="#维度" class="headerlink" title="维度"></a>维度</h4><p>深度学习在自然语言处理方面进行应用的时候，维度是比较复杂的一个点，这里主要进行一下说明。</p>
+<p>一般来说，输入的维度一般都包括了这样几个方面，batch_size ，步长，输入维度。对于语言而言，其本身的网络，不仅包括了原来的小批量训练时候的batch_size 和 本来一个语句的维度，同时还有一个时间维度。</p>
+<p>例如在进行相应的mask的时候，可以参见上面的代码中所给出的注释的含义。</p>
+<h4 id="高维矩阵相乘"><a href="#高维矩阵相乘" class="headerlink" title="高维矩阵相乘"></a>高维矩阵相乘</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.bmm(torch.ones((<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>), dtype = torch.float), torch.ones((<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>), dtype = torch.float)) <span class="comment">#两个矩阵乘法</span></span><br></pre></td></tr></table></figure>
+<p><code>torch.bmm</code>是矩阵的乘法，对于高维矩阵，比如上面的代码所展示的那样，得到的shape = (2,1,2)</p>
+<p>两个数组尺寸要求：</p>
+<ul>
+<li>“<strong>2维以上</strong>“的尺寸必须完全对应相等；</li>
+<li>“<strong>2维</strong>“具有实际意义的单位，只要满足矩阵相乘的尺寸规律即可。</li>
+</ul>
+<h3 id="点积注意力"><a href="#点积注意力" class="headerlink" title="点积注意力"></a>点积注意力</h3><p>The dot product 假设query和keys有相同的维度, 即 $\forall i, 𝐪,𝐤_𝑖 ∈ ℝ_𝑑 $. 通过计算query和key转置的乘积来计算attention score,通常还会除去 $\sqrt{d}$ 减少计算出来的score对维度𝑑的依赖性，如下</p>
+<script type="math/tex; mode=display">
+𝛼(𝐪,𝐤)=⟨𝐪,𝐤⟩/ \sqrt{d}</script><p>假设 $ 𝐐∈ℝ^{𝑚×𝑑}$ 有 $m$ 个query，$𝐊∈ℝ^{𝑛×𝑑}$ 有 $n$ 个keys. 我们可以通过矩阵运算的方式计算所有 $mn$ 个score：</p>
+<script type="math/tex; mode=display">
+𝛼(𝐐,𝐊)=𝐐𝐊^𝑇/\sqrt{d}</script><p>现在让我们实现这个层，它支持一批查询和键值对。此外，它支持作为正则化随机删除一些注意力权重.</p>
+<h3 id="多层感知机注意力"><a href="#多层感知机注意力" class="headerlink" title="多层感知机注意力"></a>多层感知机注意力</h3><p>在多层感知器中，我们首先将 query and keys 投影到  $ℝ^ℎ$ .为了更具体，我们将可以学习的参数做如下映射<br>$𝐖_𝑘∈ℝ^{ℎ×𝑑_𝑘}$ ,  $𝐖_𝑞∈ℝ^{ℎ×𝑑_𝑞}$ , and  $𝐯∈ℝ^h$ . 将score函数定义</p>
+<script type="math/tex; mode=display">
+𝛼(𝐤,𝐪)=𝐯^𝑇tanh(𝐖_𝑘𝐤+𝐖_𝑞𝐪)</script><p>.<br>然后将key 和 value 在特征的维度上合并（concatenate），然后送至 a single hidden layer perceptron 这层中 hidden layer 为  ℎ  and 输出的size为 1 .隐层激活函数为tanh，无偏置.</p>
+<h3 id="引入注意力机制的Seq2seq模型"><a href="#引入注意力机制的Seq2seq模型" class="headerlink" title="引入注意力机制的Seq2seq模型"></a>引入注意力机制的Seq2seq模型</h3><p>将注意机制添加到sequence to sequence 模型中，以显式地使用权重聚合states。下图展示encoding 和decoding的模型结构，在时间步为t的时候。此刻attention layer保存着encodering看到的所有信息——即encoding的每一步输出。在decoding阶段，解码器的$t$时刻的隐藏状态被当作query，encoder的每个时间步的hidden states作为key和value进行attention聚合. Attetion model的输出当作成上下文信息context vector，并与解码器输入$D_t$拼接起来一起送到解码器：</p>
+<p><img src="https://cdn.kesci.com/upload/image/q5km7o8z93.PNG?imageView2/0/w/800/h/800" alt="Image Name"></p>
+<script type="math/tex; mode=display">
+Fig1具有注意机制的seq-to-seq模型解码的第二步</script><p>下图展示了seq2seq机制的所有层的关系，下面展示了encoder和decoder的layer结构</p>
+<p><img src="https://cdn.kesci.com/upload/image/q5km8dihlr.PNG?imageView2/0/w/800/h/800" alt="Image Name"></p>
+<script type="math/tex; mode=display">
+Fig2具有注意机制的seq-to-seq模型中层结构</script><h2 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h2><p>在之前的章节中，我们已经介绍了主流的神经网络架构如卷积神经网络（CNNs）和循环神经网络（RNNs）。让我们进行一些回顾：</p>
+<ul>
+<li>CNNs 易于并行化，却不适合捕捉变长序列内的依赖关系。</li>
+<li>RNNs 适合捕捉长距离变长序列的依赖，但是却难以实现并行化处理序列。</li>
+</ul>
+<p>为了整合CNN和RNN的优势，<a href="https://d2l.ai/chapter_references/zreferences.html#vaswani-shazeer-parmar-ea-2017" target="_blank" rel="noopener">[Vaswani et al., 2017]</a> 创新性地使用注意力机制设计了Transformer模型。该模型利用attention机制实现了并行化捕捉序列依赖，并且同时处理序列的每个位置的tokens，上述优势使得Transformer模型在性能优异的同时大大减少了训练时间。</p>
+<p>图10.3.1展示了Transformer模型的架构，与seq2seq模型相似，Transformer同样基于编码器-解码器架构，其区别主要在于以下三点：</p>
+<ol>
+<li>Transformer blocks：将seq2seq模型重的循环网络替换为了Transformer Blocks，该模块包含一个多头注意力层（Multi-head Attention Layers）以及两个position-wise feed-forward networks（FFN）。对于解码器来说，另一个多头注意力层被用于接受编码器的隐藏状态。</li>
+<li>Add and norm：多头注意力层和前馈网络的输出被送到两个“add and norm”层进行处理，该层包含残差结构以及层归一化。</li>
+<li>Position encoding：由于自注意力层并没有区分元素的顺序，所以一个位置编码层被用于向序列元素里添加位置信息。</li>
+</ol>
+<p><img src="https://cdn.kesci.com/upload/image/q5kpbj2cj5.png?imageView2/0/w/960/h/960" alt="Fig. 10.3.1 The Transformer architecture."></p>
+<script type="math/tex; mode=display">
+Fig.10.3.1\ Transformer 架构.</script><h3 id="多头注意力层"><a href="#多头注意力层" class="headerlink" title="多头注意力层"></a>多头注意力层</h3><p>在我们讨论多头注意力层之前，先来迅速理解以下自注意力（self-attention）的结构。自注意力模型是一个正规的注意力模型，序列的每一个元素对应的key，value，query是完全一致的。如图10.3.2 自注意力输出了一个与输入长度相同的表征序列，与循环神经网络相比，自注意力对每个元素输出的计算是并行的，所以我们可以高效的实现这个模块。</p>
+<p><img src="https://cdn.kesci.com/upload/image/q5kpckv38q.png?imageView2/0/w/320/h/320" alt="Fig. 10.3.2 自注意力结构"></p>
+<script type="math/tex; mode=display">
+Fig.10.3.2\ 自注意力结构</script><p>多头注意力层包含$h$个并行的自注意力层，每一个这种层被成为一个head。对每个头来说，在进行注意力计算之前，我们会将query、key和value用三个现行层进行映射，这$h$个注意力头的输出将会被拼接之后输入最后一个线性层进行整合。</p>
+<p><img src="https://cdn.kesci.com/upload/image/q5kpcsozid.png?imageView2/0/w/640/h/640" alt="Image Name"></p>
+<script type="math/tex; mode=display">
+Fig.10.3.3\ 多头注意力</script><p>假设query，key和value的维度分别是$d_q$、$d_k$和$d_v$。那么对于每一个头$i=1,\ldots,h$，我们可以训练相应的模型权重$W_q^{(i)} \in \mathbb{R}^{p_q\times d_q}$、$W_k^{(i)} \in \mathbb{R}^{p_k\times d_k}$和$W_v^{(i)} \in \mathbb{R}^{p_v\times d_v}$，以得到每个头的输出：</p>
+<script type="math/tex; mode=display">
+o^{(i)} = attention(W_q^{(i)}q, W_k^{(i)}k, W_v^{(i)}v)</script><p>这里的attention可以是任意的attention function，比如前一节介绍的dot-product attention以及MLP attention。之后我们将所有head对应的输出拼接起来，送入最后一个线性层进行整合，这个层的权重可以表示为$W_o\in \mathbb{R}^{d_0 \times hp_v}$</p>
+<script type="math/tex; mode=display">
+o = W_o[o^{(1)}, \ldots, o^{(h)}]</script><p>接下来我们就可以来实现多头注意力了，假设我们有h个头，隐藏层权重 $hidden_size = p_q = p_k = p_v$ 与query，key，value的维度一致。除此之外，因为多头注意力层保持输入与输出张量的维度不变，所以输出feature的维度也设置为 $d_0 = hidden_size$。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MultiHeadAttention</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_size, hidden_size, num_heads, dropout, **kwargs)</span>:</span></span><br><span class="line">        super(MultiHeadAttention, self).__init__(**kwargs)</span><br><span class="line">        self.num_heads = num_heads</span><br><span class="line">        self.attention = DotProductAttention(dropout)</span><br><span class="line">        self.W_q = nn.Linear(input_size, hidden_size, bias=<span class="keyword">False</span>)</span><br><span class="line">        self.W_k = nn.Linear(input_size, hidden_size, bias=<span class="keyword">False</span>)</span><br><span class="line">        self.W_v = nn.Linear(input_size, hidden_size, bias=<span class="keyword">False</span>)</span><br><span class="line">        self.W_o = nn.Linear(hidden_size, hidden_size, bias=<span class="keyword">False</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, query, key, value, valid_length)</span>:</span></span><br><span class="line">        <span class="comment"># query, key, and value shape: (batch_size, seq_len, dim),</span></span><br><span class="line">        <span class="comment"># where seq_len is the length of input sequence</span></span><br><span class="line">        <span class="comment"># valid_length shape is either (batch_size, )</span></span><br><span class="line">        <span class="comment"># or (batch_size, seq_len).</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Project and transpose query, key, and value from</span></span><br><span class="line">        <span class="comment"># (batch_size, seq_len, hidden_size * num_heads) to</span></span><br><span class="line">        <span class="comment"># (batch_size * num_heads, seq_len, hidden_size).</span></span><br><span class="line">        </span><br><span class="line">        query = transpose_qkv(self.W_q(query), self.num_heads)</span><br><span class="line">        key = transpose_qkv(self.W_k(key), self.num_heads)</span><br><span class="line">        value = transpose_qkv(self.W_v(value), self.num_heads)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> valid_length <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="comment"># Copy valid_length by num_heads times</span></span><br><span class="line">            device = valid_length.device</span><br><span class="line">            valid_length = valid_length.cpu().numpy() <span class="keyword">if</span> valid_length.is_cuda <span class="keyword">else</span> valid_length.numpy()</span><br><span class="line">            <span class="keyword">if</span> valid_length.ndim == <span class="number">1</span>:</span><br><span class="line">                valid_length = torch.FloatTensor(np.tile(valid_length, self.num_heads))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                valid_length = torch.FloatTensor(np.tile(valid_length, (self.num_heads,<span class="number">1</span>)))</span><br><span class="line"></span><br><span class="line">            valid_length = valid_length.to(device)</span><br><span class="line">            </span><br><span class="line">        output = self.attention(query, key, value, valid_length)</span><br><span class="line">        output_concat = transpose_output(output, self.num_heads)</span><br><span class="line">        <span class="keyword">return</span> self.W_o(output_concat)</span><br></pre></td></tr></table></figure>
+<p>关于其中实现的代码，首先要注意其维度上的变化，对于query , key 和 value ，其本身在维度上都是(batch_size , seq_len , dim )，这和之前的是相同的，然后利用transpose 会将最后一维变成两维，倒数第二维是head_nums，然后再进行变换，具体可参见如下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">transpose_qkv</span><span class="params">(X, num_heads)</span>:</span></span><br><span class="line">    <span class="comment"># Original X shape: (batch_size, seq_len, hidden_size * num_heads),</span></span><br><span class="line">    <span class="comment"># -1 means inferring its value, after first reshape, X shape:</span></span><br><span class="line">    <span class="comment"># (batch_size, seq_len, num_heads, hidden_size)</span></span><br><span class="line">    X = X.view(X.shape[<span class="number">0</span>], X.shape[<span class="number">1</span>], num_heads, <span class="number">-1</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># After transpose, X shape: (batch_size, num_heads, seq_len, hidden_size)</span></span><br><span class="line">    X = X.transpose(<span class="number">2</span>, <span class="number">1</span>).contiguous()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Merge the first two dimensions. Use reverse=True to infer shape from</span></span><br><span class="line">    <span class="comment"># right to left.</span></span><br><span class="line">    <span class="comment"># output shape: (batch_size * num_heads, seq_len, hidden_size)</span></span><br><span class="line">    output = X.view(<span class="number">-1</span>, X.shape[<span class="number">2</span>], X.shape[<span class="number">3</span>])</span><br><span class="line">    <span class="keyword">return</span> output</span><br></pre></td></tr></table></figure>
+<p>关于<code>np.tile</code>函数：官方文档为</p>
+<p><code>Construct an array by repeating A the number of times given by reps.</code></p>
+<p>If <em>reps</em> has length <code>d</code>, the result will have dimension of <code>max(d, A.ndim)</code>.</p>
+<p>If <code>A.ndim &lt; d</code>, <em>A</em> is promoted to be d-dimensional by prepending new axes. So a shape (3,) array is promoted to (1, 3) for 2-D replication, or shape (1, 1, 3) for 3-D replication. If this is not the desired behavior, promote <em>A</em> to d-dimensions manually before calling this function.</p>
+<p>If <code>A.ndim &gt; d</code>, <em>reps</em> is promoted to <em>A</em>.ndim by pre-pending 1’s to it. Thus for an <em>A</em> of shape (2, 3, 4, 5), a <em>reps</em> of (2, 2) is treated as (1, 1, 2, 2).</p>
+<p>注意维度的调换</p>
+<p>最后的output 的 shape  : (batch_size,seq_len,hide_size * head_nums)</p>
+<h3 id="基于位置的前馈网络"><a href="#基于位置的前馈网络" class="headerlink" title="基于位置的前馈网络"></a>基于位置的前馈网络</h3><p>其效果主要用于变换维度，实际上就等同于一个$1 \times 1$的卷积层</p>
+<h3 id="Add-and-Norm"><a href="#Add-and-Norm" class="headerlink" title="Add and Norm"></a>Add and Norm</h3><p>除了上面两个模块之外，Transformer还有一个重要的相加归一化层，它可以平滑地整合输入和其他层的输出，因此我们在每个多头注意力层和FFN层后面都添加一个含残差连接的Layer Norm层。这里 Layer Norm 与7.5小节的Batch Norm很相似，唯一的区别在于Batch Norm是对于batch size这个维度进行计算均值和方差的，而Layer Norm则是对最后一维进行计算。层归一化可以防止层内的数值变化过大，从而有利于加快训练速度并且提高泛化性能。 <a href="https://zhuanlan.zhihu.com/p/54530247" target="_blank" rel="noopener">(ref)</a> </p>
+<p>与循环神经网络不同，无论是多头注意力网络还是前馈神经网络都是独立地对每个位置的元素进行更新，这种特性帮助我们实现了高效的并行，却丢失了重要的序列顺序的信息。为了更好的捕捉序列信息，Transformer模型引入了位置编码去保持输入序列元素的位置。</p>
+<p>假设输入序列的嵌入表示 $X\in \mathbb{R}^{l\times d}$, 序列长度为$l$嵌入向量维度为$d$，则其位置编码为$P \in \mathbb{R}^{l\times d}$ ，输出的向量就是二者相加 $X + P$。</p>
+<h3 id="位置编码"><a href="#位置编码" class="headerlink" title="位置编码"></a>位置编码</h3><p>位置编码是一个二维的矩阵，i对应着序列中的顺序，j对应其embedding vector内部的维度索引。我们可以通过以下等式计算位置编码：</p>
+<script type="math/tex; mode=display">
+P_{i,2j} = sin(i/10000^{2j/d})</script><script type="math/tex; mode=display">
+P_{i,2j+1} = cos(i/10000^{2j/d})</script><script type="math/tex; mode=display">
+for\ i=0,\ldots, l-1\ and\ j=0,\ldots,\lfloor (d-1)/2 \rfloor</script><p><img src="https://cdn.kesci.com/upload/image/q5kpe0lu38.png?imageView2/0/w/640/h/640" alt="Image Name"></p>
+<script type="math/tex; mode=display">
+Fig. 10.3.4\ 位置编码</script><p>对于transformer而言，本身没有包含位置的性质。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> self.training:</span><br><span class="line">            batch_size, seq_len, _ = X.shape</span><br><span class="line">            <span class="comment"># Shape: (batch_size, seq_len), the values in the j-th column are j+1</span></span><br><span class="line">            valid_length = torch.FloatTensor(np.tile(np.arange(<span class="number">1</span>, seq_len+<span class="number">1</span>), (batch_size, <span class="number">1</span>))) </span><br><span class="line">            valid_length = valid_length.to(X.device)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            valid_length = <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<p>在这里，要理解一下，对于训练和预测，其输入是不同的，在训练过程中，会直接输入整个targets的所有tokens，那么这个时候为了保证其不看到后面的结果来进行loss的训练，需要设定当前的<code>valid_length</code>，相当于只看到了seq_len+1 这一个tokens为止。</p>
+<h2 id="卷积神经网络基础"><a href="#卷积神经网络基础" class="headerlink" title="卷积神经网络基础"></a>卷积神经网络基础</h2><p>输入维度：</p>
+<p>对于卷积神经网络来说，一般的输入X和中间的隐藏层，都具有4个维度，其分别是：</p>
+<p>(batch_size, channels,length,width)</p>
+<p>对于其他部分，应该就比较好理解。</p>
+<h2 id="LeNet"><a href="#LeNet" class="headerlink" title="LeNet"></a>LeNet</h2><p>LeNet是一个最经典的卷积神经网络。</p>
+<p>使用全连接层的局限性：</p>
+<ul>
+<li>图像在同一列邻近的像素在这个向量中可能相距较远。它们构成的模式可能难以被模型识别。</li>
+<li>对于大尺寸的输入图像，使用全连接层容易导致模型过大。</li>
+</ul>
+<p>使用卷积层的优势：</p>
+<ul>
+<li>卷积层保留输入形状。</li>
+<li>卷积层通过滑动窗口将同一卷积核与不同位置的输入重复计算，从而避免参数尺寸过大。</li>
+</ul>
+<h2 id="卷积神经网络进阶"><a href="#卷积神经网络进阶" class="headerlink" title="卷积神经网络进阶"></a>卷积神经网络进阶</h2><p>主要介绍了几个经典的卷积神经网络</p>
+<h3 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h3><p>首次证明了学习到的特征可以超越⼿⼯设计的特征，从而⼀举打破计算机视觉研究的前状。<br> <strong>特征：</strong></p>
+<ol>
+<li>8层变换，其中有5层卷积和2层全连接隐藏层，以及1个全连接输出层。</li>
+<li>将sigmoid激活函数改成了更加简单的ReLU激活函数。</li>
+<li>用Dropout来控制全连接层的模型复杂度。</li>
+<li>引入数据增强，如翻转、裁剪和颜色变化，从而进一步扩大数据集来缓解过拟合。</li>
+</ol>
+<h3 id="使用重复元素的网络（VGG）"><a href="#使用重复元素的网络（VGG）" class="headerlink" title="使用重复元素的网络（VGG）"></a>使用重复元素的网络（VGG）</h3><p>VGG：通过重复使⽤简单的基础块来构建深度模型。<br> Block:数个相同的填充为1、窗口形状为</p>
+<p>的卷积层,接上一个步幅为2、窗口形状为的最大池化层。<br> 卷积层保持输入的高和宽不变，而池化层则对其减半。</p>
+<p><img src="https://cdn.kesci.com/upload/image/q5l6vut7h1.png?imageView2/0/w/640/h/640" alt="Image Name"></p>
+<h3 id="网络中的网络-NiN"><a href="#网络中的网络-NiN" class="headerlink" title="网络中的网络(NiN)"></a>网络中的网络(NiN)</h3><p>LeNet、AlexNet和VGG：先以由卷积层构成的模块充分抽取 空间特征，再以由全连接层构成的模块来输出分类结果。<br> NiN：串联多个由卷积层和“全连接”层构成的小⽹络来构建⼀个深层⽹络。<br> ⽤了输出通道数等于标签类别数的NiN块，然后使⽤全局平均池化层对每个通道中所有元素求平均并直接⽤于分类。</p>
+<p><img src="https://cdn.kesci.com/upload/image/q5l6u1p5vy.png?imageView2/0/w/960/h/960" alt="Image Name"></p>
+<h3 id="GoogLeNet"><a href="#GoogLeNet" class="headerlink" title="GoogLeNet"></a>GoogLeNet</h3><ol>
+<li>由Inception基础块组成。  </li>
+<li>Inception块相当于⼀个有4条线路的⼦⽹络。它通过不同窗口形状的卷积层和最⼤池化层来并⾏抽取信息，并使⽤1×1卷积层减少通道数从而降低模型复杂度。   </li>
+<li>可以⾃定义的超参数是每个层的输出通道数，我们以此来控制模型复杂度。 </li>
+</ol>
+<p><img src="https://cdn.kesci.com/upload/image/q5l6uortw.png?imageView2/0/w/640/h/640" alt="Image Name"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2020/02/14/pytorch1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1508,192 +1759,6 @@ weight decay of 0.0005.</code></p>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2019/03/28/ma_model_pre5/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leliyliu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="禾声">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/28/ma_model_pre5/" itemprop="url">ma_model_preparation5</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-28T21:31:55+08:00">
-                2019-03-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h1><p>关于SVM的内容介绍，主要参考了这位博主的SVM文章<a href="http://www.blogjava.net/zhenandaci/category/31868.html" target="_blank" rel="noopener">点击此处进行查看</a>（讲得太好了）</p>
-<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>支持向量机(Support Vector Machine)是Cortes和Vapnik于1995年首先提出的，它在解决小样本、非线性及高维模式识别中表现出许多特有的优势，并能够推广应用到函数拟合等其他机器学习问题中.</p>
-<p>支持向量机方法是建立在统计学习理论的VC维理论和结构风险最小原理基础上的，根据有限的样本信息在模型的复杂性（即对特定训练样本的学习精度，Accuracy）和学习能力（即无错误地识别任意样本的能力）之间寻求最佳折衷，以期获得最好的推广能力（泛化能力）<br>所谓VC维是对函数类的一种度量，可以简单的理解为问题的复杂程度，VC维越高，一个问题就越复杂。正是因为SVM关注的是VC维，后面我们可以看到，SVM解决问题的时候，和样本的维数是无关的（甚至样本是上万维的都可以，这使得SVM很适合用来解决文本分类的问题，当然，有这样的能力也因为引入了核函数）。</p>
-<p>与问题真实解之间的误差，就叫做风险（更严格的说，误差的累积叫做风险）。统计学习因此而引入了泛化误差界的概念，就是指真实风险应该由两部分内容刻画，一是经验风险，代表了分类器在给定样本上的误差；二是置信风险，代表了我们在多大程度上可以信任分类器在未知文本上分类的结果。很显然，第二部分是没有办法精确计算的，因此只能给出一个估计的区间，也使得整个误差只能计算上界，而无法计算准确的值（所以叫做泛化误差界，而不叫泛化误差）。置信风险与两个量有关，一是样本数量，显然给定的样本数量越大，我们的学习结果越有可能正确，此时置信风险越小；二是分类函数的VC维，显然VC维越大，推广能力越差，置信风险会变大。<br>SVM 有如下的优点</p>
-<blockquote>
-<p>小样本  非线性  高维模式识别</p>
-</blockquote>
-<h2 id="2-数学定义"><a href="#2-数学定义" class="headerlink" title="2.数学定义"></a>2.数学定义</h2><h3 id="考虑线性分类器"><a href="#考虑线性分类器" class="headerlink" title="考虑线性分类器"></a>考虑线性分类器</h3><blockquote>
-<p>假设线性分类函数 g(x)=wx+b ，当然，其中w,x,b 均为高维向量，那么，不妨假设以g(x)=0为分界面，对于每个$x_i$而言，即有$y_i=sign(g(x_i))$,那么$y_i$要么为1，要么为-1，如此，定义$\sigma_i =\frac{y_i*g(x_i)}{||w||_2}$ ,因此，实际上$\sigma = \sum_{i=1}^n {\sigma_i}$为所有的距离之和,因而，我们找到一个最好的分类的目标变为$min ||w||$,为了在后续过程中使得我们的计算简单，我们将目标函数变为</p>
-</blockquote>
-<script type="math/tex; mode=display">min  \frac{1}{2}||w||^2</script><blockquote>
-<p>但如若着这样，会存在一个问题，即分类的结果都会存在于两个分类器的中间地带，那么这样会导致$||w||=0$实际上不是我们需要的值，故在此基础上，我们还需要加上约束条件$y_i*g(x_i)&gt;=1(i=1,2,\ldots,n)$ 故，最终结果表示为</p>
-</blockquote>
-<script type="math/tex; mode=display">min \quad  \frac{1}{2}||w||^2</script><script type="math/tex; mode=display">subject\quad to: \quad y_i*g(x_i)-1>=0 \,\,(i=1,2,\ldots,n)</script><blockquote>
-<p>实际上，这里的问题变为了一个凸优化问题，同时也是一个二次规划问题。我们知道，这样一个凸的规划问题，完全可以求得最优解，故我们的问题能够得到实际上的解决。那么需要怎么解决呢？</p>
-</blockquote>
-<h2 id="3-问题解决"><a href="#3-问题解决" class="headerlink" title="3.问题解决"></a>3.问题解决</h2><blockquote>
-<p>实际上，我们求解的目标就是w，因为求得了w之后，可以求得b，则最终可以求到我们想要得到的g(x)这个函数，也就是分界面。而实际上，w与样本有关，那么我们可以定义$w=a_1x_1+a_2x_2+\ldots+a_nx_n$ 其中$a$为拉格朗日乘子，那么再次回顾$g(x)=\vec{w} \cdot \vec{x} +\vec{b}$,再次分析$\vec{w}$ 的表达式，我们可以发现，依然有错误，实际上，w还与y有关，故，我们可以将w这样表示</p>
-</blockquote>
-<script type="math/tex; mode=display">\vec{w}=\sum_{i=1}^n{(a_iy_ix_i)}</script><blockquote>
-<p>因此 $g(x) =<w,x> +b= \sum_{i=1}^n{(a_iy_i<x_i,x>)}+b$,因此我们可以看到，我们实际上把w给消掉了，没有了w，实际上也减少了很多约束条件，接下来，我们将开始很重要的一个介绍，核函数</x_i,x></w,x></p>
-</blockquote>
-<h2 id="4-核函数"><a href="#4-核函数" class="headerlink" title="4.核函数"></a>4.核函数</h2><blockquote>
-<p>一个解决线性不可分问题的基本思路————向高维空间转化，使其变得线性可分（一个二维空间中的问题，当映射到四维空间中的时候，就变得线性可分了），然而于此同时，也出现了很多问题，例如对于一个文本分类问题，将其映射到上万维的空间中，依旧是线性不可分的，然而，对于高维空间的计算，需要耗费大量的计算资源，因此，这就带来了不可计算的问题（这是实际工程中的一个重要的问题）</p>
-<p>因此我们的目标已经明确了，找到一种能够映射到很高维的方法（要是能到无穷维就更好了！），并且能保证其在有限时间中可计算（如果能与没有升维之前有同样的计算阶那就再好不过了，即是线性的）。因此我们幻想，是否能有这样一种函数K(w,x),他接受低维空间的输入值，却能算出高维空间的内积值<w’,x’>。我们不妨假设这个函数为核函数K，那么即有</w’,x’></p>
-</blockquote>
-<script type="math/tex; mode=display">g(x)=K(w,x)+b\\
-f(x')=<w',x'>+b</script><blockquote>
-<p>这两个函数完全相等。因此，我们的目标变为了对非线性的分类问题，有$g(x)=\sum_{i=1}^n a_iy_i<x_i',x'>+b$<br>那么核函数(kernel)存在吗？万幸的是，这样的K(w,x)确实存在（发现凡是我们人类能解决的问题，大都是巧得不能再巧，特殊得不能再特殊的问题，总是恰好有些能投机取巧的地方才能解决，由此感到人类的渺小），它被称作核函数（核，kernel），而且还不止一个，事实上，只要是满足了Mercer条件的函数，都可以作为核函数。核函数的基本作用就是接受两个低维空间里的向量，能够计算出经过某个变换后在高维空间里的向量内积值。<br>常用的核函数有哪些呢？这里可以直接参考这一篇<a href="https://blog.csdn.net/batuwuhanpei/article/details/52354822" target="_blank" rel="noopener">blog</a>，常用的核函数有四个，分别为线性核函数,多项式核函数，高斯(RBF)核函数与sigmoid核函数,对于其的比较，我在这里就不区分了，在实践中，多用，就能更好地理解这几个核函数的区别。</x_i',x'></p>
-</blockquote>
-<h2 id="5-其它问题"><a href="#5-其它问题" class="headerlink" title="5.其它问题"></a>5.其它问题</h2><blockquote>
-<p>我们必须再次思考其它的问题，即如果使用核函数向高维空间映射后，问题仍然是线性不可分的，那怎么办？</p>
-<p>这一问题实际上我们可以理解为噪声问题，在实际过程中，我们所采集到的数据通常都会有噪声，那么，噪声会改变我们本来正确的分类结果，对程序而言，会导致一种情况，即我们无法对这样的数据，甚至映射到高维空间中后，也线性不可分。那么如何抑制此现象的产生呢？这实际上与我们之前提出的思路有极大的关联，即我们之前给出定义为</p>
-</blockquote>
-<script type="math/tex; mode=display">y_i[(wx_i)+b]>=1\quad(i=1,2,\ldots,n)</script><blockquote>
-<p>这实际上要求了所有的点，均必须满足这一条件，那么这会导致不可分（纵然在极高维的空间中，或许它也可分，但所分出来的结果必然是过拟合的，而不是我们想要的），所以我们模仿人类的思想，只保证绝大多数分类正确，因此,我们给这个阈值加上一个松弛变量，使得原式变为：</p>
-</blockquote>
-<script type="math/tex; mode=display">y_i[(wx_i)+b]>=1-\zeta_i \quad (i=1,2,\ldots,n)</script><blockquote>
-<p>在此基础上，我们的优化问题的目标有所改变</p>
-</blockquote>
-<script type="math/tex; mode=display">min \quad \frac{1}{2}||w||^2+C\sum_{i=1}^n{\zeta_i}\\
-subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
- \zeta_i\geq0</script><blockquote>
-<p>其中，C是一个超参数，建议设一组值来进行尝试。这里在具体对C进行一个讨论，C是一个固定参数，对此可以这样理解，如果C设置得较大，则说明我们很care那些被丢弃掉的点，如果我们不care那些点的话，我们则可以将C设置得小一点，同时，我们也能对不同的点设置不同的C，那么，则代表我们对某些点有特殊的偏好,这被称作数据集偏斜。对于特定的问题，读者应该对C的设置有不同的思考，要把握C的实质内容。</p>
-</blockquote>
-<h2 id="6-将SVM用于多类分类"><a href="#6-将SVM用于多类分类" class="headerlink" title="6. 将SVM用于多类分类"></a>6. 将SVM用于多类分类</h2><blockquote>
-<p>我们实际上可以将一个多分类问题，看做一个”一类对其余“的问题，那么每次仍然是解一个两类分类的问题。比如我们有5个类别，第一次就把类别1的样本定为正样本，其余2，3，4，5的样本合起来定为负样本，这样得到一个两类分类器，它能够指出一篇文章是还是不是第1类的；第二次我们把类别2 的样本定为正样本，把1，3，4，5的样本合起来定为负样本，得到一个分类器，如此下去，我们可以得到5个这样的两类分类器（总是和类别的数目一致）。到了有文章需要分类的时候，我们就拿着这篇文章挨个分类器的问：是属于你的么？是属于你的么？哪个分类器点头说是了，文章的类别就确定了。这种方法的好处是每个优化问题的规模比较小，而且分类的时候速度很快（只需要调用5个分类器就知道了结果）。但有时也会出现两种很尴尬的情况，例如拿一篇文章问了一圈，每一个分类器都说它是属于它那一类的，或者每一个分类器都说它不是它那一类的，前者叫分类重叠现象，后者叫不可分类现象。分类重叠倒还好办，随便选一个结果都不至于太离谱，或者看看这篇文章到各个超平面的距离，哪个远就判给哪个。不可分类现象就着实难办了，只能把它分给第6个类别了……更要命的是，本来各个类别的样本数目是差不多的，但“其余”的那一类样本数总是要数倍于正类（因为它是除正类以外其他类别的样本之和嘛），这就人为的造成了上一节所说的“数据集偏斜”问题。<br>因此，这样一个思路看上去可行，但实际上也需要一定的调整才能对实际的多分类问题进行应用。那需要哪些改善呢？还是解两类分类问题，还是每次选一个类的样本作正类样本，而负类样本则变成只选一个类（称为“一对一单挑”的方法，哦，不对，没有单挑，就是“一对一”的方法），这就避免了偏斜。但这样，会大量增加分类器的数量。<br>看来我们必须再退一步，在分类的时候下功夫，我们还是像一对一方法那样来训练，只是在对一篇文章进行分类之前，我们先按照下面图的样子来组织分类器（如你所见，这是一个有向无环图，因此这种方法也叫做DAG SVM）</p>
-</blockquote>
-<p><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/clip_image002_thumb.gif?raw=true" alt="DAG SVM"></p>
-<blockquote>
-<p>这样在分类时,我们就可以先问分类器“1对5”（意思是它能够回答“是第1类还是第5类”），如果它回答5，我们就往左走，再问“2对5”这个分类器，如果它还说是“5”，我们就继续往左走，这样一直问下去，就可以得到分类结果。好处在哪？我们其实只调用了4个分类器（如果类别数是k，则只调用k-1个），分类速度飞快，且没有分类重叠和不可分类现象！缺点在哪？假如最一开始的分类器回答错误（明明是类别1的文章，它说成了5），那么后面的分类器是无论如何也无法纠正它的错误的（因为后面的分类器压根没有出现“1”这个类别标签），其实对下面每一层的分类器都存在这种错误向下累积的现象。</p>
-<p>关于SMO算法的学习，在这里就不加以重点介绍，需要的可以参考<a href="https://www.cnblogs.com/bentuwuying/p/6444516.html" target="_blank" rel="noopener">SMO</a>这一篇博客</p>
-</blockquote>
-<h2 id="python-代码实现"><a href="#python-代码实现" class="headerlink" title="python 代码实现"></a>python 代码实现</h2><blockquote>
-<p>在python中，scikit-learn是一个广泛使用的用于实现机器学习算法的库（也许后面我也会对这个库的使用方法作一系列的博客介绍），SVM算法可以在这个库中找到并用于实现。<br>这里的python实现借用了<a href="https://blog.csdn.net/u010665216/article/details/78382984" target="_blank" rel="noopener">blog</a>的实现方式，需要源码的也可以从中进行下载</p>
-<p>sklearn中的SVC函数是基于libsvm实现的，所以在参数设置上有很多相似的地方。（PS: libsvm中的二次规划问题的解决算法是SMO）。</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Import Library</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="comment">#Assumed you have, X (predictor) and Y (target) for training data set and x_test(predictor) of test_dataset</span></span><br><span class="line"><span class="comment"># Create SVM classification object </span></span><br><span class="line">model = svm.svc(kernel=<span class="string">'linear'</span>, c=<span class="number">1</span>, gamma=<span class="number">1</span>) </span><br><span class="line"><span class="comment"># there is various option associated with it, like changing kernel, gamma and C value. Will discuss more # about it in next section.Train the model using the training sets and check score</span></span><br><span class="line">model.fit(X, y)</span><br><span class="line">model.score(X, y)</span><br><span class="line"><span class="comment">#Predict Output</span></span><br><span class="line">predicted= model.predict(x_test)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sklearn.svm.SVC(C=<span class="number">1.0</span>, kernel=<span class="string">'rbf'</span>, degree=<span class="number">3</span>, gamma=<span class="number">0.0</span>, coef0=<span class="number">0.0</span>, shrinking=<span class="keyword">True</span>, probability=<span class="keyword">False</span>,tol=<span class="number">0.001</span>, cache_size=<span class="number">200</span>, class_weight=<span class="keyword">None</span>, verbose=<span class="keyword">False</span>, max_iter=<span class="number">-1</span>, random_state=<span class="keyword">None</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这里展示了sklearn.svm.SVC的主要的参数，其中C为我们设置的超参数，而kernel有多种选择，这里为’rbf’,即高斯核函数。除此之外，还可以选择’linear’:线性核函数 ‘poly’ 多项式核函数 ‘sigmoid’ sigmoid核函数 ‘precomputed’:核矩阵（precomputed表示自己提前计算好核函数矩阵，这时候算法内部就不再用核函数去计算核矩阵，而是直接用你给的核矩阵。）</p>
-<p>degree: int型参数 默认为3这个参数只对多项式核函数有用，是指多项式核函数的阶数n如果给的核函数参数是其他核函数，则会自动忽略该参数。</p>
-<p>gamma: float参数 默认为auto核函数系数，只对‘rbf’,‘poly’,‘sigmod’有效。如果gamma为auto，代表其值为样本特征数的倒数，即1/n_features.</p>
-<p>coef0: float参数 默认为0.0。核函数中的独立项，只有对‘poly’和‘sigmod’核函数有用，是指其中的参数c</p>
-<p>probability： bool参数 默认为False。是否启用概率估计。 这必须在调用fit()之前启用，并且会fit()方法速度变慢。</p>
-</blockquote>
-<p>还有其它的参数，都可以参照<a href="https://blog.csdn.net/github_39261590/article/details/75009069" target="_blank" rel="noopener">svm参数说明</a>进行学习，这里就不再具体说明。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1744,7 +1809,7 @@ subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

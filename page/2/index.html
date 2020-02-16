@@ -232,6 +232,192 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2019/03/28/ma_model_pre5/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/28/ma_model_pre5/" itemprop="url">ma_model_preparation5</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-28T21:31:55+08:00">
+                2019-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h1><p>关于SVM的内容介绍，主要参考了这位博主的SVM文章<a href="http://www.blogjava.net/zhenandaci/category/31868.html" target="_blank" rel="noopener">点击此处进行查看</a>（讲得太好了）</p>
+<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>支持向量机(Support Vector Machine)是Cortes和Vapnik于1995年首先提出的，它在解决小样本、非线性及高维模式识别中表现出许多特有的优势，并能够推广应用到函数拟合等其他机器学习问题中.</p>
+<p>支持向量机方法是建立在统计学习理论的VC维理论和结构风险最小原理基础上的，根据有限的样本信息在模型的复杂性（即对特定训练样本的学习精度，Accuracy）和学习能力（即无错误地识别任意样本的能力）之间寻求最佳折衷，以期获得最好的推广能力（泛化能力）<br>所谓VC维是对函数类的一种度量，可以简单的理解为问题的复杂程度，VC维越高，一个问题就越复杂。正是因为SVM关注的是VC维，后面我们可以看到，SVM解决问题的时候，和样本的维数是无关的（甚至样本是上万维的都可以，这使得SVM很适合用来解决文本分类的问题，当然，有这样的能力也因为引入了核函数）。</p>
+<p>与问题真实解之间的误差，就叫做风险（更严格的说，误差的累积叫做风险）。统计学习因此而引入了泛化误差界的概念，就是指真实风险应该由两部分内容刻画，一是经验风险，代表了分类器在给定样本上的误差；二是置信风险，代表了我们在多大程度上可以信任分类器在未知文本上分类的结果。很显然，第二部分是没有办法精确计算的，因此只能给出一个估计的区间，也使得整个误差只能计算上界，而无法计算准确的值（所以叫做泛化误差界，而不叫泛化误差）。置信风险与两个量有关，一是样本数量，显然给定的样本数量越大，我们的学习结果越有可能正确，此时置信风险越小；二是分类函数的VC维，显然VC维越大，推广能力越差，置信风险会变大。<br>SVM 有如下的优点</p>
+<blockquote>
+<p>小样本  非线性  高维模式识别</p>
+</blockquote>
+<h2 id="2-数学定义"><a href="#2-数学定义" class="headerlink" title="2.数学定义"></a>2.数学定义</h2><h3 id="考虑线性分类器"><a href="#考虑线性分类器" class="headerlink" title="考虑线性分类器"></a>考虑线性分类器</h3><blockquote>
+<p>假设线性分类函数 g(x)=wx+b ，当然，其中w,x,b 均为高维向量，那么，不妨假设以g(x)=0为分界面，对于每个$x_i$而言，即有$y_i=sign(g(x_i))$,那么$y_i$要么为1，要么为-1，如此，定义$\sigma_i =\frac{y_i*g(x_i)}{||w||_2}$ ,因此，实际上$\sigma = \sum_{i=1}^n {\sigma_i}$为所有的距离之和,因而，我们找到一个最好的分类的目标变为$min ||w||$,为了在后续过程中使得我们的计算简单，我们将目标函数变为</p>
+</blockquote>
+<script type="math/tex; mode=display">min  \frac{1}{2}||w||^2</script><blockquote>
+<p>但如若着这样，会存在一个问题，即分类的结果都会存在于两个分类器的中间地带，那么这样会导致$||w||=0$实际上不是我们需要的值，故在此基础上，我们还需要加上约束条件$y_i*g(x_i)&gt;=1(i=1,2,\ldots,n)$ 故，最终结果表示为</p>
+</blockquote>
+<script type="math/tex; mode=display">min \quad  \frac{1}{2}||w||^2</script><script type="math/tex; mode=display">subject\quad to: \quad y_i*g(x_i)-1>=0 \,\,(i=1,2,\ldots,n)</script><blockquote>
+<p>实际上，这里的问题变为了一个凸优化问题，同时也是一个二次规划问题。我们知道，这样一个凸的规划问题，完全可以求得最优解，故我们的问题能够得到实际上的解决。那么需要怎么解决呢？</p>
+</blockquote>
+<h2 id="3-问题解决"><a href="#3-问题解决" class="headerlink" title="3.问题解决"></a>3.问题解决</h2><blockquote>
+<p>实际上，我们求解的目标就是w，因为求得了w之后，可以求得b，则最终可以求到我们想要得到的g(x)这个函数，也就是分界面。而实际上，w与样本有关，那么我们可以定义$w=a_1x_1+a_2x_2+\ldots+a_nx_n$ 其中$a$为拉格朗日乘子，那么再次回顾$g(x)=\vec{w} \cdot \vec{x} +\vec{b}$,再次分析$\vec{w}$ 的表达式，我们可以发现，依然有错误，实际上，w还与y有关，故，我们可以将w这样表示</p>
+</blockquote>
+<script type="math/tex; mode=display">\vec{w}=\sum_{i=1}^n{(a_iy_ix_i)}</script><blockquote>
+<p>因此 $g(x) =<w,x> +b= \sum_{i=1}^n{(a_iy_i<x_i,x>)}+b$,因此我们可以看到，我们实际上把w给消掉了，没有了w，实际上也减少了很多约束条件，接下来，我们将开始很重要的一个介绍，核函数</x_i,x></w,x></p>
+</blockquote>
+<h2 id="4-核函数"><a href="#4-核函数" class="headerlink" title="4.核函数"></a>4.核函数</h2><blockquote>
+<p>一个解决线性不可分问题的基本思路————向高维空间转化，使其变得线性可分（一个二维空间中的问题，当映射到四维空间中的时候，就变得线性可分了），然而于此同时，也出现了很多问题，例如对于一个文本分类问题，将其映射到上万维的空间中，依旧是线性不可分的，然而，对于高维空间的计算，需要耗费大量的计算资源，因此，这就带来了不可计算的问题（这是实际工程中的一个重要的问题）</p>
+<p>因此我们的目标已经明确了，找到一种能够映射到很高维的方法（要是能到无穷维就更好了！），并且能保证其在有限时间中可计算（如果能与没有升维之前有同样的计算阶那就再好不过了，即是线性的）。因此我们幻想，是否能有这样一种函数K(w,x),他接受低维空间的输入值，却能算出高维空间的内积值<w’,x’>。我们不妨假设这个函数为核函数K，那么即有</w’,x’></p>
+</blockquote>
+<script type="math/tex; mode=display">g(x)=K(w,x)+b\\
+f(x')=<w',x'>+b</script><blockquote>
+<p>这两个函数完全相等。因此，我们的目标变为了对非线性的分类问题，有$g(x)=\sum_{i=1}^n a_iy_i<x_i',x'>+b$<br>那么核函数(kernel)存在吗？万幸的是，这样的K(w,x)确实存在（发现凡是我们人类能解决的问题，大都是巧得不能再巧，特殊得不能再特殊的问题，总是恰好有些能投机取巧的地方才能解决，由此感到人类的渺小），它被称作核函数（核，kernel），而且还不止一个，事实上，只要是满足了Mercer条件的函数，都可以作为核函数。核函数的基本作用就是接受两个低维空间里的向量，能够计算出经过某个变换后在高维空间里的向量内积值。<br>常用的核函数有哪些呢？这里可以直接参考这一篇<a href="https://blog.csdn.net/batuwuhanpei/article/details/52354822" target="_blank" rel="noopener">blog</a>，常用的核函数有四个，分别为线性核函数,多项式核函数，高斯(RBF)核函数与sigmoid核函数,对于其的比较，我在这里就不区分了，在实践中，多用，就能更好地理解这几个核函数的区别。</x_i',x'></p>
+</blockquote>
+<h2 id="5-其它问题"><a href="#5-其它问题" class="headerlink" title="5.其它问题"></a>5.其它问题</h2><blockquote>
+<p>我们必须再次思考其它的问题，即如果使用核函数向高维空间映射后，问题仍然是线性不可分的，那怎么办？</p>
+<p>这一问题实际上我们可以理解为噪声问题，在实际过程中，我们所采集到的数据通常都会有噪声，那么，噪声会改变我们本来正确的分类结果，对程序而言，会导致一种情况，即我们无法对这样的数据，甚至映射到高维空间中后，也线性不可分。那么如何抑制此现象的产生呢？这实际上与我们之前提出的思路有极大的关联，即我们之前给出定义为</p>
+</blockquote>
+<script type="math/tex; mode=display">y_i[(wx_i)+b]>=1\quad(i=1,2,\ldots,n)</script><blockquote>
+<p>这实际上要求了所有的点，均必须满足这一条件，那么这会导致不可分（纵然在极高维的空间中，或许它也可分，但所分出来的结果必然是过拟合的，而不是我们想要的），所以我们模仿人类的思想，只保证绝大多数分类正确，因此,我们给这个阈值加上一个松弛变量，使得原式变为：</p>
+</blockquote>
+<script type="math/tex; mode=display">y_i[(wx_i)+b]>=1-\zeta_i \quad (i=1,2,\ldots,n)</script><blockquote>
+<p>在此基础上，我们的优化问题的目标有所改变</p>
+</blockquote>
+<script type="math/tex; mode=display">min \quad \frac{1}{2}||w||^2+C\sum_{i=1}^n{\zeta_i}\\
+subject \quad to \quad y_i[(wx_i)+b]\geq 1-\zeta_i \quad(i=1,2,\ldots,n)\\
+ \zeta_i\geq0</script><blockquote>
+<p>其中，C是一个超参数，建议设一组值来进行尝试。这里在具体对C进行一个讨论，C是一个固定参数，对此可以这样理解，如果C设置得较大，则说明我们很care那些被丢弃掉的点，如果我们不care那些点的话，我们则可以将C设置得小一点，同时，我们也能对不同的点设置不同的C，那么，则代表我们对某些点有特殊的偏好,这被称作数据集偏斜。对于特定的问题，读者应该对C的设置有不同的思考，要把握C的实质内容。</p>
+</blockquote>
+<h2 id="6-将SVM用于多类分类"><a href="#6-将SVM用于多类分类" class="headerlink" title="6. 将SVM用于多类分类"></a>6. 将SVM用于多类分类</h2><blockquote>
+<p>我们实际上可以将一个多分类问题，看做一个”一类对其余“的问题，那么每次仍然是解一个两类分类的问题。比如我们有5个类别，第一次就把类别1的样本定为正样本，其余2，3，4，5的样本合起来定为负样本，这样得到一个两类分类器，它能够指出一篇文章是还是不是第1类的；第二次我们把类别2 的样本定为正样本，把1，3，4，5的样本合起来定为负样本，得到一个分类器，如此下去，我们可以得到5个这样的两类分类器（总是和类别的数目一致）。到了有文章需要分类的时候，我们就拿着这篇文章挨个分类器的问：是属于你的么？是属于你的么？哪个分类器点头说是了，文章的类别就确定了。这种方法的好处是每个优化问题的规模比较小，而且分类的时候速度很快（只需要调用5个分类器就知道了结果）。但有时也会出现两种很尴尬的情况，例如拿一篇文章问了一圈，每一个分类器都说它是属于它那一类的，或者每一个分类器都说它不是它那一类的，前者叫分类重叠现象，后者叫不可分类现象。分类重叠倒还好办，随便选一个结果都不至于太离谱，或者看看这篇文章到各个超平面的距离，哪个远就判给哪个。不可分类现象就着实难办了，只能把它分给第6个类别了……更要命的是，本来各个类别的样本数目是差不多的，但“其余”的那一类样本数总是要数倍于正类（因为它是除正类以外其他类别的样本之和嘛），这就人为的造成了上一节所说的“数据集偏斜”问题。<br>因此，这样一个思路看上去可行，但实际上也需要一定的调整才能对实际的多分类问题进行应用。那需要哪些改善呢？还是解两类分类问题，还是每次选一个类的样本作正类样本，而负类样本则变成只选一个类（称为“一对一单挑”的方法，哦，不对，没有单挑，就是“一对一”的方法），这就避免了偏斜。但这样，会大量增加分类器的数量。<br>看来我们必须再退一步，在分类的时候下功夫，我们还是像一对一方法那样来训练，只是在对一篇文章进行分类之前，我们先按照下面图的样子来组织分类器（如你所见，这是一个有向无环图，因此这种方法也叫做DAG SVM）</p>
+</blockquote>
+<p><img src="https://github.com/leliyliu/ICM-MCM-preparation/blob/master/picture/clip_image002_thumb.gif?raw=true" alt="DAG SVM"></p>
+<blockquote>
+<p>这样在分类时,我们就可以先问分类器“1对5”（意思是它能够回答“是第1类还是第5类”），如果它回答5，我们就往左走，再问“2对5”这个分类器，如果它还说是“5”，我们就继续往左走，这样一直问下去，就可以得到分类结果。好处在哪？我们其实只调用了4个分类器（如果类别数是k，则只调用k-1个），分类速度飞快，且没有分类重叠和不可分类现象！缺点在哪？假如最一开始的分类器回答错误（明明是类别1的文章，它说成了5），那么后面的分类器是无论如何也无法纠正它的错误的（因为后面的分类器压根没有出现“1”这个类别标签），其实对下面每一层的分类器都存在这种错误向下累积的现象。</p>
+<p>关于SMO算法的学习，在这里就不加以重点介绍，需要的可以参考<a href="https://www.cnblogs.com/bentuwuying/p/6444516.html" target="_blank" rel="noopener">SMO</a>这一篇博客</p>
+</blockquote>
+<h2 id="python-代码实现"><a href="#python-代码实现" class="headerlink" title="python 代码实现"></a>python 代码实现</h2><blockquote>
+<p>在python中，scikit-learn是一个广泛使用的用于实现机器学习算法的库（也许后面我也会对这个库的使用方法作一系列的博客介绍），SVM算法可以在这个库中找到并用于实现。<br>这里的python实现借用了<a href="https://blog.csdn.net/u010665216/article/details/78382984" target="_blank" rel="noopener">blog</a>的实现方式，需要源码的也可以从中进行下载</p>
+<p>sklearn中的SVC函数是基于libsvm实现的，所以在参数设置上有很多相似的地方。（PS: libsvm中的二次规划问题的解决算法是SMO）。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Import Library</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="comment">#Assumed you have, X (predictor) and Y (target) for training data set and x_test(predictor) of test_dataset</span></span><br><span class="line"><span class="comment"># Create SVM classification object </span></span><br><span class="line">model = svm.svc(kernel=<span class="string">'linear'</span>, c=<span class="number">1</span>, gamma=<span class="number">1</span>) </span><br><span class="line"><span class="comment"># there is various option associated with it, like changing kernel, gamma and C value. Will discuss more # about it in next section.Train the model using the training sets and check score</span></span><br><span class="line">model.fit(X, y)</span><br><span class="line">model.score(X, y)</span><br><span class="line"><span class="comment">#Predict Output</span></span><br><span class="line">predicted= model.predict(x_test)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sklearn.svm.SVC(C=<span class="number">1.0</span>, kernel=<span class="string">'rbf'</span>, degree=<span class="number">3</span>, gamma=<span class="number">0.0</span>, coef0=<span class="number">0.0</span>, shrinking=<span class="keyword">True</span>, probability=<span class="keyword">False</span>,tol=<span class="number">0.001</span>, cache_size=<span class="number">200</span>, class_weight=<span class="keyword">None</span>, verbose=<span class="keyword">False</span>, max_iter=<span class="number">-1</span>, random_state=<span class="keyword">None</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里展示了sklearn.svm.SVC的主要的参数，其中C为我们设置的超参数，而kernel有多种选择，这里为’rbf’,即高斯核函数。除此之外，还可以选择’linear’:线性核函数 ‘poly’ 多项式核函数 ‘sigmoid’ sigmoid核函数 ‘precomputed’:核矩阵（precomputed表示自己提前计算好核函数矩阵，这时候算法内部就不再用核函数去计算核矩阵，而是直接用你给的核矩阵。）</p>
+<p>degree: int型参数 默认为3这个参数只对多项式核函数有用，是指多项式核函数的阶数n如果给的核函数参数是其他核函数，则会自动忽略该参数。</p>
+<p>gamma: float参数 默认为auto核函数系数，只对‘rbf’,‘poly’,‘sigmod’有效。如果gamma为auto，代表其值为样本特征数的倒数，即1/n_features.</p>
+<p>coef0: float参数 默认为0.0。核函数中的独立项，只有对‘poly’和‘sigmod’核函数有用，是指其中的参数c</p>
+<p>probability： bool参数 默认为False。是否启用概率估计。 这必须在调用fit()之前启用，并且会fit()方法速度变慢。</p>
+</blockquote>
+<p>还有其它的参数，都可以参照<a href="https://blog.csdn.net/github_39261590/article/details/75009069" target="_blank" rel="noopener">svm参数说明</a>进行学习，这里就不再具体说明。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2019/03/22/ma_model_pre4/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1508,177 +1694,6 @@ merge
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/26/MCM-ICM-preparation-one/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leliyliu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="禾声">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/26/MCM-ICM-preparation-one/" itemprop="url">MCM/ICM preparation_one</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-26T22:23:45+08:00">
-                2018-11-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="MCM-ICM-preparation"><a href="#MCM-ICM-preparation" class="headerlink" title="MCM/ICM preparation"></a>MCM/ICM preparation</h1><h2 id="first-week-matplotlib-learning"><a href="#first-week-matplotlib-learning" class="headerlink" title="first week(matplotlib learning)"></a>first week(matplotlib learning)</h2><hr>
-<h3 id="pyplot"><a href="#pyplot" class="headerlink" title="pyplot"></a>pyplot</h3><h3 id="面向对象的方式-object-oriented"><a href="#面向对象的方式-object-oriented" class="headerlink" title="面向对象的方式(object-oriented)"></a>面向对象的方式(object-oriented)</h3><pre><code>·折线图 plot
-·饼状图 pie
-·散点图 scatter
-·直方图 hist,hist2d
-·条形图 bar,barh
-</code></pre><h4 id="三种方式简介："><a href="#三种方式简介：" class="headerlink" title="三种方式简介："></a>三种方式简介：</h4><p>pyplot: 经典高层封装。<br><br>pylab：将matplotlib 和numpy 合并的模块，模拟matlab编程环境<br><br>面向对象的方式:matplotlib的精髓，更基础和底层的方法</p>
-<p> 1.matplotlib 对象实例</p>
-<pre><code>fig=plt.figure()
-ax=fig.add_subplott(111)  #设置fig的子图类型   
-返回Axes实例 
-
-·学习生成多个子图和生成多张图
-·网格的画法 利用plt.grid()来对网格进行定制，包括颜色，宽度，线性等等
-</code></pre><p>2.图例</p>
-<pre><code>plt.legend()生成图例
-parameter: loc   
-loc=0,1,2,3...   loc=0时为best
-ncol = num 分为几列
-</code></pre><p>3.x,y轴的调整</p>
-<pre><code>plt.axis([])#调整4个数值
-plt.xlim([])#调整一个或者两个数值
-plt.ylim([])#调整一个或者两个数值
-</code></pre><p>4.调整坐标轴的刻度&amp;生成日期序列</p>
-<pre><code>ax.localtor_params(nbins=20)
-ax.localtor_params(&#39;x&#39;,nbins=20)
-</code></pre><p>5.如何在一个图中添加一条新的坐标轴（双坐标轴）</p>
-<pre><code>利用plt.twinx来实现双坐标轴的画法
-同理，有twins也有twiny
-代码参见homework8  
-</code></pre><p>6.在图形中画注释符</p>
-<pre><code>利用plt.annotate()方法来进行，具体参加代码homework9
-纯文字注释，不使用箭头 具体也参见代码homework9
-text公式（数学公式）通过利用TeX公式，来编辑数学公式。 这里注意以$作为开始和结束符 textmath的公式已经在pdf中，可以上传
-</code></pre><p>7.对曲线下面或者曲线之间的区域进行填充</p>
-<pre><code>使用fill与fill_between来对其进行处理，那么则可以达到要求
-</code></pre><p>8.生成形状</p>
-<pre><code>需要使用patches, import matplotlib.patches as mpatches
-patches 中有许多形状，事实上，还有一些其它的形状可以用来做包括指示之类的东西
-参见homework11
-</code></pre><p>9.图形的美化</p>
-<pre><code>主要是对于函数plt.style.use()进行运行就差不多了，注意查看plt.style.available中的内容,参见homework12
-</code></pre><p>10.绘制极坐标图形</p>
-<pre><code>    ax=plt.subplot(111,projection=&#39;polar&#39;)#以极坐标的形式来画图
-    主要有这样一个参数，可以使得其表示为极坐标，同时，注意极坐标的x,y指的是什么
-    代码参加homework13
-</code></pre><h4 id="实战检验"><a href="#实战检验" class="headerlink" title="实战检验"></a>实战检验</h4><p>1.函数积分图</p>
-<pre><code>具体代码直接参见homework14，这里主要强调几点，就是要利用好python中几种常用数据类型的转化，学会处理好其过程。
-</code></pre><p>2.实现图形的展示</p>
-<pre><code>具体代码参加homework15，这里要学会对于多个图形的处理，以及如何利用其来实现展示的过程，以及学会如何查阅文档
-</code></pre><p>3.球员能力的分析</p>
-<pre><code>这里主要掌握一些很有意思的方法：包括如何输出中文的标签，如何循环实现输出等等，具体参见代码homework16
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1729,7 +1744,7 @@ patches 中有许多形状，事实上，还有一些其它的形状可以用来
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
