@@ -232,6 +232,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2020/03/24/the-one-code-1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/24/the-one-code-1/" itemprop="url">the-one code 1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-24T17:49:10+08:00">
+                2020-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h1 id="ONE程序代码简析"><a href="#ONE程序代码简析" class="headerlink" title="ONE程序代码简析"></a>ONE程序代码简析</h1><hr>
+<h2 id="程序执行主流程"><a href="#程序执行主流程" class="headerlink" title="程序执行主流程"></a>程序执行主流程</h2><h3 id="主入口函数"><a href="#主入口函数" class="headerlink" title="主入口函数"></a>主入口函数</h3><p>程序的入口函数在core包中的DTNSim.java文件中，其具体为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">boolean</span> batchMode = <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">int</span> nrofRuns[] = &#123;<span class="number">0</span>,<span class="number">1</span>&#125;;</span><br><span class="line">	String confFiles[];</span><br><span class="line">	<span class="keyword">int</span> firstConfIndex = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> guiIndex = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* set US locale to parse decimals in consistent way */</span></span><br><span class="line">	java.util.Locale.setDefault(java.util.Locale.US);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (args.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (args[<span class="number">0</span>].equals(BATCH_MODE_FLAG)) &#123;</span><br><span class="line">			batchMode = <span class="keyword">true</span>;</span><br><span class="line">               <span class="keyword">if</span> (args.length == <span class="number">1</span>) &#123;</span><br><span class="line">                   firstConfIndex = <span class="number">1</span>;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">else</span> &#123;</span><br><span class="line">                   nrofRuns = parseNrofRuns(args[<span class="number">1</span>]);</span><br><span class="line">                   firstConfIndex = <span class="number">2</span>;</span><br><span class="line">               &#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123; <span class="comment">/* GUI mode */</span></span><br><span class="line">			<span class="keyword">try</span> &#123; <span class="comment">/* is there a run index for the GUI mode ? */</span></span><br><span class="line">				guiIndex = Integer.parseInt(args[<span class="number">0</span>]);</span><br><span class="line">				firstConfIndex = <span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">				firstConfIndex = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		confFiles = args;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		confFiles = <span class="keyword">new</span> String[] &#123;<span class="keyword">null</span>&#125;;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	initSettings(confFiles, firstConfIndex);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (batchMode) &#123;</span><br><span class="line">		<span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=nrofRuns[<span class="number">0</span>]; i&lt;nrofRuns[<span class="number">1</span>]; i++) &#123;</span><br><span class="line">			print(<span class="string">"Run "</span> + (i+<span class="number">1</span>) + <span class="string">"/"</span> + nrofRuns[<span class="number">1</span>]);</span><br><span class="line">			Settings.setRunIndex(i);</span><br><span class="line">			resetForNextRun();</span><br><span class="line">			<span class="keyword">new</span> DTNSimTextUI().start();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">double</span> duration = (System.currentTimeMillis() - startTime)/<span class="number">1000.0</span>;</span><br><span class="line">		print(<span class="string">"---\nAll done in "</span> + String.format(<span class="string">"%.2f"</span>, duration) + <span class="string">"s"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		Settings.setRunIndex(guiIndex);</span><br><span class="line">		<span class="keyword">new</span> DTNSimGUI().start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>整体而言，整个main函数做了如下的工作，包括首先初始化某些参数，然后根据传输的参数，选择模式，然后，调用initSetting()函数进行相应的设置，然后则开始run整个函数，下面主要分析一下<code>initSetting</code>函数和<code>Setting</code></p>
+<h4 id="initSetting函数"><a href="#initSetting函数" class="headerlink" title="initSetting函数"></a>initSetting函数</h4><p>此函数需要两个参数，<code>confFiles</code>和<code>firstIndex</code>两个参数，其中第一个是string型，第二个为int类型，根据相应的参数，initSetting函数会调用Setting类中的相应方法，Setting.java主要是读取default_setting.txt中的内容的函数，具体进行分析。</p>
+<p>在setting 中的init函数中，调用了<code>defProperties.load(new FileInputStream(DEF_SETTINGS_FILE));</code>。这个是用来读取整个txt文档并进行配置的，是整个ONE工程中一个重要的部分。</p>
+<h5 id="load-与-load0"><a href="#load-与-load0" class="headerlink" title="load 与 load0"></a>load 与 load0</h5><p>下面具体进行关于load方法的分析，其实质上是调用load0方法（load只是做了一个检测），下面主要分析load0 的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">load0</span><span class="params">(LineReader lr)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    StringBuilder outBuffer = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    <span class="keyword">int</span> limit;</span><br><span class="line">    <span class="keyword">int</span> keyLen;</span><br><span class="line">    <span class="keyword">int</span> valueStart;</span><br><span class="line">    <span class="keyword">boolean</span> hasSep;</span><br><span class="line">    <span class="keyword">boolean</span> precedingBackslash;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ((limit = lr.readLine()) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        keyLen = <span class="number">0</span>;</span><br><span class="line">        valueStart = limit;</span><br><span class="line">        hasSep = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//System.out.println("line=&lt;" + new String(lineBuf, 0, limit) + "&gt;");</span></span><br><span class="line">        precedingBackslash = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">while</span> (keyLen &lt; limit) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = lr.lineBuf[keyLen];</span><br><span class="line">            <span class="comment">//need check if escaped.</span></span><br><span class="line">            <span class="keyword">if</span> ((c == <span class="string">'='</span> ||  c == <span class="string">':'</span>) &amp;&amp; !precedingBackslash) &#123;</span><br><span class="line">                valueStart = keyLen + <span class="number">1</span>;</span><br><span class="line">                hasSep = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((c == <span class="string">' '</span> || c == <span class="string">'\t'</span> ||  c == <span class="string">'\f'</span>) &amp;&amp; !precedingBackslash) &#123;</span><br><span class="line">                valueStart = keyLen + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">'\\'</span>) &#123;</span><br><span class="line">                precedingBackslash = !precedingBackslash;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                precedingBackslash = <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            keyLen++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (valueStart &lt; limit) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = lr.lineBuf[valueStart];</span><br><span class="line">            <span class="keyword">if</span> (c != <span class="string">' '</span> &amp;&amp; c != <span class="string">'\t'</span> &amp;&amp;  c != <span class="string">'\f'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!hasSep &amp;&amp; (c == <span class="string">'='</span> ||  c == <span class="string">':'</span>)) &#123;</span><br><span class="line">                    hasSep = <span class="keyword">true</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            valueStart++;</span><br><span class="line">        &#125;</span><br><span class="line">        String key = loadConvert(lr.lineBuf, <span class="number">0</span>, keyLen, outBuffer);</span><br><span class="line">        String value = loadConvert(lr.lineBuf, valueStart, limit - valueStart, outBuffer);</span><br><span class="line">        put(key, value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>整个Properties是从HashTable继承而来的，所以实际上，可以理解为什么ONE 使 用的配置形式是“key = value”。可以看到，判断当前的: 或者=符号来分割key 和 value。每一行进行相应处理，利用loadConvert()方法来进行从参数到具体setting 的转换。</p>
+<p>关于内容的保存，其实质上用的是stack（在Setting中声明如下）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Stack&lt;String&gt; oldNamespaces;</span><br><span class="line"><span class="keyword">private</span> Stack&lt;String&gt; secondaryNamespaces;</span><br></pre></td></tr></table></figure>
+<p><strong>使用stack保存？？？为什么要用stack，不是很懂</strong></p>
+<h5 id="关于Setting中的反射机制"><a href="#关于Setting中的反射机制" class="headerlink" title="关于Setting中的反射机制"></a>关于Setting中的反射机制</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">createIntializedObject</span><span class="params">(String className)</span> </span>&#123;</span><br><span class="line">		Class&lt;?&gt;[] argsClass = &#123;Settings.class&#125;;</span><br><span class="line">		Object[] args = &#123;<span class="keyword">this</span>&#125;;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> loadObject(className, argsClass, args);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">Class&lt;?&gt; objClass = getClass(className);<span class="comment">//通过getClass来创建相应的类对象，获得相应的反射</span></span><br></pre></td></tr></table></figure>
+<p>方法<code>createIntializeObject</code> 或<code>createObject</code> 利用反射机制，将相应的参数传出，利用反射机制动态创建配置文件给出的className对象 </p>
+<h3 id="start"><a href="#start" class="headerlink" title="start()"></a>start()</h3><p>在进行完初始化的操作之后(<code>init_setting</code>)，main函数会调用setRunIndex 和 start() 两个函数来进行后续的处理，即开始整个程序的具体运行，有两种不同模式，分别为：DTNSimTextUI 和 DTNSimGUI </p>
+<p>整个函数只是调用了两个函数<code>initModel()</code> 和 <code>runSim()</code>，两个函数的作用都还很简单，分别是初始化仿真模型和进行仿真，碧昂且<code>runSim</code>是一个虚函数，是一个abstract，所以实际上需要针对不同的场景做实现。</p>
+<h5 id="initModel"><a href="#initModel" class="headerlink" title="initModel"></a>initModel</h5><p>初始化模型这一函数会调用SimScenario.getInstance()这一函数来进行整个模拟场景和节点属性的初始化。</p>
+<p>实际上就是new 一个SimScenario 类，具体而言，对于SimScenario类，其构造函数的一些关键部分有：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Settings s = <span class="keyword">new</span> Settings(SCENARIO_NS);<span class="comment">//"Scenario"</span></span><br><span class="line">createHosts();</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.world = <span class="keyword">new</span> World(hosts, worldSizeX, worldSizeY, updateInterval,updateListeners, simulateConnections,</span><br><span class="line">eqHandler.getEventQueues());</span><br></pre></td></tr></table></figure>
+<p>可以看到，其实际上调用了createHosts() 和 World() 的构造函数来完成初始化场景和节点的功能，而其中，所有的属性信息都是通过配置文件并利用<code>Setting.java</code>来完成的。</p>
+<p><strong>关于DTNHost</strong>：它是整个ONE系统的核心，连接了节点移动模型、通信通道以及路由方式这三大重要模块，并负责这几个模块间的通信任务（利用给出的comBus）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> nextAddress = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> address;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> Coord location; 	<span class="comment">// where is the host</span></span><br><span class="line"><span class="keyword">private</span> Coord destination;	<span class="comment">// where is it going</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> MessageRouter router; <span class="comment">//路由</span></span><br><span class="line"><span class="keyword">private</span> MovementModel movement; <span class="comment">// 移动</span></span><br><span class="line"><span class="keyword">private</span> Path path;<span class="comment">//路径</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">double</span> speed;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">double</span> nextTimeToMove;</span><br><span class="line"><span class="keyword">private</span> String name;</span><br><span class="line"><span class="keyword">private</span> List&lt;MessageListener&gt; msgListeners;</span><br><span class="line"><span class="keyword">private</span> List&lt;MovementListener&gt; movListeners;</span><br><span class="line"><span class="keyword">private</span> List&lt;NetworkInterface&gt; net;<span class="comment">//网络接口</span></span><br><span class="line"><span class="keyword">private</span> ModuleCommunicationBus comBus;</span><br></pre></td></tr></table></figure>
+<h6 id="createHosts"><a href="#createHosts" class="headerlink" title="createHosts()"></a>createHosts()</h6><p>对于createHosts这一函数的调用，实际上是创建了相应的interface 和 movementModel 以及相应的router，故而实际上其就是一个整体的节点移动模型通信模型和路由方式的创建。</p>
+<h6 id="World"><a href="#World" class="headerlink" title="World()"></a>World()</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">World</span><span class="params">(List&lt;DTNHost&gt; hosts, <span class="keyword">int</span> sizeX, <span class="keyword">int</span> sizeY,</span></span></span><br><span class="line"><span class="function"><span class="params">		<span class="keyword">double</span> updateInterval, List&lt;UpdateListener&gt; updateListeners,</span></span></span><br><span class="line"><span class="function"><span class="params">		<span class="keyword">boolean</span> simulateConnections, List&lt;EventQueue&gt; eventQueues)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.hosts = hosts;</span><br><span class="line">	<span class="keyword">this</span>.sizeX = sizeX;</span><br><span class="line">	<span class="keyword">this</span>.sizeY = sizeY;</span><br><span class="line">	<span class="keyword">this</span>.updateInterval = updateInterval;</span><br><span class="line">	<span class="keyword">this</span>.updateListeners = updateListeners;</span><br><span class="line">	<span class="keyword">this</span>.simulateConnections = simulateConnections;</span><br><span class="line">	<span class="keyword">this</span>.eventQueues = eventQueues;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">this</span>.simClock = SimClock.getInstance();</span><br><span class="line">	<span class="keyword">this</span>.scheduledUpdates = <span class="keyword">new</span> ScheduledUpdatesQueue();</span><br><span class="line">	<span class="keyword">this</span>.isCancelled = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">	setNextEventQueue();</span><br><span class="line">	initSettings();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>整个world 的构造函数，可以看到，实际上是规定了相应的包括相应的事件队列(event queue) 和 监听器等(listener)。</p>
+<h5 id="runSim"><a href="#runSim" class="headerlink" title="runSim"></a>runSim</h5><p>runSim 函数实际上是DTNSimGUI中的runSim函数，其调用startGUI() 函数和后续的world.update()函数，实际上，整个world.update()函数是根据时间驱动的，具体为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (simTime &lt; endTime &amp;&amp; !simCancelled)&#123;</span><br><span class="line">	<span class="keyword">if</span> (guiControls.isPaused()) &#123;</span><br><span class="line">		wait(<span class="number">10</span>); <span class="comment">// release CPU resources when paused</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			world.update();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (AssertionError e) &#123;</span><br><span class="line">			<span class="comment">// handles both assertion errors and SimErrors</span></span><br><span class="line">			processAssertionError(e);</span><br><span class="line">		&#125;</span><br><span class="line">		simTime = SimClock.getTime();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">this</span>.update(<span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，当没有设置pause的时候，会根据时间进行world.update()函数的调用，调用之后，更新当前时间simTime。</p>
+<p>在整个world.update()的函数中，包括了这样两个主要的函数，即moveHosts() 和updateHosts()。</p>
+<p>moveHosts()：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">moveHosts</span><span class="params">(<span class="keyword">double</span> timeIncrement)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>,n = hosts.size(); i&lt;n; i++) &#123;</span><br><span class="line">		DTNHost host = hosts.get(i);</span><br><span class="line">		host.move(timeIncrement);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>也就是每一个时间增量进行一个结点的移动。</p>
+<p>updateHosts()函数是一个关键的函数，其调用了<code>hosts.get(i).update(simulateConnections);</code>，其在default_settings.txt中设定为：<code>Scenario.simulateConnections = true</code></p>
+<p>整个update 为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">boolean</span> simulateConnections)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!isRadioActive()) &#123;</span><br><span class="line">		<span class="comment">// Make sure inactive nodes don't have connections</span></span><br><span class="line">		tearDownAllConnections();</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (simulateConnections) &#123;</span><br><span class="line">		<span class="keyword">for</span> (NetworkInterface i : net) &#123;</span><br><span class="line">			i.update();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">this</span>.router.update();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也就是会对每一个网络接口和每一个router（路由）进行更新。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过前面的分析，我们大概能知道一个从main()函数方法入口进入并进行整个项目调用的流程，但是我们忽略了很多细节，包括movement ， interface 以及router，还有之间相互交互的信息等。</p>
+<p>从整体而言，整个项目的执行过程即为：通过Setting 根据default_setting.txt 文件中读取相应的内容并进行初始化设置，然后会初始化整个模型，包括了模型的节点的移动模型，通信模型，路由方式等。之后开始具体运行，在运行过程中，其主要是通过update进行更新，更新的时间会提前设定。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2020/02/24/pytorch3/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1525,182 +1683,6 @@ Fig. 10.3.4\ 位置编码</script><p>对于transformer而言，本身没有包�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2019/04/28/reading1/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leliyliu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="禾声">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/28/reading1/" itemprop="url">BTS-DSN</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-28T18:59:18+08:00">
-                2019-04-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Paper-Reading"><a href="#Paper-Reading" class="headerlink" title="Paper Reading"></a>Paper Reading</h1><h2 id="BTS-DSN-Deeply-supervised-neural-network-with-short-connections-forretinal-vessel-segmentation"><a href="#BTS-DSN-Deeply-supervised-neural-network-with-short-connections-forretinal-vessel-segmentation" class="headerlink" title="BTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation"></a>BTS-DSN: Deeply supervised neural network with short connections forretinal vessel segmentation</h2><hr>
-<blockquote>
-<p><code>references</code>: you can read this papar via <a href="https://linkinghub.elsevier.com/retrieve/pii/S138650561831195X" target="_blank" rel="noopener">BTS-DSN</a> or star/fork this github <a href="https://github.com/guomugong/BTS-DSN" target="_blank" rel="noopener">project</a></p>
-</blockquote>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ol>
-<li>An important method was proposed by this group called short-connection, that improve quite a lot the result of this model’s ability. They use sensitivity,specificity, AUC and F1-score to test their model. If you aren’t familiar with these indicators, you can read these two blogs to learn more<a href="https://tracholar.github.io/machine-learning/2018/01/26/auc.html" target="_blank" rel="noopener">AUC</a>  &amp;<a href="https://blog.csdn.net/u013385925/article/details/80385873" target="_blank" rel="noopener">AUC-2</a>. </li>
-</ol>
-<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h3><ol>
-<li>why we hope to achieve early dignosis.</li>
-<li>some researchs done by other scholar group<blockquote>
-<p>(1) Unsupervised methods: some methods have been proposed by scholoars, mainly about detect the profile and contour of vessel. These methods are mostly based on geometric computation model. defects: <code>However, the unsupervised methods are sensitive to the
-manually designed features and rules.</code>(poor in generalization)</p>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<p>(2)supervised methods:when we use supervised method, we usually view this problem as a pixel-wise binary classification. deep learning methods are popular in this area. Other ways to solve this problem about semantic segmentation results. <code>defects:different methods have different disadvantages such as time-consuming and so on</code></p>
-</blockquote>
-<ol>
-<li>the contributions of this paper<blockquote>
-<p>(1)”We propose a deeply-supervised fully convolutional neural network with bottom-top and top-bottom short connections (BTS-DSN) for vessel segmentation. “</p>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<p>(2)”We used VGGNet and ResNet-101 as backbone and conducted extensive experiments on DRIVE, STARE and CHASE_DB1”</p>
-<p>“We employed cross-training experiments to show the generalization of BTS-DSN.”</p>
-</blockquote>
-<p>attributes : more about VGGNet and ResNet can be found in their papers.{<a href="https://github.com/machrisaa/tensorflow-vgg" target="_blank" rel="noopener">vgg(including vgg-16&amp;vgg-19)</a>&amp;<a href="https://arxiv.org/abs/1512.03385" target="_blank" rel="noopener">ResNet_paper</a>&amp;<a href="https://github.com/tensorflow/models/blob/master/research/slim/nets/resnet_v2.py" target="_blank" rel="noopener">ResNet_github</a>}.If you want to understand these model better, baidu or google it may help you.</p>
-<h3 id="2-BTS-DSN"><a href="#2-BTS-DSN" class="headerlink" title="2.BTS-DSN"></a>2.BTS-DSN</h3><ol>
-<li><p>from HED to DSN, and then to BS-DSN and BST-DSN. this method was proposed to alleviate the gradient vanish problem in deep network. It’s a deep supervision</p>
-</li>
-<li><p>bottom-top short connnections: pass low level fine semantic information to high levels to alleviate the blurring situation.</p>
-</li>
-<li><p>top-bottom short connection: Bottom-top short connections aim to refine high-level segmentation results.</p>
-</li>
-<li><p>inference: do feature confusion</p>
-</li>
-</ol>
-<h3 id="3-Implementation-details"><a href="#3-Implementation-details" class="headerlink" title="3. Implementation details"></a>3. Implementation details</h3><ol>
-<li><p>data augmentation: using quite a lot various transformations to augment the training set, including rotation, flipping and scaling. </p>
-</li>
-<li><p>model implementation : using the network framework Caffe, short connections of the BTS-DSN. </p>
-</li>
-<li><p>Parameter settings</p>
-</li>
-</ol>
-<p><code>When the backbone is VGGNet, we fine-tuned our network with a
-learning rate of 1e-8, a weight decay of 0.0005, and a momentum of
-0.9. We use a fixed learning rate.</code></p>
-<p>in two different backbone(VGGNet &amp; ResNet-101),they use different type of parameters . </p>
-<p>and for patch-level S-DSN, they split a raw retinal image into 9 patches, each of which was 1/4 the size of the raw image, meanwhile, patches were up-sampled $2 \times$ </p>
-<p>4.running environment:……</p>
-<h4 id="Evaluation-criteria"><a href="#Evaluation-criteria" class="headerlink" title="Evaluation criteria"></a>Evaluation criteria</h4><p><code>In vessel segmentation, each pixel belongs to a vessel or non-vessel
-pixel.</code>(be seen as a binary classfication problem).they iemployed six evaluation criteria, including AUC,SE,SP,ACC,F1-score and MCC.</p>
-<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><p>the result are shown in the fig in this paper, so you can just look through and get them.</p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>这篇文章成功实现了目前基本上是最高水平的眼底血管分类成果，其使用VGGNet或者ResNet-101作为支柱(backbone)来实现整个CNN卷积的过程，同时，为了缓解语义分割中语义分割之间的差距，使用top-bottom 和 bottom-top short connection来实现整个过程，最终实现了BTS-DSN网络，达到了好的效果。同时，这个网络也使用了特征融合的方法，可以加以了解。对于更多的细节，还需要继续了解。</p>
-<h3 id="发散"><a href="#发散" class="headerlink" title="发散"></a>发散</h3><h4 id="（采样方法）上采样与下采样"><a href="#（采样方法）上采样与下采样" class="headerlink" title="（采样方法）上采样与下采样"></a>（采样方法）上采样与下采样</h4><h4 id="短连接与ResNet连接方式的不同"><a href="#短连接与ResNet连接方式的不同" class="headerlink" title="短连接与ResNet连接方式的不同"></a>短连接与ResNet连接方式的不同</h4><h4 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h4>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2019/04/28/recording2/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1921,7 +1903,7 @@ weight decay of 0.0005.</code></p>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1934,7 +1916,7 @@ weight decay of 0.0005.</code></p>
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
