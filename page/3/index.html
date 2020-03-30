@@ -232,6 +232,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/12/01/MCM-ICM-preparation-two/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/01/MCM-ICM-preparation-two/" itemprop="url">MCM/ICM preparation -two</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-01T15:03:01+08:00">
+                2018-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="MCM-ICM-preparation"><a href="#MCM-ICM-preparation" class="headerlink" title="MCM/ICM preparation"></a>MCM/ICM preparation</h1><h2 id="second-numpy-amp-pandas"><a href="#second-numpy-amp-pandas" class="headerlink" title="second(numpy &amp; pandas)"></a>second(numpy &amp; pandas)</h2><hr>
+<h3 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h3><p>1.深浅拷贝</p>
+<pre><code>深拷贝:a=np.array([...]) b=a   则b is a 为True  传的是引用
+浅拷贝:b=a.copy()  则b is a 为Flase 
+</code></pre><h3 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h3><p>1.对于pd.Series() 以及pd.DateFrame() 的使用</p>
+<pre><code>对所生成的数据进行排序，进行数据的简单处理与查看，进行对于index 与 columns 的查看与使用, 按照index与colums的方式来进行排序的方法.
+</code></pre><p>2.选择数据</p>
+<pre><code>#select by label: df.loc  
+#select by position: df.iloc
+#select by mixed selection:df.ix(在新的pandas中，ix方式已经不建议被使用，将被移除)
+#bool indexing  利用df.A&gt;num 来进行选择某些值
+</code></pre><p>3.设置值</p>
+<pre><code>利用iloc，loc，以及bool indexing来进行修改
+直接添加一行或者一列，那么就可以直接用df[&#39;E&#39;]=...来进行添加
+</code></pre><p>4.处理丢失数据</p>
+<pre><code>df.dropna()   df.fillna()  df.isnull()   np.any(df.isnull==True)/df.isnull().any()
+这四种方式对于丢失的数据进行处理，1.丢掉 2，填充 3、4.判断是否有丢失
+</code></pre><p>5.储存数据<br>    read_csv/to_csv</p>
+<p>6.合并数据</p>
+<pre><code>利用concat([df1,df2,df3],axis=0,ignore_index=True)#aixs=0竖向合并
+利用join参数  join=&#39;outer&#39;/&#39;inner&#39; 这两个如果是outer，则都显示,inner则只是显示都共有的index与columns
+利用参数join_axes，按照某一个具体的来进行考虑
+append()的方法,将具体某些加到原pandas中。
+
+merge 
+利用merge()函数中的on参数进行合并
+注意on的参数类型可以使多样的，比如单独的一个是字符串，多个的话就是列表
+合并的时候是用inner 的方式来进行的
+注意indicator这个参数为True时能够展示合并的方式(left_only,both,right_only)
+注意区别index 和column两个的合并，参数有一点小小的不同
+添加标签-&gt; suffixes
+</code></pre><p>7.pandas 绘图</p>
+<pre><code>利用pandas直接plot(),不需要plt
+对于scatter，是直接在plot()后的属性，而不是一个特别的方式。
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/28/Modern-Anglo-American-philosophy-translation-9/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1669,177 +1822,6 @@ div , divu , ddiv , ddivu
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/11/18/Modern-Anglo-American-philosophy-translation-3/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leliyliu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="禾声">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/18/Modern-Anglo-American-philosophy-translation-3/" itemprop="url">Modern Anglo-American philosophy translation_3</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T11:44:43+08:00">
-                2018-11-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Analytic philosophy began when Moore and then Russell started to defend a thoroughgoing realism about what Moore called the “common sense” or “ordinary” view of the world. This involved a lush metaphysical pluralism, the belief that there are many things that exist simpliciter. </p>
-</blockquote>
-<p>&emsp;分析哲学是以穆尔和罗素开始为被穆尔称作是对常识关注的世界观的一种完全的实在论做辩护为开端。它包括了丰富的形而上学多元论的色彩，确信有许多客体是绝对存在的。</p>
-<blockquote>
-<p>It was not this pluralism, however, nor the content of any of his philosophical views, that inspired the analytic movement. Instead, it was the manner and idiom of Moore’s philosophizing. First, Moore rejected system-building or making grand syntheses of his views, preferring to focus on narrowly defined philosophical problems held in isolation. </p>
-</blockquote>
-<p>&emsp;然而，并不是这种多元论，或是任何穆尔的哲学观点，激发了这场分析哲学的大运动，而是穆尔这种思考哲学的方式和看法真正引起了改变。第一，穆尔反对哲学体系的搭建或对它的观点作广泛地综合，而更倾向于关注一些孤立的可容思考的切入点。</p>
-<blockquote>
-<p>Second, when Moore articulated his realism, he did so in the idiom of “propositions” and “meanings.” There is a noteworthy ambiguity as to whether these are linguistic items or mental ones.</p>
-</blockquote>
-<p>&emsp;第二，当穆尔在清晰地表达他的实在论观点时，他依照了一种“命题”和“意义”的方式来进行说明。显著地看到，当论及是否有语言学或精神上的实质时，其是含混不清的。</p>
-<blockquote>
-<p>This terminology is further ambiguous in Moore’s case, for two reasons. First, his views about propositions are highly similar to a view standard in Austro-German philosophy from Bolzano and Lotze to Husserl according to which “propositions” and “meanings” have an Ideal existence—the kind of existence traditionally attributed to Platonic Forms. It is likely that Moore got the idea from reading in that tradition (cf. Bell 1999, Willard 1984).</p>
-</blockquote>
-<p>&emsp;在穆尔的实例中，由于两个原因，这个术语是相当含混不清的。其一，他的关于命题的观点和从博尔扎诺和洛策到胡塞尔的哲学观点高度相似，由于穆尔所提出的“命题”和“意义”有一个唯心主义的存在方式，在传统上倾向于柏拉图主义的形式。有可能穆尔正是通过阅读古籍才得到了这一观点。</p>
-<blockquote>
-<p>Second, despite strong similarities with the Austro-German view, it is clear that, in Moore’s early thought, “propositions” and “meanings” are primarily neither Ideal nor mental nor linguistic, but real in the sense of “thing-like.”</p>
-</blockquote>
-<p>&emsp;其二，尽管与德奥地区的哲学观点十分相似，可以很清楚地看到，在穆尔早期的想法中， “命题”和“意义”从根本上而言既不是唯心主义的，也不是语言学的，而是与经验实存相似的。</p>
-<blockquote>
-<p>For Moore and the early Russell, propositions or meanings were “identical” to ordinary objects—tables, cats, people. For more on this peculiar view, see the article on Moore, section 2b.</p>
-</blockquote>
-<p>&emsp;对于穆尔和早期的罗素而言，命题或意义与日常客体——像桌子，猫，人是相同的存在。如果想在这一块知道地更多，请看2b节，有关穆尔的文段。</p>
-<blockquote>
-<p>The deep metaphysical complexity attaching to Moore’s view was largely overlooked or ignored by his younger contemporaries, who were attracted to the form of his philosophizing rather than to its content. Taking the linguistic aspect of “propositions” and “meanings” to be paramount, they saw Moore as endorsing a linguistic approach to philosophy.</p>
-</blockquote>
-<p>&emsp;穆尔观点中深藏的形而上学复杂性大大地被他的年轻的同伴们所忽视，而这些人更重视他的哲学方式而不是他观点中显现出的内容。他们将“命题”和“意义”推为最高的准则，并且认为穆尔认可将语言学的方法应用到哲学中。</p>
-<blockquote>
-<p>This along with his penchant for attending to isolated philosophical problems rather than constructing a grand system, gave rise to the notion that he had rebelled not merely against British Idealism but against traditional philosophy on the grand scale.</p>
-</blockquote>
-<p>&emsp;因为他喜欢研究孤立的哲学问题而不是构建一个整体的体系，他也凭借此提出他用来反抗英国唯心主义甚至是传统哲学的概念。</p>
-<blockquote>
-<p>Though Moore was later to object that there was nothing especially linguistic about it (see Moore 1942b), the linguistic conception of Moore’s method was far from baseless.</p>
-</blockquote>
-<p>&emsp;尽管穆尔后来反对除了语言没有任何有意义的这种说法，穆尔方法中的语言学概念也不是毫无根据的。</p>
-<blockquote>
-<p>For instance, in a famous paper called “A Defense of Common Sense” (Moore 1925), Moore seems to argue that the common sense view of the world is built into the terms of our ordinary language, so that if some philosopher wants to say that some common sense belief is false, he thereby disqualifies the very medium in which he expresses himself, and so speaks either equivocally or nonsensically.</p>
-</blockquote>
-<p>&emsp;例如，在一篇著名的论文“A Defense of Common Sense” 中，穆尔似乎表明说我们日常经验中的世界是建立在我们日常语言的表达中的，所以如果哲学家试图言说某些常识是在逻辑上错误的，那么他即在取消自己表达的资格，因此言说本身要不就是可疑的，或者毫无意义的。</p>
-<blockquote>
-<p>His case begins with the observation that we know many things despite the fact that we do not know how we know them. Among these “beliefs of common sense,” as he calls them, are such propositions as “There exists at present a living human body, which is my body,”</p>
-</blockquote>
-<p>&emsp;他所举的例子是我们知道我们所知道的，但是我们不知道如何知道我们不知道的事实。在他所称为的这种”beliefs of common sense”中，就像一个命题说“现在这里存在一个活的人体，就是我的人体”一样。</p>
-<blockquote>
-<p>“Ever since it [this body] was born, it has been either in contact with or not far from the surface of the earth,” and “I have often perceived both body and other things which formed part of its environment, including other human bodies” (Moore 1925; in Moore 1959: 33). We can call these common sense propositions.</p>
-</blockquote>
-<p>&emsp;“自从这个人体诞生以来，它就没有远离于地球，而是与之产生联系。”并且我经常感知到我的身体和其他一些构成它的环境的客体，包括其他人的身体”。我们将其称之为常识命题。</p>
-<blockquote>
-<p>Moore argues that each common sense proposition has an “ordinary meaning” that specifies exactly what it is that one knows when one knows that proposition to be true. This “ordinary meaning” is perfectly clear to most everyone, except for some skeptical philosophers who<br>seem to think that [for example] the question “Do you believe that the earth has existed for many years past?” is not a plain question, such as should be met either by a plain “Yes” or “No,” or by a plain “I can’t make up my mind,” but is the sort of question which can be properly met by: “It all depends on what you mean by ‘the earth’ and ‘exists’ and ‘years’….” (Moore 1925; in 1959: 36)</p>
-</blockquote>
-<p>&emsp;穆尔认为，每一个常识命题都有它的“常识意义”，这个意义只有当一个人意识到这个命题是真的时候才能真正明白。这些常识意义被大多数人清晰地理解，除了一些怀疑论哲学家，他们似乎认为[例如]这些问题“你相信地球已经存在了很多年？”不是一个清楚的问题，而这些问题本可以通过简单地回答“是”与“否”或“不确定”来解决，但他们认为这个问题应该正确地被解答为“这个问题存在的意义在于’地球‘的意义，’存在‘的意义以及’许多年‘的意义的解答”。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1890,7 +1872,7 @@ div , divu , ddiv , ddivu
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

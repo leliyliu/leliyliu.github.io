@@ -232,6 +232,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2020/03/30/the-one-code-2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/30/the-one-code-2/" itemprop="url">the-one-code-2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-30T15:07:07+08:00">
+                2020-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h1 id="ONE程序代码简析"><a href="#ONE程序代码简析" class="headerlink" title="ONE程序代码简析"></a>ONE程序代码简析</h1><h2 id="INTERFACE"><a href="#INTERFACE" class="headerlink" title="INTERFACE"></a>INTERFACE</h2><p>在INTERFACE 包中一共有五个.java文件，其和core中的NetworkInterface 文件一同构成了整个INTERFACE(ONE 的网络接口部分)</p>
+<h3 id="NetworkInterface"><a href="#NetworkInterface" class="headerlink" title="NetworkInterface"></a>NetworkInterface</h3><p>NetwordInterface 是ModuleCommunicationListener 接口的实现。</p>
+<h3 id="ConnectivityGrid"><a href="#ConnectivityGrid" class="headerlink" title="ConnectivityGrid"></a>ConnectivityGrid</h3><p>ConnectivityGrid 是继承 ConnectivityOptimizer 的类，ConnnectivityOptimizer是一个抽象类。</p>
+<p>不是检测所有的interface ，而只找到那些离得足够近的interface，关于距离足够近，是看两个interface 是否在同一个cell或者相邻的cell中。一个要点是，这个类不支持任何的负坐标。</p>
+<p>关于optimizer 的设置，其在default_setting.txt中为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## Optimization settings -- these affect the speed of the simulation</span><br><span class="line">#<span class="meta"># see World class for details.</span></span><br><span class="line">Optimization.cellSizeMult = <span class="number">5</span></span><br><span class="line">Optimization.randomizeUpdateOrder = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>关于getNeighborCells 方法的实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> GridCell[] getNeighborCells(<span class="keyword">int</span> row, <span class="keyword">int</span> col) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> GridCell[] &#123;</span><br><span class="line">		cells[row-<span class="number">1</span>][col-<span class="number">1</span>],cells[row-<span class="number">1</span>][col],cells[row-<span class="number">1</span>][col+<span class="number">1</span>],<span class="comment">//1st row</span></span><br><span class="line">		cells[row][col-<span class="number">1</span>],cells[row][col],cells[row][col+<span class="number">1</span>],<span class="comment">//2nd row</span></span><br><span class="line">		cells[row+<span class="number">1</span>][col-<span class="number">1</span>],cells[row+<span class="number">1</span>][col],cells[row+<span class="number">1</span>][col+<span class="number">1</span>]<span class="comment">//3rd row</span></span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，实际上找的是其自身以及八邻接。</p>
+<p>对于cell，这里都是通过坐标来进行索引查找的。</p>
+<h3 id="ConnectivityOptimizer"><a href="#ConnectivityOptimizer" class="headerlink" title="ConnectivityOptimizer"></a>ConnectivityOptimizer</h3><p>抽象类，主要包括了如下五个抽象方法，都需要继承的子类进行具体实现：</p>
+<ul>
+<li><p>addInterface(NetworkInterface ni); </p>
+<p>将一个network interface 加入到optimizer当中</p>
+</li>
+<li><p>addInterfaces(Collection<networkinterface> interfaces)</networkinterface></p>
+<p>加入network interface 的 connections</p>
+</li>
+<li><p>updateLocation(NetworkInterface)</p>
+<p>更新network interface 的 地址</p>
+</li>
+<li><p>Collection<networkinterface> getNearInterfaces(NetworkInterface ni)</networkinterface></p>
+<p>找到所有的可能的network interface 使得其能够与当前的Interface进行连接</p>
+</li>
+<li><p>Collection<networkinterface> getAllInterfaces()</networkinterface></p>
+<p>找到所有属于当前connectivityOptimizer的interface</p>
+</li>
+</ul>
+<h3 id="DistanceCapacityInterface"><a href="#DistanceCapacityInterface" class="headerlink" title="DistanceCapacityInterface"></a>DistanceCapacityInterface</h3><p>继承自Network Interface 。 通过interface 之间连接的距离长短来决定links 的能力。基于距离的传输速率在default_setting 中被transmit_speed 设置。</p>
+<p>关于interface 直接进行连接</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">(NetworkInterface anotherInterface)</span> </span>&#123;<span class="comment">// 进行连接</span></span><br><span class="line">	<span class="keyword">if</span> (isScanning()</span><br><span class="line">			&amp;&amp; anotherInterface.getHost().isRadioActive()</span><br><span class="line">			&amp;&amp; isWithinRange(anotherInterface)</span><br><span class="line">			&amp;&amp; !isConnected(anotherInterface)</span><br><span class="line">			&amp;&amp; (<span class="keyword">this</span> != anotherInterface)) &#123;</span><br><span class="line"></span><br><span class="line">		Connection con = <span class="keyword">new</span> VBRConnection(<span class="keyword">this</span>.host, <span class="keyword">this</span>,</span><br><span class="line">				anotherInterface.getHost(), anotherInterface);</span><br><span class="line">		connect(con,anotherInterface);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要进行连接的时候，必须要满足这样一些要求： host 是active 的，并且在范围之内且并没有连接。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getTransmitSpeed</span><span class="params">(NetworkInterface ni)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">double</span> distance;</span><br><span class="line">	<span class="keyword">double</span> fractionIndex;</span><br><span class="line">	<span class="keyword">double</span> decimal;</span><br><span class="line">	<span class="keyword">double</span> speed;</span><br><span class="line">	<span class="keyword">int</span> index;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* distance to the other interface */</span></span><br><span class="line">	distance = ni.getLocation().distance(<span class="keyword">this</span>.getLocation());</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (distance &gt;= <span class="keyword">this</span>.transmitRange) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* interpolate between the two speeds */</span></span><br><span class="line">	fractionIndex = (distance / <span class="keyword">this</span>.transmitRange) *</span><br><span class="line">			(<span class="keyword">this</span>.transmitSpeeds.length - <span class="number">1</span>);</span><br><span class="line">	index = (<span class="keyword">int</span>)(fractionIndex);</span><br><span class="line">	decimal = fractionIndex - index;</span><br><span class="line"></span><br><span class="line">	speed = <span class="keyword">this</span>.transmitSpeeds[index] * (<span class="number">1</span>-decimal) +</span><br><span class="line">			<span class="keyword">this</span>.transmitSpeeds[index + <span class="number">1</span>] * decimal;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">int</span>)speed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据距离来判定当前传输的速率，如果超过范围，则为0，否则会根据当前的distance 和 transmitRange 来进行加权计算。</p>
+<h3 id="InterferenceLimitedInterface"><a href="#InterferenceLimitedInterface" class="headerlink" title="InterferenceLimitedInterface"></a>InterferenceLimitedInterface</h3><p>同样继承自Network Interface，是一个简单的Network Interface  提供了一个可变的位速率，基于其它的传输stations（在range范围之内），其与distanceCapacityInterface 的不同在于其基于的是其它station 来决定其bit-rate 的。</p>
+<p>其传输速率的计算基于如下方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">numberOfTransmissions = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> numberOfActive = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (Connection con : <span class="keyword">this</span>.connections) &#123;</span><br><span class="line">	<span class="keyword">if</span> (con.getMessage() != <span class="keyword">null</span>) &#123;</span><br><span class="line">		numberOfTransmissions++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (((InterferenceLimitedInterface)con.getOtherInterface(<span class="keyword">this</span>)).</span><br><span class="line">			isTransferring() == <span class="keyword">true</span>) &#123;</span><br><span class="line">		numberOfActive++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ntrans = numberOfTransmissions;</span><br><span class="line"><span class="keyword">if</span> ( numberOfTransmissions &lt; <span class="number">1</span>) ntrans = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span> ( numberOfActive &lt;<span class="number">2</span> ) numberOfActive = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Based on the equation of Gupta and Kumar - and the transmission speed</span></span><br><span class="line"><span class="comment">// is divided equally to all the ongoing transmissions</span></span><br><span class="line">currentTransmitSpeed = (<span class="keyword">int</span>)Math.floor((<span class="keyword">double</span>)transmitSpeed /</span><br><span class="line">		(Math.sqrt((<span class="number">1.0</span>*numberOfActive) *</span><br><span class="line">				Math.log(<span class="number">1.0</span>*numberOfActive))) /</span><br><span class="line">					ntrans );</span><br></pre></td></tr></table></figure>
+<p>也就是说，当前的<code>transmitspeed</code>为 : $speed = \frac{speed}{\sqrt{active <em>\log(active)} </em> ntrans}$</p>
+<h3 id="SimpleBroadcastInterface"><a href="#SimpleBroadcastInterface" class="headerlink" title="SimpleBroadcastInterface"></a>SimpleBroadcastInterface</h3><p>这是一个很简单的Network Interface ，其提供了一个固定传输速率的服务，即直接简单广播。其余的和前面的interface 实现差不多。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2020/03/24/the-one-code-1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1670,189 +1829,6 @@ Fig. 10.3.4\ 位置编码</script><p>对于transformer而言，本身没有包�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2019/04/28/recording2/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leliyliu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="禾声">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/28/recording2/" itemprop="url">AlexNet</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-28T18:59:18+08:00">
-                2019-04-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Paper-Reading"><a href="#Paper-Reading" class="headerlink" title="Paper Reading"></a>Paper Reading</h1><h2 id="ImageNet-Classification-with-Deep-Convolutional-Neural-Networks"><a href="#ImageNet-Classification-with-Deep-Convolutional-Neural-Networks" class="headerlink" title="ImageNet Classification with Deep Convolutional Neural Networks"></a>ImageNet Classification with Deep Convolutional Neural Networks</h2><hr>
-<blockquote>
-<p><code>references</code>: you can read this papar via <a href="https://linkinghub.elsevier.com/retrieve/pii/S138650561831195X" target="_blank" rel="noopener">BTS-DSN</a> or star/fork this github <a href="https://github.com/guomugong/BTS-DSN" target="_blank" rel="noopener">project</a></p>
-</blockquote>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>To achieve a great result, using ImageNet LSVRC-2010 contest dataset, this network model ,including dropout and some other operations, is quite fancy.</p>
-<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><ol>
-<li><p>machine learning methods have achieved great result on small image dataset, but still been poor in big dataset.</p>
-</li>
-<li><p><code>To learn about thousands of objects from millions of images, we need a model with a large learning
-capacity.</code></p>
-</li>
-</ol>
-<h3 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h3><p><code>ImageNet is a dataset of over 15 million labeled high-resolution images belonging to roughly 22,000
-categories.</code><br>to show which dataset this paper trained to test its result.</p>
-<h3 id="3-The-Architecture"><a href="#3-The-Architecture" class="headerlink" title="3.The Architecture!!!"></a>3.The Architecture!!!</h3><h4 id="1-ReLU-Nonlinearity"><a href="#1-ReLU-Nonlinearity" class="headerlink" title="1.ReLU Nonlinearity"></a>1.ReLU Nonlinearity</h4><p>why we use ReLU instead of sigmoid or tanh function?<br><code>In terms of training time
-with gradient descent, these saturating nonlinearities
-are much slower than the non-saturating nonlinearity
-f(x) = max(0, x).</code></p>
-<blockquote>
-<p>ps : 当我们使用ReLU函数而不是sigmoid或者tanh函数进行激活时，主要原因在于其更快的速度。当然，我们可以使用Leaky ReLU甚至Randomized Leaky ReLU来防止其它一些问题。还有一些其它的变体，包括PReLU和RReLU。</p>
-</blockquote>
-<h4 id="2-Training-on-Multiple-GPUs"><a href="#2-Training-on-Multiple-GPUs" class="headerlink" title="2.Training on Multiple GPUs"></a>2.Training on Multiple GPUs</h4><p><code>Current GPUs
-are particularly well-suited to cross-GPU parallelization, as they are able to read from and write to
-one another’s memory directly, without going through host machine memory.</code>using a method to parallel the training process.Notice the parallelization scheme that is employed in this paper, which are quite inspirsed. </p>
-<blockquote>
-<p>ps : 在利用多个GPU进行并行处理的时候，需要注意之间的信息传递与交互。如何提高数据之间传输的效率，是能够提高计算速度的关键。</p>
-</blockquote>
-<h4 id="3-Local-Response-Normalization"><a href="#3-Local-Response-Normalization" class="headerlink" title="3.Local Response Normalization"></a>3.Local Response Normalization</h4><p>using local normalization to aid generation.</p>
-<script type="math/tex; mode=display">b_{x,y}^i=a_{x,y}^i/(k+\alpha \sum_{j=max(0,i-n/2)}^{min(N-1,i+n/2)}(a_{x,y}^i)^2)^\beta</script><blockquote>
-<p>ps : 这一小节主要讲解了这个normalization的方式，这个公式的结果展示出来的效果在于，提高泛化能力（即b能更好地代表一个连续性的结果）简单分析三个超参数,k为一个偏移量，使得本身有一个偏移；n在于考虑其连续的范围，考虑泛化能力，在于一个权衡，$<br>\beta$在于调整参数的大小，使得与模型契合。</p>
-</blockquote>
-<h4 id="4-Overlapping-Pooling"><a href="#4-Overlapping-Pooling" class="headerlink" title="4. Overlapping Pooling"></a>4. Overlapping Pooling</h4><p>using overlapping can make our pooling result more precise than non-overlapping.<code>We generally observe during training that models with overlapping
-pooling find it slightly more difficult to overfit</code> </p>
-<blockquote>
-<p>ps : 我们应该注意一个overlapping 与 non-overlapping之间的平衡，建议是首先不用overlapping，如果得到的结果处于欠拟合状态，则修改而使用overlapping pooling</p>
-</blockquote>
-<h4 id="5-Overall-Architecture"><a href="#5-Overall-Architecture" class="headerlink" title="5. Overall Architecture"></a>5. Overall Architecture</h4><p>the overall architecture will be shown in figure 1 below.</p>
-<blockquote>
-<p>ps : 主要理解这个结构一些中间的部分，需要掌握对其的理解并且与前面的相贯通。</p>
-</blockquote>
-<h3 id="Reducing-Overfitting"><a href="#Reducing-Overfitting" class="headerlink" title="Reducing Overfitting"></a>Reducing Overfitting</h3><p>too many parameters in this model(60 million) are not insufficient to learn.</p>
-<h4 id="1-Data-Augmentation"><a href="#1-Data-Augmentation" class="headerlink" title="1.Data Augmentation"></a>1.Data Augmentation</h4><ol>
-<li><code>The first form of data augmentation consists of generating image translations and horizontal reflections.</code></li>
-<li><code>The second form of data augmentation consists of altering the intensities of the RGB channels in
-training images.</code>using PCA on the set.</li>
-</ol>
-<script type="math/tex; mode=display">[p1,p2,p3][\alpha_1 \lambda_1,\alpha_2 \lambda_2,\alpha_3 \lambda_3]^T</script><blockquote>
-<p>ps: 由于原来的网络模型过深，所以需要避免过拟合，第一种方法就是增加数据量，可以通过对图像的一些处理来进行，包括进行图像的裁剪和对颜色进行处理。</p>
-</blockquote>
-<h4 id="2-Dropout"><a href="#2-Dropout" class="headerlink" title="2.Dropout"></a>2.Dropout</h4><p>dropout 是一个重要的内容，我在附加的部分主要说明，这里就直接跳过。这里也只是运用了这种方法，没有做什么修改。</p>
-<h3 id="5-Details-of-learning"><a href="#5-Details-of-learning" class="headerlink" title="5.Details of learning"></a>5.Details of learning</h3><p><code>We trained our models using stochastic gradient descent
-with a batch size of 128 examples, momentum of 0.9, and
-weight decay of 0.0005.</code></p>
-<p><code>the update relu for weight w was</code>:</p>
-<script type="math/tex; mode=display">v_{i+1} := 0.9v_i-0.0005 \epsilon w_i - \epsilon <\frac{\partial L}{\partial w}|_{w_i}>_{D_i}</script><script type="math/tex; mode=display">w_{i+1} := w_i+v_{i+1}</script><h3 id="6-Results"><a href="#6-Results" class="headerlink" title="6.Results"></a>6.Results</h3><p>this part is not so necessary, you should look through the paper to learn the result.</p>
-<h3 id="7-Discussion"><a href="#7-Discussion" class="headerlink" title="7.Discussion"></a>7.Discussion</h3><p><code>the depth really is important for achieving our results</code>.you can see that, from the discussion in this paper, deep network on image classfication have been aroused. </p>
-<h3 id="my-conclusion"><a href="#my-conclusion" class="headerlink" title="my conclusion"></a>my conclusion</h3><p>这篇文章主要提出了AlexNet这种结构，其主要有几个主要的因素构成：</p>
-<ol>
-<li>使用两个GPU交互训练的网络</li>
-<li>使用dropout方法进行正则化的方法</li>
-<li>使用深层的深度网络进行学习（这是使用深度神经网络的一个重要的开端，它有后来的工作很大的启发作用）</li>
-<li>使用data augmentation来进行数据的预处理，防止过拟合</li>
-<li>使用了normalization方法来处理原来的数据，同时采用ReLU激活函数，使得整个计算过程更加快捷，且没有降低最终的效果。</li>
-</ol>
-<h3 id="发散"><a href="#发散" class="headerlink" title="发散"></a>发散</h3><h4 id="1-dropout"><a href="#1-dropout" class="headerlink" title="1. dropout"></a>1. dropout</h4><h4 id="2-深层的神经网络的问题及其解决"><a href="#2-深层的神经网络的问题及其解决" class="headerlink" title="2.深层的神经网络的问题及其解决"></a>2.深层的神经网络的问题及其解决</h4>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1903,7 +1879,7 @@ weight decay of 0.0005.</code></p>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

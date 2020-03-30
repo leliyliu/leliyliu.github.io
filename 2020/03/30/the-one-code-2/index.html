@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ONE 程序代码简析,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="[TOC] ONE程序代码简析INTERFACE在INTERFACE 包中一共有五个.java文件，其和core中的NetworkInterface 文件一同构成了整个INTERFACE(ONE 的网络接口部分) NetworkInterfaceNetwordInterface 是ModuleCommunicationListener 接口的实现。 ConnectivityGridConnecti">
+<meta name="keywords" content="ONE 程序代码简析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="the-one-code-2">
+<meta property="og:url" content="http://leliyliu.github.io/2020/03/30/the-one-code-2/index.html">
+<meta property="og:site_name" content="禾声">
+<meta property="og:description" content="[TOC] ONE程序代码简析INTERFACE在INTERFACE 包中一共有五个.java文件，其和core中的NetworkInterface 文件一同构成了整个INTERFACE(ONE 的网络接口部分) NetworkInterfaceNetwordInterface 是ModuleCommunicationListener 接口的实现。 ConnectivityGridConnecti">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-30T07:08:41.506Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="the-one-code-2">
+<meta name="twitter:description" content="[TOC] ONE程序代码简析INTERFACE在INTERFACE 包中一共有五个.java文件，其和core中的NetworkInterface 文件一同构成了整个INTERFACE(ONE 的网络接口部分) NetworkInterfaceNetwordInterface 是ModuleCommunicationListener 接口的实现。 ConnectivityGridConnecti">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://leliyliu.github.io/2020/03/30/the-one-code-2/">
+
+
+
+
+
+  <title>the-one-code-2 | 禾声</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">禾声</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">in the arm of the angel, fly away</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2020/03/30/the-one-code-2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">the-one-code-2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-30T15:07:07+08:00">
+                2020-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h1 id="ONE程序代码简析"><a href="#ONE程序代码简析" class="headerlink" title="ONE程序代码简析"></a>ONE程序代码简析</h1><h2 id="INTERFACE"><a href="#INTERFACE" class="headerlink" title="INTERFACE"></a>INTERFACE</h2><p>在INTERFACE 包中一共有五个.java文件，其和core中的NetworkInterface 文件一同构成了整个INTERFACE(ONE 的网络接口部分)</p>
+<h3 id="NetworkInterface"><a href="#NetworkInterface" class="headerlink" title="NetworkInterface"></a>NetworkInterface</h3><p>NetwordInterface 是ModuleCommunicationListener 接口的实现。</p>
+<h3 id="ConnectivityGrid"><a href="#ConnectivityGrid" class="headerlink" title="ConnectivityGrid"></a>ConnectivityGrid</h3><p>ConnectivityGrid 是继承 ConnectivityOptimizer 的类，ConnnectivityOptimizer是一个抽象类。</p>
+<p>不是检测所有的interface ，而只找到那些离得足够近的interface，关于距离足够近，是看两个interface 是否在同一个cell或者相邻的cell中。一个要点是，这个类不支持任何的负坐标。</p>
+<p>关于optimizer 的设置，其在default_setting.txt中为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## Optimization settings -- these affect the speed of the simulation</span><br><span class="line">#<span class="meta"># see World class for details.</span></span><br><span class="line">Optimization.cellSizeMult = <span class="number">5</span></span><br><span class="line">Optimization.randomizeUpdateOrder = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>关于getNeighborCells 方法的实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> GridCell[] getNeighborCells(<span class="keyword">int</span> row, <span class="keyword">int</span> col) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> GridCell[] &#123;</span><br><span class="line">		cells[row-<span class="number">1</span>][col-<span class="number">1</span>],cells[row-<span class="number">1</span>][col],cells[row-<span class="number">1</span>][col+<span class="number">1</span>],<span class="comment">//1st row</span></span><br><span class="line">		cells[row][col-<span class="number">1</span>],cells[row][col],cells[row][col+<span class="number">1</span>],<span class="comment">//2nd row</span></span><br><span class="line">		cells[row+<span class="number">1</span>][col-<span class="number">1</span>],cells[row+<span class="number">1</span>][col],cells[row+<span class="number">1</span>][col+<span class="number">1</span>]<span class="comment">//3rd row</span></span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，实际上找的是其自身以及八邻接。</p>
+<p>对于cell，这里都是通过坐标来进行索引查找的。</p>
+<h3 id="ConnectivityOptimizer"><a href="#ConnectivityOptimizer" class="headerlink" title="ConnectivityOptimizer"></a>ConnectivityOptimizer</h3><p>抽象类，主要包括了如下五个抽象方法，都需要继承的子类进行具体实现：</p>
+<ul>
+<li><p>addInterface(NetworkInterface ni); </p>
+<p>将一个network interface 加入到optimizer当中</p>
+</li>
+<li><p>addInterfaces(Collection<networkinterface> interfaces)</networkinterface></p>
+<p>加入network interface 的 connections</p>
+</li>
+<li><p>updateLocation(NetworkInterface)</p>
+<p>更新network interface 的 地址</p>
+</li>
+<li><p>Collection<networkinterface> getNearInterfaces(NetworkInterface ni)</networkinterface></p>
+<p>找到所有的可能的network interface 使得其能够与当前的Interface进行连接</p>
+</li>
+<li><p>Collection<networkinterface> getAllInterfaces()</networkinterface></p>
+<p>找到所有属于当前connectivityOptimizer的interface</p>
+</li>
+</ul>
+<h3 id="DistanceCapacityInterface"><a href="#DistanceCapacityInterface" class="headerlink" title="DistanceCapacityInterface"></a>DistanceCapacityInterface</h3><p>继承自Network Interface 。 通过interface 之间连接的距离长短来决定links 的能力。基于距离的传输速率在default_setting 中被transmit_speed 设置。</p>
+<p>关于interface 直接进行连接</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">(NetworkInterface anotherInterface)</span> </span>&#123;<span class="comment">// 进行连接</span></span><br><span class="line">	<span class="keyword">if</span> (isScanning()</span><br><span class="line">			&amp;&amp; anotherInterface.getHost().isRadioActive()</span><br><span class="line">			&amp;&amp; isWithinRange(anotherInterface)</span><br><span class="line">			&amp;&amp; !isConnected(anotherInterface)</span><br><span class="line">			&amp;&amp; (<span class="keyword">this</span> != anotherInterface)) &#123;</span><br><span class="line"></span><br><span class="line">		Connection con = <span class="keyword">new</span> VBRConnection(<span class="keyword">this</span>.host, <span class="keyword">this</span>,</span><br><span class="line">				anotherInterface.getHost(), anotherInterface);</span><br><span class="line">		connect(con,anotherInterface);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要进行连接的时候，必须要满足这样一些要求： host 是active 的，并且在范围之内且并没有连接。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getTransmitSpeed</span><span class="params">(NetworkInterface ni)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">double</span> distance;</span><br><span class="line">	<span class="keyword">double</span> fractionIndex;</span><br><span class="line">	<span class="keyword">double</span> decimal;</span><br><span class="line">	<span class="keyword">double</span> speed;</span><br><span class="line">	<span class="keyword">int</span> index;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* distance to the other interface */</span></span><br><span class="line">	distance = ni.getLocation().distance(<span class="keyword">this</span>.getLocation());</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (distance &gt;= <span class="keyword">this</span>.transmitRange) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* interpolate between the two speeds */</span></span><br><span class="line">	fractionIndex = (distance / <span class="keyword">this</span>.transmitRange) *</span><br><span class="line">			(<span class="keyword">this</span>.transmitSpeeds.length - <span class="number">1</span>);</span><br><span class="line">	index = (<span class="keyword">int</span>)(fractionIndex);</span><br><span class="line">	decimal = fractionIndex - index;</span><br><span class="line"></span><br><span class="line">	speed = <span class="keyword">this</span>.transmitSpeeds[index] * (<span class="number">1</span>-decimal) +</span><br><span class="line">			<span class="keyword">this</span>.transmitSpeeds[index + <span class="number">1</span>] * decimal;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">int</span>)speed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据距离来判定当前传输的速率，如果超过范围，则为0，否则会根据当前的distance 和 transmitRange 来进行加权计算。</p>
+<h3 id="InterferenceLimitedInterface"><a href="#InterferenceLimitedInterface" class="headerlink" title="InterferenceLimitedInterface"></a>InterferenceLimitedInterface</h3><p>同样继承自Network Interface，是一个简单的Network Interface  提供了一个可变的位速率，基于其它的传输stations（在range范围之内），其与distanceCapacityInterface 的不同在于其基于的是其它station 来决定其bit-rate 的。</p>
+<p>其传输速率的计算基于如下方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">numberOfTransmissions = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> numberOfActive = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (Connection con : <span class="keyword">this</span>.connections) &#123;</span><br><span class="line">	<span class="keyword">if</span> (con.getMessage() != <span class="keyword">null</span>) &#123;</span><br><span class="line">		numberOfTransmissions++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (((InterferenceLimitedInterface)con.getOtherInterface(<span class="keyword">this</span>)).</span><br><span class="line">			isTransferring() == <span class="keyword">true</span>) &#123;</span><br><span class="line">		numberOfActive++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ntrans = numberOfTransmissions;</span><br><span class="line"><span class="keyword">if</span> ( numberOfTransmissions &lt; <span class="number">1</span>) ntrans = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span> ( numberOfActive &lt;<span class="number">2</span> ) numberOfActive = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Based on the equation of Gupta and Kumar - and the transmission speed</span></span><br><span class="line"><span class="comment">// is divided equally to all the ongoing transmissions</span></span><br><span class="line">currentTransmitSpeed = (<span class="keyword">int</span>)Math.floor((<span class="keyword">double</span>)transmitSpeed /</span><br><span class="line">		(Math.sqrt((<span class="number">1.0</span>*numberOfActive) *</span><br><span class="line">				Math.log(<span class="number">1.0</span>*numberOfActive))) /</span><br><span class="line">					ntrans );</span><br></pre></td></tr></table></figure>
+<p>也就是说，当前的<code>transmitspeed</code>为 : $speed = \frac{speed}{\sqrt{active <em>\log(active)} </em> ntrans}$</p>
+<h3 id="SimpleBroadcastInterface"><a href="#SimpleBroadcastInterface" class="headerlink" title="SimpleBroadcastInterface"></a>SimpleBroadcastInterface</h3><p>这是一个很简单的Network Interface ，其提供了一个固定传输速率的服务，即直接简单广播。其余的和前面的interface 实现差不多。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ONE-程序代码简析/" rel="tag"># ONE 程序代码简析</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/24/the-one-code-1/" rel="next" title="the-one code 1">
+                <i class="fa fa-chevron-left"></i> the-one code 1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Leliyliu</p>
+              <p class="site-description motion-element" itemprop="description">record</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ONE程序代码简析"><span class="nav-number">1.</span> <span class="nav-text">ONE程序代码简析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#INTERFACE"><span class="nav-number">1.1.</span> <span class="nav-text">INTERFACE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NetworkInterface"><span class="nav-number">1.1.1.</span> <span class="nav-text">NetworkInterface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConnectivityGrid"><span class="nav-number">1.1.2.</span> <span class="nav-text">ConnectivityGrid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConnectivityOptimizer"><span class="nav-number">1.1.3.</span> <span class="nav-text">ConnectivityOptimizer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DistanceCapacityInterface"><span class="nav-number">1.1.4.</span> <span class="nav-text">DistanceCapacityInterface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InterferenceLimitedInterface"><span class="nav-number">1.1.5.</span> <span class="nav-text">InterferenceLimitedInterface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SimpleBroadcastInterface"><span class="nav-number">1.1.6.</span> <span class="nav-text">SimpleBroadcastInterface</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leliyliu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
