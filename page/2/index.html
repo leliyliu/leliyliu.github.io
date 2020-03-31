@@ -232,6 +232,133 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2019/05/04/colab/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/04/colab/" itemprop="url">colab</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-04T17:10:58+08:00">
+                2019-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Colab的使用"><a href="#Colab的使用" class="headerlink" title="Colab的使用"></a>Colab的使用</h1><hr>
+<h2 id="Colab介绍"><a href="#Colab介绍" class="headerlink" title="Colab介绍"></a>Colab介绍</h2><p>好东西！！ 贫穷的人民，想拥有GPU或者TPU的难得的方式<br>对于一些基础的东西，都不加以介绍了，如果有兴趣，可以自己去查一下，或者ucadity的tensorflow教程里面就要用到这个东西，直接视频观看即可。<br>这里直接记录配置方式</p>
+<h2 id=""><a href="#" class="headerlink" title=" "></a> </h2><p>首先选择修改，改为GPU或者TPU</p>
+<p>然后添加如下代码后执行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">!apt-get install -y -qq software-properties-common python-software-properties module-init-tools</span><br><span class="line">!add-apt-repository -y ppa:alessandro-strada/ppa <span class="number">2</span>&gt;&amp;<span class="number">1</span> &gt; /dev/null</span><br><span class="line">!apt-get update -qq <span class="number">2</span>&gt;&amp;<span class="number">1</span> &gt; /dev/null</span><br><span class="line">!apt-get -y install -qq google-drive-ocamlfuse fuse</span><br><span class="line"><span class="keyword">from</span> google.colab <span class="keyword">import</span> auth</span><br><span class="line">auth.authenticate_user()</span><br><span class="line"><span class="keyword">from</span> oauth2client.client <span class="keyword">import</span> GoogleCredentials</span><br><span class="line">creds = GoogleCredentials.get_application_default()</span><br><span class="line"><span class="keyword">import</span> getpass</span><br><span class="line">!google-drive-ocamlfuse -headless -id=&#123;creds.client_id&#125; -secret=&#123;creds.client_secret&#125; &lt; /dev/null <span class="number">2</span>&gt;&amp;<span class="number">1</span> | grep URL</span><br><span class="line">vcode = getpass.getpass()</span><br><span class="line">!echo &#123;vcode&#125; | google-drive-ocamlfuse -headless -id=&#123;creds.client_id&#125; -secret=&#123;creds.client_secret&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后挂载<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!mkdir -p drive</span><br><span class="line">!google-drive-ocamlfuse drive</span><br></pre></td></tr></table></figure></p>
+<p>如果需要安装包的时候，比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install http://download.pytorch.org/whl/cu80/torch<span class="number">-0.3</span><span class="number">.1</span>-cp36-cp36m-linux_x86_64.whl torchvision</span><br></pre></td></tr></table></figure></p>
+<p>这样安装就ok了</p>
+<p>当然在执行之前还需要更改目录：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.chdir(<span class="string">'drive/.../...'</span>)<span class="comment">#进入你希望进入的目录</span></span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2019/04/28/reading1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1614,142 +1741,6 @@ Meanwhile, I may record some basic knowledge on machine learning and data mining
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2018/12/01/github-use/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leliyliu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="禾声">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/01/github-use/" itemprop="url">github_use</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-01T15:50:10+08:00">
-                2018-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="github-使用，创建代码库并使用"><a href="#github-使用，创建代码库并使用" class="headerlink" title="github 使用，创建代码库并使用"></a>github 使用，创建代码库并使用</h2><hr>
-<h3 id="导入库"><a href="#导入库" class="headerlink" title="导入库"></a>导入库</h3><pre><code>git clone + 地址  将github中的文件目录及库拷贝
-</code></pre><h3 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h3><pre><code>git init 用于生成本地的git 管理
-git add . 添加文件到git的本地中 如果想添加某个特定的文件，只需把.换成这个特定的文件名即可
-输入git commit -m &#39;first commit&#39;，表示你对这次提交的注释，双引号里面的内容可以根据个人的需要修改。 
-git remote add origin https://自己的仓库url地址
-移除origin ———————— git remote rm origin 
-git push -u origin master 上传到github 中
-(当使用上面push时遇到错误时，1.git pull origin master
-2.git pull --rebase origin master)
-语句1.代表先进行pull，即下拉之后再进行上传
-语句2.代表当本地与最新的库不同时，先进行保留，再上传。
-</code></pre><h3 id="后续改动及理解"><a href="#后续改动及理解" class="headerlink" title="后续改动及理解"></a>后续改动及理解</h3><pre><code>git pull ,拉取当前分支最新代码
-利用git status 查看git 仓库状态
-git add * 更新全部 或者用git add -all
-git push （在后续过程中，直接git push）即可
-</code></pre><h4 id="附"><a href="#附" class="headerlink" title="附"></a>附</h4><p><a href="https://blog.csdn.net/u012661010/article/details/73433872/" target="_blank" rel="noopener">可参考博客</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1800,7 +1791,7 @@ git push （在后续过程中，直接git push）即可
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1813,7 +1804,7 @@ git push （在后续过程中，直接git push）即可
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
