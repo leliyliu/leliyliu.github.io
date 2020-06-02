@@ -232,6 +232,211 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2020/06/02/the-one-pitt/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leliyliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="禾声">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/02/the-one-pitt/" itemprop="url">the-one-pitt</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-02T20:08:23+08:00">
+                2020-06-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h1 id="Bubble-Rap论文和the-one-pitt简析"><a href="#Bubble-Rap论文和the-one-pitt简析" class="headerlink" title="Bubble Rap论文和the-one-pitt简析"></a>Bubble Rap论文和the-one-pitt简析</h1><hr>
+<h2 id="Bubble-Rap-论文分析"><a href="#Bubble-Rap-论文分析" class="headerlink" title="Bubble Rap 论文分析"></a>Bubble Rap 论文分析</h2><p>Bubble Rap 是由Pan et.al  所提出的一种DTN算法，其主要包括了两个重要的部分，community 和 centrality，其思想来源于生态学。其主要思想是将网络转化为类似人类社区的模式，而将整个map 划分为相应的社区，对于社区中的人而言（结点），其受欢迎的程度是不同的，因而具有不同的中心度。这里主要分析论文中所提到的community和 centrality 两个具体内容，而对于实现结果分析的部分则暂时不加以考虑。</p>
+<h4 id="community"><a href="#community" class="headerlink" title="community"></a>community</h4><p>在文章中，主要介绍了两种集中式社区检测算法(centralized community detection algorithms)： K-CLIQUE 和 WNA。 这两种算法各有优劣，因此在最终的过程中，结合了这两种算法，进行相互的补充。</p>
+<h5 id="K-CLIQUE"><a href="#K-CLIQUE" class="headerlink" title="K-CLIQUE"></a>K-CLIQUE</h5><p>Palla et. al. 将k-clique 社区定义为一个大小为k 的完整子图的合集，可以通过一系列相邻的k-clique到达，如果两个k-clique是相邻的，意味着他们共享k-1个结点</p>
+<h5 id="WAN（Weighted-Network-Analysis"><a href="#WAN（Weighted-Network-Analysis" class="headerlink" title="WAN（Weighted Network Analysis)"></a>WAN（Weighted Network Analysis)</h5><p>使用WAN来进行相应的数据分析，其将一个未加权模块扩展到一个加权模块，具体计算方式如下：</p>
+<script type="math/tex; mode=display">
+Q = \sum_{vw}[\frac{A_{vw}}{2m} - \frac{k_vk_w}{(2m)^2}]\delta(c_v,c_w)</script><p>其中$A_{vw}$是两个点之间的边的权重值（如果存在，否则为0），$\delta(i,j)$是1如果$i=j$否则为0。$m=\frac{1}{2}\sum_{vm}A_{vm}$，$k_v$是顶点v的度，定义为：$\sum_wA_{vw}$，然后$c_i$代表顶点i所属的community。模块化定义为该分数之间的差，如果边缘是随机分配的，则期望落入社区内的边缘的分数之间的差，但我们保持顶点的度不变。算法本质上是一种遗传算法，使用模块化作为适应性的度量。我们没有选择和改变当前的最佳解决方案，而是枚举了当前解决方案中任何两个社区的所有可能合并，并评估了结果合并的相对适合度，并选择了最佳解决方案作为下一次迭代的种子。</p>
+<p>这些集中式社区检测算法为我们提供了有关人类社会聚类的丰富信息，可用于对收集的流动性痕迹进行离线数据分析。</p>
+<h4 id="centrality"><a href="#centrality" class="headerlink" title="centrality"></a>centrality</h4><p>中心度计算方法：</p>
+<p>1.使用HaggleSimemulator创建的大量不同的，均匀分布的流量模式进行无限洪泛仿真。</p>
+<p>2.计算在所有最短延迟传递中一个节点充当其他节点的中继的次数。这里最短的延迟传递是指同一条消息通过不同的路径传递到目的地的情况，在这里我们仅以最短的延迟对传递进行计数。</p>
+<h2 id="the-one-pitt-源码分析"><a href="#the-one-pitt-源码分析" class="headerlink" title="the-one-pitt 源码分析"></a>the-one-pitt 源码分析</h2><p><a href="https://github.com/knightcode/the-one-pitt" target="_blank" rel="noopener">the-one-pitt</a>是一个实现了Bubble Rap 的相应源码，这里首先对其进行相应的分析，结合one源码与实现方式，判断其关于community 和 centrality的相关实现。</p>
+<h3 id="Social-Routing"><a href="#Social-Routing" class="headerlink" title="Social Routing"></a>Social Routing</h3><h4 id="routing-community-CommunityDetectionEngine-Interface"><a href="#routing-community-CommunityDetectionEngine-Interface" class="headerlink" title="routing.community.CommunityDetectionEngine(Interface)"></a><strong>routing.community.CommunityDetectionEngine(Interface)</strong></h4><blockquote>
+<p>接口（英文：Interface），在JAVA编程语言中是一个抽象类型，是抽象方法的集合，接口通常以interface来声明。一个类通过继承接口的方式，从而来继承接口的抽象方法。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CommunityDetectionEngine</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Returns the set of nodes in the local Community.</span></span><br><span class="line"><span class="comment">	 *  </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> Set of hosts in the local community</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Set&lt;DTNHost&gt; <span class="title">getLocalCommunity</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>获得localCommunity 的所有hosts</p>
+<h4 id="routing-community-DistributedBubbleRap"><a href="#routing-community-DistributedBubbleRap" class="headerlink" title="routing.community.DistributedBubbleRap"></a>routing.community.DistributedBubbleRap</h4><p>实现分布式的Bubble Rap 算法，其中有很多很重要的代码，下面逐一进行分析；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">DistributedBubbleRap</span><span class="params">(Settings s)</span><span class="comment">//构造函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//COMMUNITY_ALG_SETTING = "communityDetectAlg"</span></span><br><span class="line">    <span class="keyword">if</span>(s.contains(COMMUNITY_ALG_SETTING))</span><br><span class="line">        <span class="keyword">this</span>.community = (CommunityDetection) </span><br><span class="line">  s.createIntializedObject(s.getSetting(COMMUNITY_ALG_SETTING));</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">this</span>.community = <span class="keyword">new</span> SimpleCommunityDetection(s);<span class="comment">//最简单的计算community 的算法</span></span><br><span class="line">	<span class="comment">//CENTRALITY_ALG_SETTING = "centralityAlg"</span></span><br><span class="line">    <span class="keyword">if</span>(s.contains(CENTRALITY_ALG_SETTING))</span><br><span class="line">        <span class="keyword">this</span>.centrality = (Centrality) </span><br><span class="line">        s.createIntializedObject(s.getSetting(CENTRALITY_ALG_SETTING));</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">this</span>.centrality = <span class="keyword">new</span> SWindowCentrality(s);<span class="comment">//最简单的计算centrality的算法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，如果没有在seeting的文件中设置相应算法，那么采用的是<code>SimpleCommunityDetection()</code>和<code>SWindowCentrality</code>来对community 和 centrality 来进行相应计算，否则那么则构造相应的类来计算该两个部分。</p>
+<p><code>public DistributedBubbleRap(DistributedBubbleRap proto)*// copy*</code>函数使用来进行相应的copy的，也就是说，不用每个routing类都需要从setting中进行读取。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doExchangeForNewConnection</span><span class="params">(Connection con, DTNHost peer)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 开始计时这个新连接的持续时间，并通知社区检测对象新连接已经形成</span></span><br><span class="line">    DTNHost myHost = con.getOtherNode(peer);</span><br><span class="line">    DistributedBubbleRap de = <span class="keyword">this</span>.getOtherDecisionEngine(peer);<span class="comment">//获得con的另一个router</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.startTimestamps.put(peer, SimClock.getTime());<span class="comment">//记录开始时间</span></span><br><span class="line">    de.startTimestamps.put(myHost, SimClock.getTime());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.community.newConnection(myHost, peer, de.community);<span class="comment">//调用newConnection来通知连接已经形成</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>connectionDown 的作用是当连接断开的时候，记录相应的history，最后通知连接已经断开</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connectionDown</span><span class="params">(DTNHost thisHost, DTNHost peer)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> time = startTimestamps.get(peer);</span><br><span class="line">    <span class="keyword">double</span> etime = SimClock.getTime();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Find or create the connection history list</span></span><br><span class="line">    List&lt;Duration&gt; history;</span><br><span class="line">    <span class="keyword">if</span>(!connHistory.containsKey(peer))<span class="comment">//如果不包含该节点的历史</span></span><br><span class="line">    &#123;</span><br><span class="line">        history = <span class="keyword">new</span> LinkedList&lt;Duration&gt;();</span><br><span class="line">        connHistory.put(peer, history);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        history = connHistory.get(peer);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// add this connection to the list</span></span><br><span class="line">    <span class="keyword">if</span>(etime - time &gt; <span class="number">0</span>)</span><br><span class="line">        history.add(<span class="keyword">new</span> Duration(time, etime));</span><br><span class="line"></span><br><span class="line">    CommunityDetection peerCD = <span class="keyword">this</span>.getOtherDecisionEngine(peer).community;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// inform the community detection object that a connection was lost.</span></span><br><span class="line">    <span class="comment">// The object might need the whole connection history at this point.</span></span><br><span class="line">    community.connectionLost(thisHost, peer, peerCD, history);</span><br><span class="line"></span><br><span class="line">    startTimestamps.remove(peer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="转发的条件"><a href="#转发的条件" class="headerlink" title="转发的条件"></a><strong>转发的条件</strong></h5><p>注意关于该函数的实现，包括了这样几个部分（具体见代码注释）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldSendMessageToHost</span><span class="params">(Message m, DTNHost otherHost)</span><span class="comment">//转发</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(m.getTo() == otherHost) <span class="keyword">return</span> <span class="keyword">true</span>; <span class="comment">//如果不是当前结点，而是连接到的节点，那么转发</span></span><br><span class="line"></span><br><span class="line">    DTNHost dest = m.getTo();<span class="comment">//获取目的host</span></span><br><span class="line">    DistributedBubbleRap de = getOtherDecisionEngine(otherHost);<span class="comment">//得到邻接的router</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断这两个community中哪个有该目的host</span></span><br><span class="line">    <span class="keyword">boolean</span> peerInCommunity = de.commumesWithHost(dest);</span><br><span class="line">    <span class="keyword">boolean</span> meInCommunity = <span class="keyword">this</span>.commumesWithHost(dest);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(peerInCommunity &amp;&amp; !meInCommunity) <span class="comment">// 如果在peer中，那么转发</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(!peerInCommunity &amp;&amp; meInCommunity) <span class="comment">// 只在当前community中，则不转发</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(peerInCommunity) <span class="comment">// 如果都在</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(de.getLocalCentrality() &gt; <span class="keyword">this</span>.getLocalCentrality())<span class="comment">//根据中心度的大小进行判断(local)</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Neither in local community, forward to more globally central node</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(de.getGlobalCentrality() &gt; <span class="keyword">this</span>.getGlobalCentrality())<span class="comment">//如果都不在，则根据全局中心度大小判断</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="routing-RoutingDecisionEngine"><a href="#routing-RoutingDecisionEngine" class="headerlink" title="routing.RoutingDecisionEngine"></a>routing.RoutingDecisionEngine</h4><p>这个接口，主要是为了判断在信息接收，转发，删除过程中的一些条件：</p>
+<ul>
+<li>connectionUp(DTNHost thisHost, DTNHost peer): 当此host和peer之间的连接up时调用。</li>
+<li>connectionDown(DTNHost thisHost, DTNHost peer): 当此host 和 peer之间的连接down时调用</li>
+<li>doExchangeForNewConnection(Connection con, DTNHost peer)： 为出现的每次连接调用一次，其作用是进行信息的同步交换和更新信息的机会。</li>
+<li>newMessage(Message m): 判断所给的这个message需要被转发还是被丢弃(bubble rap 始终保持的是传递)</li>
+<li>isFinalDest(Message m, DTNHost aHost): 确定给定主机是否为给定消息的预期接收方。</li>
+<li>shouldSaveReceivedMessage(Message m, DTNHost thisHost)：判断是否要保存接收到的信息并进行传递</li>
+<li>shouldSendMessageToHost(Message m, DTNHost otherHost)：调用此函数以决定是否这个信息需要被转发到给定的host中</li>
+<li>shouldDeleteSentMessage(Message m, DTNHost otherHost)： 调用此函数来判断是否需要删除一个已经发送了的信息</li>
+<li>shouldDeleteOldMessage(Message m, DTNHost hostReportingOld)： 判断是否需要删除一个old message（无法成功发送，表示已经发送了或者old）</li>
+<li>replicate()： copy</li>
+</ul>
+<h4 id="routing-community-LABELDecisionEngine"><a href="#routing-community-LABELDecisionEngine" class="headerlink" title="routing.community.LABELDecisionEngine"></a>routing.community.LABELDecisionEngine</h4><p>LABELDecisionEngine 其中只有关于community 的计算，没有关于centrality的计算，其大部分的实现与<code>DistributeBubbleRap</code>相同，这里不再过多进行解释</p>
+<h3 id="Community-Detection"><a href="#Community-Detection" class="headerlink" title="Community Detection"></a>Community Detection</h3><h4 id="routing-community-CommunityDetection-Interface"><a href="#routing-community-CommunityDetection-Interface" class="headerlink" title="routing.community.CommunityDetection(Interface)"></a>routing.community.CommunityDetection(Interface)</h4><p>这个接口主要用于social-based routing protocols，比如实现的DistributedBubbleRap 和 LABELDecisionEngine算法，在当前的接口中，主要有的函数为：</p>
+<ul>
+<li>newConnection()：调用此函数用于通知已经建立了一个新的connection</li>
+<li>connectionLost():  调用此函数以通知一个connection已经丢失</li>
+<li>isHostInCommunity(DTNHost): 判断当前给定的host是否是这个对象的local community</li>
+<li>getLocalCommunity()：得到当前对象的所有的Local Community的hosts</li>
+<li>replicate(): 复制当前的CommunityDetection 对象</li>
+</ul>
+<h4 id="routing-community-SimpleCommunityDetection"><a href="#routing-community-SimpleCommunityDetection" class="headerlink" title="routing.community.SimpleCommunityDetection"></a>routing.community.SimpleCommunityDetection</h4><p>实现了CommunityDetection的接口，在其中有几个固定参数：<code>lambda</code>，<code>gamma</code>和<code>familiarThreshold</code>，在后面的方法中，会涉及到关于这些参数参与的计算当中。除了这三个参数之外，还包括了<code>Set&lt;DTNHost&gt; familiarSet</code> 和 <code>Set&lt;DTNHost&gt; localCommunity</code></p>
+<p>下面主要说明其中最重要的函数：</p>
+<h5 id="newConnection-DTNHost-myHost-DTNHost-peer-CommunityDetection-peerCD"><a href="#newConnection-DTNHost-myHost-DTNHost-peer-CommunityDetection-peerCD" class="headerlink" title="newConnection(DTNHost myHost, DTNHost peer,CommunityDetection peerCD)"></a>newConnection(DTNHost myHost, DTNHost peer,CommunityDetection peerCD)</h5><p>关于该函数的基础功能，直接参考<code>CommunityDetection</code>接口中的函数说明即可知道，下面主要通过注释来说明函数中的一些具体功能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">newConnection</span><span class="params">(DTNHost myHost, DTNHost peer, </span></span></span><br><span class="line"><span class="function"><span class="params">                          CommunityDetection peerCD)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> addPeerToMyLocal=<span class="keyword">false</span>, addMeToPeerLocal=<span class="keyword">false</span>;</span><br><span class="line">    <span class="comment">//初始化两个判断</span></span><br><span class="line">    SimpleCommunityDetection scd = (SimpleCommunityDetection)peerCD;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.localCommunity.add(myHost);</span><br><span class="line">    scd.localCommunity.add(peer);</span><br><span class="line">    <span class="comment">//在当前的community中加入当前的host ，而对于peerCD加入相应的peer </span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果需要的话，将peer加入到this的localCommunity中</span></span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">this</span>.localCommunity.contains(peer))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 计算交集的个数 (scd 的 familiarSet 和 this.localCommunity)</span></span><br><span class="line">        <span class="keyword">int</span> count=<span class="number">0</span>, peerFsize = scd.familiarSet.size();</span><br><span class="line">        <span class="keyword">for</span>(DTNHost h : scd.familiarSet)</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.localCommunity.contains(h))</span><br><span class="line">                count++;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当有很多相同的时候，则将peer加入到当前community中</span></span><br><span class="line">        <span class="keyword">if</span>(addPeerToMyLocal = ((<span class="keyword">double</span>)count)/peerFsize &gt; <span class="keyword">this</span>.lambda)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">this</span>.localCommunity.add(peer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//同样，也判断是否需要将myHost 加入到scd的localCommunity中</span></span><br><span class="line">    <span class="keyword">if</span>(!scd.localCommunity.contains(myHost))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>, myFsize = <span class="keyword">this</span>.familiarSet.size();</span><br><span class="line">        <span class="keyword">for</span>(DTNHost h : <span class="keyword">this</span>.familiarSet)</span><br><span class="line">            <span class="keyword">if</span>(scd.localCommunity.contains(h))</span><br><span class="line">                count++;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(addMeToPeerLocal = ((<span class="keyword">double</span>)count)/myFsize &gt; scd.lambda)</span><br><span class="line">        &#123;</span><br><span class="line">            scd.localCommunity.add(myHost);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断local communities是否需要进行合并</span></span><br><span class="line">    <span class="keyword">if</span>(addPeerToMyLocal || addMeToPeerLocal)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Compute set union</span></span><br><span class="line">        Set&lt;DTNHost&gt; commUnion = <span class="keyword">new</span> HashSet&lt;DTNHost&gt;(<span class="keyword">this</span>.localCommunity.size() +</span><br><span class="line">                                                      scd.localCommunity.size() + <span class="number">2</span>);</span><br><span class="line">        commUnion.addAll(<span class="keyword">this</span>.localCommunity);</span><br><span class="line">        commUnion.addAll(scd.localCommunity);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//计算两个localcommunity交集的个数(count)</span></span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(DTNHost h : <span class="keyword">this</span>.localCommunity)</span><br><span class="line">            <span class="keyword">if</span>(scd.localCommunity.contains(h))</span><br><span class="line">                count++;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果交集的个数超过某个阈值，则进行合并</span></span><br><span class="line">        <span class="keyword">if</span>(addPeerToMyLocal &amp;&amp; count &gt; <span class="keyword">this</span>.gamma * commUnion.size())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">this</span>.localCommunity.addAll(scd.localCommunity);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(addMeToPeerLocal &amp;&amp; count &gt; scd.gamma * commUnion.size())</span><br><span class="line">        &#123;</span><br><span class="line">            scd.localCommunity.addAll(<span class="keyword">this</span>.localCommunity);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="connectionLost-DTNHost-myHost-DTNHost-peer-CommunityDetection-peerCD-List-history"><a href="#connectionLost-DTNHost-myHost-DTNHost-peer-CommunityDetection-peerCD-List-history" class="headerlink" title="connectionLost(DTNHost myHost, DTNHost peer, CommunityDetection peerCD, List\ history)"></a>connectionLost(DTNHost myHost, DTNHost peer, CommunityDetection peerCD, List\<duration\> history)</duration\></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connectionLost</span><span class="params">(DTNHost myHost, DTNHost peer, </span></span></span><br><span class="line"><span class="function"><span class="params">                           CommunityDetection peerCD, List&lt;Duration&gt; history)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.familiarSet.contains(peer)) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Compute total contact duration</span></span><br><span class="line">    Iterator&lt;Duration&gt; i = history.iterator();</span><br><span class="line">    <span class="keyword">double</span> time = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i.hasNext())</span><br><span class="line">    &#123;</span><br><span class="line">        Duration d = i.next();</span><br><span class="line">        time += d.end - d.start;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Add peer to familiar set if needed (and by extension to the local comm.)</span></span><br><span class="line">    <span class="keyword">if</span>(time &gt; <span class="keyword">this</span>.familiarThreshold)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>.familiarSet.add(peer);</span><br><span class="line">        <span class="keyword">this</span>.localCommunity.add(peer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="routing-community-KCliqueCommunityDetection"><a href="#routing-community-KCliqueCommunityDetection" class="headerlink" title="routing.community.KCliqueCommunityDetection"></a>routing.community.KCliqueCommunityDetection</h4><p>实现了CommunityDetection接口，同样，重点关注函数<code>newConnection</code>和<code>connectionLost</code>的实现，下面进行具体分析：</p>
+<h5 id="newConnection"><a href="#newConnection" class="headerlink" title="newConnection"></a>newConnection</h5><p>首先将这两个节点分别加到相应的localcommunity中，然后进行检测，如果当前的localCommunity包含了peer 节点，那么计算两个commmunity中的相应交叉规模，然后根据规模和K值大小的对比，来计算是否要将其加入到其它当中，实际上，Kclique和Simple不同的地方就是一个是通过$\alpha 和 \beta$等参数来进行判断的，而这里是用K来进行判断的。</p>
+<h5 id="connectionLost"><a href="#connectionLost" class="headerlink" title="connectionLost"></a>connectionLost</h5><p>与SimpleCommunityDetection是相同的。</p>
+<h3 id="Centrality-Algorithms"><a href="#Centrality-Algorithms" class="headerlink" title="Centrality Algorithms"></a>Centrality Algorithms</h3><h4 id="routing-community-Centrality-Interface"><a href="#routing-community-Centrality-Interface" class="headerlink" title="routing.community.Centrality (Interface)"></a>routing.community.Centrality (Interface)</h4><p>这个接口主要用于计算centrality，主要含有的方法为：</p>
+<ul>
+<li><p>getGlobalCentrality(Map<dtnhost, list<duration="">&gt; connHistory)： 基于连接历史来计算一个全局的centrality</dtnhost,></p>
+</li>
+<li><p>getLocalCentrality(Map<dtnhost, list<duration="">&gt; connHistory, </dtnhost,></p>
+<p>​      CommunityDetection cd) 基于连接历史和一个CommunityDetection 来计算本地的centrality。</p>
+</li>
+<li><p>replicate(): 复制当前的Centrality 对象</p>
+</li>
+</ul>
+<h4 id="routing-community-DegreeCentrality"><a href="#routing-community-DegreeCentrality" class="headerlink" title="routing.community.DegreeCentrality"></a>routing.community.DegreeCentrality</h4><p>显然的，继承了Centrality接口，实现非常简单。这里不再详细介绍。</p>
+<h4 id="routing-community-AvgDegreeCentrality"><a href="#routing-community-AvgDegreeCentrality" class="headerlink" title="routing.community.AvgDegreeCentrality"></a>routing.community.AvgDegreeCentrality</h4><p>实现了Centrality的相应接口，这里具体介绍相关函数的实现</p>
+<h5 id="getGlobalCentrality"><a href="#getGlobalCentrality" class="headerlink" title="getGlobalCentrality()"></a>getGlobalCentrality()</h5><p>首先需要计算时间，在<code>COMPUTE_INTERVAL</code>的范围内，那么直接返回，不需要重新计算。否则，则需要进行计算，下面给出相应部分的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// initialize</span></span><br><span class="line"><span class="keyword">int</span> epochCount = SimClock.getIntTime() / CENTRALITY_TIME_WINDOW;</span><br><span class="line"><span class="keyword">int</span>[] centralities = <span class="keyword">new</span> <span class="keyword">int</span>[epochCount];</span><br><span class="line"><span class="keyword">int</span> epoch, timeNow = SimClock.getIntTime();</span><br><span class="line">Map&lt;Integer, Set&lt;DTNHost&gt;&gt; nodesCountedInEpoch = </span><br><span class="line">    <span class="keyword">new</span> HashMap&lt;Integer, Set&lt;DTNHost&gt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; epochCount; i++)</span><br><span class="line">    nodesCountedInEpoch.put(i, <span class="keyword">new</span> HashSet&lt;DTNHost&gt;());</span><br></pre></td></tr></table></figure>
+<p>首先进行初始化操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Map.Entry&lt;DTNHost, List&lt;Duration&gt;&gt; entry : connHistory.entrySet())</span><br><span class="line">&#123;</span><br><span class="line">    DTNHost h = entry.getKey();</span><br><span class="line">    <span class="keyword">for</span>(Duration d : entry.getValue())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> timePassed = (<span class="keyword">int</span>)(timeNow - d.end);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// if we reached the end of the last epoch, we're done with this node</span></span><br><span class="line">        <span class="keyword">if</span>(timePassed &gt; CENTRALITY_TIME_WINDOW * epochCount)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// compute the epoch this contact belongs to</span></span><br><span class="line">        epoch = timePassed / CENTRALITY_TIME_WINDOW;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Only consider each node once per epoch</span></span><br><span class="line">        Set&lt;DTNHost&gt; nodesAlreadyCounted = nodesCountedInEpoch.get(epoch);</span><br><span class="line">        <span class="keyword">if</span>(nodesAlreadyCounted.contains(h))</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// increment the degree for the given epoch</span></span><br><span class="line">        centralities[epoch]++;</span><br><span class="line">        nodesAlreadyCounted.add(h);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>循环查看每一个在connHistory中的结点，直到检查完所有相应的结点，然后会在centralities中做上相应的记录，并将这些结点放入<code>nodeAlreadyCount</code>中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; epochCount; i++) </span><br><span class="line">    sum += centralities[i];</span><br><span class="line"><span class="keyword">this</span>.globalCentrality = ((<span class="keyword">double</span>)sum) / epochCount;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.lastGlobalComputationTime = SimClock.getIntTime();</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">this</span>.globalCentrality;</span><br></pre></td></tr></table></figure>
+<p>最后计算所有记录好的centralities，然后将其加到sum中，然后计算得到<code>globalCentrality</code>即可，并保存相应的<code>lastGlobalComputationTime</code>。</p>
+<h5 id="getLocalCentrality"><a href="#getLocalCentrality" class="headerlink" title="getLocalCentrality()"></a>getLocalCentrality()</h5><p>对于本地中心度的计算，在整个计算上是大同小异的，唯一的差别是检查相应的节点是否在本地的<code>community</code>中，然后进行计算。</p>
+<h4 id="routing-community-SWindowCentrality"><a href="#routing-community-SWindowCentrality" class="headerlink" title="routing.community.SWindowCentrality"></a>routing.community.SWindowCentrality</h4><p>同样的，实现了<code>Centrality</code>的接口，主要的关键还是两个方法，下面主要进行介绍</p>
+<h5 id="getGlobalCentrality-1"><a href="#getGlobalCentrality-1" class="headerlink" title="getGlobalCentrality"></a>getGlobalCentrality</h5><p>对于SWindow的计算，其具体计算为检查每个节点，判断每个节点是否满足要求，如果满足，则centrality加1</p>
+<h5 id="getLocalCentrality-1"><a href="#getLocalCentrality-1" class="headerlink" title="getLocalCentrality"></a>getLocalCentrality</h5><p>同样的，对于Local中心度的计算，那么也是需要判断是否在community当中。</p>
+<h4 id="routing-community-CWindowCentrality"><a href="#routing-community-CWindowCentrality" class="headerlink" title="routing.community.CWindowCentrality"></a>routing.community.CWindowCentrality</h4><p>同样的，实现了<code>Centrality</code>的接口，主要的关键还是两个方法，下面主要进行介绍</p>
+<h5 id="getGlobalCentrality-2"><a href="#getGlobalCentrality-2" class="headerlink" title="getGlobalCentrality"></a>getGlobalCentrality</h5><p>对于具体的代码不再分析，其实际上和<code>AvgDegreeCentrality</code>的计算几乎是相同的，唯一的不同在于<code>AvgDegreeCentrality</code>中的epochCount是通过计算得到的，而对于<code>CWindowCentrality</code>而言，那么实际上就是直接设定的<code>EPOCH_COUNT</code>。</p>
+<h5 id="getLocalCentrality-2"><a href="#getLocalCentrality-2" class="headerlink" title="getLocalCentrality"></a>getLocalCentrality</h5><p>其具体的不同也就是计算的是本地的<code>community</code>的中心度，而非总体的中心度。</p>
+<h3 id="Added-Reports"><a href="#Added-Reports" class="headerlink" title="Added Reports"></a>Added Reports</h3><h4 id="report-CommunityDetectionReport"><a href="#report-CommunityDetectionReport" class="headerlink" title="report.CommunityDetectionReport"></a>report.CommunityDetectionReport</h4><p>继承自Report中，实现done()方法，其具体就是打印了相应的内容，主要是计算当前的community。</p>
+<h4 id="report-DeliveryCentralityReport"><a href="#report-DeliveryCentralityReport" class="headerlink" title="report.DeliveryCentralityReport"></a>report.DeliveryCentralityReport</h4><h4 id="report-SimpleCommunityDetectionReport"><a href="#report-SimpleCommunityDetectionReport" class="headerlink" title="report.SimpleCommunityDetectionReport"></a>report.SimpleCommunityDetectionReport</h4><p><strong>附录：</strong></p>
+<p>在学习ONE使用的过程中，从这个<a href="http://sparkandshine.net/the-one-use-notes-directory/" target="_blank" rel="noopener">The ONE使用笔记</a>中学习到了很多知识，故在最后强烈推荐。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2020/04/09/the-one-code-4/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1960,125 +2165,6 @@ Fig. 10.3.4\ 位置编码</script><p>对于transformer而言，本身没有包�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://leliyliu.github.io/2019/05/05/django-learning/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leliyliu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="禾声">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/05/django-learning/" itemprop="url">django_learning</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-05T14:56:16+08:00">
-                2019-05-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2129,7 +2215,7 @@ Fig. 10.3.4\ 位置编码</script><p>对于transformer而言，本身没有包�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
