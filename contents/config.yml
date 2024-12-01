@@ -5,13 +5,9 @@ home-subtitle: Lian Liu's homepage
 copyright-text: '&copy; Lian Liu 2023-2024. All Rights Reserved.'
 
 home-subtitle: "Welcome to My Academic Webpage"
-conference-slides-subtitle: "Upcoming Conferences and Talks"
-writings-and-slides-subtitle: "Expository Writings"
 publications-subtitle: "My Publications"
-preprints-subtitle: "Preprints and Research"
+awards-subtitle: "My Awards"
 
 home-md: "home.md"
-conference-md: "conference.md"
-writings-and-slides-md: "writings-and-slides.md"
 publications-md: "publications.md"
-preprints-md: "preprints.md"
+awards-md: "awards.md"
