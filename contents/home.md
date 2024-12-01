@@ -4,7 +4,7 @@
 
 LianLiu's Homepage
 
-I am a PhD student at Institute of Computing Technology, Chinese Academy of Sciences. I used to learn physics in my undergraduate peroid. Currently I learn pure mathematics and I am looking for a Ph.D position. 
+I am a PhD student at Institute of Computing Technology, Chinese Academy of Sciences. 
 
 #### Email
 liulian211@mails.ucas.ac.cn
