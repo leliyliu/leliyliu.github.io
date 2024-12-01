@@ -10,7 +10,7 @@ I am a PhD student at Institute of Computing Technology, Chinese Academy of Scie
 liulian211@mails.ucas.ac.cn
 
 #### Education 
-PhD, Computer Science and Technology, Institute of Computing Technology, Chinese Academy of Sciences, 2021-2027 (expected). \
+PhD, Computer Science and Technology, Institute of Computing Technology, Chinese Academy of Sciences, 2021-2026(expected). \
 B.E. Internet of Things, Nankai University, 2017-2021. 
 
 #### Research Interests 
