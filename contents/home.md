@@ -4,18 +4,16 @@
 
 LianLiu's Homepage
 
-I am a PhD student at Institute of Computing Technology, Chinese Academy of Sciences. 
+Hi! I am LianLiu(刘炼), a 4-th year Ph.D student at Institute of Computing Technology, Chinese Academy of Sciences, advised by Prof. [Ying Wang](https://wangying-ict.github.io/).
+
 
 #### Email
-liulian211@mails.ucas.ac.cn
+Please contact me at: liulian211@mails.ucas.ac.cn
 
 #### Education 
-PhD, Computer Science and Technology, Institute of Computing Technology, Chinese Academy of Sciences, 2021-2026(expected). \
-B.E. Internet of Things, Nankai University, 2017-2021. 
+PhD, Computer Science and Technology, Institute of Computing Technology, Chinese Academy of Sciences, Sep. 2021 - Present. \
+B.E. Internet of Things, Nankai University, Sep. 2017 - Jun. 2021. 
 
 #### Research Interests 
 Neural Processing Unit Design, Architecture for LLM, Heterogeneous Computing, Processing-in-Memory. 
-
-
-
 
