@@ -15,5 +15,5 @@ PhD, Computer Science and Technology, Institute of Computing Technology, Chinese
 B.E. Internet of Things, Nankai University, Sep. 2017 - Jun. 2021. 
 
 #### Research Interests 
-Neural Processing Unit Design, Architecture for LLM, Heterogeneous Computing, Processing-in-Memory. 
+LLM Infrastructure, Heterogeneous Computing, Processing-in-Memory, Algorithm-System Co-design. 
 
