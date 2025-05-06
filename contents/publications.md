@@ -4,6 +4,8 @@
 
 - <strong>Lian Liu</strong>, Shixin Zhao, Bing Li, Haimeng Ren, Zhaohui Xu, Mengdi Wang, Xiaowei Li, Yinhe Han, and Ying Wang*. "Make LLM Inference Affordable to Everyone: Augmenting GPU Memory with NDP-DIMM" in <strong> International Symposium on High-Performance Computer Architecture (HPCA'25), 2025. (CCF-A).</strong> [[Paper]](https://arxiv.org/abs/2502.16963)
 
+- <strong>Lian Liu</strong>, Xiandong Zhao, Guanchen Li, Dong Li, Mengdi Wang, Yinhe Han, Xiaowei Li, Ying Wang*. "BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation" in <strong> International Conference on   Machine Learning (ICML'25). (CCF-A)</strong>
+
 - <strong>Lian Liu</strong>, Zhaohui Xu, Yintao He, Ying Wang*, Huawei Li, Xiaowei Li, Yinhe Han. "Drift: Leveraging Distribution-based Dynamic Precision Quantization for Efficient Deep Neural Network Acceleration" in <strong> Design Automation Conference (DAC'24), 2024. (CCF-A)</strong>. [[Paper]](https://dl.acm.org/doi/abs/10.1145/3649329.3655986)
 
 - Guanchen Li, Xiandong Zhao, <strong>Lian Liu</strong>, Zeping Li, Dong Li. "Enhanced One-Shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism" in <strong> International Conference on
