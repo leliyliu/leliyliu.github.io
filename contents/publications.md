@@ -13,6 +13,8 @@ Computational Linguistics (COLING'25), 2025. (CCF-B)</strong> [[Paper]](https://
 
 #### Journal 
 
+- <strong>Lian Liu</strong>, Jinxin Yu, Mengdi Wang, Xiaowei Li, Yinhe Han, Ying Wang, "DNA: A General Dynamic Neural Network Accelerator" in <strong> IEEE Transactions on Computer (TC), 2025. (CCF-A)</strong>. 
+
 - <strong>Lian Liu</strong>, Ying Wang*, Weiwei Chen, Xiandong Zhao, Huawei Li*, Xiaowei Li, Yinhe Han, "An Automatic Neural Network Architecture-and-Quantization Joint Optimization Framework for Efficient Model Inference," in <strong> IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), 2024. (CCF-A)</strong>. [[Paper]](https://ieeexplore.ieee.org/abstract/document/10342823/)
 
 - Wen Li, Ying Wang, Cheng Liu, Yintao He, <strong>Lian Liu</strong>, Huawei Li, Xiaowei Li, "On-line Fault Protection for ReRAM-based neural networks", <strong>IEEE Transaction on Computers (TC), 2023. (CCF-A)</strong>. [[Paper]](https://ieeexplore.ieee.org/abstract/document/9737421/)
