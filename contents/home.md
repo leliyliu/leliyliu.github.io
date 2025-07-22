@@ -4,7 +4,7 @@
 
 LianLiu's Homepage
 
-Hi! I am LianLiu(刘炼), a 4-th year Ph.D student at Institute of Computing Technology, Chinese Academy of Sciences, advised by Prof. [Ying Wang](https://wangying-ict.github.io/).
+Hi! I am LianLiu(刘炼), a 5-th year Ph.D student at Institute of Computing Technology, Chinese Academy of Sciences, advised by Prof. [Ying Wang](https://wangying-ict.github.io/).
 
 
 #### Email
