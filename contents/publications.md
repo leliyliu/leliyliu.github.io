@@ -1,10 +1,10 @@
 #### Conferences
 
-- <strong>Lian Liu</strong>, Haimeng Ren, Long Cheng, Zhaohui Xu, Yudong Pan, Mengdi Wang, Xiaowei Li, Yinhe Han, and Ying Wang*. "COMET: Towards Partical W4A4KAV4 LLMs Serving", in <strong> International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS'25), 2025. (CCF-A).</strong> [[Paper]](https://arxiv.org/abs/2410.12168)
+- <strong>Lian Liu</strong>, Haimeng Ren, Long Cheng, Zhaohui Xu, Yudong Pan, Mengdi Wang, Xiaowei Li, Yinhe Han, and Ying Wang*. "COMET: Towards Partical W4A4KAV4 LLMs Serving", in <strong> International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS'25), 2025. (CCF-A).</strong> [[Paper]](https://dl.acm.org/doi/10.1145/3676641.3716252)
 
-- <strong>Lian Liu</strong>, Shixin Zhao, Bing Li, Haimeng Ren, Zhaohui Xu, Mengdi Wang, Xiaowei Li, Yinhe Han, and Ying Wang*. "Make LLM Inference Affordable to Everyone: Augmenting GPU Memory with NDP-DIMM" in <strong> International Symposium on High-Performance Computer Architecture (HPCA'25), 2025. (CCF-A).</strong> [[Paper]](https://arxiv.org/abs/2502.16963)
+- <strong>Lian Liu</strong>, Shixin Zhao, Bing Li, Haimeng Ren, Zhaohui Xu, Mengdi Wang, Xiaowei Li, Yinhe Han, and Ying Wang*. "Make LLM Inference Affordable to Everyone: Augmenting GPU Memory with NDP-DIMM" in <strong> International Symposium on High-Performance Computer Architecture (HPCA'25), 2025. (CCF-A).</strong> [[Paper]](https://ieeexplore.ieee.org/document/10946712)
 
-- <strong>Lian Liu</strong>, Xiandong Zhao, Guanchen Li, Dong Li, Mengdi Wang, Yinhe Han, Xiaowei Li, Ying Wang*. "BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation" in <strong> International Conference on   Machine Learning (ICML'25). (CCF-A)</strong>
+- <strong>Lian Liu</strong>, Xiandong Zhao, Guanchen Li, Dong Li, Mengdi Wang, Yinhe Han, Xiaowei Li, Ying Wang*. "BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation" in <strong> International Conference on   Machine Learning (ICML'25). (CCF-A)</strong> [[Paper]](https://openreview.net/forum?id=YrCvW1Hx7g)
 
 - <strong>Lian Liu</strong>, Zhaohui Xu, Yintao He, Ying Wang*, Huawei Li, Xiaowei Li, Yinhe Han. "Drift: Leveraging Distribution-based Dynamic Precision Quantization for Efficient Deep Neural Network Acceleration" in <strong> Design Automation Conference (DAC'24), 2024. (CCF-A)</strong>. [[Paper]](https://dl.acm.org/doi/abs/10.1145/3649329.3655986)
 
@@ -13,7 +13,7 @@ Computational Linguistics (COLING'25), 2025. (CCF-B)</strong> [[Paper]](https://
 
 #### Journal 
 
-- <strong>Lian Liu</strong>, Jinxin Yu, Mengdi Wang, Xiaowei Li, Yinhe Han, Ying Wang, "DNA: A General Dynamic Neural Network Accelerator" in <strong> IEEE Transactions on Computer (TC), 2025. (CCF-A)</strong>. 
+- <strong>Lian Liu</strong>, Jinxin Yu, Mengdi Wang, Xiaowei Li, Yinhe Han, Ying Wang, "DNA: A General Dynamic Neural Network Accelerator" in <strong> IEEE Transactions on Computer (TC), 2025. (CCF-A)</strong>. [[Paper]](https://ieeexplore.ieee.org/document/11077718/)
 
 - <strong>Lian Liu</strong>, Ying Wang*, Weiwei Chen, Xiandong Zhao, Huawei Li*, Xiaowei Li, Yinhe Han, "An Automatic Neural Network Architecture-and-Quantization Joint Optimization Framework for Efficient Model Inference," in <strong> IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), 2024. (CCF-A)</strong>. [[Paper]](https://ieeexplore.ieee.org/abstract/document/10342823/)
 
