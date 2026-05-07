@@ -8,6 +8,10 @@
 
 - <strong>Lian Liu</strong>, Zhaohui Xu, Yintao He, Ying Wang*, Huawei Li, Xiaowei Li, Yinhe Han. "Drift: Leveraging Distribution-based Dynamic Precision Quantization for Efficient Deep Neural Network Acceleration" in <strong> Design Automation Conference (DAC'24), 2024. (CCF-A)</strong>. [[Paper]](https://dl.acm.org/doi/abs/10.1145/3649329.3655986)
 
+- Yudong Pan, Yintao He, Tianhua Han, <strong>Lian Liu</strong>, Shixin Zhao, Zhirong Chen, Mengdi Wang, Cangyuan Li, Yinhe Han, and Ying Wang*. "TriMoE: Augmenting GPU with AMX-Enabled CPU and DIMM-NDP for High-Throughput MoE Inference via Offloading" in <strong> Design Automation Conference (DAC'26), 2026.</strong> [[Paper]](https://arxiv.org/abs/2603.01058)
+
+- Jinxin Yu, Xueqing Chen, Yudong Pan, <strong>Lian Liu</strong>, Shengwen Liang, Huawei Li, Xiaowei Li, and Ying Wang*. "CacheEdit: Efficient Multi-round Image Editing via Adaptive Token-wise Reuse" in <strong> International Conference on Machine Learning (ICML'26), 2026. (CCF-A)</strong>
+
 - Guanchen Li, Xiandong Zhao, <strong>Lian Liu</strong>, Zeping Li, Dong Li. "Enhanced One-Shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism" in <strong> International Conference on
 Computational Linguistics (COLING'25), 2025. (CCF-B)</strong> [[Paper]](https://aclanthology.org/2025.coling-main.117/)
 
@@ -19,5 +23,7 @@ Computational Linguistics (COLING'25), 2025. (CCF-B)</strong> [[Paper]](https://
 
 - Wen Li, Ying Wang, Cheng Liu, Yintao He, <strong>Lian Liu</strong>, Huawei Li, Xiaowei Li, "On-line Fault Protection for ReRAM-based neural networks", <strong>IEEE Transaction on Computers (TC), 2023. (CCF-A)</strong>. [[Paper]](https://ieeexplore.ieee.org/abstract/document/9737421/)
 
-<!-- #### Preprints -->
+#### Preprints
+
+- <strong>Lian Liu</strong>, Shixin Zhao,  Yutian Zhou, Yintao He, Mengdi Wang, Yinhe Han, and Ying Wang*. "PAM: Processing Across Memory Hierarchy for Efficient KV-centric LLM Serving System", arXiv:2602.11521, 2026. [[Paper]](https://arxiv.org/abs/2602.11521)
 
