@@ -1,5 +1,7 @@
 #### Conferences
 
+- Shixin Zhao, <strong>Lian Liu （共同一作）</strong>, Tianhua Han, Mengdi Wang, Mengdi Wang, Yinhe Han, and Ying Wang*. "Rethinking Unified Memory for NPU–PIM Systems: Dual-View Memory for Dynamic Inference of LLM" in <strong> International Symposium on Microarchitecture (MICRO'26), 2026. (CCF-A).</strong> [[Paper]]()
+
 - <strong>Lian Liu</strong>, Haimeng Ren, Long Cheng, Zhaohui Xu, Yudong Pan, Mengdi Wang, Xiaowei Li, Yinhe Han, and Ying Wang*. "COMET: Towards Partical W4A4KAV4 LLMs Serving", in <strong> International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS'25), 2025. (CCF-A).</strong> [[Paper]](https://dl.acm.org/doi/10.1145/3676641.3716252)
 
 - <strong>Lian Liu</strong>, Shixin Zhao, Bing Li, Haimeng Ren, Zhaohui Xu, Mengdi Wang, Xiaowei Li, Yinhe Han, and Ying Wang*. "Make LLM Inference Affordable to Everyone: Augmenting GPU Memory with NDP-DIMM" in <strong> International Symposium on High-Performance Computer Architecture (HPCA'25), 2025. (CCF-A).</strong> [[Paper]](https://ieeexplore.ieee.org/document/10946712)
@@ -16,6 +18,7 @@
 Computational Linguistics (COLING'25), 2025. (CCF-B)</strong> [[Paper]](https://aclanthology.org/2025.coling-main.117/)
 
 #### Journal 
+- Shixin Zhao, <strong>Lian Liu （共同一作）</strong>, Xiangwen An, Yutian Zhou, Yintao He, Long Cheng, Mengdi Wang, Xiaowei Li, Yinhe Han, Ying Wang*. "HydraPIM: A Heterogeneous PIM Architecture for Efficient Attention in Long-Context LLMs" in <strong> IEEE Transactions on Computer (TC), 2026. (CCF-A)</strong>. [[Paper]](https://doi.org/10.1109/tc.2026.3710733)
 
 - <strong>Lian Liu</strong>, Jinxin Yu, Mengdi Wang, Xiaowei Li, Yinhe Han, Ying Wang, "DNA: A General Dynamic Neural Network Accelerator" in <strong> IEEE Transactions on Computer (TC), 2025. (CCF-A)</strong>. [[Paper]](https://ieeexplore.ieee.org/document/11077718/)
 
